@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://kit.fontawesome.com/41ebe07a9e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <p class="logo"><i class="fa-solid fa-bus"></i></p>
+    <nav class="navigation">
+      <a href="#">Home</a>
+      <a href="#">Info</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </header>
+
+
+  
+   
+
+    <div class="form-box login">
+      <h2>Chwilowo, do utworzenia panelu administratora</h2>
+
+      <form action="/panel/register" method="post">
+
+        <div class="input-box">
+          <span class="icon"><i class="fa-solid fa-user"></i></span>
+          <input type="text" id="login" name="login"> <!-- login id do pobrania-->
+          <label for="login">Login:</label>
+        </div>
+
+         <div class="input-box">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+          <input type="number" id="type_id" name="type_id"> <!-- login id do pobrania-->
+
+          <label for="login">Typ: </label>
+        </div>
+
+        <div class="input-box">
+          <span class="icon"><i class="fa-solid fa-key"></i></span>
+          <input id="password" type="password" name="password"> <!-- haslo id do pobrania-->
+          <label for="password">Hasło:</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><i class="fa-solid fa-key"></i></span>
+          <input id="passwordConfirm" type="password" name="passwordConfirm"> <!-- haslo id do pobrania-->
+          <label for="password">Hasło:</label>
+        </div>
+        <button type="submit" class="btn">Zarejestruj</button>
+      </form>
+      {{#if message }}
+      <h4  class="alert alert-danger mt-4" >{{message}}</h4>
+      {{/if}}
+    </div>
+
+
+
+  
+
+  <script src="/main.js"></script>
+</body>
+
+</html>
