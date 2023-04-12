@@ -21,7 +21,11 @@ router.get("/accounts", panelControler.isLoggedIn, (req,res) => {
 });
 
 router.get("/profile", panelControler.isLoggedIn, (req,res) => {
-    if ( req.user)res.render("profile")
+    if ( req.user){
+        res.render("profile", {
+            user: req.user
+        })
+    }
     else res.redirect('/')
 });
 

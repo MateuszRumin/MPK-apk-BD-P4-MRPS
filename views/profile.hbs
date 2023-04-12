@@ -21,7 +21,7 @@
       <a href="#">Info</a>
       <a href="#">Kontakt</a>
       <a href="#">Profil</a>
-      <button class="btnLogout">Wyloguj</button>
+      <a href="/panel/logout">Wyloguj</a>
     </nav>
   </header>
   <div class="conteiner mt-4">
@@ -29,8 +29,8 @@
         <div class="col-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">John</h5>
-                <h5 class="card-role">John</h5>
+                <h5 class="card-title">Użytkownik to: {{user.nazwa}}</h5>
+                <h5 class="card-role">Jego rola to {{user.typ_id}}</h5>
               </div>
             </div>
         </div>
