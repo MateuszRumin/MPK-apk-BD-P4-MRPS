@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://kit.fontawesome.com/41ebe07a9e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <p class="logo"><i class="fa-solid fa-bus"></i></p>
+    <nav class="navigation">
+      <a href="#">Home</a>
+      <a href="#">Info</a>
+      <a href="#">Kontakt</a>
+      <a href="#">Profil</a>
+      <a href="#">Zarządzanie</a>
+    <button class="btnLogout">Wyloguj</button>
+      
+
+
+    </nav>
+  </header>
+
+
+ 
+
+
+
+  <div class="container">
+    <main class="main-content">
+      <section class="section-left">
+
+        <section class="line-header">
+          <p>ROZKŁAD JAZDY AUTOBUSÓW</p>
+          <p>MIEJSKIE:</p>
+        </section>
+
+        <section class="section-line urban"> <!-- LINIE MIEJSKIE -->
+          <div class="square-line normal-line">5</div>
+          <div class="square-line new-line">4</div>
+          <div class="square-line time-change-line">6</div>
+          <div class="square-line night-line">4</div>
+        </section>
+
+        <section class="line-header">
+          <hr>
+          <p>PODMIEJSKIE:</p>
+        </section>
+
+        <section class="section-line suburban"> <!-- LINIE PODMIEJSKIE -->
+          <div class="square-line normal-line">16</div>
+          <div class="square-line new-line">8</div>
+          <div class="square-line time-change-line">2</div>
+          <div class="square-line night-line">9</div>
+        </section>
+
+        <section class="section-legend">
+          <hr>
+          <span class="header-legend">LEGENDA:</span>
+
+          <p class="legend">
+            <i class="fa-solid fa-square legend-new"></i>
+            <span class="content-legend">Nowa linia lub linia dla której nastąpiła zmiana rozkładu jazdy</span>
+          </p>
+
+          <p class="legend">
+            <i class="fa-solid fa-square legend-time-change"></i>
+            <span class="content-legend">Linia która czasowo kursuje po zmienionej trasie</span>
+          </p>
+
+          <p class="legend">
+            <i class="fa-solid fa-square legend-night"></i>
+            <span class="content-legend">Linia nocna</span>
+          </p>
+
+        </section>
+
+      </section>
+
+
+
+      <section class="section-right">
+
+        <section class="search-header">
+          <p>WYSZUKIWANIE POŁĄCZEŃ</p>
+        </section>
+
+        <section class="bus-table sub-section-right">
+          <p>Wpisz nazwę przystanku, aby pojawiła się tablica z godzinami odjazdów autobusów.</p>
+
+          <section class="search-table-bus">
+            <input type="text" class="bus-stop-input" placeholder="Podaj nazwe przystanku">
+            <a href="#"><button type="submit" class="btn-arrow stop-bus"><i
+                  class="fa-solid fa-arrow-right arrow"></i></input></a>
+          </section>
+
+        </section>
+
+
+        <section class="search-line sub-section-right">
+          <p>JAK DOJADĘ ?</p><br>
+
+          <section class="section-how-road">
+            <p>Wpisz przystanek początkowy i końcowy, aby wyszukać odpowiednie linie zawierające podane przystanki.</p>
+
+            <input type="text" class="bus-stop-input" placeholder="Przystanek początkowy">
+            <input type="text" class="bus-stop-input" placeholder="Przystanek końcowy">
+            <input type="date" class="bus-stop-input" placeholder="Podaj nazwe przystanku">
+            <input type="time" class="bus-stop-input" placeholder="Podaj nazwe przystanku">
+
+            <a href="#"><button type="submit" class="btn-arrow how-road">ZATWIERDŹ</input></a>
+
+          </section>
+
+        </section>
+
+
+        <section class="messages sub-section-right">
+          <p>KOMUNIKATY:</p>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="/main.js"></script>
+  {{#if message }}
+      <script>wrapper.classList.add('active-popup')</script>
+      {{/if}}
+</body>
+
+</html>

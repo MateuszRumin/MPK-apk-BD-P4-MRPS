@@ -1,7 +1,8 @@
 const mysql = require('mysql2')
-
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const { promisify} = require('util')
+const { decode } = require('punycode')
 
 const db = mysql.createConnection( {
     host:process.env.DATABASE_HOST,
@@ -79,7 +80,7 @@ exports.login =  (req,res) => {
                     ),
                     httpOnly:true
                 }
-                 res.cookie('jwt',token,cookieOptions);
+                 res.cookie('account',token,cookieOptions);
                  res.status(200).redirect("/");
             }
 
@@ -90,4 +91,31 @@ exports.login =  (req,res) => {
         console.log(error)
     }
 
+}
+
+exports.isLoggedIn = async ( req , res , next) => {
+    if (req.cookies.account){
+        try{
+            //weryfikacja tokenu
+            const decoded = await promisify (jwt.verify)(req.cookies.account, process.env.JWT_SECRET)
+            
+            //sprawdzanie czy użytkownik dalej istnieje
+            db.query('SELECT * FROM uzytkownicy WHERE id =  ?', [decoded.id], (error, results) =>{
+                
+                if (!results ){
+                    return next();
+                }
+                req.user = results[0]
+                return next()
+
+            })
+
+        } catch (error) {
+            return next()
+        }
+    }else{
+        next()
+    }
+
+    
 }

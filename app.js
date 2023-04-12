@@ -42,15 +42,19 @@ db.connect( (error) => {
    if(error){
     console.log(error)
    }else {
-    console.log("MSQL działa")
+    console.log("połączono z MSQL")
    } 
 })
 
 app.use('/', require('./routes/pages'))
+
+
+
+
 app.use('/panel', require('./routes/panel'))
 
 
 app.listen(3301, () => {
-    console.log(`Dziala`)
+    console.log(`Aplikacja dziala na porcie 3301`)
 
 });
