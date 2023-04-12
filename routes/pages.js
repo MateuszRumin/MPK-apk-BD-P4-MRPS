@@ -13,8 +13,11 @@ router.get("/", panelControler.isLoggedIn, (req,res)=> {
     }else res.render("index")
 });
 
-router.get("/register",(get,res) => {
-    res.render("register")
+router.get("/accounts", panelControler.isLoggedIn, (req,res) => {
+    if (req.user)
+        if (req.user.typ_id===1)res.render("accounts");  
+        else res.redirect('/');
+    else res.redirect('/');
 });
 
 router.get("/profile", panelControler.isLoggedIn, (req,res) => {

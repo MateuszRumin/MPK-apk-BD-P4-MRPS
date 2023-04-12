@@ -24,11 +24,11 @@ exports.register = (req,res) => {
         }
 
         if (results.length > 0) {
-            return res.render('register',{
+            return res.render('accounts',{
                message: 'Istnieje juz ten użytkownik' 
             })
         }else if(password !== passwordConfirm){
-            return res.render('register',{
+            return res.render('accounts',{
                 message: 'Hasła nie są takie same'
             })  
         }
@@ -39,7 +39,7 @@ exports.register = (req,res) => {
             if(error){
                 console.log(error)
             }else{
-                return res.render('register',{
+                return res.render('accounts',{
                     message: 'Dodano użytkownika' 
                  })
             }
