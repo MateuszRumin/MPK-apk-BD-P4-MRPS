@@ -11,6 +11,10 @@ router.get("/register",(get,res) => {
     res.render("register")
 });
 
+router.get("/profile",(get,res) => {
+    res.render("profile")
+});
+
 
 module.exports = router;
 

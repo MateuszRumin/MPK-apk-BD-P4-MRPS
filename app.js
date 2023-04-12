@@ -1,7 +1,8 @@
-const express = require('express')
-const path = require('path')
-const mysql = require('mysql2')
-const dotenv = require('dotenv')
+const express = require('express');
+const path = require('path');
+const mysql = require('mysql2');
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const app = express()
 
 //zdefinowanie .env
@@ -20,10 +21,14 @@ const db = mysql.createConnection( {
 const publicDirectory = path.join(__dirname,'./public')
 app.use(express.static(publicDirectory))
 
+
+
 //Dla pewności że pobierzemy dane z obojetnie jakiego forma
 app.use(express.urlencoded({extended: false}))
 //parse json bodies
 app.use(express.json())
+
+app.use(cookieParser())
 
 
 //set view
@@ -43,6 +48,7 @@ db.connect( (error) => {
 
 app.use('/', require('./routes/pages'))
 app.use('/panel', require('./routes/panel'))
+
 
 app.listen(3301, () => {
     console.log(`Dziala`)

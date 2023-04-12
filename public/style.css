@@ -41,7 +41,8 @@ header {
 	font-weight: 500;
 	margin-left: 40px;
 }
-.navigation .btnLogin-popup {
+.navigation .btnLogout,
+.navigation .btnLogin-popup  {
 	width: 130px;
 	height: 50px;
 	background-color: transparent;
@@ -55,6 +56,7 @@ header {
 	margin-left: 40px;
 	transition: background 0.4s, color 0.4s;
 }
+.navigation .btnLogout:hover,
 .navigation .btnLogin-popup:hover {
 	background: #fff;
 	color: #444;

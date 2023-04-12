@@ -20,7 +20,10 @@
       <a href="#">Home</a>
       <a href="#">Info</a>
       <a href="#">Kontakt</a>
+
       <button class="btnLogin-popup">Zaloguj</button>
+
+
     </nav>
   </header>
 
@@ -31,16 +34,16 @@
     <div class="form-box login">
       <h2>Logowanie</h2>
 
-      <form action="#">
+      <form action="/panel/login" method="post">
         <div class="input-box">
           <span class="icon"><i class="fa-solid fa-user"></i></span>
-          <input type="text" id="login" required> <!-- login id do pobrania-->
+          <input type="text" id="login" name="login" required> <!-- login id do pobrania-->
 
           <label for="login">Login:</label>
         </div>
         <div class="input-box">
           <span class="icon"><i class="fa-solid fa-key"></i></span>
-          <input id="password" type="password" required> <!-- haslo id do pobrania-->
+          <input id="password" type="password" name="password" required> <!-- haslo id do pobrania-->
           <label for="password">Hasło:</label>
         </div>
         <div class="remember-forgot">
@@ -51,6 +54,9 @@
 
         <button type="submit" class="btn">Zaloguj</button>
       </form>
+      {{#if message }}
+      <h4  class="alert alert-danger mt-4" >{{message}}</h4>
+      {{/if}}
     </div>
   </div>
 
@@ -163,6 +169,9 @@
 
 
   <script src="/main.js"></script>
+  {{#if message }}
+      <script>wrapper.classList.add('active-popup')</script>
+      {{/if}}
 </body>
 
 </html>
