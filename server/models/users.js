@@ -30,18 +30,7 @@ module.exports = (sequelize,DataTypes) => {
         
         
     })
-    Users.associate = (models) => {
-        Users.belongsTo(models.Employees, {
-            foreignKey:'employee_id',
-            targetKey: 'emp_no',
-            onDelate:'CASCADE'
     
-        }),
-        Users.belongsTo(models.Roles, {
-            foreignKey:'role_id',         
-            targetKey: 'id_role',
-        })
-    }  
 
     return Users 
     

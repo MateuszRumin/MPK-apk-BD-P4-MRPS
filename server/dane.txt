@@ -1,0 +1,27 @@
+Employees.associate = (models) => {
+        Employees.belongsTo(models.Roles, {
+            foreignKey:'role_id',
+            targetKey: 'id_role',
+            onDelate:"set null"
+        }),
+        Employees.hasOne(models.Users)
+        
+    }
+
+    Roles.associate = (models) => {
+        Roles.hasMany(models.Employees),
+        Roles.hasMany(models.Users)
+    }   
+
+    Users.associate = (models) => {
+        Users.belongsTo(models.Employees, {
+            foreignKey:'employee_id',
+            targetKey: 'emp_no',
+            onDelate:'CASCADE'
+    
+        }),
+        Users.belongsTo(models.Roles, {
+            foreignKey:'role_id',         
+            targetKey: 'id_role',
+        })
+    }  

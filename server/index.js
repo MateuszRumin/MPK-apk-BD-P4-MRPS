@@ -10,9 +10,6 @@ const db = require('./models')
 
 
 
-
-
-
 //połączenie
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

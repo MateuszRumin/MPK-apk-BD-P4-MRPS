@@ -33,15 +33,7 @@ module.exports = (sequelize,DataTypes) => {
         }
 
     });
-    Employees.associate = (models) => {
-        Employees.belongsTo(models.Roles, {
-            foreignKey:'role_id',
-            targetKey: 'id_role',
-            onDelate:"set null"
-        }),
-        Employees.hasOne(models.Users)
-        
-    }
+    
 
     return Employees
 }

@@ -13,10 +13,7 @@ module.exports = (sequelize,DataTypes) => {
         
         
     })
-    Roles.associate = (models) => {
-        Roles.hasMany(models.Employees),
-        Roles.hasMany(models.Users)
-    }  
+   
     
 
     return Roles
