@@ -17,12 +17,12 @@ const Login = () => {
 			<div className="form-box login">
 				<h2>Logowanie</h2>
 
-				<form method="post" action="/home">
+				<form method="post" action="localhost:3001/auth/login">
 					<div className="input-box">
 						<span className="icon">
 							<i className="fa-solid fa-user"></i>
 						</span>
-						<input type="text" id="login" name="login" required />
+						<input type="text" id="login" name="username" required />
 
 						<label for="login">Login:</label>
 					</div>
