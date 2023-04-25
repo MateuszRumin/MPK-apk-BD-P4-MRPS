@@ -1,11 +1,15 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Home } from './pages/Home'
 import { Info } from './pages/Info'
 import { Kontakt } from './pages/Kontakt'
 
 function App() {
-	return (
+	useEffect(()=> {
+		//tutaj bedzie cos do sesji 
+	},[])
+		return (
 		<div className="App">
 			<Router>
 				<Routes>

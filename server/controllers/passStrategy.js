@@ -11,8 +11,8 @@ exports.register = (req,res) => {
 
 exports.login =  (req,res) => {
     const dane = req.body
-
+    console.log(dane)
     
-    res.json(dane)
+    res.json("dane")
 
 }

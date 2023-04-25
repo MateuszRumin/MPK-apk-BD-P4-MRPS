@@ -5,6 +5,8 @@ const cors = require("cors");
 
 //parse dla wartsci json
 app.use(express.json())
+//uzycie cora **autoryzacja dostępu
+app.use(cors())
 
 //pobranie danych tabel
 const db = require('./models')

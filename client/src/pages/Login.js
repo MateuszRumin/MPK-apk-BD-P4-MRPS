@@ -1,4 +1,10 @@
 import React from 'react'
+import axios from "axios"
+import {Formik, Form, Field, ErrorMessage} from 'formik'
+import * as Yup from 'yup'
+import pl from 'yup-locale-pl'
+
+Yup.setLocale(pl)
 
 const Login = () => {
 	const displayLogin = () => {
@@ -6,6 +12,28 @@ const Login = () => {
 
 		wrapper.classList.toggle('active-popup')
 	}
+
+	const initialValues = {
+		username:"",
+		password:"",
+	}
+	const validationSchema = Yup.object().shape({
+		username:Yup.string().min(4).required("Podaj nazwę użytkownika!"),
+		password:Yup.string().min(5).required("Podaj hasło!"),
+	})
+
+
+	const onSubmit= (data) => {
+		axios.post("http://localhost:3001/auth/login", data).then((response) =>{
+			console.log("wysłano");
+		})
+
+
+
+	}
+	
+
+
 
 	return (
 		// active-popup
@@ -16,23 +44,26 @@ const Login = () => {
 
 			<div className="form-box login">
 				<h2>Logowanie</h2>
-
-				<form method="post" action="localhost:3001/auth/login">
+				{/* initialValues={} onSubmit={} validationSchema={} */}
+			<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+				<Form >
 					<div className="input-box">
 						<span className="icon">
 							<i className="fa-solid fa-user"></i>
 						</span>
-						<input type="text" id="login" name="username" required />
+						<Field type="text" id="login" name="username" />
 
 						<label for="login">Login:</label>
 					</div>
+					<ErrorMessage name="username" component="span"/>
 					<div className="input-box">
 						<span className="icon">
 							<i className="fa-solid fa-key"></i>
 						</span>
-						<input id="password" type="password" name="password" required />
+						<Field id="password" type="password" name="password"/>
 						<label for="password">Hasło:</label>
 					</div>
+					<ErrorMessage name="password" component="span"/>
 					<div className="remember-forgot">
 						<label for="remember-me">
 							<input id="remember-me" type="checkbox" />
@@ -41,7 +72,9 @@ const Login = () => {
 					</div>
 
 					<button className="btn">Zaloguj</button>
-				</form>
+					
+				</Form>
+			</Formik>
 			</div>
 		</div>
 	)
