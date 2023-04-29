@@ -5,17 +5,20 @@ import { Home } from './pages/Home'
 import { Info } from './pages/Info'
 import { Kontakt } from './pages/Kontakt'
 
+import { MainPanel } from './pages/admin/MainPanel'
 function App() {
-	useEffect(()=> {
-		//tutaj bedzie cos do sesji 
-	},[])
-		return (
+	useEffect(() => {
+		//tutaj bedzie cos do sesji
+	}, [])
+	return (
 		<div className="App">
 			<Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/info" element={<Info />} />
 					<Route path="/kontakt" element={<Kontakt />} />
+
+					<Route path="/admin/" element={<MainPanel />} />
 
 					<Route path="/*" element={<h1>Nie ma takiej strony</h1>} />
 				</Routes>

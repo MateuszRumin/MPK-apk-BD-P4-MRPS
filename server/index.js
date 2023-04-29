@@ -13,7 +13,7 @@ const db = require('./models')
 
 
 
-//routes i użycie scierzki
+//routes i użycie sciezki
 const userRoute = require("./routes/auth");
 app.use("/auth", userRoute);
 

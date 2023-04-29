@@ -1,4 +1,5 @@
 import { Navbar } from './Navbar'
+import './Kontakt.css'
 export const Kontakt = () => {
 	return (
 		<div>
