@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { Home } from './pages/Home'
 import { Info } from './pages/Info'
 import { Kontakt } from './pages/Kontakt'
-
+import DispUser from './pages/admin/displaydata/DispUser'
 import { MainPanel } from './pages/admin/MainPanel'
 function App() {
 	useEffect(() => {
@@ -19,6 +19,7 @@ function App() {
 					<Route path="/kontakt" element={<Kontakt />} />
 
 					<Route path="/admin/" element={<MainPanel />} />
+					<Route path="/admin/disp/" element={<DispUser />} />
 
 					<Route path="/*" element={<h1>Nie ma takiej strony</h1>} />
 				</Routes>
