@@ -74,6 +74,8 @@ header {
 	transform: scaleX(1);
 	transform-origin: left;
 }
-.active {
-	color: red !important;
+
+
+nav a:hover {
+	color: gold;
 }

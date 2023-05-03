@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
-import './Login.css'
+import './css/Login.css'
 Yup.setLocale(pl)
 
 const Login = () => {

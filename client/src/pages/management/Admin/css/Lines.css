@@ -1,0 +1,9 @@
+.displayTableLines {
+	border: red 2px solid;
+	display: flex;
+	width: 100%;
+}
+.containerLines {
+	position: relative;
+	top: 90px;
+}

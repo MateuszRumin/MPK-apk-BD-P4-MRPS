@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
 import { redirect } from 'react-router-dom'
-import './AddWorker.css'
+import '../css/AddUsers.css'
 export class AddWorker extends React.Component {
 	render() {
 		const initialValues = {
@@ -57,7 +57,7 @@ export class AddWorker extends React.Component {
 							<br />
 							<Field as="select" name="role">
 								<option value="">----</option>
-								<option value="Driver">Worker</option>
+								<option value="Worker">Worker</option>
 								<option value="Manager">Manager</option>
 							</Field>
 

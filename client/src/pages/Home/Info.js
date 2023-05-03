@@ -1,5 +1,5 @@
 import { Navbar } from './Navbar'
-import "./Info.css"
+import "./css/Info.css"
 export const Info = () => {
 	return (
 		<div>

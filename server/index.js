@@ -1,7 +1,6 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
-
+const express = require('express')
+const app = express()
+const cors = require('cors')
 
 //parse dla wartsci json
 app.use(express.json())
@@ -11,18 +10,15 @@ app.use(cors())
 //pobranie danych tabel
 const db = require('./models')
 
-
-
 //routes i użycie sciezki
-const userRoute = require("./routes/auth");
-app.use("/auth", userRoute);
+const userRoute = require('./routes/auth')
+app.use('/auth', userRoute)
 
-
-
+// resz
 
 //połączenie
 db.sequelize.sync().then(() => {
-    app.listen(3001, () => {
-      console.log("Aplikacja dziala na porcie 3001");
-    });
-  });
+	app.listen(3001, () => {
+		console.log('Aplikacja dziala na porcie 3001')
+	})
+})
