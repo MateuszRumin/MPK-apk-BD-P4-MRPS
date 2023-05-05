@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { AddLine } from './ModifyAdmin/AddLine'
 import DispLines from './DisLinesList/DispLines'
-import "./css/Lines.css"
+import '../Admin/ComponentsLines/css/Lines.css'
 export const Lines = () => {
 	return (
 		<div className='containerLines'>

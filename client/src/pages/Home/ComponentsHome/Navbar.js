@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import Login from './Login'
-import './css/Navbar.css'
+import '../css/Navbar.css'
 export const Navbar = () => {
 	const displayLogin = () => {
 		const wrapper = document.querySelector('.wrapper')

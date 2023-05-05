@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { AddWorker } from './AddUsers'
-import { AddLine } from './AddLine'
+import { AddWorker } from './ComponentsUsers/SectionUsersEditionUsers'
+import { AddLine } from './ModifyAdmin/AddLine'
+import './ComponentsMainPanel/css/MainPanel.css'
 
-import '../css/MainPanel.css'
 export const MainPanel = () => {
 	return (
-		<div className='containerMainPanel'>
+		<div className="containerMainPanel">
 			<section>
 				<header>
 					<p className="logo">

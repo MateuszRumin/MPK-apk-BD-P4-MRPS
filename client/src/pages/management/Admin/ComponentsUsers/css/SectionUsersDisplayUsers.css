@@ -1,0 +1,77 @@
+body {
+	box-sizing: border-box;
+	display: block;
+
+}
+.sectionUsersDisplayUsers {
+	
+	color: black;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+}
+.headerSectionDisplayUsers {
+	font-size: 2em;
+	text-align: center;
+	
+	color: #0496ff;
+	padding: 20px;
+	letter-spacing: 2px;
+	font-weight: 500;
+}
+.contentDisplayUsers {
+	
+	padding: 10px;
+	margin: 10px;
+    background-color: #a9a9a980;
+   
+}
+
+
+.tableDisplayUser {
+	width: 100%;
+	table-layout: fixed;
+ 
+    
+}
+.tbl-header {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.tbl-content {
+	height: 300px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgb(255, 255, 255);
+    background-color: #ffffff76;
+}
+.tableDisplayUser th {
+	padding: 20px 15px;
+	text-align: left;
+	font-weight: 500;
+	font-size: 12px;
+	color: #000000;
+	text-transform: uppercase;
+}
+.tableDisplayUser td {
+	padding: 15px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 12px;
+	color: #000000;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.955);
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgb(0, 0, 0);
+}
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgb(255, 255, 255);
+}

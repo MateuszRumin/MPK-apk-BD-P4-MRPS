@@ -1,0 +1,52 @@
+.sectionUserRoleInAccount {
+	color: black;
+	width: 100%;
+	/* border: solid red 2px; */
+}
+
+.formChangeDataRoleInAccount {
+	background-color: #d9d9d9;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+}
+.formChangeDataRoleInAccount label {
+	font-weight: 500;
+	display: block;
+}
+.inputFormDataRoleInAccount {
+	margin: 5px 0;
+	width: 60%;
+	height: 30px;
+	border: none;
+}
+.formContentDataRoleInAccount {
+	/* border: rgb(15, 114, 160) 2px solid; */
+	margin: 5px 0;
+}
+.headerRoleInAccount {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+}
+.buttonFormSubmitChangeRoleInAccount {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+	width: 40%;
+	height: 36px;
+	border-radius: 10px;
+	letter-spacing: 2px;
+	font-size: 18px;
+	transition: color 0.2s ease-out, font-size 0.2s ease-out;
+}
+.buttonFormSubmitChangeRoleInAccount:hover {
+	font-size: 20px;
+	color: rgb(98, 188, 230);
+}
+.errorMessage {
+	color: red;
+}

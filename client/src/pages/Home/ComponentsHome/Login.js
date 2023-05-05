@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
-import './css/Login.css'
+import '../css/Login.css'
 Yup.setLocale(pl)
 
 const Login = () => {
@@ -18,8 +18,8 @@ const Login = () => {
 		password: '',
 	}
 	const validationSchema = Yup.object().shape({
-		username: Yup.string().min(4).required('Podaj nazwę użytkownika!'),
-		password: Yup.string().min(5).required('Podaj hasło!'),
+		username: Yup.string().min(4,"Login zbyt krótki").required('Podaj nazwę użytkownika!'),
+		password: Yup.string().min(5,"Nie przyjmuje tak krotkich hasel").required('Podaj hasło!'),
 	})
 
 	const onSubmit = data => {

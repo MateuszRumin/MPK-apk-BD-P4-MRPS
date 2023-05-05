@@ -1,0 +1,60 @@
+.sectionUsersEditionUsers {
+	color: black;
+	width: 100%;
+	
+}
+.headerSectionEditionUsers {
+	font-size: 2em;
+	text-align: center;
+	
+	color: #0496ff;
+	padding: 20px;
+	letter-spacing: 2px;
+	font-weight: 500;
+}
+.formChangeDataUsers {
+	background-color: #d9d9d9;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+}
+.formChangeDataUsers label {
+	font-weight: 500;
+	display: block;
+}
+.inputFormDataUsers {
+	margin: 5px 0;
+	width: 60%;
+	height: 30px;
+	border: none;
+}
+.formContentDataUsers {
+	
+	margin: 5px 0;
+}
+.headerEditionUsers {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+}
+.buttonFormSubmitChangeUsers {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+	width: 40%;
+	height: 36px;
+	border-radius: 10px;
+	letter-spacing: 2px;
+	font-size: 18px;
+	transition: color 0.2s ease-out, font-size 0.2s ease-out;
+}
+.buttonFormSubmitChangeUsers:hover {
+	font-size: 20px;
+	color: rgb(98, 188, 230);
+}
+.errorMessage {
+	color: red;
+}

@@ -3,7 +3,7 @@ import React from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import '../css/AddLine.css'
+
 export class AddLine extends React.Component {
 	render() {
 		const initialValues = {

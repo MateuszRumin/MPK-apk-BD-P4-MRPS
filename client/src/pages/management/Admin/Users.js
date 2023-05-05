@@ -1,18 +1,20 @@
 import { NavLink } from 'react-router-dom'
-import { AddWorker } from './ModifyAdmin/AddUsers'
+import { SectionUsersEditionUsers } from './ComponentsUsers/SectionUsersEditionUsers'
 import { AddLine } from './ModifyAdmin/AddLine'
 import DispUser from './DisUserList/DispUser'
-import './css/Users.css'
+import SectionUsersDisplayUsers from './ComponentsUsers/SectionUsersDisplayUsers'
+import '../Admin/ComponentsUsers/css/Users.css'
+import SectionUsersAccountRole from './ComponentsUsers/SectionUsersAccountRole'
 export const Users = () => {
 	return (
-		<div className='containerUsers'>
+		<div>
 			<section>
-				<header>
-					<p className="logo">
+				<header className="navbarUsers">
+					<p className="logoUsers">
 						<i className="fa-solid fa-bus"></i>
 					</p>
 
-					<nav className="navigation">
+					<nav className="navigationUsers">
 						<NavLink to="/admin">Main panel</NavLink>
 
 						<NavLink to="/admin/lines">Linie</NavLink>
@@ -22,10 +24,27 @@ export const Users = () => {
 				</header>
 			</section>
 
-			<section className="add-Worker">
-				<AddWorker />
-				<DispUser />
-			</section>
+			{/* <DispUser /> */}
+
+			<div className="containerUsers">
+				{/* Lewa strona */}
+				<section className='leftSectionUsers'>
+					<SectionUsersDisplayUsers />
+				</section>
+
+				{/* Prawa strona */}
+				<section className='rightSectionUsers'>
+					{/* Prawa strona po lewej */}
+
+
+					
+					<SectionUsersEditionUsers />
+
+					{/* Prawa strona po prawej */}
+					<SectionUsersAccountRole />
+					
+				</section>
+			</div>
 		</div>
 	)
 }

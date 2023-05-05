@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { Home } from '../../Home/Home'
+import { Home } from '../../Home/ComponentsHome/Home'
 export const Logout = () => {
 	return (
 		<div>
