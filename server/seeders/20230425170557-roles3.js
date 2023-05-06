@@ -4,13 +4,18 @@ const { Roles } = require('../models');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-      const role = await Roles.findOne({ where: { name:'Kierowca'} });
+    const data ={
+      name:'Kierowca', 
+    }
+     const role = await Roles.findOne({ where: data });
+
       if (!role){
-      return queryInterface.bulkInsert('Roles', [{
-        name:'Kierowca', 
-        createdAt: new Date(),
-        updatedAt: new Date() 
-      }]);
+        const defaultValues = {
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+
+      return queryInterface.bulkInsert('Roles', [{...data,...defaultValues}]);
     }
   },
 

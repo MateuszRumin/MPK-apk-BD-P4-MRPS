@@ -25,11 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 		tel_num: {
 			type: DataTypes.CHAR(255),
 			allowNull: false,
-		},
-		role_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
+		}
 	})
 
 	return Employees
