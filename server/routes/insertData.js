@@ -6,4 +6,11 @@ const passportController = require('../controllers/passStrategy')
 router.post('/register', passportController.register)
 router.post('/login', passportController.login)
 
+
+
+
+
+
+
+
 module.exports = router

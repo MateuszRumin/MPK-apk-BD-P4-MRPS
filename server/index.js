@@ -15,20 +15,18 @@ const db = require('./models')
 const userRoute = require('./routes/auth')
 app.use('/auth', userRoute)
 const insertRoute = require('./routes/insertData')
-app.use('/dataIn', insertRoute)
+app.use('/insert', insertRoute)
 const selectRoute = require('./routes/selectData')
-app.use('/dataOut', selectRoute)
+app.use('/select', selectRoute)
 const updateRoute = require('./routes/updateData')
-app.use('/dataUpd', updateRoute)
+app.use('/update', updateRoute)
 
 
 //połączenie
 db.sequelize.sync().then(() => {  
 	app.listen(PORT, () => {	 
 		console.log(`Aplikacja dziala na porcie ${PORT}`)	
-	}).catch((err) => {
-	  console.log("Coś nie tak z app")
 	})
-}).catch ((error) => {
-console.log("Bład połączenia z bazą")
+}).catch ((err) => {
+	console.log("Baza nie połączona lub port nieczynny")
 })
