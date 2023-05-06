@@ -13,7 +13,7 @@ module.exports = {
 
 
     const data = {
-      name:'Zielona Zespół Szkół',
+      name:'Zielona Park',
       street_id:takeId.street_id
     }    
 

@@ -1,13 +1,30 @@
 'use strict';
-const { Usr_emp } = require('../models');
+const { Usr_emp, Users, Employees } = require('../models');
 
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
+  const userData = {
+    username:'Zarzondca',
+    password:'$2a$08$5CYUq/FAEum01ZrQF5KQNe09/6ptIhTVETKX8m34OwqVAypBDjY5y',
+    email:'zarzondca.zarzondca@localhost',
+  }
+  const emplyData ={
+    first_name: "Tomasz", 
+    second_name: "Wójcik",
+    addres: "ul. Słoneczna 7" 
+  }  
+
+  const user = await Users.findOne({ where: userData });
+  const employ =  await Employees.findOne({ where: emplyData });
+
+
+
+
     const data = {
-    emp_no:2,
-    user_id:2,
+    emp_no:employ.emp_no,
+    user_id:user.id_user,
     role_id:2
     }    
 

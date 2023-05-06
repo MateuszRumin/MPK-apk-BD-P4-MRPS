@@ -6,7 +6,7 @@ const { Employees } = require('../models');
 module.exports = {
   async up (queryInterface, Sequelize) {
     const data = {
-      first_name: "Aleksandra", second_name: "Szymańska", addres: "ul. Brzozowa 10", pesel: "92022534567", tel_num: "555-345-6789"
+      first_name: "Aleksandr", second_name: "Szymański", addres: "ul. Brzozowa 11", pesel: "92022534567", tel_num: "555-345-6789"
     }
 
     
