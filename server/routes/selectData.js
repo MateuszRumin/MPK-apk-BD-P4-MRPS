@@ -6,7 +6,7 @@ const router = express.Router()
 //employees
 const employeesController = require('../controllers/data/select/employees')
 router.post('/employees/all',employeesController.all)//wypisz wszystkie
-
+router.post('/employees/allAndRole',employeesController.allAndRole)
 
 
 //users
