@@ -5,7 +5,24 @@ import DispUser from './DisUserList/DispUser'
 import SectionUsersDisplayUsers from './ComponentsUsers/SectionUsersDisplayUsers'
 import '../Admin/ComponentsUsers/css/Users.css'
 import SectionUsersAccountRole from './ComponentsUsers/SectionUsersAccountRole'
+import SectionUsersAddUsers from './ComponentsUsers/SectionUsersAddUsers'
+import SectionUsersAddAccount from './ComponentsUsers/SectionUsersAddAccount'
+import React, { useState } from 'react'
 export const Users = () => {
+	const [showComponent1, setShowComponent1] = useState(true)
+	const [showComponent2, setShowComponent2] = useState(true)
+	const [showComponent3, setShowComponent3] = useState(false)
+	const [showComponent4, setShowComponent4] = useState(false)
+
+	const methodswitchSection = () => {
+		setShowComponent1(!showComponent1)
+		setShowComponent2(!showComponent2)
+		setShowComponent3(!showComponent3)
+		setShowComponent4(!showComponent4)
+
+		console.log('dziala switch')
+	}
+
 	return (
 		<div>
 			<section>
@@ -28,21 +45,26 @@ export const Users = () => {
 
 			<div className="containerUsers">
 				{/* Lewa strona */}
-				<section className='leftSectionUsers'>
+				<section className="leftSectionUsers">
 					<SectionUsersDisplayUsers />
 				</section>
 
 				{/* Prawa strona */}
-				<section className='rightSectionUsers'>
+				<section className="rightSectionUsers">
 					{/* Prawa strona po lewej */}
 
-
-					
-					<SectionUsersEditionUsers />
-
 					{/* Prawa strona po prawej */}
-					<SectionUsersAccountRole />
-					
+
+					{/* <SectionUsersEditionUsers /> */}
+					{/* <SectionUsersAccountRole /> */}
+					{showComponent1 && <SectionUsersEditionUsers />}
+					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} />}
+
+					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection} />}
+					{showComponent4 && <SectionUsersAddAccount />}
+
+					{/* <SectionUsersAddUsers /> */}
+					{/* <SectionUsersAddAccount /> */}
 				</section>
 			</div>
 		</div>

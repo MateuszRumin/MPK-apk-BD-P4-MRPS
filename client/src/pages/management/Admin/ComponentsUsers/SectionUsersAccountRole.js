@@ -24,10 +24,13 @@ class SectionUsersAccountRole extends Component {
 			})
 		}
 
+		const switchSection= () => {
+			this.props.switchSectionUsers();
+		  };
 		return (
 			<section className="sectionUsersAccountRole">
 				<div className="headerSectionAccountRole">
-					<p>Dodaj nowe:</p>
+					<p onClick={switchSection}>Dodaj nowe:</p>
 				</div>
 				<section className="formChangeDataAccount">
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>

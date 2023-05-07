@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
+import './css/SectionUsersAddUsers.css'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
-import { redirect } from 'react-router-dom'
-import './css/SectionUsersEditionUsers.css'
 Yup.setLocale(pl)
-export class SectionUsersEditionUsers extends React.Component {
+class SectionUsersAddUsers extends Component {
 	render() {
 		const initialValues = {
 			first_name: '',
@@ -14,7 +13,7 @@ export class SectionUsersEditionUsers extends React.Component {
 			addres: '',
 			pesel: '',
 			tel_num: '',
-			
+			role_id: '',
 		}
 		const validationSchema = Yup.object().shape({
 			first_name: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
@@ -22,7 +21,7 @@ export class SectionUsersEditionUsers extends React.Component {
 			addres: Yup.string().min(3, 'Za krotki').max(20).email('zły adres email').required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 			tel_num: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
-			
+			role_id: Yup.string().required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
@@ -30,59 +29,63 @@ export class SectionUsersEditionUsers extends React.Component {
 				console.log(response.data)
 			})
 		}
-		
-			
-			
-		
+		const switchSection= () => {
+			this.props.switchSectionUsers();
+		  };
 		return (
-			<section className="sectionUsersEditionUsers">
-				<div className="headerSectionEditionUsers">
-					<p >Edycja:</p>
+			<section className="sectionUserAddUsers">
+				<div className="headerSectionAddUsers">
+					<p onClick={switchSection}>Edycja:</p>
 				</div>
-				{/* To jest nawigacja */}
-				<section className="formChangeDataUsers">
+				<section className="formChangeDataAddUsers">
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 						<Form>
-							<div className="headerEditionUsers">
-								<span>Pracownik: </span>
-								<span>id: 1</span>
+							<div className="headerAddUsers">
+								<span>Dodaj Usera:</span>
 							</div>
 
-							<section className="formContentDataUsers">
+							<section className="formContentAddUsers">
 								<label htmlFor="imie">
 									Imię: <ErrorMessage className="errorMessage" component="span" name="first_name" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="imie" name="first_name" />
+								<Field className="inputFormAddUsers" type="text" id="imie" name="first_name" />
 
 								<br />
 								<label htmlFor="nazwisko">
 									Nazwisko: <ErrorMessage className="errorMessage" component="span" name="second_name" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="nazwisko" name="second_name" />
+								<Field className="inputFormAddUsers" type="text" id="nazwisko" name="second_name" />
 
 								<br />
 								<label htmlFor="adres">
 									Adres: <ErrorMessage className="errorMessage" component="span" name="addres" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="adres" name="addres" />
+								<Field className="inputFormAddUsers" type="text" id="adres" name="addres" />
 
 								<br />
 								<label htmlFor="pesel">
 									Pesel: <ErrorMessage className="errorMessage" component="span" name="pesel" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="pesel" name="pesel" />
+								<Field className="inputFormAddUsers" type="text" id="pesel" name="pesel" />
 
 								<br />
 								<label htmlFor="tel">
 									Telefon: <ErrorMessage className="errorMessage" component="span" name="tel_num" />
 								</label>
-								<Field className="inputFormDataUsers" type="phone" id="tel" name="tel_num" />
+								<Field className="inputFormAddUsers" type="phone" id="tel" name="tel_num" />
 
-								
-								
-								
+								<label htmlFor="role">
+									Rola: <ErrorMessage className="errorMessage" component="span" name="role_id" />
+								</label>
+
+								<Field className="inputFormAddUsers" as="select" name="role_id" id="role">
+									<option value="">----</option>
+									<option value="Worker">Worker</option>
+									<option value="Manager">Manager</option>
+								</Field>
+
 								<br />
-								<button className="buttonFormSubmitChangeUsers">Zatwierdż</button>
+								<button className="buttonFormSubmitChangeAddUsers">Zatwierdż</button>
 							</section>
 						</Form>
 					</Formik>
@@ -91,3 +94,5 @@ export class SectionUsersEditionUsers extends React.Component {
 		)
 	}
 }
+
+export default SectionUsersAddUsers

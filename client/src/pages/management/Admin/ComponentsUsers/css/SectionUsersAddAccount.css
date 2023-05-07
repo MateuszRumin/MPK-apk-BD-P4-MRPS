@@ -1,43 +1,42 @@
-.sectionUsersAccountRole {
+.sectionUserAddAccount {
 	color: black;
 	width: 100%;
+	/* border: solid red 2px; */
 }
-
-.headerSectionAccountRole {
+.headerSectionAddAccount {
 	font-size: 2em;
 	text-align: center;
-	color: #000000;
+	color: #0496ff;
 	padding: 20px;
 	letter-spacing: 2px;
 	font-weight: 500;
-	cursor: pointer;
 }
-.headerAccount {
-	display: flex;
-	justify-content: space-between;
-	font-weight: bold;
-}
-.formChangeDataAccount {
+.formChangeDataAddAccount {
 	background-color: #d9d9d9;
 	border-radius: 10px;
 	padding: 10px;
 	margin: 10px;
 }
-.formChangeDataAccount label {
+.formChangeDataAddAccount label {
 	font-weight: 500;
 	display: block;
 }
-.inputFormDataAccount {
+.inputFormAddAccount {
 	margin: 5px 0;
 	width: 60%;
 	height: 30px;
 	border: none;
 }
-.formContentDataAccount {
+.formContentAddAccount {
+	/* border: rgb(15, 114, 160) 2px solid; */
 	margin: 5px 0;
 }
-
-.buttonFormSubmitChangeAccount {
+.headerAddAccount {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+}
+.buttonFormSubmitChangeAddAccount {
 	background-color: #000000;
 	border: none;
 	color: white;
@@ -51,20 +50,10 @@
 	font-size: 18px;
 	transition: color 0.2s ease-out, font-size 0.2s ease-out;
 }
-.buttonFormSubmitChangeAccount:hover {
+.buttonFormSubmitChangeAddAccount:hover {
 	font-size: 20px;
 	color: rgb(98, 188, 230);
 }
 .errorMessage {
 	color: red;
-}
-
-.spanDeleteAccount {
-	font-weight: 500;
-	text-decoration: underline;
-	margin-left: 30px;
-	text-align: right;
-	display: inline-block;
-	font-size: 18px;
-	cursor: pointer;
 }
