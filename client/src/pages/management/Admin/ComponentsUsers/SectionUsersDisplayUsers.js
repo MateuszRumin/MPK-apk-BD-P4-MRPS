@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './css/SectionUsersDisplayUsers.css'
-
+import { SectionUsersEditionUsers } from './SectionUsersEditionUsers'
 class SectionUsersDisplayUsers extends Component {
 	state = {
 		usersData: [],
@@ -18,6 +18,15 @@ class SectionUsersDisplayUsers extends Component {
 			.catch(error => {
 				console.log(error)
 			})
+
+			
+
+	}
+
+	handleRowClick(user) {
+		console.log(user)
+		return <SectionUsersEditionUsers myObject={user} />
+		
 	}
 
 	render() {
@@ -27,7 +36,6 @@ class SectionUsersDisplayUsers extends Component {
 				<div className="headerSectionDisplayUsers">
 					<p>Pracownicy</p>
 				</div>
-
 				<section className="contentDisplayUsers">
 					<div className="tbl-header">
 						<table className="tableDisplayUser" cellPadding="0" cellSpacing="0" border="0">
@@ -48,7 +56,7 @@ class SectionUsersDisplayUsers extends Component {
 						<table className="tableDisplayUser" cellPadding="0" cellSpacing="0" border="0">
 							<tbody>
 								{usersData.map(user => (
-									<tr key={user.emp_no}>
+									<tr key={user.emp_no} onClick={() => this.handleRowClick(user)}>
 										<td>{user.emp_no}</td>
 										<td>{user.first_name}</td>
 										<td>{user.second_name}</td>
@@ -62,6 +70,7 @@ class SectionUsersDisplayUsers extends Component {
 						</table>
 					</div>
 				</section>
+				
 			</section>
 		)
 	}

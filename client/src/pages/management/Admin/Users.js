@@ -60,7 +60,7 @@ export const Users = () => {
 					{showComponent1 && <SectionUsersEditionUsers />}
 					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} />}
 
-					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection} />}
+					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection}  />}
 					{showComponent4 && <SectionUsersAddAccount />}
 
 					{/* <SectionUsersAddUsers /> */}
