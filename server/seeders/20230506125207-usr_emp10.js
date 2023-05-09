@@ -22,8 +22,8 @@ module.exports = {
 
     const data = {
     emp_no:employ.emp_no,
-    user_id:user.id_user,
-    role_id:3
+    id_user:user.id_user,
+    id_role:3
     }    
 
     

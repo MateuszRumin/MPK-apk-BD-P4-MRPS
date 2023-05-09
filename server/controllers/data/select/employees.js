@@ -1,4 +1,5 @@
-const { Employees, Usr_emp, Roles } = require('../../../models')
+
+const { Employees, Usr_emp, Roles,Users } = require('../../../models')
 
 
 //wypisz wszystkie
@@ -9,9 +10,33 @@ exports.all = async (req, res) => {
 }
 
 exports.allAndRole = async (req, res) => {
-    const employees = await Employees.findAll()
-        
-          
+    const employees = await Employees.findAll({
+        include: [
+        {
+            
+            model:Usr_emp,
+            required:true,
+            left:true,
+            attributes:['id_usr_emp'],
+            include:[{
+                model:Roles,
+                required:true,
+                left:true,
+                attributes:['name'],
+            },
+            {
+                model:Users,
+                required:true,
+                left:true,
+                attributes:['username','email'],
+            }]
+            
+        }],
+        attributes:['emp_no','first_name','second_name','addres','pesel','tel_num']
+    }).catch(err => {
+        console.log(err);
+    })
+    
     
 
 

@@ -11,11 +11,11 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        user_id:{
+        id_user:{
             type:DataTypes.INTEGER,
             allowNull:true
         },
-        role_id:{
+       id_role:{
             type:DataTypes.INTEGER,
             allowNull:false
         }    
@@ -25,9 +25,24 @@ module.exports = (sequelize,DataTypes) => {
     })
     
     Usr_emp.associate = (models) => {
-		Usr_emp.belongsTo(models.Employees),
-        Usr_emp.belongsTo(models.Users),
-        Usr_emp.belongsTo(models.Roles)
+		Usr_emp.belongsTo(models.Employees,{
+            foreignKey: 'emp_no',
+            secureKey:'emp_no',
+            onDelete:'cascade',
+			onUpdate:'cascade',
+        }),
+        Usr_emp.belongsTo(models.Users,{
+			foreignKey:'id_user',
+            secureKey:'id_user',
+			onDelete:'cascade',
+			onUpdate:'cascade',		
+		}),
+        Usr_emp.belongsTo(models.Roles,{
+			foreignKey:'id_role',
+			secureKey:'id_role',
+			onDelete:'cascade',
+			onUpdate:'cascade',    
+		})
 	}
 
     return Usr_emp

@@ -20,14 +20,14 @@ module.exports = (sequelize,DataTypes) => {
             allowNull:false
         }    
     })
+
     Users.associate = (models) => {
 		Users.hasOne(models.Usr_emp,{
-			primaryKey:'id_user',
-			targetKey:'user_id',
-			name:'fk_usr_usr',
-			onDelete:'cascade',
-			onUpdate:'cascade'
-		})
+        foreignKey:'id_user',
+        secureKey:'id_user',
+        onDelete:'cascade',
+        onUpdate:'cascade',
+    })
 	}
 
 
