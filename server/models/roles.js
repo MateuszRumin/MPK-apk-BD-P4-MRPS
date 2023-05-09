@@ -15,6 +15,15 @@ module.exports = (sequelize,DataTypes) => {
         
     })
    
+    Roles.associate = (models) => {
+		Roles.hasOne(models.Usr_emp,{
+			primaryKey:'id_role',
+			targetKey:'role',
+			name:'fk_rol_rol',
+			onDelete:'cascade',
+			onUpdate:'cascade'
+		})
+	}
     
 
     return Roles

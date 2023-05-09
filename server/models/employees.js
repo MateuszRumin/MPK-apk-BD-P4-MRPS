@@ -27,6 +27,16 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		}
 	})
+	
+	Employees.associate = (models) => {
+		Employees.hasOne(models.Usr_emp,{
+			primaryKey:'emp_no',
+			targetKey:'emp_no',
+			name:'fk_emp_emp',
+			onDelete:'cascade',
+			onUpdate:'cascade'
+		})
+	}
 
 	return Employees
 }

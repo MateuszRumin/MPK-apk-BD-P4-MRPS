@@ -24,6 +24,11 @@ module.exports = (sequelize,DataTypes) => {
         freezeTableName: true
     })
     
+    Usr_emp.associate = (models) => {
+		Usr_emp.belongsTo(models.Employees),
+        Usr_emp.belongsTo(models.Users),
+        Usr_emp.belongsTo(models.Roles)
+	}
 
     return Usr_emp
     
