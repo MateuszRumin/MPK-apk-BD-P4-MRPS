@@ -8,30 +8,37 @@ import { redirect } from 'react-router-dom'
 import './css/SectionUsersEditionUsers.css'
 Yup.setLocale(pl)
 export class SectionUsersEditionUsers extends React.Component {
-	state = {
-		first_name: 'a',
-		second_name: 'b',
-		addres: 'c',
-		pesel: 'd',
-		tel_num: 'e',
-		
-	}
+	// constructor(props) {
+	// 	super(props);
 
+	// 	this.state = {
+	// 	  valueUsers: [],
+	// 	};
 
+	// 	this.fetchDataUsers = this.fetchDataUsers.bind(this);
+	//   }
 
+	//   fetchDataUsers(props) {
+	// 	this.setState(props);
+	//   }
 
+	// state = {
+	// 	first_name: '',
+	// 	second_name: '',
+	// 	addres: '',
+	// 	pesel: '',
+	// 	tel_num: '',
 
+	// }
 
-	handleChangeValues = props => {
-		// console.log(this.props.data);
-		this.setState({
-			first_name: 'test',
-			second_name: 'b',
-			addres: 'c',
-			pesel: 'd',
-			tel_num: 'e',
-		})
-	}
+	// valueUsers = () => {
+	// 	// console.log(this.props.data);
+	// 	alert("xdgh");
+	// 	// this.setState({
+	// 	// 	first_name: "dfghdh",
+
+	// 	// })
+	// }
 
 	// handleChangeValues = (newValues) => {
 	// 	this.setState({
@@ -43,8 +50,7 @@ export class SectionUsersEditionUsers extends React.Component {
 	//   }
 
 	render() {
-		
-		const { first_name, second_name, addres, pesel, tel_num } = this.state
+		// const { first_name, second_name, addres, pesel, tel_num } = this.state
 		const initialValues = {
 			first_name: '',
 			second_name: '',
@@ -55,7 +61,7 @@ export class SectionUsersEditionUsers extends React.Component {
 		const validationSchema = Yup.object().shape({
 			first_name: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
 			second_name: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
-			addres: Yup.string().min(3, 'Za krotki').max(20).email('zły adres email').required('Nie może być pusty'),
+			addres: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 			tel_num: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 		})
@@ -76,52 +82,64 @@ export class SectionUsersEditionUsers extends React.Component {
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 						<Form>
 							<div className="headerEditionUsers">
-								<span>Pracownik: </span>
-								<span>id: 1</span>
+								<span>Rola: "rola kierowca/manager/admin" </span>
+								<span>id: {this.props.headerTitle.emp_no}</span>
 							</div>
 
 							<section className="formContentDataUsers">
 								<label htmlFor="imie">
-									Imię: <ErrorMessage className="errorMessage" component="span" name="first_name" />
+								Imię: <span className='userdisplaydata'>{this.props.headerTitle.first_name}</span>
+									<ErrorMessage className="errorMessage" component="span" name="first_name" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="imie" name="first_name" value={first_name} />
+								<Field
+									className="inputFormDataUsers"
+									type="text"
+									id="imie"
+									name="first_name"
+									placeholder="Zmień dane"
+								/>
 
 								<br />
 								<label htmlFor="nazwisko">
-									Nazwisko: <ErrorMessage className="errorMessage" component="span" name="second_name" />
+									Nazwisko: <span className='userdisplaydata'>{this.props.headerTitle.second_name}</span>
+									<ErrorMessage className="errorMessage" component="span" name="second_name" />
 								</label>
 								<Field
 									className="inputFormDataUsers"
 									type="text"
 									id="nazwisko"
 									name="second_name"
-									value={second_name}
+									placeholder="Zmień dane"
 								/>
 
 								<br />
 								<label htmlFor="adres">
-									Adres: <ErrorMessage className="errorMessage" component="span" name="addres" />
+									Adres: <span className='userdisplaydata'>{this.props.headerTitle.addres}</span>
+									<ErrorMessage className="errorMessage" component="span" name="addres" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="adres" name="addres" value={addres} />
+								<Field className="inputFormDataUsers" type="text" id="adres" name="addres" placeholder="Zmień dane" />
 
 								<br />
 								<label htmlFor="pesel">
-									Pesel: <ErrorMessage className="errorMessage" component="span" name="pesel" />
+									Pesel: <span className='userdisplaydata'>{this.props.headerTitle.pesel}</span>
+									<ErrorMessage className="errorMessage" component="span" name="pesel" />
 								</label>
-								<Field className="inputFormDataUsers" type="text" id="pesel" name="pesel" value={pesel} />
+								<Field className="inputFormDataUsers" type="text" id="pesel" name="pesel" placeholder="Zmień dane" />
 
 								<br />
 								<label htmlFor="tel">
-									Telefon: <ErrorMessage className="errorMessage" component="span" name="tel_num" />
+									Telefon: <span className='userdisplaydata'>{this.props.headerTitle.tel_num}</span>
+									<ErrorMessage className="errorMessage" component="span" name="tel_num" />
 								</label>
-								<Field className="inputFormDataUsers" type="phone" id="tel" name="tel_num" value={tel_num} />
-								<div onClick={this.handleChangeValues}>dd</div>
-							
+								<Field className="inputFormDataUsers" type="phone" id="tel" name="tel_num" placeholder="Zmień dane" />
+								{/* <div onClick={this.handleChangeValues}>dd</div> */}
+
 								<br />
 								<button className="buttonFormSubmitChangeUsers">Zatwierdż</button>
 							</section>
 						</Form>
 					</Formik>
+					{/* <div onInput={this.valueUsers}>{this.props.headerTitle.first_name}</div> */}
 				</section>
 			</section>
 		)

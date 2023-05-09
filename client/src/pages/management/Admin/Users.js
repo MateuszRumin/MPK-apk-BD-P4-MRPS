@@ -8,11 +8,16 @@ import SectionUsersAccountRole from './ComponentsUsers/SectionUsersAccountRole'
 import SectionUsersAddUsers from './ComponentsUsers/SectionUsersAddUsers'
 import SectionUsersAddAccount from './ComponentsUsers/SectionUsersAddAccount'
 import React, { useState } from 'react'
-export const Users = () => {
+
+export const Users = (props) => {
 	const [showComponent1, setShowComponent1] = useState(true)
 	const [showComponent2, setShowComponent2] = useState(true)
 	const [showComponent3, setShowComponent3] = useState(false)
 	const [showComponent4, setShowComponent4] = useState(false)
+	
+	const [valueUsers,setValueUsers] = useState([])
+
+	
 
 	const methodswitchSection = () => {
 		setShowComponent1(!showComponent1)
@@ -23,8 +28,19 @@ export const Users = () => {
 		console.log('dziala switch')
 	}
 
+	function handleRowClick(valueUsers) {
+		setValueUsers(valueUsers);
+		console.log("1111111111111");
+		console.log(valueUsers.first_name);
+		console.log("2222222222222");
+		// this.props.dataUsers(valueUsers);
+		// this.props.headerTitle(valueUsers);
+
+	  }
+	
 	return (
 		<div>
+			
 			<section>
 				<header className="navbarUsers">
 					<p className="logoUsers">
@@ -46,7 +62,7 @@ export const Users = () => {
 			<div className="containerUsers">
 				{/* Lewa strona */}
 				<section className="leftSectionUsers">
-					<SectionUsersDisplayUsers />
+					<SectionUsersDisplayUsers onChange={handleRowClick}/>
 				</section>
 
 				{/* Prawa strona */}
@@ -57,7 +73,7 @@ export const Users = () => {
 
 					{/* <SectionUsersEditionUsers /> */}
 					{/* <SectionUsersAccountRole /> */}
-					{showComponent1 && <SectionUsersEditionUsers />}
+					{showComponent1 && <SectionUsersEditionUsers headerTitle={valueUsers}/>}
 					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} />}
 
 					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection}  />}
@@ -65,6 +81,7 @@ export const Users = () => {
 
 					{/* <SectionUsersAddUsers /> */}
 					{/* <SectionUsersAddAccount /> */}
+				
 				</section>
 			</div>
 		</div>
