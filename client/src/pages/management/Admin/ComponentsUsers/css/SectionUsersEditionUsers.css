@@ -61,3 +61,7 @@
 .userdisplaydata{
 	color:#0496ff;
 }
+#userid::before{
+content: "Id:";
+
+}
