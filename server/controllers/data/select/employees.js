@@ -37,8 +37,5 @@ exports.allAndRole = async (req, res) => {
         console.log(err);
     })
     
-    
-
-
 	res.json(employees)
 }

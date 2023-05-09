@@ -9,7 +9,7 @@ class SectionUsersDisplayUsers extends Component {
 
 	componentDidMount() {
 		axios
-			.post('http://localhost:3001/select/employees/all')
+			.post('http://localhost:3001/select/employees/allAndRole')
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
@@ -63,7 +63,7 @@ class SectionUsersDisplayUsers extends Component {
 										<td>{user.addres}</td>
 										<td>{user.pesel}</td>
 										<td>{user.tel_num}</td>
-										<td>{user.pesel}</td>
+										<td>{user.Usr_emp.Role.name}</td>
 									</tr>
 								))}
 							</tbody>
