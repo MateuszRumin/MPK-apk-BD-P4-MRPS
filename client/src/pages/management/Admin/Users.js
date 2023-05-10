@@ -15,8 +15,9 @@ export const Users = (props) => {
 	const [showComponent3, setShowComponent3] = useState(false)
 	const [showComponent4, setShowComponent4] = useState(false)
 	
+	
 	const [valueUsers,setValueUsers] = useState([])
-
+	let [rolesUsers,setRolesUsers] = useState([])
 	
 
 	const methodswitchSection = () => {
@@ -29,9 +30,13 @@ export const Users = (props) => {
 	}
 
 	function handleRowClick(valueUsers) {
+		rolesUsers = valueUsers.Usr_emp.Role;
 		setValueUsers(valueUsers);
+		setRolesUsers(rolesUsers);
 		console.log("1111111111111");
-		console.log(valueUsers.first_name);
+		console.log(valueUsers);
+		console.log(rolesUsers);
+		
 		console.log("2222222222222");
 		// this.props.dataUsers(valueUsers);
 		// this.props.headerTitle(valueUsers);
@@ -73,7 +78,7 @@ export const Users = (props) => {
 
 					{/* <SectionUsersEditionUsers /> */}
 					{/* <SectionUsersAccountRole /> */}
-					{showComponent1 && <SectionUsersEditionUsers headerTitle={valueUsers}/>}
+					{showComponent1 && <SectionUsersEditionUsers headerTitle={valueUsers} rolesUsers={rolesUsers}/>}
 					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} />}
 
 					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection}  />}

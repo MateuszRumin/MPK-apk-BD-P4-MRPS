@@ -35,8 +35,9 @@ class SectionUsersRoleInAccount extends Component {
 							<section className="formContentDataRoleInAccount">
 								<Field className="inputFormDataRoleInAccount" as="select" name="role_id" id="role">
 									<option value="">----</option>
-									<option value="Worker">Worker</option>
-									<option value="Manager">Manager</option>
+									<option value="1">Admin</option>
+									<option value="2">Manager</option>
+									<option value="3">Worker</option>
 								</Field>
 
 								<br />

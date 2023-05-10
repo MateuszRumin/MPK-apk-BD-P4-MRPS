@@ -89,7 +89,7 @@ export class SectionUsersEditionUsers extends React.Component {
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 						<Form>
 							<div className="headerEditionUsers">
-								<span>Rola: "rola kierowca/manager/admin" </span>
+								<span>Rola: {this.props.rolesUsers.name}</span>
 								
 								<span id="userid">
 									{this.props.headerTitle.emp_no}
