@@ -9,6 +9,7 @@ exports.add = async (req, res) => {
     try {
         const idUser = await Employees.create(data)
         
+        
         res.json("Added")
     }
     catch (err) {

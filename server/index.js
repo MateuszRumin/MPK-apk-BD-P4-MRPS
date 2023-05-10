@@ -2,7 +2,10 @@ const express = require('express')
 const app = express()
 const { PORT } = require('./config/port')
 const cors = require('cors')
+const dotenv = require('dotenv')
 
+//inicjacja dotenv
+dotenv.config({path: './.env'})
 //parse dla wartsci json
 app.use(express.json())
 //uzycie cora **autoryzacja dostępu
