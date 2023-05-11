@@ -21,7 +21,6 @@ class DispUser extends Component {
 			})
 			.then(response => response.json())
 			.then(data => {
-			
 				this.setState({
 					users: data.results,
 				})

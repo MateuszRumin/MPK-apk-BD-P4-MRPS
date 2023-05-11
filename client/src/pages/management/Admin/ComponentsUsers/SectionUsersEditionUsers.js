@@ -1,86 +1,69 @@
 import React, { Children } from 'react'
 import axios from 'axios'
-
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
 import { redirect } from 'react-router-dom'
 import './css/SectionUsersEditionUsers.css'
 Yup.setLocale(pl)
-// let liczba = ""
-// let iduser = document.getElementById("id_user");
-// if(iduser.innerHTML != "") iduser.innerHTML=liczba;
 
 export class SectionUsersEditionUsers extends React.Component {
-	// constructor(props) {
-	// 	super(props);
+	state = {
+		first_name: '',
+	}
+	constructor(props) {
+		super(props)
 
-	// 	this.state = {
-	// 	  valueUsers: [],
-	// 	};
-
-	// 	this.fetchDataUsers = this.fetchDataUsers.bind(this);
-	//   }
-
-	//   fetchDataUsers(props) {
-	// 	this.setState(props);
-	//   }
-
-	// state = {
-	// 	first_name: 'sfdhsfghsdfh',
-	// 	second_name: 'dfhdfhdfh',
-	// 	addres: 'dfhdfhdf',
-	// 	pesel: '435634563456',
-	// 	tel_num: '346346',
-	// 	id: '4',
-	// }
-
-	// valueUsers = () => {
-	// 	// console.log(this.props.data);
-	// 	alert("xdgh");
-	// 	// this.setState({
-	// 	// 	first_name: "dfghdh",
-
-	// 	// })
-	// }
-
-	// handleChangeValues = (newValues) => {
-	// 	this.setState({
-	// 	  firstName: newValues.firstName,
-	// 	  lastName: newValues.lastName,
-	// 	  pesel: newValues.pesel,
-	// 	  number: newValues.number,
-	// 	});
-	//   }
+		this.state = {
+			initialValues: {
+				first_name: '',
+				second_name: '',
+				addres: '',
+				pesel: '',
+				tel_num: '',
+			},
+		}
+	}
 
 	render() {
-		// const { first_name, second_name, addres, pesel, tel_num, id } = this.state
-		const initialValues = {
-			first_name: '',
-			second_name: '',
-			addres: '',
-			pesel: '',
-			tel_num: '',
-		}
+		const { initialValues } = this.state
+
 		const validationSchema = Yup.object().shape({
 			first_name: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
 			second_name: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			addres: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
-			tel_num: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
+			tel_num: Yup.string()
+				.max(20)
+				.required('To pole jest wymagane')
+				.matches(/^[0-9-]+$/, 'Można wprowadzać tylko cyfry i znak "-"'),
 		})
 
 		const onSubmit = data => {
 			let emp_no = document.getElementById('userid').innerText
-			// console.log("cos")
 			data.emp_no = emp_no
 			axios.post('http://localhost:3001/auth/login/', data).then(response => {
 				console.log(response.data)
 			})
 		}
-
+		function onObjectChange(props) {
+			initialValues.first_name = props.first_name
+			initialValues.second_name = props.second_name
+			initialValues.addres = props.addres
+			initialValues.pesel = props.pesel
+			initialValues.second_name = props.second_name
+			initialValues.second_name = props.second_name
+			initialValues.tel_num = props.tel_num
+		}
 		return (
 			<section className="sectionUsersEditionUsers">
+				{/* Przekazywanie z danych o pracowniakch z komponentu SectionUsersDisplayUsers i wrzuca to do funkcji która odświeża komponent i staty  onObjectChange */}
+				{this.props.headerTitle.first_name ? onObjectChange(this.props.headerTitle) : console.log('niema')}
+				{this.props.headerTitle.second_name ? onObjectChange(this.props.headerTitle) : console.log('niema')}
+				{this.props.headerTitle.addres ? onObjectChange(this.props.headerTitle) : console.log('niema')}
+				{this.props.headerTitle.pesel ? onObjectChange(this.props.headerTitle) : console.log('niema')}
+				{this.props.headerTitle.tel_num ? onObjectChange(this.props.headerTitle) : console.log('niema')}
+
 				<div className="headerSectionEditionUsers">
 					<p>Edycja:</p>
 				</div>
@@ -90,16 +73,13 @@ export class SectionUsersEditionUsers extends React.Component {
 						<Form>
 							<div className="headerEditionUsers">
 								<span>Rola: {this.props.rolesUsers.name}</span>
-								
-								<span id="userid">
-									{this.props.headerTitle.emp_no}
-									{/* {this.props.headerTitle.emp_no ? test(this.props.headerTitle.emp_no) : console.log('niema')} */}
-								</span>
+
+								<span id="userid">{this.props.headerTitle.emp_no}</span>
 							</div>
 
 							<section className="formContentDataUsers">
 								<label htmlFor="imie">
-									Imię: <span className="userdisplaydata">{this.props.headerTitle.first_name}</span>
+									Imię: <span className="userdisplaydata"></span>
 									<ErrorMessage className="errorMessage" component="span" name="first_name" />
 								</label>
 								<Field
@@ -111,7 +91,7 @@ export class SectionUsersEditionUsers extends React.Component {
 								/>
 								<br />
 								<label htmlFor="nazwisko">
-									Nazwisko: <span className="userdisplaydata">{this.props.headerTitle.second_name}</span>
+									Nazwisko: <span className="userdisplaydata"></span>
 									<ErrorMessage className="errorMessage" component="span" name="second_name" />
 								</label>
 								<Field
@@ -123,19 +103,19 @@ export class SectionUsersEditionUsers extends React.Component {
 								/>
 								<br />
 								<label htmlFor="adres">
-									Adres: <span className="userdisplaydata">{this.props.headerTitle.addres}</span>
+									Adres: <span className="userdisplaydata"></span>
 									<ErrorMessage className="errorMessage" component="span" name="addres" />
 								</label>
 								<Field className="inputFormDataUsers" type="text" id="adres" name="addres" placeholder="Zmień dane" />
 								<br />
 								<label htmlFor="pesel">
-									Pesel: <span className="userdisplaydata">{this.props.headerTitle.pesel}</span>
+									Pesel: <span className="userdisplaydata"></span>
 									<ErrorMessage className="errorMessage" component="span" name="pesel" />
 								</label>
 								<Field className="inputFormDataUsers" type="text" id="pesel" name="pesel" placeholder="Zmień dane" />
 								<br />
 								<label htmlFor="tel">
-									Telefon: <span className="userdisplaydata">{this.props.headerTitle.tel_num}</span>
+									Telefon: <span className="userdisplaydata"></span>
 									<ErrorMessage className="errorMessage" component="span" name="tel_num" />
 								</label>
 								<Field className="inputFormDataUsers" type="phone" id="tel" name="tel_num" placeholder="Zmień dane" />
@@ -150,7 +130,5 @@ export class SectionUsersEditionUsers extends React.Component {
 				</section>
 			</section>
 		)
-		// 	let cos = document.getElementById('dobre').innerText;
-		// console.log(cos);
 	}
 }

@@ -14,7 +14,7 @@ export const Users = (props) => {
 	const [showComponent2, setShowComponent2] = useState(true)
 	const [showComponent3, setShowComponent3] = useState(false)
 	const [showComponent4, setShowComponent4] = useState(false)
-	
+	const [myObject, setMyObject] = useState({ name: 'John', age: 30 });
 	
 	const [valueUsers,setValueUsers] = useState([])
 	let [rolesUsers,setRolesUsers] = useState([])
@@ -42,7 +42,9 @@ export const Users = (props) => {
 		// this.props.headerTitle(valueUsers);
 
 	  }
-	
+	  const handleObjectChange = (newObject) => {
+		setMyObject(newObject);
+	  };
 	return (
 		<div>
 			
@@ -78,7 +80,8 @@ export const Users = (props) => {
 
 					{/* <SectionUsersEditionUsers /> */}
 					{/* <SectionUsersAccountRole /> */}
-					{showComponent1 && <SectionUsersEditionUsers headerTitle={valueUsers} rolesUsers={rolesUsers}/>}
+					{showComponent1 && <SectionUsersEditionUsers myObject={myObject} onObjectChange={handleObjectChange} headerTitle={valueUsers} rolesUsers={rolesUsers}/>}
+					
 					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} />}
 
 					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection}  />}
