@@ -1,6 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import { AddWorker } from './ComponentsUsers/SectionUsersEditionUsers'
-import { AddLine } from './ModifyAdmin/AddLine'
 import './ComponentsMainPanel/css/MainPanel.css'
 
 export const MainPanel = () => {

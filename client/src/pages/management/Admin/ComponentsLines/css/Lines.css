@@ -1,9 +1,52 @@
-.displayTableLines {
-	border: red 2px solid;
-	display: flex;
-	width: 100%;
+body {
+	display: block;
 }
 .containerLines {
 	position: relative;
 	top: 90px;
+	/* border: solid red 2px; */
+	height: calc(100vh - 90px);
+	display: flex;
+	background-color: #fff;
+}
+
+/* Headerr usersss */
+.navbarLines {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px 100px;
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+	min-width: 900px;
+	background-color: #1c1a39;
+	min-height: 90px;
+}
+.logoLines {
+	font-size: 2.2em;
+}
+.navigationLines a {
+	position: relative;
+	font-size: 1.1em;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 500;
+	margin-left: 40px;
+	transition: color 0.4s;
+}
+.navigationLines a:hover {
+	color: gold;
+}
+/* KOniec header users */
+.leftSectionLines {
+	width: 40%;
+	/* border: solid rgb(255, 162, 0) 2px; */
+}
+.rightSectionLines {
+	width: 60%;
+	/* border: solid red 2px; */
 }

@@ -1,33 +1,38 @@
 import { NavLink } from 'react-router-dom'
-import { AddLine } from './ModifyAdmin/AddLine'
-import DispLines from './DisLinesList/DispLines'
+import SectionLinesDisplayStops from './ComponentsLines/SectionLinesDisplayStops'
+import SectionLinesDisplayStreets from './ComponentsLines/SectionLinesDisplayStreets'
+import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
 import '../Admin/ComponentsLines/css/Lines.css'
 export const Lines = () => {
 	return (
-		<div className='containerLines'>
+		<div>
 			<section>
-				<header>
-					<p className="logo">
+				<header className="navbarLines">
+					<p className="logoLines">
 						<i className="fa-solid fa-bus"></i>
 					</p>
 
-					<nav className="navigation">
+					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>
-
 						<NavLink to="/admin/users">Uzytkownicy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
-						{/* to jest jakby link w przeglądarce to="/info" */}
 					</nav>
 				</header>
 			</section>
 
-			<section>
-				<AddLine />
-			</section>
+			<div className="containerLines">
+				{/* LEWA SEKCJA */}
+				<section className="leftSectionLines">
+					<SectionLinesDisplayStreets />
+					<SectionLinesDisplayStops />
+				</section>
 
-			 <div className="displayTableLines">
-				<DispLines />
-			</div> 
+				{/* PRAWA SEKCJA */}
+				<section className="rightSectionLines">
+				<SectionLinesModStreets />
+
+				</section>
+			</div>
 		</div>
 	)
 }
