@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './css/SectionUsersDisplayUsers.css'
-import { SectionUsersEditionUsers } from './SectionUsersEditionUsers'
+// import { SectionUsersEditionUsers } from './SectionUsersEditionUsers'
 class SectionUsersDisplayUsers extends Component {
 	state = {
 		usersData: [],
@@ -13,6 +13,7 @@ class SectionUsersDisplayUsers extends Component {
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
+				console.log("Pobranie danych użytkowników z bazy");
 				console.log(usersData)
 			})
 			.catch(error => {
@@ -24,7 +25,7 @@ class SectionUsersDisplayUsers extends Component {
 	}
 
 	handleRowClick(user) {
-		console.log(user)
+		// console.log(user)
 		//return <SectionUsersEditionUsers myObject={user} />
 		this.props.onChange(user);
 	}

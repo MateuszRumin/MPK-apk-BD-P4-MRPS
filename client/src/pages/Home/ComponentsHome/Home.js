@@ -1,6 +1,6 @@
 import HomeContent from './HomeContent'
 import { Navbar } from './Navbar'
-import Login from './Login'
+// import Login from './Login'
 export const Home = () => {
 	return (
 		<div>

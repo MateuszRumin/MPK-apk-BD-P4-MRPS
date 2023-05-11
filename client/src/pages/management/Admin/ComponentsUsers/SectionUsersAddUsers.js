@@ -18,13 +18,14 @@ class SectionUsersAddUsers extends Component {
 		const validationSchema = Yup.object().shape({
 			first_name: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
 			second_name: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
-			addres: Yup.string().min(3, 'Za krotki').max(20).email('zły adres email').required('Nie może być pusty'),
+			addres: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 			tel_num: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 			role_id: Yup.string().required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
+			
 			axios.post('http://localhost:3001/auth/login/', data).then(response => {
 				console.log(response.data)
 			})

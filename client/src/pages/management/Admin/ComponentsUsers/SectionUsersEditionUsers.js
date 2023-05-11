@@ -1,9 +1,10 @@
-import React, { Children } from 'react'
+import React from 'react'
+// import React, { Children } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
-import { redirect } from 'react-router-dom'
+// import { redirect } from 'react-router-dom'
 import './css/SectionUsersEditionUsers.css'
 Yup.setLocale(pl)
 
@@ -43,7 +44,20 @@ export class SectionUsersEditionUsers extends React.Component {
 			let emp_no = document.getElementById('userid').innerText
 			data.emp_no = emp_no
 			axios.post('http://localhost:3001/auth/login/', data).then(response => {
-				console.log(response.data)
+				console.log(
+					'Aktualizacja danych użytkownika:' +
+						'\n first_name: ' +
+						response.data.first_name +
+						'\n second_name: ' +
+						response.data.second_name +
+						'\n addres: ' +
+						response.data.addres +
+						'\n pesel: ' +
+						response.data.pesel +
+						'\n tel_num: ' +
+						response.data.tel_num +
+						'\n Koniec odpowiedzi serwera'
+				)
 			})
 		}
 		function onObjectChange(props) {
@@ -58,11 +72,12 @@ export class SectionUsersEditionUsers extends React.Component {
 		return (
 			<section className="sectionUsersEditionUsers">
 				{/* Przekazywanie z danych o pracowniakch z komponentu SectionUsersDisplayUsers i wrzuca to do funkcji która odświeża komponent i staty  onObjectChange */}
-				{this.props.headerTitle.first_name ? onObjectChange(this.props.headerTitle) : console.log('niema')}
-				{this.props.headerTitle.second_name ? onObjectChange(this.props.headerTitle) : console.log('niema')}
-				{this.props.headerTitle.addres ? onObjectChange(this.props.headerTitle) : console.log('niema')}
-				{this.props.headerTitle.pesel ? onObjectChange(this.props.headerTitle) : console.log('niema')}
-				{this.props.headerTitle.tel_num ? onObjectChange(this.props.headerTitle) : console.log('niema')}
+				{this.props.headerTitle.first_name && onObjectChange(this.props.headerTitle)}
+				{this.props.headerTitle.second_name && onObjectChange(this.props.headerTitle)}
+				{this.props.headerTitle.addres && onObjectChange(this.props.headerTitle)}
+				{this.props.headerTitle.first_name && onObjectChange(this.props.headerTitle)}
+				{this.props.headerTitle.pesel && onObjectChange(this.props.headerTitle)}
+				{this.props.headerTitle.tel_num && onObjectChange(this.props.headerTitle)}
 
 				<div className="headerSectionEditionUsers">
 					<p>Edycja:</p>
