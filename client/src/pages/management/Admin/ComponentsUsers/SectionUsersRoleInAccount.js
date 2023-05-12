@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
 Yup.setLocale(pl)
+
 class SectionUsersRoleInAccount extends Component {
 	render() {
 		const initialValues = {
@@ -15,6 +16,7 @@ class SectionUsersRoleInAccount extends Component {
 		})
 
 		const onSubmit = data => {
+			data.id_usr_emp = this.props.idAccountRole
 			axios.post('http://localhost:3001/auth/login/', data).then(response => {
 				console.log(response.data)
 			})
@@ -27,9 +29,11 @@ class SectionUsersRoleInAccount extends Component {
 						<Form>
 							<div className="headerRoleInAccount">
 								<span>
-									Rola: <ErrorMessage className="errorMessage" component="span" name="role_id" />
+									{/* Jest to przesyłane z AccountRole */}
+									Rola: {this.props.rolesUsers}
+									<ErrorMessage className="errorMessage" component="span" name="role_id" />
 								</span>
-								<span>id: 1</span>
+								<span>id: {this.props.idAccountRole}</span>
 							</div>
 
 							<section className="formContentDataRoleInAccount">

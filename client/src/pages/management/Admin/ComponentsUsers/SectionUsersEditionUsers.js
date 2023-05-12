@@ -65,8 +65,6 @@ export class SectionUsersEditionUsers extends React.Component {
 			initialValues.second_name = props.second_name
 			initialValues.addres = props.addres
 			initialValues.pesel = props.pesel
-			initialValues.second_name = props.second_name
-			initialValues.second_name = props.second_name
 			initialValues.tel_num = props.tel_num
 		}
 		return (

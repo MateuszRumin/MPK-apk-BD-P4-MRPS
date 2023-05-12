@@ -18,6 +18,12 @@ export const Users = props => {
 	const [valueUsers, setValueUsers] = useState([])
 	let [rolesUsers, setRolesUsers] = useState([])
 
+	let [userEmailAccount, setuserEmailAccount] = useState([])
+	let [idAccountUser, setIdAccountUser] = useState([])
+	let [idAccountRole, setIdAccountRole] = useState([])
+
+
+
 	const methodswitchSection = () => {
 		setShowComponent1(!showComponent1)
 		setShowComponent2(!showComponent2)
@@ -28,9 +34,37 @@ export const Users = props => {
 	}
 
 	function handleRowClick(valueUsers) {
+		// nazwa roli
 		rolesUsers = valueUsers.Usr_emp.Role
-		setValueUsers(valueUsers)
+		// id konta użytownika
+		idAccountUser = valueUsers.Usr_emp.id_user
+		// nazwa oraz email powiązany z użytkownikiem
+		userEmailAccount = valueUsers.Usr_emp.User;
+		// id roli którą ma dany użytkownik
+		idAccountRole = valueUsers.Usr_emp.id_usr_emp
+
+
+
+
 		setRolesUsers(rolesUsers)
+		setIdAccountUser(idAccountUser)	
+		setuserEmailAccount(userEmailAccount)
+		setIdAccountRole(idAccountRole)	
+
+
+
+
+
+		// console.log(idAccountUser);
+		console.log(idAccountUser);
+		
+		
+		
+		// console.log(userEmailAccount);
+		setValueUsers(valueUsers)
+		
+		
+
 		console.log('Przerzucono dane do komponentu SectionUsersEditionUsers')
 	}
 
@@ -70,9 +104,9 @@ export const Users = props => {
 					{/* <SectionUsersAccountRole /> */}
 					{showComponent1 && <SectionUsersEditionUsers headerTitle={valueUsers} rolesUsers={rolesUsers} />}
 
-					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} />}
+					{showComponent2 && <SectionUsersAccountRole switchSectionUsers={methodswitchSection} rolesUsers={rolesUsers} userEmailAccount={userEmailAccount} idAccountUser={idAccountUser} idAccountRole={idAccountRole}/>}
 
-					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection} />}
+					{showComponent3 && <SectionUsersAddUsers switchSectionUsers={methodswitchSection}  />}
 					{showComponent4 && <SectionUsersAddAccount />}
 
 					{/* <SectionUsersAddUsers /> */}
