@@ -14,6 +14,8 @@ app.use(cors())
 //pobranie danych tabel
 const db = require('./models')
 
+
+
 //routes i użycie sciezki
 const userRoute = require('./routes/auth')
 app.use('/auth', userRoute)
@@ -23,7 +25,11 @@ const selectRoute = require('./routes/selectData')
 app.use('/select', selectRoute)
 const updateRoute = require('./routes/updateData')
 app.use('/update', updateRoute)
-
+app.use('/test', async (req, res) => {
+    const data = req.body;
+    console.log(data);
+	res.json('Data test complited')
+})
 
 //połączenie
 db.sequelize.sync().then(() => {  
