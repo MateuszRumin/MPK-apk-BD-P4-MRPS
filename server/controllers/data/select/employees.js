@@ -26,7 +26,7 @@ exports.allAndRole = async (req, res) => {
             },
             {
                 model:Users,
-                required:true,
+                required:false,
                 left:true,
                 attributes:['username','email'],
             }]

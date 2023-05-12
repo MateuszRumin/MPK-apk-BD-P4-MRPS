@@ -14,7 +14,7 @@ class SectionUsersAccountRole extends Component {
 		this.state = {
 			initialValues: {
 				username: '',
-				email: '',
+				email: '',			
 			},
 		}
 	}
@@ -29,7 +29,7 @@ class SectionUsersAccountRole extends Component {
 
 		const onSubmit = data => {
 			data.id_user = this.props.idAccountUser
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/update/user', data).then(response => {
 				console.log(response.data)
 			})
 		}

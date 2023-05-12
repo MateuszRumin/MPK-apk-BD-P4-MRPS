@@ -32,6 +32,7 @@ router.post('/roles/all',rolesController.all)//wypisz wszystkie
 //usr_emp
 const usrempController = require('../controllers/data/select/usr_emp')
 router.post('/usremp/all',usrempController.all)//wypisz wszystkie
+router.post('/usremp/empnouser',usrempController.withNoAccounts)
 
 
 

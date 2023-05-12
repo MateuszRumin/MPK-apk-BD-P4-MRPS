@@ -10,7 +10,7 @@ exports.add = async (req, res) => {
 		second_name:data.second_name, 
 		addres:data.addres,
 		pesel:data.pesel,
-		tel_num:data.pesel 
+		tel_num:data.tel_num
     }
 
     try {
@@ -20,7 +20,9 @@ exports.add = async (req, res) => {
             emp_no:idUser.emp_no,
             id_role:data.id_role
         }
+        
         await Usr_emp.create(connectRole)
+
         res.json("Added")
     }
     catch (err) {

@@ -13,7 +13,7 @@ class SectionUsersAddUsers extends Component {
 			addres: '',
 			pesel: '',
 			tel_num: '',
-			role_id: '',
+			id_role: '',
 		}
 		const validationSchema = Yup.object().shape({
 			first_name: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
@@ -21,12 +21,12 @@ class SectionUsersAddUsers extends Component {
 			addres: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 			tel_num: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
-			role_id: Yup.string().required('Nie może być pusty'),
+			id_role: Yup.string().required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
 			
-			axios.post('http://localhost:3001/auth/login/', data).then(response => {
+			axios.post('http://localhost:3001/insert/employee', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -76,13 +76,13 @@ class SectionUsersAddUsers extends Component {
 								<Field className="inputFormAddUsers" type="phone" id="tel" name="tel_num" />
 
 								<label htmlFor="role">
-									Rola: <ErrorMessage className="errorMessage" component="span" name="role_id" />
+									Rola: <ErrorMessage className="errorMessage" component="span" name="id_role" />
 								</label>
 
-								<Field className="inputFormAddUsers" as="select" name="role_id" id="role">
-									<option value="">----</option>
-									<option value="Worker">Worker</option>
-									<option value="Manager">Manager</option>
+								<Field className="inputFormAddUsers" as="select" name="id_role" id="role">
+									<option value="1">Admin</option>
+									<option value="2">Worker</option>
+									<option value="3">Manager</option>
 								</Field>
 
 								<br />

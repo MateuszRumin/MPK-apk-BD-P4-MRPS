@@ -9,15 +9,15 @@ Yup.setLocale(pl)
 class SectionUsersRoleInAccount extends Component {
 	render() {
 		const initialValues = {
-			role_id: '',
+			id_role: '',
 		}
 		const validationSchema = Yup.object().shape({
-			role_id: Yup.string().required('Nie może być pusty'),
+			id_role: Yup.string().required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
 			data.id_usr_emp = this.props.idAccountRole
-			axios.post('http://localhost:3001/auth/login/', data).then(response => {
+			axios.post('http://localhost:3001/update/usremp', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -31,13 +31,13 @@ class SectionUsersRoleInAccount extends Component {
 								<span>
 									{/* Jest to przesyłane z AccountRole */}
 									Rola: {this.props.rolesUsers}
-									<ErrorMessage className="errorMessage" component="span" name="role_id" />
+									<ErrorMessage className="errorMessage" component="span" name="id_role" />
 								</span>
 								<span>id: {this.props.idAccountRole}</span>
 							</div>
 
 							<section className="formContentDataRoleInAccount">
-								<Field className="inputFormDataRoleInAccount" as="select" name="role_id" id="role">
+								<Field className="inputFormDataRoleInAccount" as="select" name="id_role" id="role">
 									<option value="">----</option>
 									<option value="1">Admin</option>
 									<option value="2">Manager</option>
