@@ -47,15 +47,15 @@ export class SectionUsersEditionUsers extends React.Component {
 				console.log(
 					'Aktualizacja danych użytkownika:' +
 						'\n first_name: ' +
-						response.data.first_name +
+						data.first_name +
 						'\n second_name: ' +
-						response.data.second_name +
+						data.second_name +
 						'\n addres: ' +
-						response.data.addres +
+						data.addres +
 						'\n pesel: ' +
-						response.data.pesel +
+						data.pesel +
 						'\n tel_num: ' +
-						response.data.tel_num +
+						data.tel_num +
 						'\n Koniec odpowiedzi serwera'
 				)
 			})

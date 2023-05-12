@@ -21,7 +21,7 @@ class SectionLinesDisplayStreets extends Component {
 			})
 	}
 	handleRowClick(user) {
-		console.log(user.emp_no)
+		// console.log(user.emp_no)
 		//return <SectionUsersEditionUsers myObject={user} />
 		// this.props.onChange(user);
 		this.onSubmit(user)
