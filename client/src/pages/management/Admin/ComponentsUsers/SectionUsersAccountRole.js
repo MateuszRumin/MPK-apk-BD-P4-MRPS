@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Children, Component } from 'react'
 import './css/SectionUsersAccountRole.css'
 import SectionUsersRoleInAccount from './SectionUsersRoleInAccount'
 import axios from 'axios'
@@ -14,10 +14,20 @@ class SectionUsersAccountRole extends Component {
 		this.state = {
 			initialValues: {
 				username: '',
-				email: '',			
+				email: '',
+				idAccount: '',
 			},
 		}
 	}
+
+	usun = data => {
+		data = this.state.initialValues
+		axios.post('http://localhost:3001/test', data).then(response => {
+			console.log(response.data)
+		})
+		console.log('kliknieto')
+	}
+
 	render() {
 		const { initialValues } = this.state
 		// const { test } = this.state
@@ -50,12 +60,35 @@ class SectionUsersAccountRole extends Component {
 		function onObjectChange(props) {
 			initialValues.username = props.username
 			initialValues.email = props.email
+			// initialValues.idAccount = props.id_user
+
+			// console.log(props.id_user);
 		}
+
+		function deleteAccounts(props) {
+			// data = this.state.initialValues
+			// data.idAccount = this.state.initialValues.idAccount
+			// data = this.state.initialValues.idAccount
+
+			// this.state.initialValues.idAccount = data
+			console.log(props.id_user)
+
+			initialValues.idAccount = props.id_user
+			// axios.post('http://localhost:3001/test', data).then(response => {
+			// 	console.log(response.data)
+			// })
+
+			// console.log(this.state.initialValues.username);
+			// console.log(this.props.idAccountUser);
+		}
+
 		return (
 			// {this.props.headerTitle.first_name && onObjectChange(this.props.headerTitle)}
 			<section className="sectionUsersAccountRole">
 				{this.props.userEmailAccount.username && onObjectChange(this.props.userEmailAccount)}
 				{this.props.userEmailAccount.email && onObjectChange(this.props.userEmailAccount)}
+
+				{this.props.idAccountUser.id_user && deleteAccounts(this.props.idAccountUser)}
 
 				<div className="headerSectionAccountRole">
 					<p onClick={switchSection}>Dodaj nowe:</p>
@@ -66,7 +99,7 @@ class SectionUsersAccountRole extends Component {
 							<div className="headerAccount">
 								<span>Konto: </span>
 								<span>
-									id: {this.props.idAccountUser}
+									id: {this.props.idAccountUser.id_user}
 									{/* do tego koponentu 
 									nazwa oraz email wybranego użytkownika oraz jakie ma id konta
 									*/}
@@ -96,7 +129,10 @@ class SectionUsersAccountRole extends Component {
 
 								<br />
 								<button className="buttonFormSubmitChangeAccount">Zmień</button>
-								<span className="spanDeleteAccount">Usuń</span>
+								<span className="spanDeleteAccount" onClick={this.usun}>
+									{/* onClick={this.deleteAccounts(this.props.idAccountUser.id_user)}> */}
+									Usuń
+								</span>
 								{/* {this.props.idUsers} */}
 							</section>
 						</Form>

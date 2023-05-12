@@ -44,20 +44,8 @@ export class SectionUsersEditionUsers extends React.Component {
 			let emp_no = document.getElementById('userid').innerText
 			data.emp_no = emp_no
 			axios.post('http://localhost:3001/update/employee', data).then(response => {
-				console.log(
-					'Aktualizacja danych użytkownika:' +
-						'\n first_name: ' +
-						data.first_name +
-						'\n second_name: ' +
-						data.second_name +
-						'\n addres: ' +
-						data.addres +
-						'\n pesel: ' +
-						data.pesel +
-						'\n tel_num: ' +
-						data.tel_num +
-						'\n Koniec odpowiedzi serwera'
-				)
+				console.log(response.data);
+			
 			})
 		}
 		function onObjectChange(props) {
@@ -67,6 +55,7 @@ export class SectionUsersEditionUsers extends React.Component {
 			initialValues.pesel = props.pesel
 			initialValues.tel_num = props.tel_num
 		}
+	
 		return (
 			<section className="sectionUsersEditionUsers">
 				{/* Przekazywanie z danych o pracowniakch z komponentu SectionUsersDisplayUsers i wrzuca to do funkcji która odświeża komponent i staty  onObjectChange */}

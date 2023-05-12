@@ -20,19 +20,21 @@ class SectionUsersAddUsers extends Component {
 			second_name: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			addres: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
-			tel_num: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
+			tel_num: Yup.string()
+				.max(20)
+				.required('To pole jest wymagane')
+				.matches(/^[0-9-]+$/, 'Można wprowadzać tylko cyfry i znak "-"'),
 			id_role: Yup.string().required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
-			
 			axios.post('http://localhost:3001/insert/employee', data).then(response => {
 				console.log(response.data)
 			})
 		}
-		const switchSection= () => {
-			this.props.switchSectionUsers();
-		  };
+		const switchSection = () => {
+			this.props.switchSectionUsers()
+		}
 		return (
 			<section className="sectionUserAddUsers">
 				<div className="headerSectionAddUsers">

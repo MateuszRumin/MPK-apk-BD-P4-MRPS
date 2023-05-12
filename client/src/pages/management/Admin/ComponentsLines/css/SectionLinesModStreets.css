@@ -1,0 +1,82 @@
+.headerSectionModStreets {
+	font-size: 1.3em;
+	text-align: center;
+	color: #000000;
+	padding: 20px;
+	letter-spacing: 2px;
+	font-weight: 500;
+}
+.sectionLinesModStreets {
+	color: black;
+    width: 50%;
+}
+.formAddModStreets {
+	background-color: #d9d9d9;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+	display: flex;
+}
+.formAddModStreets label {
+	font-weight: 500;
+	display: block;
+}
+.inputformAddModStreets {
+	margin: 5px 0;
+	height: 30px;
+	border: none;
+    width: 150px;
+}
+.ulLiModStreets li {
+	list-style-position: inside;
+	/* list-style-type: none; */
+	font-weight: 500;
+    position: relative;
+}
+.listStopsModStreets {
+	padding: 0 5px;
+	margin: 0 50px;
+    /* border: 2px red solid; */
+    background-color: #fff;
+    border-radius: 10px;
+    width: 55%;
+}
+.buttonlistStopsModStreets {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	margin: 0px 10px;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	border-radius: 6px;
+	letter-spacing: 2px;
+	font-size: 16px;
+    font-weight: bold;
+	transition: color 0.2s ease-out;
+    position: absolute;
+    right: 0;
+}
+
+.buttonModStreets{
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	
+	cursor: pointer;
+	margin-top: 10px;
+	height: 30px;
+	border-radius: 6px;
+	letter-spacing: 2px;
+	width: 150px;
+    font-weight: bold;
+	transition: color 0.2s ease-out;
+
+
+}
+.buttonlistStopsModStreets:hover {
+	
+	color: rgb(255, 1, 1);
+}
