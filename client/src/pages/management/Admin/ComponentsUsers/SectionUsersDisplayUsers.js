@@ -27,6 +27,7 @@ class SectionUsersDisplayUsers extends Component {
 	handleRowClick(user) {
 		// console.log(user)
 		//return <SectionUsersEditionUsers myObject={user} />
+		console.log(user)
 		this.props.onChange(user);
 	}
 

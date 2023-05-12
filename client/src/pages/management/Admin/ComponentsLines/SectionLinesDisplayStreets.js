@@ -9,7 +9,7 @@ class SectionLinesDisplayStreets extends Component {
 
 	componentDidMount() {
 		axios
-			.post('http://localhost:3001/select/employees/allAndRole')
+			.post('http://localhost:3001/select/streets/all')
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
@@ -55,9 +55,9 @@ class SectionLinesDisplayStreets extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody>
 								{usersData.map(user => (
-									<tr key={user.emp_no} onClick={() => this.handleRowClick(user)}>
-										<td>{user.emp_no}</td>
-										<td>{user.second_name}</td>
+									<tr key={user.street_id} onClick={() => this.handleRowClick(user)}>
+										<td>{user.street_id}</td>
+										<td>{user.name}</td>
 									</tr>
 								))}
 							</tbody>

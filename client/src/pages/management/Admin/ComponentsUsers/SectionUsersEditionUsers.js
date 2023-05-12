@@ -43,7 +43,7 @@ export class SectionUsersEditionUsers extends React.Component {
 		const onSubmit = data => {
 			let emp_no = document.getElementById('userid').innerText
 			data.emp_no = emp_no
-			axios.post('http://localhost:3001/auth/login/', data).then(response => {
+			axios.post('http://localhost:3001/update/employee', data).then(response => {
 				console.log(
 					'Aktualizacja danych użytkownika:' +
 						'\n first_name: ' +
