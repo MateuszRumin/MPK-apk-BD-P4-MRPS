@@ -28,7 +28,8 @@ class SectionUsersAccountRole extends Component {
 		})
 
 		const onSubmit = data => {
-			axios.post('http://localhost:3001/auth/login/', data).then(response => {
+			data.id_user = this.props.idAccountUser
+			axios.post('http://localhost:3001/test', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -65,7 +66,7 @@ class SectionUsersAccountRole extends Component {
 							<div className="headerAccount">
 								<span>Konto: </span>
 								<span>
-									id: {this.props.idAccountUser} 
+									id: {this.props.idAccountUser}
 									{/* do tego koponentu 
 									nazwa oraz email wybranego użytkownika oraz jakie ma id konta
 									*/}
