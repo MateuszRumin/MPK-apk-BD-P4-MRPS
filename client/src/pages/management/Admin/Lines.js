@@ -6,22 +6,22 @@ import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
 import SectionLinesModStops from './ComponentsLines/SectionLinesModStops'
 import '../Admin/ComponentsLines/css/Lines.css'
 
-
-
-
 export const Lines = () => {
-
 	let [selectLine, setSelectLine] = useState([])
-
+	let [selectStop, setSelectStop] = useState([])
 
 	function selectLines(line) {
 		// console.log(line);
 		selectLine = line
-		setSelectLine(selectLine);
-		// console.log(selectLine);
-
+		setSelectLine(selectLine)
+		// console.log(selectLine)
 	}
 
+	function selectStops(stops) {
+		selectStop = stops
+		setSelectStop(selectStop)
+		console.log(selectStop)
+	}
 
 	return (
 		<div>
@@ -42,15 +42,14 @@ export const Lines = () => {
 			<div className="containerLines">
 				{/* LEWA SEKCJA */}
 				<section className="leftSectionLines">
-					<SectionLinesDisplayStreets onChange={selectLines}/>
-					<SectionLinesDisplayStops selectLine={selectLine} />
+					<SectionLinesDisplayStreets onChange={selectLines} />
+					<SectionLinesDisplayStops selectStops={selectStops} selectLine={selectLine} />
 				</section>
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLines">
-				<SectionLinesModStreets />
-			{/* <SectionLinesModStops /> */}
-
+					<SectionLinesModStreets />
+					<SectionLinesModStops />
 				</section>
 			</div>
 		</div>

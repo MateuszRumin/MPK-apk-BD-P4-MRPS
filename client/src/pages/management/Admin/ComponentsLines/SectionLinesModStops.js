@@ -7,7 +7,6 @@ import pl from 'yup-locale-pl'
 Yup.setLocale(pl)
 class SectionLinesModStops extends Component {
 	state = {
-		linia: '',
 		przystanki: [],
 		nowyPrzystanek: '',
 		brakZawartosci: false,
@@ -15,13 +14,6 @@ class SectionLinesModStops extends Component {
 
 	dodajPrzystanek = () => {
 		const { przystanki, nowyPrzystanek, linia, brakZawartosci } = this.state
-
-		if (!linia) {
-			this.setState({ brakZawartosci: true })
-			return
-		} else {
-			this.setState({ brakZawartosci: false })
-		}
 
 		if (nowyPrzystanek) {
 			this.setState({
@@ -39,19 +31,14 @@ class SectionLinesModStops extends Component {
 	}
 
 	zapiszPrzystanki = () => {
-		const { przystanki, linia } = this.state
-
-		if (!linia) {
-			console.error('Nie podano nazwy linii!')
-			return
-		}
+		const { przystanki } = this.state
 
 		fetch('http://localhost:3001/test', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ przystanki, linia }),
+			body: JSON.stringify({ przystanki }),
 		})
 			.then(response => response.json())
 			.then(data => console.log(data))
@@ -63,24 +50,18 @@ class SectionLinesModStops extends Component {
 			nowyPrzystanek: event.target.value,
 		})
 	}
-	handleLiniaChange = event => {
-		this.setState({
-			linia: event.target.value,
-		})
-	}
+	
 	render() {
 		const { linia, przystanki, nowyPrzystanek, brakZawartosci } = this.state
 
 		return (
 			<section className="sectionLinesModStreets">
 				<div className="headerSectionModStreets">
-					<p>DODAJ NOWĄ LINIE:</p>
+					<p>Modyfikacja przystanku:</p>
 				</div>
 
 				<section className="formAddModStreets">
 					<section>
-						<label>Dodaj nową linie:</label>
-						<input className="inputformAddModStreets" type="text" value={linia} onChange={this.handleLiniaChange} />
 						<label>Dodaj przystanek:</label>
 						<input className="inputformAddModStreets" type="text" value={nowyPrzystanek} onChange={this.handleChange} />
 						<br />

@@ -1,79 +1,136 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './css/SectionLinesDisplayStops.css'
+import './css/SectionLinesDisplayStreets.css'
 
 class SectionLinesDisplayStops extends Component {
 	state = {
 		usersData: [],
 	}
 
-	componentDidMount() {
-		axios
-			.post('http://localhost:3001/select/employees/allAndRole')
-			.then(response => {
-				const usersData = response.data
-				this.setState({ usersData })
-				console.log('Pobranie przystankow z bazy')
-				console.log(usersData)
-			})
-			.catch(error => {
-				console.log(error)
-			})
-	}
+	// componentDidMount() {
+	// 	axios
+	// 		.post('http://localhost:3001/select/streets/all')
+	// 		.then(response => {
+	// 			const usersData = response.data
+	// 			this.setState({ usersData })
+	// 			console.log('Pobranie ulic z bazy')
+	// 			console.log(usersData)
+	// 		})
+	// 		.catch(error => {
+	// 			console.log(error)
+	// 		})
+	// }
+
 	handleRowClick(user) {
-		console.log(user.emp_no)
+		// console.log(user.emp_no)
 		//return <SectionUsersEditionUsers myObject={user} />
 		// this.props.onChange(user);
 		this.onSubmit(user)
 	}
-	// Wysyła zapytanie do serwera odnoscnie konkretnego przystanku
+	// Wysyła zapytanie do serwera odnoscnie konkretnej lini i w innym komponencie wyświetli dane
 	onSubmit = data => {
 		axios.post('http://localhost:3001/auth/login/', data).then(response => {
 			console.log(response.data)
 		})
 	}
+	
+	deleteLine(data) {
+		console.log(data.street_id)
 
-	selectSendLine = SelectLine => {
-		axios.post('http://localhost:3001/test', SelectLine).then(response => {
-			// const usersData = response.data
-			// 	this.setState({ usersData })
-			console.log(response.data)
+		const confirmDelete = window.prompt(
+			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
+		)
 
-			// tutaj bedzie dalszy ciąg
-		})
-		console.log(SelectLine.name)
+		if (confirmDelete === 'TAK') {
+			// Wywołanie metody do usunięcia linii
+			console.log(`Usuwam linię o id tutaj konkrtetna`)
+			axios.post('http://localhost:3001/test', data).then(response => {
+				console.log(response.data)
+			})
+		} else {
+			console.log('Anulowano usuwanie linii.')
+		}
 	}
 
+	changeRename(data) {
+		// console.log(data)
+
+		const confirmDelete = window.prompt(`Podaj nową nazwę lini ? `)
+
+		if (confirmDelete && !/\d/.test(confirmDelete)) {
+			console.log(`Zmieniono nazwę`)
+			data.rename = confirmDelete
+			axios.post('http://localhost:3001/test', data).then(response => {
+				console.log(response.data)
+			})
+		} else {
+			console.log('nie zmieniono.')
+		}
+	}
+	selectSendLine = SelectLine => {
+
+
+		console.log(SelectLine)
+		// axios.post('http://localhost:3001/test', SelectLine).then(response => {
+		// 	const usersData = response.data
+		// 		this.setState({ usersData })
+		// 	console.log(response.data)
+
+		// 	// tutaj bedzie dalszy ciąg
+		// })
+		
+
+		
+	}
+
+	selectStops(line) {
+		// console.log(user)
+		//return <SectionUsersEditionUsers myObject={user} />
+		// console.log(line)
+
+		this.props.selectStops(line)
+	}
 	render() {
 		const { usersData } = this.state
-
 		return (
-			<section className="sectionLinesDisplayStops">
+			<section className="sectionLinesDisplayStreets">
 				{this.props.selectLine.street_id && this.selectSendLine(this.props.selectLine)}
-
-				<div className="headerSectionDisplayStops">
-					<p>LISTA PRZYSTANKÓW</p>
+				<div className="headerSectionDisplayStreets">
+					<p>Lista Przystanków</p>
 				</div>
-				<section className="contentDisplayStops">
+				<section className="contentDisplayStreets">
 					<div className="tbl-header">
-						<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
+						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
 									<th>Id</th>
 									<th>Nazwa</th>
-									<th>id_lini</th>
+									<th className="thirdTd"></th>
 								</tr>
 							</thead>
 						</table>
 					</div>
 					<div className="tbl-content">
-						<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
-							<tbody>
+						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
+							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.emp_no} onClick={() => this.handleRowClick(user)}>
-										<td>{user.emp_no}</td>
-										<td>{user.first_name}</td>
-										<td>{user.emp_no}</td>
+									<tr key={user.street_id}>
+										<td>
+											{user.street_id}{' '}
+											<span className="spanKlikLine" onClick={() => this.selectStops(user)}>
+												KLIKNIJ
+											</span>
+											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
+												ZMIEŃ NAZWE
+											</span>
+										</td>
+										<td>{user.name}</td>
+
+										<td className="thirdTd">
+											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
+												X
+											</button>
+										</td>
 									</tr>
 								))}
 							</tbody>
