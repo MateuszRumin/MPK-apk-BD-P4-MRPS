@@ -11,6 +11,19 @@
 	letter-spacing: 2px;
 	font-weight: 500;
 }
+.spanKlikLine{
+
+	margin: 10px;
+	transition: color .3s;
+	text-decoration: underline;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.spanKlikLine:hover {
+	color: rgb(255, 255, 255);
+	
+	
+}
 .contentDisplayStreets {
 	padding: 10px;
 	margin: 10px;
@@ -53,8 +66,32 @@
 .tableDisplayStreets tr {
 	transition: background-color 0.3s;
 }
-.tableDisplayStreets tr:hover {
-	background-color: #0496ff;
+.buttonlistDisplayStret {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border-radius: 6px;
+	letter-spacing: 2px;
+    font-weight: bold;
+	transition: color 0.2s ease-out;
+    position: absolute;
+    right: 10px;
+	margin-top: -15px;
+	font-size: 20px;
+	
+}
+.buttonlistDisplayStret:hover {
+	color: red;
+}
+.thirdTd {
+	width: 10px;
+}
+.DispStreets {
+	position: relative;
 }
 
 /* for custom scrollbar for webkit browser*/

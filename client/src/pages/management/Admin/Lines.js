@@ -3,7 +3,12 @@ import React, { useState } from 'react'
 import SectionLinesDisplayStops from './ComponentsLines/SectionLinesDisplayStops'
 import SectionLinesDisplayStreets from './ComponentsLines/SectionLinesDisplayStreets'
 import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
+import SectionLinesModStops from './ComponentsLines/SectionLinesModStops'
 import '../Admin/ComponentsLines/css/Lines.css'
+
+
+
+
 export const Lines = () => {
 
 	let [selectLine, setSelectLine] = useState([])
@@ -44,6 +49,7 @@ export const Lines = () => {
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLines">
 				<SectionLinesModStreets />
+			{/* <SectionLinesModStops /> */}
 
 				</section>
 			</div>

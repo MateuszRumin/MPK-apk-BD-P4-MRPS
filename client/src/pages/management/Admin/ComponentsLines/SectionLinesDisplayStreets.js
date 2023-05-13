@@ -36,9 +36,44 @@ class SectionLinesDisplayStreets extends Component {
 	selectLines(line) {
 		// console.log(user)
 		//return <SectionUsersEditionUsers myObject={user} />
-		// console.log(line)
+		console.log(line)
+
 		this.props.onChange(line)
 	}
+	deleteLine(data) {
+		console.log(data.street_id)
+
+		const confirmDelete = window.prompt(
+			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
+		)
+
+		if (confirmDelete === 'TAK') {
+			// Wywołanie metody do usunięcia linii
+			console.log(`Usuwam linię o id tutaj konkrtetna`)
+			axios.post('http://localhost:3001/test', data).then(response => {
+				console.log(response.data)
+			})
+		} else {
+			console.log('Anulowano usuwanie linii.')
+		}
+	}
+
+	changeRename(data) {
+		// console.log(data)
+
+		const confirmDelete = window.prompt(`Podaj nową nazwę lini ? `)
+
+		if (confirmDelete && !/\d/.test(confirmDelete)) {
+			console.log(`Zmieniono nazwę`)
+			data.rename = confirmDelete
+			axios.post('http://localhost:3001/test', data).then(response => {
+				console.log(response.data)
+			})
+		} else {
+			console.log('nie zmieniono.')
+		}
+	}
+
 	render() {
 		const { usersData } = this.state
 		return (
@@ -53,17 +88,32 @@ class SectionLinesDisplayStreets extends Component {
 								<tr>
 									<th>Id</th>
 									<th>Nazwa</th>
+									<th className="thirdTd"></th>
 								</tr>
 							</thead>
 						</table>
 					</div>
 					<div className="tbl-content">
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-							<tbody>
+							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.street_id} onClick={() => this.selectLines(user)}>
-										<td>{user.street_id}</td>
+									<tr key={user.street_id}>
+										<td>
+											{user.street_id}{' '}
+											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
+												KLIKNIJ
+											</span>
+											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
+												ZMIEŃ NAZWE
+											</span>
+										</td>
 										<td>{user.name}</td>
+
+										<td className="thirdTd">
+											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
+												X
+											</button>
+										</td>
 									</tr>
 								))}
 							</tbody>
