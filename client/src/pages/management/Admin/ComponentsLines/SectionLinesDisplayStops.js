@@ -33,10 +33,24 @@ class SectionLinesDisplayStops extends Component {
 		})
 	}
 
+	selectSendLine = SelectLine => {
+		axios.post('http://localhost:3001/test', SelectLine).then(response => {
+			// const usersData = response.data
+			// 	this.setState({ usersData })
+			console.log(response.data)
+
+			// tutaj bedzie dalszy ciąg
+		})
+		console.log(SelectLine.name)
+	}
+
 	render() {
 		const { usersData } = this.state
+
 		return (
 			<section className="sectionLinesDisplayStops">
+				{this.props.selectLine.street_id && this.selectSendLine(this.props.selectLine)}
+
 				<div className="headerSectionDisplayStops">
 					<p>LISTA PRZYSTANKÓW</p>
 				</div>

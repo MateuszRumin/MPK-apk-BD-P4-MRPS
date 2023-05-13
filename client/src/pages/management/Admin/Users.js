@@ -32,12 +32,26 @@ export const Users = props => {
 	}
 
 	function handleRowClick(valueUsers) {
+		if (valueUsers.Usr_emp.id_user) console.log('istnieje id_user')
+		else valueUsers.Usr_emp.id_user = 'Brak'
+
+		if (valueUsers.Usr_emp.User) console.log('istnieje konto')
+		else
+			valueUsers.Usr_emp.User = {
+				username: 'Brak',
+				email: 'Brak',
+			}
+
 		// nazwa roli
 		rolesUsers = valueUsers.Usr_emp.Role
+
 		// id konta użytownika
 		idAccountUser = valueUsers.Usr_emp
 		// nazwa oraz email powiązany z użytkownikiem
 		userEmailAccount = valueUsers.Usr_emp.User
+
+		// alert(userEmailAccount.username);
+
 		// id roli którą ma dany użytkownik
 		idAccountRole = valueUsers.Usr_emp.id_usr_emp
 

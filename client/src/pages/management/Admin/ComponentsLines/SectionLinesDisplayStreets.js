@@ -20,6 +20,7 @@ class SectionLinesDisplayStreets extends Component {
 				console.log(error)
 			})
 	}
+
 	handleRowClick(user) {
 		// console.log(user.emp_no)
 		//return <SectionUsersEditionUsers myObject={user} />
@@ -32,7 +33,12 @@ class SectionLinesDisplayStreets extends Component {
 			console.log(response.data)
 		})
 	}
-
+	selectLines(line) {
+		// console.log(user)
+		//return <SectionUsersEditionUsers myObject={user} />
+		// console.log(line)
+		this.props.onChange(line)
+	}
 	render() {
 		const { usersData } = this.state
 		return (
@@ -55,7 +61,7 @@ class SectionLinesDisplayStreets extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody>
 								{usersData.map(user => (
-									<tr key={user.street_id} onClick={() => this.handleRowClick(user)}>
+									<tr key={user.street_id} onClick={() => this.selectLines(user)}>
 										<td>{user.street_id}</td>
 										<td>{user.name}</td>
 									</tr>

@@ -24,7 +24,7 @@ class SectionUsersDisplayUsers extends Component {
 
 	}
 
-	handleRowClick(user) {
+	selectLines(user) {
 		// console.log(user)
 		//return <SectionUsersEditionUsers myObject={user} />
 		console.log(user)
@@ -58,7 +58,7 @@ class SectionUsersDisplayUsers extends Component {
 						<table className="tableDisplayUser" cellPadding="0" cellSpacing="0" border="0">
 							<tbody>
 								{usersData.map(user => (
-									<tr key={user.emp_no} onClick={() => this.handleRowClick(user)}>
+									<tr key={user.emp_no} onClick={() => this.selectLines(user)}>
 										<td>{user.emp_no}</td>
 										<td>{user.first_name}</td>
 										<td>{user.second_name}</td>

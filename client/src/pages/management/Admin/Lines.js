@@ -1,9 +1,23 @@
 import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
 import SectionLinesDisplayStops from './ComponentsLines/SectionLinesDisplayStops'
 import SectionLinesDisplayStreets from './ComponentsLines/SectionLinesDisplayStreets'
 import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
 import '../Admin/ComponentsLines/css/Lines.css'
 export const Lines = () => {
+
+	let [selectLine, setSelectLine] = useState([])
+
+
+	function selectLines(line) {
+		// console.log(line);
+		selectLine = line
+		setSelectLine(selectLine);
+		// console.log(selectLine);
+
+	}
+
+
 	return (
 		<div>
 			<section>
@@ -23,8 +37,8 @@ export const Lines = () => {
 			<div className="containerLines">
 				{/* LEWA SEKCJA */}
 				<section className="leftSectionLines">
-					<SectionLinesDisplayStreets />
-					<SectionLinesDisplayStops />
+					<SectionLinesDisplayStreets onChange={selectLines}/>
+					<SectionLinesDisplayStops selectLine={selectLine} />
 				</section>
 
 				{/* PRAWA SEKCJA */}
