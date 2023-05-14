@@ -37,7 +37,7 @@ class SectionLinesDisplayStreets extends Component {
 		// console.log(user)
 		//return <SectionUsersEditionUsers myObject={user} />
 		console.log(line)
-
+		
 		this.props.onChange(line)
 	}
 	deleteLine(data) {

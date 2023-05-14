@@ -33,7 +33,7 @@ class SectionLinesDisplayStops extends Component {
 			console.log(response.data)
 		})
 	}
-	
+
 	deleteLine(data) {
 		console.log(data.street_id)
 
@@ -67,21 +67,6 @@ class SectionLinesDisplayStops extends Component {
 			console.log('nie zmieniono.')
 		}
 	}
-	selectSendLine = SelectLine => {
-
-
-		console.log(SelectLine)
-		// axios.post('http://localhost:3001/test', SelectLine).then(response => {
-		// 	const usersData = response.data
-		// 		this.setState({ usersData })
-		// 	console.log(response.data)
-
-		// 	// tutaj bedzie dalszy ciąg
-		// })
-		
-
-		
-	}
 
 	selectStops(line) {
 		// console.log(user)
@@ -92,9 +77,28 @@ class SectionLinesDisplayStops extends Component {
 	}
 	render() {
 		const { usersData } = this.state
+
+		function selectSendLine(data) {
+			// Tuaj jest cały obiekt z wybranej ulicy
+
+			const id_street = {
+				id_street: data.street_id,
+			}
+
+			// TUTAJ WYSYŁA ZAPYTANIE O TO JAKIE PRZYSTANKI MAJĄ BYĆ WYŚWIETLONE
+			axios.post('http://localhost:3001/select/stops/onStreet', id_street).then(response => {
+				// const usersData = response.data
+				// 	this.setState({ usersData })
+				console.log(response.data)
+
+				// tutaj bedzie dalszy ciąg
+			})
+		}
+
 		return (
 			<section className="sectionLinesDisplayStreets">
-				{this.props.selectLine.street_id && this.selectSendLine(this.props.selectLine)}
+				{this.props.selectLine.street_id && selectSendLine(this.props.selectLine)}
+
 				<div className="headerSectionDisplayStreets">
 					<p>Lista Przystanków</p>
 				</div>

@@ -12,6 +12,8 @@ export const Lines = () => {
 
 	function selectLines(line) {
 		// console.log(line);
+
+		
 		selectLine = line
 		setSelectLine(selectLine)
 		// console.log(selectLine)
