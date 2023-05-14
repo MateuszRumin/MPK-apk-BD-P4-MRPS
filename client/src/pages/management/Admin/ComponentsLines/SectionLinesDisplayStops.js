@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+
+
 import './css/SectionLinesDisplayStreets.css'
 let zmienna = "";
 let iloscwierszy;
@@ -61,6 +65,19 @@ class SectionLinesDisplayStops extends Component {
 		})
 	}
 
+	addNewStops = data => {
+
+
+
+		console.log("test");
+
+		// axios.post('http://localhost:3001/auth/login/', data).then(response => {
+		// 	console.log(response.data)
+		// })
+	}
+
+
+
 	deleteLine(data) {
 		console.log(data.street_id)
 
@@ -109,6 +126,25 @@ class SectionLinesDisplayStops extends Component {
 		this.props.selectStops(line)
 	}
 	render() {
+		const initialValues = {
+			username: '',
+		}
+		const validationSchema = Yup.object().shape({
+			username: Yup.string().required('Nie może być pusty'),
+		})
+
+		const onSubmit = data => {
+
+		
+			data.id_street = zmienna
+			data.id_usr_emp = this.props.idAccountRole
+			axios.post('http://localhost:3001/test', data).then(response => {
+				console.log(response.data)
+			})
+		}
+
+
+		
 		const { usersData } = this.state
 		
 		// function selectSendLine(data) {
@@ -130,7 +166,8 @@ class SectionLinesDisplayStops extends Component {
 		// 		// tutaj bedzie dalszy ciąg
 		// 	})
 		// }
-	
+		
+
 		return (
 			<section className="sectionLinesDisplayStreets">
 
@@ -182,15 +219,43 @@ class SectionLinesDisplayStops extends Component {
 										<td>{user.name}</td>
 
 										<td className="thirdTd">
+											
 											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
 												X
 											</button>
 										</td>
 									</tr>
+									
 								))}
+								
 							</tbody>
 						</table>
+
 					</div>
+						
+					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+						<Form>
+							<div className="headerRoleInAccount">
+								<span>
+									{/* Jest to przesyłane z AccountRole */}
+									Dodaj przystanek:
+									<ErrorMessage className="errorMessage" component="span" name="id_role" />
+								</span>
+								<span></span>
+							</div>
+
+							<section className="formContentDataRoleInAccount">
+							<label htmlFor="imie">
+									Nazwa użytkownika: <ErrorMessage className="errorMessage" component="span" name="username" />
+								</label>
+								<Field className="inputFormDataAccount" type="text" id="imie" name="username" />
+
+								<br />
+
+								<button className="buttonFormSubmitChangeRoleInAccount">Zmień</button>
+							</section>
+						</Form>
+					</Formik>
 					
 				</section>
 			</section>
