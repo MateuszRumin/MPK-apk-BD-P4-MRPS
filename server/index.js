@@ -25,6 +25,9 @@ const selectRoute = require('./routes/selectData')
 app.use('/select', selectRoute)
 const updateRoute = require('./routes/updateData')
 app.use('/update', updateRoute)
+const deleteRoute = require('./routes/deleteData')
+app.use('/updete', deleteRoute)
+
 app.use('/test', async (req, res) => {
     const data = req.body;
     console.log(data);
