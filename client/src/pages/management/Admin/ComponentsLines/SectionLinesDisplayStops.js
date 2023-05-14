@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './css/SectionLinesDisplayStreets.css'
 let zmienna = "";
+let iloscwierszy;
 class SectionLinesDisplayStops extends Component {
 
 
@@ -11,7 +12,6 @@ class SectionLinesDisplayStops extends Component {
 
 
 	
-
 
 	getStreetsData = (idstret) => {
 
@@ -70,7 +70,7 @@ class SectionLinesDisplayStops extends Component {
 
 		if (confirmDelete === 'TAK') {
 			// Wywołanie metody do usunięcia linii
-			console.log(`Usuwam linię o id tutaj konkrtetna`)
+			console.log(`Usuwam przystanek o id tutaj konkrtetna`)
 			axios.post('http://localhost:3001/test', data).then(response => {
 				console.log(response.data)
 			})
@@ -82,7 +82,8 @@ class SectionLinesDisplayStops extends Component {
 	changeRename(data) {
 		// console.log(data)
 
-		const confirmDelete = window.prompt(`Podaj nową nazwę lini ? `)
+		// console.log(data);
+		const confirmDelete = window.prompt(`Podaj nową nazwę przystanku? `)
 
 		if (confirmDelete && !/\d/.test(confirmDelete)) {
 			console.log(`Zmieniono nazwę`)
@@ -95,23 +96,28 @@ class SectionLinesDisplayStops extends Component {
 		}
 	}
 
-	selectStops(line) {
+	selectStops(line, event, index) {
 		// console.log(user)
 		//return <SectionUsersEditionUsers myObject={user} />
-		// console.log(line)
 
+		// console.log(`ilosc wierszy to ${iloscwierszy}`);
+		console.log(line)
+		line.order = index+1;
+		line.rows = iloscwierszy
+
+		console.log(`Kliknięty element o indeksie: ${index}`);
 		this.props.selectStops(line)
 	}
 	render() {
 		const { usersData } = this.state
-
+		
 		// function selectSendLine(data) {
 		// 	// Tuaj jest cały obiekt z wybranej ulicy
 
 		// 	const id_street = {
 		// 		id_street: data.street_id,
 		// 	}
-
+		iloscwierszy = usersData.length;
 		// 	// TUTAJ WYSYŁA ZAPYTANIE O TO JAKIE PRZYSTANKI MAJĄ BYĆ WYŚWIETLONE
 		// 	axios.post('http://localhost:3001/select/stops/onStreet', id_street).then(response => {
 		// 		// const usersData = response.data
@@ -124,7 +130,7 @@ class SectionLinesDisplayStops extends Component {
 		// 		// tutaj bedzie dalszy ciąg
 		// 	})
 		// }
-
+	
 		return (
 			<section className="sectionLinesDisplayStreets">
 
@@ -136,7 +142,7 @@ class SectionLinesDisplayStops extends Component {
 
 
 				<div className="headerSectionDisplayStreets">
-					<p>Lista Przystanków</p>
+					<p>Lista Przystanków </p>
 				<div className='noDisplay'>{this.props.selectLine.street_id ?  zmienna =  this.props.selectLine.street_id : console.log("nie ma")}</div>
 
 
@@ -162,11 +168,11 @@ class SectionLinesDisplayStops extends Component {
 					<div className="tbl-content">
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
-								{usersData.map(user => (
+								{usersData.map((user, index) => (
 									<tr key={user.stop_id}>
 										<td>
-											{user.stop_id}{' '}
-											<span className="spanKlikLine" onClick={() => this.selectStops(user)}>
+											{user.stop_id}
+											<span className="spanKlikLine" onClick={(event) => this.selectStops(user, event, index)} >
 												KLIKNIJ
 											</span>
 											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>

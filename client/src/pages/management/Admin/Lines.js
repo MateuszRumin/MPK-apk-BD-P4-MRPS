@@ -23,7 +23,10 @@ export const Lines = () => {
 	function selectStops(stops) {
 		selectStop = stops
 		setSelectStop(selectStop)
-		console.log(selectStop)
+		
+		
+		
+	
 	}
 
 	return (
@@ -47,13 +50,13 @@ export const Lines = () => {
 				<section className="leftSectionLines">
 					<SectionLinesDisplayStreets onChange={selectLines} />
 					<SectionLinesDisplayStops selectStops={selectStops} selectLine={selectLine} />
-					<SectionLinesDisplayConnect />
+					{/* <SectionLinesDisplayConnect /> */}
 				</section>
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLines">
 					<SectionLinesModStreets />
-					<SectionLinesModStops />
+					<SectionLinesModStops  selectStop={selectStop}/>
 				</section>
 			</div>
 		</div>
