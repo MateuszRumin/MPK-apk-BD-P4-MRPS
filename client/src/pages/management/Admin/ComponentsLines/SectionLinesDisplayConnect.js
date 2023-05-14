@@ -1,29 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './css/SectionLinesDisplayStreets.css'
-let zmienna = "";
-class SectionLinesDisplayStops extends Component {
 
-
+class SectionLinesDisplayConnect extends Component {
 	state = {
 		usersData: [],
 	}
 
 
-	
-
-
-	getStreetsData = (idstret) => {
-
-		
+      getStreetsData = () => {
         
-        // const data = { street_id: 3} // zamiast 123, wstaw wartość wybraną przez użytkownika
-        // const id_street = { id_street: data.street_id }
-		const id_street = {
-					id_street: idstret,
-			}
-
-
+        const data = { street_id: 2 } // zamiast 123, wstaw wartość wybraną przez użytkownika
+        const id_street = { id_street: data.street_id }
         axios
           .post('http://localhost:3001/select/stops/onStreet', id_street)
           .then(response => {
@@ -35,18 +23,7 @@ class SectionLinesDisplayStops extends Component {
           .catch(error => {
             console.log(error)
           })
-      
-		}
-
-		test = () =>{
-
-
-			console.log("klinieto");
-				this.getStreetsData(zmienna)
-		
-			}
-
-	
+      }
 
 	handleRowClick(user) {
 		// console.log(user.emp_no)
@@ -60,7 +37,13 @@ class SectionLinesDisplayStops extends Component {
 			console.log(response.data)
 		})
 	}
+	selectLines(line) {
+		// console.log(user)
+		//return <SectionUsersEditionUsers myObject={user} />
+		console.log(line)
 
+		this.props.onChange(line)
+	}
 	deleteLine(data) {
 		console.log(data.street_id)
 
@@ -95,57 +78,12 @@ class SectionLinesDisplayStops extends Component {
 		}
 	}
 
-	selectStops(line) {
-		// console.log(user)
-		//return <SectionUsersEditionUsers myObject={user} />
-		// console.log(line)
-
-		this.props.selectStops(line)
-	}
 	render() {
 		const { usersData } = this.state
-
-		// function selectSendLine(data) {
-		// 	// Tuaj jest cały obiekt z wybranej ulicy
-
-		// 	const id_street = {
-		// 		id_street: data.street_id,
-		// 	}
-
-		// 	// TUTAJ WYSYŁA ZAPYTANIE O TO JAKIE PRZYSTANKI MAJĄ BYĆ WYŚWIETLONE
-		// 	axios.post('http://localhost:3001/select/stops/onStreet', id_street).then(response => {
-		// 		// const usersData = response.data
-
-		// 		const usersData = response.data
-
-		// 		console.log(usersData);
-		// 		this.setState( usersData )
-
-		// 		// tutaj bedzie dalszy ciąg
-		// 	})
-		// }
-
 		return (
 			<section className="sectionLinesDisplayStreets">
-
-
-				{/* {this.props.selectLine.street_id && this.getStreetsData (this.props.selectLine)} */}
-				
-
-
-
-
 				<div className="headerSectionDisplayStreets">
-					<p>Lista Przystanków</p>
-				<div className='noDisplay'>{this.props.selectLine.street_id ?  zmienna =  this.props.selectLine.street_id : console.log("nie ma")}</div>
-
-
-				Wybarłeś linie {zmienna} 
-				<button onClick={this.test}>Pobierz przystanki</button>
-
-
-
-
+					<p>LISTA ULIC</p>
 				</div>
 				<section className="contentDisplayStreets">
 					<div className="tbl-header">
@@ -163,10 +101,10 @@ class SectionLinesDisplayStops extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.stop_id}>
+									<tr key={user.street_id}>
 										<td>
-											{user.stop_id}{' '}
-											<span className="spanKlikLine" onClick={() => this.selectStops(user)}>
+											{user.street_id}{' '}
+											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>
 											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
@@ -185,10 +123,10 @@ class SectionLinesDisplayStops extends Component {
 							</tbody>
 						</table>
 					</div>
-					
+                    <button onClick={this.getStreetsData}>Pobierz dane</button>
 				</section>
 			</section>
 		)
 	}
 }
-export default SectionLinesDisplayStops
+export default SectionLinesDisplayConnect

@@ -4,6 +4,7 @@ import SectionLinesDisplayStops from './ComponentsLines/SectionLinesDisplayStops
 import SectionLinesDisplayStreets from './ComponentsLines/SectionLinesDisplayStreets'
 import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
 import SectionLinesModStops from './ComponentsLines/SectionLinesModStops'
+import SectionLinesDisplayConnect from './ComponentsLines/SectionLinesDisplayConnect'
 import '../Admin/ComponentsLines/css/Lines.css'
 
 export const Lines = () => {
@@ -46,6 +47,7 @@ export const Lines = () => {
 				<section className="leftSectionLines">
 					<SectionLinesDisplayStreets onChange={selectLines} />
 					<SectionLinesDisplayStops selectStops={selectStops} selectLine={selectLine} />
+					<SectionLinesDisplayConnect />
 				</section>
 
 				{/* PRAWA SEKCJA */}
