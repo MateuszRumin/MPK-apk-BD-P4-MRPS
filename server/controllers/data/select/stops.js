@@ -6,3 +6,18 @@ exports.all = async (req, res) => {
 
 	res.json(stops)
 }
+
+
+exports.onStreet = async (req, res) => {
+    
+    const idStreet = req.body.id_street
+
+    try{
+        const resData = await Stops.findAll({where: {id_street:idStreet}})
+    }catch (err) {
+        console.log(err)  
+    }
+
+	res.json(resData)
+}
+
