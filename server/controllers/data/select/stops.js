@@ -14,10 +14,13 @@ exports.onStreet = async (req, res) => {
 
     try{
         const resData = await Stops.findAll({where: {street_id:idStreet}})
+        res.json(resData)
+        
     }catch (err) {
         console.log(err)  
+        res.json('błąd')
     }
 
-	res.json(resData)
+	
 }
 
