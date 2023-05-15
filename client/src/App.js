@@ -9,6 +9,7 @@ import { MainPanel } from './pages/management/Admin/MainPanel'
 import { Users } from './pages/management/Admin/Users'
 import { Lines } from './pages/management/Admin/Lines'
 import { Logout } from './pages/management/Admin/Logout'
+import { Connections } from './pages/management/Admin/Connections'
 function App() {
 	useEffect(() => {
 		//tutaj bedzie cos do sesji
@@ -24,9 +25,11 @@ function App() {
 
 					{/* Admin */}
 					<Route path="/admin/" element={<MainPanel />} />
-				
+
 					<Route path="/admin/lines/" element={<Lines />} />
 					<Route path="/admin/users/" element={<Users />} />
+					<Route path="/admin/connections/" element={<Connections />} />
+
 					<Route path="/admin/logout" element={<Logout />} />
 
 					{/* Pozostałe */}

@@ -1,0 +1,17 @@
+.sectionConnectChangeTime {
+	color: black;
+	background-color: #999;
+}
+.buttonFormSubmitChangeTime {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	width: 150px;
+	height: 30px;
+	margin: 10px;
+	border-radius: 6px;
+	letter-spacing: 2px;
+	font-weight: bold;
+}

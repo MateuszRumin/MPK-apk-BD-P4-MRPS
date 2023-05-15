@@ -14,6 +14,7 @@ export const MainPanel = () => {
 						<NavLink to="/admin/lines">Linie</NavLink>
 
 						<NavLink to="/admin/users">Uzytkownicy</NavLink>
+						<NavLink to="/admin/connections">Połączenia</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
 						{/* to jest jakby link w przeglądarce to="/info" */}
 					</nav>

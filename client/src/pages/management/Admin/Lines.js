@@ -40,6 +40,7 @@ export const Lines = () => {
 					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>
 						<NavLink to="/admin/users">Uzytkownicy</NavLink>
+						<NavLink to="/admin/connections">Połączenia</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
 					</nav>
 				</header>
