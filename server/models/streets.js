@@ -1,7 +1,7 @@
 module.exports = (sequelize,DataTypes) => {
 
     const Streets = sequelize.define("Streets",{
-        street_id:{
+        id_street:{
             type:DataTypes.INTEGER,
             allowNull:false,
             primaryKey:true,

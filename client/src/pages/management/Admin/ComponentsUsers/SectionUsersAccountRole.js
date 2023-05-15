@@ -33,8 +33,8 @@ class SectionUsersAccountRole extends Component {
 		// const { test } = this.state
 
 		const validationSchema = Yup.object().shape({
-			username: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
-			email: Yup.string().min(3, 'Za krotki').max(50).required('Nie może być pusty'),
+			username: Yup.string().min(5,'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
+			email: Yup.string().min(3,'Za krotki').max(50).required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {

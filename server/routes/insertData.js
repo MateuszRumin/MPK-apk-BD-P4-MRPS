@@ -10,6 +10,8 @@ router.post('/employee',employeesController.add)//wypisz wszystkie
 const userController = require('../controllers/data/insert/users')
 router.post('/user',userController.add)//wypisz wszystkie
 
+const stopController = require('../controllers/data/insert/stops')
+router.post('/stop', stopController.add)//wypisz wszystkie
 
 
 

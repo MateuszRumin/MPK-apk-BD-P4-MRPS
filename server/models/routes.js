@@ -7,15 +7,15 @@ module.exports = (sequelize,DataTypes) => {
             primaryKey:true,
             autoIncerement:true
         },
-        lines_id:{
+       id_lines:{
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        stop_id:{
+        id_stops:{
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        variant_id:{
+        id_wariant:{
             type:DataTypes.INTEGER,
             allowNull:false
         },

@@ -1,7 +1,7 @@
 module.exports = (sequelize,DataTypes) => {
 
     const Stops = sequelize.define("Stops",{
-        stop_id:{
+        id_stop:{
             type:DataTypes.INTEGER,
             allowNull:false,
             primaryKey:true,
@@ -11,7 +11,7 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.STRING,
             allowNull:false
         },
-        street_id:{
+        id_street:{
             type:DataTypes.INTEGER,
             allowNull:false
         }

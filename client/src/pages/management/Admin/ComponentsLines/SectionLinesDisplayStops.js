@@ -127,10 +127,10 @@ class SectionLinesDisplayStops extends Component {
 	}
 	render() {
 		const initialValues = {
-			username: '',
+			name: '',
 		}
 		const validationSchema = Yup.object().shape({
-			username: Yup.string().required('Nie może być pusty'),
+			name: Yup.string().required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
@@ -138,7 +138,7 @@ class SectionLinesDisplayStops extends Component {
 		
 			data.id_street = zmienna
 			data.id_usr_emp = this.props.idAccountRole
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/insert/stop', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -248,11 +248,11 @@ class SectionLinesDisplayStops extends Component {
 							<label htmlFor="imie">
 									Nazwa użytkownika: <ErrorMessage className="errorMessage" component="span" name="username" />
 								</label>
-								<Field className="inputFormDataAccount" type="text" id="imie" name="username" />
+								<Field className="inputFormDataAccount" type="text" id="imie" name="name" />
 
 								<br />
 
-								<button className="buttonFormSubmitChangeRoleInAccount">Zmień</button>
+								<button className="buttonFormSubmitChangeRoleInAccount">Dodaj</button>
 							</section>
 						</Form>
 					</Formik>

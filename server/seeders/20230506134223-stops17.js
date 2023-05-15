@@ -14,7 +14,7 @@ module.exports = {
 
     const data = {
       name:'Dąbrowskiego ZUS',
-      street_id:takeId.street_id
+      id_street:takeId.id_street
     }    
 
     
