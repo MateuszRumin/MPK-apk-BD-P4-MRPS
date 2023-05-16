@@ -13,6 +13,16 @@ module.exports = (sequelize,DataTypes) => {
         }
     })
 
+    Streets.associate = (models) => {
+		Streets.hasMany(models.Stops,{
+			foreignKey:'id_street',
+			secureKey:'id_street',
+			onDelete:'cascade',
+			onUpdate:'cascade',
+            
+		})
+	}
+
     return Streets
     
 }

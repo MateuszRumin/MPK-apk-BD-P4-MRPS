@@ -17,6 +17,31 @@ module.exports = (sequelize,DataTypes) => {
         }
     })
 
+    Stops.associate = (models) => {
+            Stops.belongsTo(models.Streets,{
+                foreignKey:'id_street',
+                secureKey:'id_street',
+                onDelete:'cascade',
+                onUpdate:'cascade',
+                
+            }),
+            Stops.hasMany(models.Times,{
+                foreignKey:'id_stop_one',
+                secureKey:'id_stop_one',
+                onDelete:'cascade',
+                onUpdate:'cascade',
+                
+            }),
+            Stops.hasMany(models.Times,{
+                foreignKey:'id_stop_two',
+                secureKey:'id_stop_two',
+                onDelete:'cascade',
+                onUpdate:'cascade',
+                
+            })
+            
+        }
+
     return Stops
     
 }
