@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-class SectionConnectDisplayConnects extends Component {
+class SectionConnectSetNewConFrom extends Component {
 	state = {
 		usersData: [],
 	}
 
 	componentDidMount() {
 		axios
-			.post('http://localhost:3001/select/times/all')
+			.post('http://localhost:3001/select/stops/all')
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
@@ -37,7 +37,7 @@ class SectionConnectDisplayConnects extends Component {
 		//return <SectionUsersEditionUsers myObject={user} />
 		console.log(line)
 
-		this.props.selectConnect(line)
+		this.props.setStop(line)
 	}
 	deleteLine(data) {
 		console.log(data.street_id)
@@ -78,7 +78,7 @@ class SectionConnectDisplayConnects extends Component {
 		return (
 			<section className="sectionLinesDisplayStreets">
 				<div className="headerSectionDisplayStreets">
-					<p>Czas przejazdu</p>
+					<p>Przystanki do utworzenia połączenia od:</p>
 				</div>
 				<section className="contentDisplayStreets">
 					<div className="tbl-header">
@@ -86,10 +86,9 @@ class SectionConnectDisplayConnects extends Component {
 							<thead>
 								<tr>
 									<th>Id</th>
-									<th>Przystanek od</th>
-									<th>Przystanek do</th>
-									<th>Czas 1</th>
-									<th>Czas 2</th>
+									<th>Nazwa przystanku</th>
+									<th>id_ulicy</th>
+									
 
 									<th className="thirdTd"></th>
 								</tr>
@@ -100,9 +99,9 @@ class SectionConnectDisplayConnects extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.id_time}>
+									<tr key={user.id_stop}>
 										<td>
-											{user.id_time}
+											{user.id_stop}
 											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>
@@ -110,10 +109,10 @@ class SectionConnectDisplayConnects extends Component {
 												ZMIEŃ NAZWE
 											</span> */}
 										</td>
-										<td>{user.stopOne.name}</td>
-										<td>{user.stopTwo.name}</td>
-										<td>{user.Time_one_two}</td>
-										<td>{user.Time_two_one}</td>
+									
+										<td>{user.name}</td>
+										<td>{user.id_street}</td>
+										
 
 										<td className="thirdTd">
 											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
@@ -130,4 +129,4 @@ class SectionConnectDisplayConnects extends Component {
 		)
 	}
 }
-export default SectionConnectDisplayConnects
+export default SectionConnectSetNewConFrom

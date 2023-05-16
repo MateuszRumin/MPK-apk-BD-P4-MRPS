@@ -3,54 +3,38 @@ import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-
 import './css/SectionLinesDisplayStreets.css'
-let zmienna = "";
-let iloscwierszy;
+let zmienna = ''
+let iloscwierszy
 class SectionLinesDisplayStops extends Component {
-
-
 	state = {
 		usersData: [],
 	}
 
-
-	
-
-	getStreetsData = (idstret) => {
-
-		
-        
-        // const data = { street_id: 3} // zamiast 123, wstaw wartość wybraną przez użytkownika
-        // const id_street = { id_street: data.street_id }
+	getStreetsData = idstret => {
+		// const data = { street_id: 3} // zamiast 123, wstaw wartość wybraną przez użytkownika
+		// const id_street = { id_street: data.street_id }
 		const id_street = {
-					id_street: idstret,
-			}
-
-
-        axios
-          .post('http://localhost:3001/select/stops/onStreet', id_street)
-          .then(response => {
-            const usersData = response.data
-            this.setState({ usersData })
-            console.log('Pobranie ulic z bazy')
-            console.log(usersData)
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      
+			id_street: idstret,
 		}
 
-		test = () =>{
+		axios
+			.post('http://localhost:3001/select/stops/onStreet', id_street)
+			.then(response => {
+				const usersData = response.data
+				this.setState({ usersData })
+				console.log('Pobranie ulic z bazy')
+				console.log(usersData)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+	}
 
-
-			console.log("klinieto");
-				this.getStreetsData(zmienna)
-		
-			}
-
-	
+	test = () => {
+		console.log('klinieto')
+		this.getStreetsData(zmienna)
+	}
 
 	handleRowClick(user) {
 		// console.log(user.emp_no)
@@ -66,17 +50,12 @@ class SectionLinesDisplayStops extends Component {
 	}
 
 	addNewStops = data => {
-
-
-
-		console.log("test");
+		console.log('test')
 
 		// axios.post('http://localhost:3001/auth/login/', data).then(response => {
 		// 	console.log(response.data)
 		// })
 	}
-
-
 
 	deleteLine(data) {
 		console.log(data.id_street)
@@ -119,10 +98,10 @@ class SectionLinesDisplayStops extends Component {
 
 		// console.log(`ilosc wierszy to ${iloscwierszy}`);
 		console.log(line)
-		line.order = index+1;
+		line.order = index + 1
 		line.rows = iloscwierszy
 
-		console.log(`Kliknięty element o indeksie: ${index}`);
+		console.log(`Kliknięty element o indeksie: ${index}`)
 		this.props.selectStops(line)
 	}
 	render() {
@@ -134,8 +113,6 @@ class SectionLinesDisplayStops extends Component {
 		})
 
 		const onSubmit = data => {
-
-		
 			data.id_street = zmienna
 			data.id_usr_emp = this.props.idAccountRole
 			axios.post('http://localhost:3001/insert/stop', data).then(response => {
@@ -143,17 +120,15 @@ class SectionLinesDisplayStops extends Component {
 			})
 		}
 
-
-		
 		const { usersData } = this.state
-		
+
 		// function selectSendLine(data) {
 		// 	// Tuaj jest cały obiekt z wybranej ulicy
 
 		// 	const id_street = {
 		// 		id_street: data.street_id,
 		// 	}
-		iloscwierszy = usersData.length;
+		iloscwierszy = usersData.length
 		// 	// TUTAJ WYSYŁA ZAPYTANIE O TO JAKIE PRZYSTANKI MAJĄ BYĆ WYŚWIETLONE
 		// 	axios.post('http://localhost:3001/select/stops/onStreet', id_street).then(response => {
 		// 		// const usersData = response.data
@@ -166,29 +141,18 @@ class SectionLinesDisplayStops extends Component {
 		// 		// tutaj bedzie dalszy ciąg
 		// 	})
 		// }
-		
 
 		return (
 			<section className="sectionLinesDisplayStreets">
-
-
 				{/* {this.props.selectLine.street_id && this.getStreetsData (this.props.selectLine)} */}
-				
-
-
-
 
 				<div className="headerSectionDisplayStreets">
 					<p>Lista Przystanków </p>
-				<div className='noDisplay'>{this.props.selectLine.id_street ?  zmienna =  this.props.selectLine.id_street : console.log("nie ma")}</div>
-
-
-				Wybarłeś ulicę {zmienna} 
-				<button onClick={this.test}>Pobierz przystanki</button>
-
-
-
-
+					<div className="noDisplay">
+						{this.props.selectLine.id_street ? (zmienna = this.props.selectLine.id_street) : console.log('nie ma')}
+					</div>
+					Wybarłeś ulicę {zmienna}
+					<button onClick={this.test}>Pobierz przystanki</button>
 				</div>
 				<section className="contentDisplayStreets">
 					<div className="tbl-header">
@@ -209,7 +173,7 @@ class SectionLinesDisplayStops extends Component {
 									<tr key={user.stop_id}>
 										<td>
 											{user.stop_id}
-											<span className="spanKlikLine" onClick={(event) => this.selectStops(user, event, index)} >
+											<span className="spanKlikLine" onClick={event => this.selectStops(user, event, index)}>
 												KLIKNIJ
 											</span>
 											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
@@ -219,20 +183,16 @@ class SectionLinesDisplayStops extends Component {
 										<td>{user.name}</td>
 
 										<td className="thirdTd">
-											
 											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
 												X
 											</button>
 										</td>
 									</tr>
-									
 								))}
-								
 							</tbody>
 						</table>
-
 					</div>
-						
+
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 						<Form>
 							<div className="headerRoleInAccount">
@@ -245,7 +205,7 @@ class SectionLinesDisplayStops extends Component {
 							</div>
 
 							<section className="formContentDataRoleInAccount">
-							<label htmlFor="imie">
+								<label htmlFor="imie">
 									Nazwa użytkownika: <ErrorMessage className="errorMessage" component="span" name="username" />
 								</label>
 								<Field className="inputFormDataAccount" type="text" id="imie" name="name" />
@@ -256,7 +216,6 @@ class SectionLinesDisplayStops extends Component {
 							</section>
 						</Form>
 					</Formik>
-					
 				</section>
 			</section>
 		)

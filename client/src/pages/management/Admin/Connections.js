@@ -3,8 +3,12 @@ import React, { useState } from 'react'
 import SectionConnectChangeTime from './ComponentsConnections/SectionConnectChangeTime'
 import './ComponentsConnections/css/Connections.css'
 import SectionConnectDisplayConnects from './ComponentsConnections/SectionConnectDisplayConnects'
+import SectionConnectSetNewConFrom from './ComponentsConnections/SectionConnectSetNewConFrom'
+import SectionConnectSetNewConTo from './ComponentsConnections/SectionConnectSetNewConTo'
+import SectionConnectAddNewCon from './ComponentsConnections/SectionConnectAddNewCon'
 export const Connections = () => {
 	let [selectCon, setSelectLine] = useState([])
+	let [selectStop, setSelectStop] = useState([])
 
 	function selectConnect(c) {
 		// console.log(line);
@@ -12,9 +16,18 @@ export const Connections = () => {
 		selectCon = c
 		setSelectLine(selectCon)
 		// console.log(selectLine)
+	}
+
+	function setStop(selectS){
+		selectStop = selectS
+		setSelectStop(selectStop)
 
 
 	}
+
+
+
+
 
 	return (
 		<div>
@@ -42,7 +55,12 @@ export const Connections = () => {
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLines">
-					<SectionConnectChangeTime selectCon={selectCon}/>
+					<SectionConnectChangeTime selectCon={selectCon} />
+					<section className='rightSectionNewCon'>
+						<SectionConnectSetNewConFrom setStop={setStop} />
+						<SectionConnectSetNewConTo selectStop={selectStop} />
+					</section>
+					<SectionConnectAddNewCon selectStop={selectStop} />
 				</section>
 			</div>
 		</div>

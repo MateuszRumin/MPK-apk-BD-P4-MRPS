@@ -50,3 +50,6 @@ body {
 	width: 60%;
 	/* border: solid red 2px; */
 }
+.rightSectionNewCon {
+	display: flex;
+}
