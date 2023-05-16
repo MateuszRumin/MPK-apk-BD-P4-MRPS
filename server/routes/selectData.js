@@ -34,6 +34,9 @@ const usrempController = require('../controllers/data/select/usr_emp')
 router.post('/usremp/all',usrempController.all)//wypisz wszystkie
 router.post('/usremp/empnouser',usrempController.withNoAccounts)
 
+const timesController = require('../controllers/data/select/times')
+router.post('/times/all',timesController.all)//wypisz wszystkie
+
 
 
 

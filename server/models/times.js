@@ -32,6 +32,7 @@ module.exports = (sequelize,DataTypes) => {
             secureKey:'id_stop_one',
             onDelete:'cascade',
             onUpdate:'cascade',
+            as:'stopOne'
             
         }),
         Times.belongsTo(models.Stops,{
@@ -39,6 +40,7 @@ module.exports = (sequelize,DataTypes) => {
             secureKey:'id_stop_two',
             onDelete:'cascade',
             onUpdate:'cascade',
+            as:'stopTwo'
             
         })
         

@@ -8,7 +8,7 @@ class SectionConnectDisplayConnects extends Component {
 
 	componentDidMount() {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/times/all')
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
@@ -100,9 +100,9 @@ class SectionConnectDisplayConnects extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.street_id}>
+									<tr key={user.id_time}>
 										<td>
-											{user.street_id}{' '}
+											{user.id_time}
 											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>
@@ -110,10 +110,10 @@ class SectionConnectDisplayConnects extends Component {
 												ZMIEŃ NAZWE
 											</span>
 										</td>
-										<td>{user.name}</td>
-										<td>a</td>
-										<td>a</td>
-										<td>a</td>
+										<td>{user.stopOne.name}</td>
+										<td>{user.stopTwo.name}</td>
+										<td>{user.Time_one_two}</td>
+										<td>{user.Time_two_one}</td>
 
 										<td className="thirdTd">
 											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
