@@ -46,7 +46,7 @@ class SectionLinesModStreets extends Component {
 			return
 		}
 
-		fetch('http://localhost:3001/test', {
+		fetch('http://localhost:3001/insert/street/withstops', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -74,12 +74,12 @@ class SectionLinesModStreets extends Component {
 		return (
 			<section className="sectionLinesModStreets">
 				<div className="headerSectionModStreets">
-					<p>DODAJ NOWĄ LINIE:</p>
+					<p>DODAJ NOWĄ ULICĘ</p>
 				</div>
 
 				<section className="formAddModStreets">
 					<section>
-						<label>Dodaj nową linie:</label>
+						<label>Dodaj nową ulicę</label>
 						<input className="inputformAddModStreets" type="text" value={linia} onChange={this.handleLiniaChange} />
 						<label>Dodaj przystanek:</label>
 						<input className="inputformAddModStreets" type="text" value={nowyPrzystanek} onChange={this.handleChange} />

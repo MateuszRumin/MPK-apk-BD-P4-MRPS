@@ -1,21 +1,38 @@
-const { Street } = require('../../../models')
+const { Streets,Stops } = require('../../../models')
+
 
 
 //wypisz wszystkie
-exports.add = async (req, res) => {
+exports.addwithstops = async (req, res) => {
     
     const data= req.body
+    
+    
+    const dataStops = data.przystanki
+
    
-    try {
-        const idUser = await Employees.create(data)
+    try  {
+        const addedStreet = await Streets.create({name:data.linia})
         
-        
-        res.json("Added")
-    }
-    catch (err) {
-        res.json("Problemy z kodem")
+        if (dataStops)
+        dataStops.forEach(async (value) => {
+            await Stops.create({
+                name:value,
+                id_street:addedStreet.id_street
+            })
+
+
+        });
+
+
+
+        res.json('Added')
+    }catch (err){
         console.log(err)
+        res.json('error')
     }
+
+    
 
 
 

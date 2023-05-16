@@ -16,6 +16,9 @@ router.post('/user',userController.update)
 const streetController = require('../controllers/data/update/streets')
 router.post('/street', streetController.update)
 
+const stopController = require('../controllers/data/update/stops')
+router.post('/stop', stopController.update)
+
 
 
 

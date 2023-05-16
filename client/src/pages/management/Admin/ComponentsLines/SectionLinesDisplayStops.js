@@ -79,7 +79,7 @@ class SectionLinesDisplayStops extends Component {
 
 
 	deleteLine(data) {
-		console.log(data.street_id)
+		console.log(data.id_street)
 
 		const confirmDelete = window.prompt(
 			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
@@ -105,7 +105,7 @@ class SectionLinesDisplayStops extends Component {
 		if (confirmDelete && !/\d/.test(confirmDelete)) {
 			console.log(`Zmieniono nazwę`)
 			data.rename = confirmDelete
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/update/stop', data).then(response => {
 				console.log(response.data)
 			})
 		} else {
@@ -180,10 +180,10 @@ class SectionLinesDisplayStops extends Component {
 
 				<div className="headerSectionDisplayStreets">
 					<p>Lista Przystanków </p>
-				<div className='noDisplay'>{this.props.selectLine.street_id ?  zmienna =  this.props.selectLine.street_id : console.log("nie ma")}</div>
+				<div className='noDisplay'>{this.props.selectLine.id_street ?  zmienna =  this.props.selectLine.id_street : console.log("nie ma")}</div>
 
 
-				Wybarłeś linie {zmienna} 
+				Wybarłeś ulicę {zmienna} 
 				<button onClick={this.test}>Pobierz przystanki</button>
 
 

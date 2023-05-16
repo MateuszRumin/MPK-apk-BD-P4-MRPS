@@ -10,8 +10,8 @@ class SectionLinesDisplayConnect extends Component {
 
       getStreetsData = () => {
         
-        const data = { street_id: 2 } // zamiast 123, wstaw wartość wybraną przez użytkownika
-        const id_street = { id_street: data.street_id }
+        const data = { id_street: 2 } // zamiast 123, wstaw wartość wybraną przez użytkownika
+        const id_street = { id_street: data.id_street }
         axios
           .post('http://localhost:3001/select/stops/onStreet', id_street)
           .then(response => {
@@ -45,7 +45,7 @@ class SectionLinesDisplayConnect extends Component {
 		this.props.onChange(line)
 	}
 	deleteLine(data) {
-		console.log(data.street_id)
+		console.log(data.id_street)
 
 		const confirmDelete = window.prompt(
 			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
@@ -101,9 +101,9 @@ class SectionLinesDisplayConnect extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.street_id}>
+									<tr key={user.id_street}>
 										<td>
-											{user.street_id}{' '}
+											{user.id_street}
 											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>

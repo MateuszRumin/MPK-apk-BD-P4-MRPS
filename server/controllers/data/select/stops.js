@@ -13,7 +13,7 @@ exports.onStreet = async (req, res) => {
     const idStreet = req.body.id_street
 
     try{
-        const resData = await Stops.findAll({where: {street_id:idStreet}})
+        const resData = await Stops.findAll({where: {id_street:idStreet}})
         res.json(resData)
         
     }catch (err) {
@@ -21,6 +21,6 @@ exports.onStreet = async (req, res) => {
         res.json('błąd')
     }
 
-	
+    
 }
 

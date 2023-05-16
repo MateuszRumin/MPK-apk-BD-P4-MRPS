@@ -1,5 +1,4 @@
-
-const { Streets } = require('../../../models')
+const { Stops } = require('../../../models')
 
 
 //wypisz wszystkie
@@ -10,14 +9,14 @@ exports.update = async (req, res) => {
 
     const data = req.body
 
-      const dataStreet = {
+      const dataStop = {
         name:data.rename
       }
 
     
-    Streets.update(
-        dataStreet, // Updated values
-        { where: { id_street: data.id_street } } // Condition to match the records to be updated
+    Stops.update(
+        dataStop, // Updated values
+        { where: { id_stop: data.id_stop } } // Condition to match the records to be updated
       )
         .then((affectedRows) => {
           console.log(`${affectedRows} rekordów zmodyfikowanych`);

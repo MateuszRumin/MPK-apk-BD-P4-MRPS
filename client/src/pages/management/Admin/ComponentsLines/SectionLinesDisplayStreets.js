@@ -41,7 +41,7 @@ class SectionLinesDisplayStreets extends Component {
 		this.props.onChange(line)
 	}
 	deleteLine(data) {
-		console.log(data.street_id)
+		console.log(data.id_street)
 
 		const confirmDelete = window.prompt(
 			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
@@ -61,12 +61,12 @@ class SectionLinesDisplayStreets extends Component {
 	changeRename(data) {
 		// console.log(data)
 
-		const confirmDelete = window.prompt(`Podaj nową nazwę lini ? `)
+		const confirmDelete = window.prompt(`Podaj nową nazwę ulicy ? `)
 
 		if (confirmDelete && !/\d/.test(confirmDelete)) {
 			console.log(`Zmieniono nazwę`)
 			data.rename = confirmDelete
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/update/street', data).then(response => {
 				console.log(response.data)
 			})
 		} else {
@@ -97,9 +97,9 @@ class SectionLinesDisplayStreets extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.street_id}>
+									<tr key={user.id_street}>
 										<td>
-											{user.street_id}{' '}
+											{user.id_street}{' '}
 											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>
