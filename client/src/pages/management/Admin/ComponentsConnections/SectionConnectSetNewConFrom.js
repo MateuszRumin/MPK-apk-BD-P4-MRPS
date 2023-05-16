@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import "./css/SectionConnectSetNewConFrom.css"
 class SectionConnectSetNewConFrom extends Component {
 	state = {
 		usersData: [],
@@ -76,13 +76,13 @@ class SectionConnectSetNewConFrom extends Component {
 	render() {
 		const { usersData } = this.state
 		return (
-			<section className="sectionLinesDisplayStreets">
-				<div className="headerSectionDisplayStreets">
+			<section className="sectionConnectSetNewConFrom">
+				<div className="headerSectionSetNewConFrom">
 					<p>Przystanki do utworzenia połączenia od:</p>
 				</div>
-				<section className="contentDisplayStreets">
+				<section className="contentSetNewConFrom">
 					<div className="tbl-header">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
+						<table className="tableSetNewConFrom" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
 									<th>Id</th>
@@ -96,8 +96,8 @@ class SectionConnectSetNewConFrom extends Component {
 						</table>
 					</div>
 					<div className="tbl-content">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-							<tbody className="DispStreets ">
+						<table className="tableSetNewConFrom" cellPadding="0" cellSpacing="0" border="0">
+							<tbody className="SetNewConFrom ">
 								{usersData.map(user => (
 									<tr key={user.id_stop}>
 										<td>
@@ -115,7 +115,7 @@ class SectionConnectSetNewConFrom extends Component {
 										
 
 										<td className="thirdTd">
-											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
+											<button className="buttonlistSetNewConFrom" onClick={() => this.deleteLine(user)}>
 												X
 											</button>
 										</td>

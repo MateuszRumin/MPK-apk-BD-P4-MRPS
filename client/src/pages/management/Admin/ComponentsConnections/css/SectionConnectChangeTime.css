@@ -1,6 +1,10 @@
 .sectionConnectChangeTime {
+	background-color: #d4d4d4;
+	width: 80%;
+	border-radius: 9px;
 	color: black;
-	background-color: #999;
+	padding: 10px;
+	margin: 10px;
 }
 .buttonFormSubmitChangeTime {
 	background-color: #000000;
@@ -10,8 +14,27 @@
 	cursor: pointer;
 	width: 150px;
 	height: 30px;
-	margin: 10px;
+	margin: 20px 0 10px 0;
 	border-radius: 6px;
 	letter-spacing: 2px;
 	font-weight: bold;
+}
+.headerConnectChangeTime {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 500;
+	background-color: #e8e8e8;
+	border-top-left-radius: 19px;
+	padding: 5px;
+	padding-left: 10px;
+	font-size: 20px;
+}
+.errorMessageChangeTime {
+	color: red;
+}
+.contentSectionChangeTime {
+	background-color: #e8e8e8;
+	border-bottom-right-radius: 29px;
+	padding: 5px;
+	padding-left: 10px;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import './css/SectionConnectChangeTime.css'
+import './css/SectionConnectAddNewCon.css'
 
 class SectionConnectAddNewCon extends Component {
 	constructor(props) {
@@ -38,54 +38,49 @@ class SectionConnectAddNewCon extends Component {
 			initialValues.id_stop = props.id_stop
 			initialValues.name = props.name
 
-
 			// console.log(initialValues.id_stop);
 		}
 		return (
-			<section className="sectionConnectChangeTime">
+			<section className="sectionConnectAddNewCon">
 				{/* {this.props.selectLine.street_id && this.getStreetsData (this.props.selectLine)} */}
 
-				 {this.props.selectStop.id_stop && onObjectChange(this.props.selectStop)}
+				{this.props.selectStop.id_stop && onObjectChange(this.props.selectStop)}
 
-
-
-				 {/* {this.props.selectCon.Time_two_one && onObjectChange(this.props.selectCon)}  */}
-					{/* {console.log(this.props.selectStop)} */}
-
-
-
+				{/* {this.props.selectCon.Time_two_one && onObjectChange(this.props.selectCon)}  */}
+				{/* {console.log(this.props.selectStop)} */}
 
 				<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 					<Form>
-						<div className="headerRoleInAccount">
+						<div className="headerAddNewCon">
 							<span>
 								Dodaj połączenie:
 								<ErrorMessage className="errorMessage" component="span" name="id_role" />
 							</span>
 						</div>
 
-						<section className="formContentDataRoleInAccount">
+						<section className="formContentAddNewCon">
 							<label htmlFor="od">
-								Przystanek: {this.props.selectStop.id_stop} <br />
-                                nazwa: {this.props.selectStop.name}<br /> 
+								Przystanek: 1 <br />
+								Nazwa: {this.props.selectStop.name}
+								<br />
 								<ErrorMessage className="errorMessage" component="span" name="Time_one_two" />
 							</label>
-                            Czas od przystanek 1 do przystanek 2<br /> 
+							Czas od przystanek 1 do 2<br />
 							<Field type="text" id="od" name="Time_one_two" />
 							{/* className="inputFormDataAccount" */}
 							<br />
 							<label htmlFor="do">
 								<br />
-								Przystanek: id <br /> 
-                                nazwa:
-                                <br /> 
+								Przystanek: 2 <br />
+								nazwa:
+								<br />
 								<ErrorMessage className="errorMessage" component="span" name="Time_two_one" />
 							</label>
-                            Czas od przystanek 2 do przystanek 1:<br /> 
+							Czas od przystanek 2 do 1:
+							<br />
 							<Field type="text" id="do" name="Time_two_one" />
 							<br />
-
-							<button className="buttonFormSubmitChangeTime">Zatwierdź</button>
+							<button className="buttonFormSubmitChangeAddNewCon">Dodaj połaczenie</button>
 						</section>
 					</Form>
 				</Formik>

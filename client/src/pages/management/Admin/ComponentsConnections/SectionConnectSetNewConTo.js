@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import "./css/SectionConnectSetNewConTo.css"
 let objStops;
 class SectionConnectSetNewConTo extends Component {
 	state = {
@@ -34,17 +35,20 @@ class SectionConnectSetNewConTo extends Component {
 			console.log(objStops);
 		}
 		return (
-			<section className="sectionLinesDisplayStreets">
+			<section className="sectionLinesNewConTo">
 				 {this.props.selectStop.id_stop && onObjectChange(this.props.selectStop)}
-				Kliknij a sie zaladuje wybrana linia {this.props.selectStop.id_street}: <button onClick={this.startLoading}>Kliknij</button>
+				
 
-
-				<div className="headerSectionDisplayStreets">
+				<div className="headerSectionNewConTo">
 					<p>Przystanki do utworzenia połączenia od:</p>
+					
 				</div>
-				<section className="contentDisplayStreets">
+				{/* Kliknij a sie zaladuje wybrana linia {this.props.selectStop.id_street}: */}
+				 
+
+				<section className="contentNewConTo">
 					<div className="tbl-header">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
+						<table className="tableNewConTo" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
 									<th>Id</th>
@@ -58,8 +62,8 @@ class SectionConnectSetNewConTo extends Component {
 						</table>
 					</div>
 					<div className="tbl-content">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-							<tbody className="DispStreets ">
+						<table className="tableNewConTo" cellPadding="0" cellSpacing="0" border="0">
+							<tbody className="NewConTo">
 								{freeStopsData.map(Fstop => (
 									<tr key={Fstop.id_stop}>
 										<td>
@@ -77,15 +81,18 @@ class SectionConnectSetNewConTo extends Component {
 										
 
 										<td className="thirdTd">
-											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(Fstop)}>
+											<button className="test" onClick={() => this.deleteLine(Fstop)}>
 												X
 											</button>
 										</td>
 									</tr>
 								))}
 							</tbody>
+							
 						</table>
+						
 					</div>
+					<button className='buttonLoadingDataClick' onClick={this.startLoading}>Załaduj przystanki </button>
 				</section>
 			</section>
 		)

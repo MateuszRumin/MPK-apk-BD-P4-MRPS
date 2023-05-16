@@ -1,0 +1,44 @@
+.sectionConnectAddNewCon {
+	background-color: #d4d4d4;
+	width: 48%;
+	border-radius: 9px;
+	color: black;
+	padding: 10px;
+	margin: 10px;
+}
+
+.headerAddNewCon {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 500;
+	background-color: #e8e8e8;
+	border-top-left-radius: 19px;
+	padding: 5px;
+	padding-left: 10px;
+	font-size: 20px;
+}
+.buttonFormSubmitChangeAddNewCon {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+	cursor: pointer;
+	font-weight: 500;
+	border-radius: 9px;
+	letter-spacing: 2px;
+	margin: 20px 0 10px 0;
+	transition: color 0.2s ease-out;
+}
+.buttonFormSubmitChangeAddNewCon:hover {
+	color: rgb(98, 188, 230);
+}
+.errorMessage {
+	color: red;
+}
+.formContentAddNewCon {
+	background-color: #e8e8e8;
+	border-bottom-right-radius: 19px;
+	color: black;
+	padding: 10px;
+}

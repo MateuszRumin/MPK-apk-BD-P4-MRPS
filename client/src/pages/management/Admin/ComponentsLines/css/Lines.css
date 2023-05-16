@@ -46,7 +46,8 @@ body {
 	width: 40%;
 	/* border: solid rgb(255, 162, 0) 2px; */
 }
-.rightSectionLines {
+.rightSectionLinesss {
 	width: 60%;
 	/* border: solid red 2px; */
+	display: flex;
 }

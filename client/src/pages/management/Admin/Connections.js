@@ -51,11 +51,11 @@ export const Connections = () => {
 				<section className="leftSectionLines">
 					{/* <SectionConnectDisplayConnects /> */}
 					<SectionConnectDisplayConnects selectConnect={selectConnect} />
+					<SectionConnectChangeTime selectCon={selectCon} />
 				</section>
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLines">
-					<SectionConnectChangeTime selectCon={selectCon} />
 					<section className='rightSectionNewCon'>
 						<SectionConnectSetNewConFrom setStop={setStop} />
 						<SectionConnectSetNewConTo selectStop={selectStop} />

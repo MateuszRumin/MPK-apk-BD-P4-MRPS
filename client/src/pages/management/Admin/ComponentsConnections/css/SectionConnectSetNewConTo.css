@@ -1,9 +1,8 @@
-.sectionLinesModStops {
+.sectionLinesNewConTo {
 	color: black;
-	border: red 2px solid;
-    width: 50%;
+	/* border: red 2px solid; */
 }
-.headerSectionModStops {
+.headerSectionNewConTo {
 	font-size: 1.3em;
 	text-align: center;
 
@@ -12,26 +11,40 @@
 	letter-spacing: 2px;
 	font-weight: 500;
 }
-.spanKlikLine{
-
+.buttonLoadingDataClick{
+    background-color: #f67b7b;
+	border: none;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 6px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	transition: color 0.2s ease-out;
+    position: absolute;
+	bottom: 20px;
+	right: 20px;
+	
+}
+.spanKlikLine {
 	margin: 10px;
-	transition: color .3s;
+	transition: color 0.3s;
 	text-decoration: underline;
 	font-weight: bold;
 	letter-spacing: 2px;
 }
 .spanKlikLine:hover {
 	color: rgb(255, 255, 255);
-	
-	
 }
-.contentDisplayStreets {
+.contentNewConTo {
 	padding: 10px;
 	margin: 10px;
 	background-color: #a9a9a980;
+	position: relative;
 }
 
-.tableDisplayStreets {
+.tableNewConTo {
 	width: 100%;
 	table-layout: fixed;
 }
@@ -45,7 +58,7 @@
 	border: 1px solid rgb(255, 255, 255);
 	background-color: #ffffff76;
 }
-.tableDisplayStreets th {
+.tableNewConTo th {
 	padding: 20px 15px;
 	text-align: left;
 	font-weight: 500;
@@ -53,7 +66,7 @@
 	color: #000000;
 	text-transform: uppercase;
 }
-.tableDisplayStreets td {
+.tableNewConTo td {
 	padding: 15px;
 	text-align: left;
 	vertical-align: middle;
@@ -64,11 +77,10 @@
 	cursor: pointer;
 }
 
-.tableDisplayStreets tr {
+.tableNewConTo tr {
 	transition: background-color 0.3s;
 }
-
-.buttonlistDisplayStret {
+.buttonlistNewConTo {
 	background-color: #000000;
 	border: none;
 	color: white;
@@ -78,21 +90,20 @@
 	height: 30px;
 	border-radius: 6px;
 	letter-spacing: 2px;
-    font-weight: bold;
+	font-weight: bold;
 	transition: color 0.2s ease-out;
-    position: absolute;
-    right: 10px;
+	position: absolute;
+	right: 10px;
 	margin-top: -15px;
 	font-size: 20px;
-	
 }
-.buttonlistDisplayStret:hover {
+.buttonlistNewConTo:hover {
 	color: red;
 }
 .thirdTd {
 	width: 10px;
 }
-.DispStreets {
+.NewConTo {
 	position: relative;
 }
 
@@ -106,4 +117,7 @@
 }
 ::-webkit-scrollbar-thumb {
 	-webkit-box-shadow: inset 0 0 6px rgb(255, 255, 255);
+}
+.noDisplay {
+	display: none;
 }

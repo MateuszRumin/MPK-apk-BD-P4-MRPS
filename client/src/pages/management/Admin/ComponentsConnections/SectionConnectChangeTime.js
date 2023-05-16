@@ -22,8 +22,8 @@ class SectionConnectChangeTime extends Component {
 		const { initialValues } = this.state
 
 		const validationSchema = Yup.object().shape({
-			Time_one_two: Yup.string(),
-			Time_two_one: Yup.string(),
+			Time_one_two: Yup.string().required('Pole nie może być puste'),
+			Time_two_one: Yup.string().required('Pole nie może być puste'),
 		})
 
 		const onSubmit = data => {
@@ -45,30 +45,30 @@ class SectionConnectChangeTime extends Component {
 
 				<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 					<Form>
-						<div className="headerRoleInAccount">
+						<div className="headerConnectChangeTime">
 							<span>
-								Dodaj przystanek:
-								<ErrorMessage className="errorMessage" component="span" name="id_role" />
+								Zmień czas dla połączenia:
+								<ErrorMessage className="errorMessageChangeTime" component="span" name="id_role" />
 							</span>
 						</div>
 
-						<section className="formContentDataRoleInAccount">
+						<section className='contentSectionChangeTime'>
 							<label htmlFor="od">
-								Zmień czas dla połączenia: <br /> (przystanek od) do (przystanek do):{' '}
-								<ErrorMessage className="errorMessage" component="span" name="Time_one_two" />
+								{initialValues.stopOne.name} ➡ {initialValues.stopTwo.name}
+								<br />
 							</label>
 							<Field type="text" id="od" name="Time_one_two" />
 							{/* className="inputFormDataAccount" */}
 							<br />
+							<ErrorMessage className="errorMessageChangeTime" component="span" name="Time_one_two" />
 							<label htmlFor="do">
-								<br />
-								Zmień czas dla połączenie do : <br /> (przystanek do) do (przystanek od):{' '}
-								<ErrorMessage className="errorMessage" component="span" name="Time_two_one" />
+								<br /> {initialValues.stopTwo.name} ➡ {initialValues.stopOne.name} <br />
 							</label>
 							<Field type="text" id="do" name="Time_two_one" />
 							<br />
-
-							<button className="buttonFormSubmitChangeTime">Zatwierdź</button>
+								<ErrorMessage className="errorMessageChangeTime" component="span" name="Time_two_one" />
+								
+							<button className="buttonFormSubmitChangeTime">Zmień czas</button>
 						</section>
 					</Form>
 				</Formik>

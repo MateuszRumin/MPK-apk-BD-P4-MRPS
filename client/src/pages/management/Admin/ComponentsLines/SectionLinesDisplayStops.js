@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-import './css/SectionLinesDisplayStreets.css'
+import './css/SectionLinesDisplayStops.css'
 let zmienna = ''
 let iloscwierszy
 class SectionLinesDisplayStops extends Component {
@@ -143,20 +143,18 @@ class SectionLinesDisplayStops extends Component {
 		// }
 
 		return (
-			<section className="sectionLinesDisplayStreets">
+			<section className="sectionLinesDisplayStops">
 				{/* {this.props.selectLine.street_id && this.getStreetsData (this.props.selectLine)} */}
 
-				<div className="headerSectionDisplayStreets">
+				<div className="headerSectionDisplayStops">
 					<p>Lista Przystanków </p>
 					<div className="noDisplay">
 						{this.props.selectLine.id_street ? (zmienna = this.props.selectLine.id_street) : console.log('nie ma')}
 					</div>
-					Wybarłeś ulicę {zmienna}
-					<button onClick={this.test}>Pobierz przystanki</button>
 				</div>
-				<section className="contentDisplayStreets">
+				<section className="contentDisplayStops">
 					<div className="tbl-header">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
+						<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
 									<th>Id</th>
@@ -167,8 +165,8 @@ class SectionLinesDisplayStops extends Component {
 						</table>
 					</div>
 					<div className="tbl-content">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-							<tbody className="DispStreets ">
+						<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
+							<tbody className="DisplayStops">
 								{usersData.map((user, index) => (
 									<tr key={user.stop_id}>
 										<td>
@@ -183,7 +181,7 @@ class SectionLinesDisplayStops extends Component {
 										<td>{user.name}</td>
 
 										<td className="thirdTd">
-											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
+											<button className="buttonlistDisplayStops" onClick={() => this.deleteLine(user)}>
 												X
 											</button>
 										</td>
@@ -191,11 +189,15 @@ class SectionLinesDisplayStops extends Component {
 								))}
 							</tbody>
 						</table>
+						<button className="buttonNewToCon" onClick={this.test}>
+							Pobierz przystanki
+						</button>
+						{/* Wybarłeś ulicę {zmienna} */}
 					</div>
 
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 						<Form>
-							<div className="headerRoleInAccount">
+							<div className="headerAddStopss">
 								<span>
 									{/* Jest to przesyłane z AccountRole */}
 									Dodaj przystanek:
@@ -204,15 +206,15 @@ class SectionLinesDisplayStops extends Component {
 								<span></span>
 							</div>
 
-							<section className="formContentDataRoleInAccount">
+							<section className="formContentDataAddStopss">
 								<label htmlFor="imie">
-									Nazwa użytkownika: <ErrorMessage className="errorMessage" component="span" name="username" />
+									Nazwa: <ErrorMessage className="errorMessage" component="span" name="username" />
 								</label>
-								<Field className="inputFormDataAccount" type="text" id="imie" name="name" />
+								<Field className="inputFormDataAddStopss" type="text" id="imie" name="name" />
 
 								<br />
 
-								<button className="buttonFormSubmitChangeRoleInAccount">Dodaj</button>
+								<button className="buttonFormSubmitChangeAddStopss">Dodaj</button>
 							</section>
 						</Form>
 					</Formik>
