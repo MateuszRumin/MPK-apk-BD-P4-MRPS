@@ -56,19 +56,19 @@ class SectionConnectChangeTime extends Component {
 
 						<section className='contentSectionChangeTime'>
 							<label htmlFor="od">
-								{initialValues.stopOne.name} ➡ {initialValues.stopTwo.name}
+								{initialValues.stopOne.name} ➡ <ErrorMessage className="errorMessageChangeTime" component="span" name="Time_one_two" /> {initialValues.stopTwo.name}
 								<br />
 							</label>
 							<Field type="text" id="od" name="Time_one_two" />
 							{/* className="inputFormDataAccount" */}
 							<br />
-							<ErrorMessage className="errorMessageChangeTime" component="span" name="Time_one_two" />
+							
 							<label htmlFor="do">
-								<br /> {initialValues.stopTwo.name} ➡ {initialValues.stopOne.name} <br />
+								<br /> {initialValues.stopTwo.name} ➡ <ErrorMessage className="errorMessageChangeTime" component="span" name="Time_two_one" /> {initialValues.stopOne.name} <br />
 							</label>
 							<Field type="text" id="do" name="Time_two_one" />
+								
 							<br />
-								<ErrorMessage className="errorMessageChangeTime" component="span" name="Time_two_one" />
 								
 							<button className="buttonFormSubmitChangeTime">Zmień czas</button>
 						</section>

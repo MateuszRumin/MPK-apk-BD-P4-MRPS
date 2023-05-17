@@ -9,6 +9,7 @@ import SectionConnectAddNewCon from './ComponentsConnections/SectionConnectAddNe
 export const Connections = () => {
 	let [selectCon, setSelectLine] = useState([])
 	let [selectStop, setSelectStop] = useState([])
+	let [freeSelectStop, setfreeSelectStop] = useState([])
 
 	function selectConnect(c) {
 		// console.log(line);
@@ -23,6 +24,13 @@ export const Connections = () => {
 		setSelectStop(selectStop)
 
 
+	}
+
+	function FunfreeStopCon(a){
+
+		freeSelectStop = a
+		setfreeSelectStop(freeSelectStop)
+		// console.log(a);
 	}
 
 
@@ -58,9 +66,9 @@ export const Connections = () => {
 				<section className="rightSectionLines">
 					<section className='rightSectionNewCon'>
 						<SectionConnectSetNewConFrom setStop={setStop} />
-						<SectionConnectSetNewConTo selectStop={selectStop} />
+						<SectionConnectSetNewConTo selectStop={selectStop} freeStopCon={FunfreeStopCon}  />
 					</section>
-					<SectionConnectAddNewCon selectStop={selectStop} />
+					<SectionConnectAddNewCon selectStop={selectStop} freeSelectStop={freeSelectStop} />
 				</section>
 			</div>
 		</div>
