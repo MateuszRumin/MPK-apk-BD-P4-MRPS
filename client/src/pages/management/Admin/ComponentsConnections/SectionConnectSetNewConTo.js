@@ -10,10 +10,10 @@ class SectionConnectSetNewConTo extends Component {
 	getStopsFreeForLine = (objStops) => {
 	
         axios
-          .post('http://localhost:3001/test',objStops)
+          .post('http://localhost:3001/select/stops/notConnected',objStops)
           .then(response => {
             const freeStopsData = response.data
-            // this.setState({ freeStopsData }) ODKOMENTUJ ABY ODPOWIEDZ WRZUCIALA SIE DO TABELKI
+             this.setState({ freeStopsData }) 
             console.log('Pobranie ulic z bazy')
             console.log(freeStopsData)
           })
@@ -77,14 +77,10 @@ class SectionConnectSetNewConTo extends Component {
 										</td>
 									
 										<td>{Fstop.name}</td>
-										<td>{Fstop.id_street}</td>
+										<td>{Fstop.Street.name}</td>
 										
 
-										<td className="thirdTd">
-											<button className="test" onClick={() => this.deleteLine(Fstop)}>
-												X
-											</button>
-										</td>
+										
 									</tr>
 								))}
 							</tbody>

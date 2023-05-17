@@ -8,7 +8,7 @@ class SectionConnectSetNewConFrom extends Component {
 
 	componentDidMount() {
 		axios
-			.post('http://localhost:3001/select/stops/all')
+			.post('http://localhost:3001/select/stops/allWitchStreet')
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
@@ -87,7 +87,7 @@ class SectionConnectSetNewConFrom extends Component {
 								<tr>
 									<th>Id</th>
 									<th>Nazwa przystanku</th>
-									<th>id_ulicy</th>
+									<th>Nazwa ulicy</th>
 									
 
 									<th className="thirdTd"></th>
@@ -111,14 +111,10 @@ class SectionConnectSetNewConFrom extends Component {
 										</td>
 									
 										<td>{user.name}</td>
-										<td>{user.id_street}</td>
+										<td>{user.Street.name}</td>
 										
 
-										<td className="thirdTd">
-											<button className="buttonlistSetNewConFrom" onClick={() => this.deleteLine(user)}>
-												X
-											</button>
-										</td>
+										
 									</tr>
 								))}
 							</tbody>

@@ -14,6 +14,7 @@ class SectionConnectChangeTime extends Component {
 				Time_two_one: '',
 				stopOne: '',
 				stopTwo: '',
+				id_time:''
 			},
 		}
 	}
@@ -27,7 +28,7 @@ class SectionConnectChangeTime extends Component {
 		})
 
 		const onSubmit = data => {
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/update/times', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -36,6 +37,7 @@ class SectionConnectChangeTime extends Component {
 			initialValues.Time_two_one = props.Time_two_one
 			initialValues.stopOne = props.stopOne
 			initialValues.stopTwo = props.stopTwo
+			initialValues.id_time= props.id_time
 		}
 		return (
 			<section className="sectionConnectChangeTime">

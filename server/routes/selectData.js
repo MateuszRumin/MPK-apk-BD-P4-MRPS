@@ -23,6 +23,9 @@ router.post('/streets/all',streetController.all)//wypisz wszystkie
 const stopsController = require('../controllers/data/select/stops')
 router.post('/stops/all',stopsController.all)//wypisz wszystkie
 router.post('/stops/onStreet',stopsController.onStreet)
+router.post('/stops/allWitchStreet',stopsController.allWithStreet)
+router.post('/stops/notConnected',stopsController.notConnected)
+
 
 //roles
 const rolesController = require('../controllers/data/select/roles')

@@ -19,7 +19,8 @@ router.post('/street', streetController.update)
 const stopController = require('../controllers/data/update/stops')
 router.post('/stop', stopController.update)
 
-
+const timesController = require('../controllers/data/update/times')
+router.post('/times', timesController.update)
 
 
 
