@@ -12,6 +12,8 @@ router.post('/user', userController.delete)
 const streetController = require('../controllers/data/delete/streets')
 router.post('/street', streetController.delete)
 
+const timesController = require('../controllers/data/delete/times')
+router.post('/times', timesController.delete)
 
 
 

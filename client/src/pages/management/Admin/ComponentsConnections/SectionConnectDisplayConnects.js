@@ -40,20 +40,20 @@ class SectionConnectDisplayConnects extends Component {
 		this.props.selectConnect(line)
 	}
 	deleteLine(data) {
-		console.log(data.street_id)
+		console.log(data.id_time)
 
 		const confirmDelete = window.prompt(
-			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
+			`Czy na pewno chcesz usunąć połączenie ${data.id_time} ? \nWpisz "TAK", aby potwierdzić.`
 		)
 
 		if (confirmDelete === 'TAK') {
 			// Wywołanie metody do usunięcia linii
 			console.log(`Usuwam linię o id tutaj konkrtetna`)
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/delete/times', data).then(response => {
 				console.log(response.data)
 			})
 		} else {
-			console.log('Anulowano usuwanie linii.')
+			console.log('Anulowano usuwanie czasu połączenia')
 		}
 	}
 
