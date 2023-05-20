@@ -40,7 +40,8 @@ router.post('/usremp/empnouser',usrempController.withNoAccounts)
 const timesController = require('../controllers/data/select/times')
 router.post('/times/all',timesController.all)//wypisz wszystkie
 
-
+const linesController = require('../controllers/data/select/lines')
+router.post('/lines/all',linesController.all)//wypisz wszystkie
 
 
 module.exports = router

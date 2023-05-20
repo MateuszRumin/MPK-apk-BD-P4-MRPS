@@ -8,7 +8,7 @@ class SectionMainLinesDisplayLines extends Component {
 
 	componentDidMount() {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/lines/all')
 			.then(response => {
 				const usersData = response.data
 				this.setState({ usersData })
@@ -98,9 +98,9 @@ class SectionMainLinesDisplayLines extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="DispStreets ">
 								{usersData.map(user => (
-									<tr key={user.id_street}>
+									<tr key={user.id_line}>
 										<td>
-											{user.id_street}
+											{user.id_line}
 											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>
@@ -108,9 +108,9 @@ class SectionMainLinesDisplayLines extends Component {
 												ZMIEŃ
 											</span>
 										</td>
-										<td>{user.name}</td>
-										<td>{user.name}</td>
-										<td>{user.name}</td>
+										<td>{user.num_line}</td>
+										<td>{user.stopFrom.name}</td>
+										<td>{user.stopTo.name}</td>
 									
 
 										<td className="thirdTd">
