@@ -6,6 +6,7 @@ import SectionConnectDisplayConnects from './ComponentsConnections/SectionConnec
 import SectionConnectSetNewConFrom from './ComponentsConnections/SectionConnectSetNewConFrom'
 import SectionConnectSetNewConTo from './ComponentsConnections/SectionConnectSetNewConTo'
 import SectionConnectAddNewCon from './ComponentsConnections/SectionConnectAddNewCon'
+
 export const Connections = () => {
 	let [selectCon, setSelectLine] = useState([])
 	let [selectStop, setSelectStop] = useState([])
@@ -48,8 +49,10 @@ export const Connections = () => {
 					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>
 						<NavLink to="/admin/users">Uzytkownicy</NavLink>
-						<NavLink to="/admin/lines">Linie</NavLink>
+						<NavLink to="/admin/lines">Ulice</NavLink>
+						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
+						
 					</nav>
 				</header>
 			</section>

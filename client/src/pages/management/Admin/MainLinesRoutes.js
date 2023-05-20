@@ -1,15 +1,17 @@
 import { NavLink } from 'react-router-dom'
 import React, { useState } from 'react'
-import SectionLinesDisplayStops from './ComponentsLines/SectionLinesDisplayStops'
-import SectionLinesDisplayStreets from './ComponentsLines/SectionLinesDisplayStreets'
-import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
-import SectionLinesModStops from './ComponentsLines/SectionLinesModStops'
 
+import SectionMainLinesDisplayLines from './ComponentsMainLinesRouter/SectionMainLinesDisplayLines'
+import SectionMainLinesRoutesWeekDays from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekDays'
+import SectionMainLinesRoutesWeekends from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekends'
+import SectionMainLinesHoliday from './ComponentsMainLinesRouter/SectionMainLinesHoliday'
+import SectionMainLinesAddNewLine from './ComponentsMainLinesRouter/SectionMainLinesAddNewLine'
+import SectionMainLinesChangePostition from './ComponentsMainLinesRouter/SectionMainLinesChangePostition'
 import '../Admin/ComponentsLines/css/Lines.css'
 
-export const Lines = () => {
+export const MainLinesRoutes = () => {
 	let [selectLine, setSelectLine] = useState([])
-	let [selectStop, setSelectStop] = useState([])
+
 
 	function selectLines(line) {
 		// console.log(line);
@@ -20,14 +22,7 @@ export const Lines = () => {
 		// console.log(selectLine)
 	}
 
-	function selectStops(stops) {
-		selectStop = stops
-		setSelectStop(selectStop)
-		
-		
-		
 	
-	}
 
 	return (
 		<div>
@@ -41,7 +36,6 @@ export const Lines = () => {
 						<NavLink to="/admin">Main panel</NavLink>
 						<NavLink to="/admin/users">Uzytkownicy</NavLink>
 						<NavLink to="/admin/connections">Połączenia</NavLink>
-						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
 					</nav>
 				</header>
@@ -50,15 +44,19 @@ export const Lines = () => {
 			<div className="containerLines">
 				{/* LEWA SEKCJA */}
 				<section className="leftSectionLines">
-					<SectionLinesDisplayStreets onChange={selectLines} />
-					
+					<SectionMainLinesDisplayLines onChange={selectLines}/>
+					<SectionMainLinesAddNewLine />
+					{/* <SectionMainLinesChangePostition /> */}
 				</section>
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLinesss">
-					<SectionLinesDisplayStops selectStops={selectStops} selectLine={selectLine} />
-					<SectionLinesModStreets />
-					{/* <SectionLinesModStops  selectStop={selectStop}/> */}
+					<SectionMainLinesRoutesWeekDays selectLine={selectLine}/>
+
+					<section>
+						<SectionMainLinesRoutesWeekends selectLine={selectLine}/>
+						<SectionMainLinesHoliday selectLine={selectLine} />
+					</section>
 				</section>
 			</div>
 		</div>
