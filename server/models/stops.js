@@ -56,6 +56,13 @@ module.exports = (sequelize,DataTypes) => {
                 onUpdate:'cascade',
                 as:'stopTo'
                 
+            }),
+            Stops.hasMany(models.Routes,{
+                foreignKey:'id_stop',
+                secureKey:'id_stop',
+                onDelete:'cascade',
+                onUpdate:'cascade',
+                as:'stop'
             })
             
         }

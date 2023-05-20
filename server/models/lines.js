@@ -38,6 +38,13 @@ module.exports = (sequelize,DataTypes) => {
 			onDelete:'set null',
 			onUpdate:'cascade',
             as:'stopTo'
+        }),
+        Lines.hasMany(models.Routes,{
+            foreignKey:'id_line',
+			secureKey:'id_line',
+			onDelete:'cascade',
+			onUpdate:'cascade',
+            as:'line'
         })
 			
                
