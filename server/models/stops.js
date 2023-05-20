@@ -40,6 +40,22 @@ module.exports = (sequelize,DataTypes) => {
                 onUpdate:'cascade',
                 as:'stopTwo'
                 
+            }),
+            Stops.hasMany(models.Lines,{
+                foreignKey:'id_stop_from',
+                secureKey:'id_stop_from',
+                onDelete:'set null',
+                onUpdate:'cascade',
+                as:'stopFrom'
+                
+            }),
+            Stops.hasMany(models.Lines,{
+                foreignKey:'id_stop_to',
+			    secureKey:'id_stop_to',
+                onDelete:'set null',
+                onUpdate:'cascade',
+                as:'stopTo'
+                
             })
             
         }
