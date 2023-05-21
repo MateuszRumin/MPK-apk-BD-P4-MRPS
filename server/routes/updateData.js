@@ -22,7 +22,8 @@ router.post('/stop', stopController.update)
 const timesController = require('../controllers/data/update/times')
 router.post('/times', timesController.update)
 
-
+const linesController = require('../controllers/data/update/lines')
+router.post('/lines',linesController.update)
 
 
 module.exports = router

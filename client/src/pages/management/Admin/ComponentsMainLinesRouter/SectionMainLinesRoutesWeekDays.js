@@ -12,7 +12,7 @@ class SectionMainLinesRoutesWeekDays extends Component {
 			console.log('brak danych')
 		} else {
 			axios
-				.post('http://localhost:3001/test', objStops)
+				.post('http://localhost:3001/select/routes/pnpt', objStops)
 				.then(response => {
 					const freeStopsData = response.data
 					// this.setState({ freeStopsData })
@@ -73,7 +73,7 @@ class SectionMainLinesRoutesWeekDays extends Component {
 						<table className="tableNewConTo" cellPadding="0" cellSpacing="0" border="0">
 							<tbody className="NewConTo">
 								{freeStopsData.map(Fstop => (
-									<tr key={Fstop.id_stop}>
+									<tr key={Fstop.id_route}>
 										<td>
 											{Fstop.id_stop}
 											<span className="spanKlikLine" onClick={() => this.selectfreeaStop(Fstop)}>
@@ -84,7 +84,7 @@ class SectionMainLinesRoutesWeekDays extends Component {
 											</span> */}
 										</td>
 
-										<td>{Fstop.name}</td>
+										<td>{Fstop.order}</td>
 										<td>{Fstop.Street.name}</td>
 									</tr>
 								))}

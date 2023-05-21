@@ -87,8 +87,7 @@ class SectionMainLinesDisplayLines extends Component {
 								<tr>
 									<th>Id</th>
 									<th>Nr Lini</th>
-									<th>Od</th>
-									<th>Do</th>
+									
 									<th className="thirdTd"></th>
 								</tr>
 							</thead>
@@ -109,10 +108,8 @@ class SectionMainLinesDisplayLines extends Component {
 											</span>
 										</td>
 										<td>{user.num_line}</td>
-										<td>{user.stopFrom.name}</td>
-										<td>{user.stopTo.name}</td>
-									
-
+										
+			
 										<td className="thirdTd">
 											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
 												X

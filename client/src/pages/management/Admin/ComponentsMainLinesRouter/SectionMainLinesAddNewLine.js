@@ -9,9 +9,7 @@ class SectionMainLinesAddNewLine extends Component {
 
 		this.state = {
 			initialValues: {
-				nameLine: '',
-				fromStop: '',
-				toStop: '',
+				num_line: '',			
 			},
 		}
 	}
@@ -20,13 +18,12 @@ class SectionMainLinesAddNewLine extends Component {
 		const { initialValues } = this.state
 
 		const validationSchema = Yup.object().shape({
-			nameLine: Yup.string().required('Pole wymagane'),
-			fromStop: Yup.string().required('Pole wymagane'),
-			toStop: Yup.string().required('Pole wymagane'),
+			num_line: Yup.string().required('Pole wymagane'),
+			
 		})
 
 		const onSubmit = data => {
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/insert/line', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -45,18 +42,9 @@ class SectionMainLinesAddNewLine extends Component {
 						<section className="formContentAddNewCon">
 							<label htmlFor="od"></label>
 							Numer lini: <br />
-							<Field type="text" id="od" name="nameLine" />
+							<Field type="text" id="od" name="num_line" />
 							<br />
-							<ErrorMessage className="errorMessage" component="span" name="nameLine" />
-							<label htmlFor="do"></label>
-							Od:
-							<ErrorMessage className="errorMessage" component="span" name="fromStop" /> <br />
-							<Field type="text" id="do" name="fromStop" />
-							<br />
-							Do:
-							<ErrorMessage className="errorMessage" component="span" name="toStop" /> <br />
-							<Field type="text" id="do" name="toStop" />
-							<br />
+							<ErrorMessage className="errorMessage" component="span" name="num_line" />					
 							<button className="buttonFormSubmitChangeAddNewCon">Zatwierdź</button>
 						</section>
 					</Form>

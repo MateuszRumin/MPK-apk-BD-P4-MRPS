@@ -17,7 +17,7 @@ module.exports = {
   const user = await Users.findOne({ where: userData });
   const employ =  await Employees.findOne({ where: emplyData });
 
-
+ 
 
 
     const data = {
@@ -27,6 +27,7 @@ module.exports = {
     }    
 
     
+
     const use = await Usr_emp.findOne({ where: data });
     if (!use){
       const defaultValues = {

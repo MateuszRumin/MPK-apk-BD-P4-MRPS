@@ -12,7 +12,7 @@ class SectionMainLinesHoliday extends Component {
 			console.log('brak danych')
 		} else {
 			axios
-				.post('http://localhost:3001/test', objStops)
+				.post('http://localhost:3001/select/routes/nd', objStops)
 				.then(response => {
 					const freeStopsData = response.data
 					// this.setState({ freeStopsData })
