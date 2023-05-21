@@ -11,18 +11,27 @@ import '../Admin/ComponentsLines/css/Lines.css'
 
 export const MainLinesRoutes = () => {
 	let [selectLine, setSelectLine] = useState([])
-
+	let [selectLineWeekDay, setSelectLineWeekDay] = useState([])
 
 	function selectLines(line) {
 		// console.log(line);
 
-		
 		selectLine = line
 		setSelectLine(selectLine)
 		// console.log(selectLine)
 	}
 
-	
+	function selectLineWeekDays(s) {
+		// console.log(s);
+		let typ = s.type.name
+
+		selectLineWeekDay = s
+		// selectLineWeekDay.type = type
+		selectLineWeekDay.typ = typ
+
+		setSelectLineWeekDay(selectLineWeekDay)
+		console.log(selectLineWeekDay)
+	}
 
 	return (
 		<div>
@@ -44,18 +53,18 @@ export const MainLinesRoutes = () => {
 			<div className="containerLines">
 				{/* LEWA SEKCJA */}
 				<section className="leftSectionLines">
-					<SectionMainLinesDisplayLines onChange={selectLines}/>
+					<SectionMainLinesDisplayLines onChange={selectLines} />
 					<SectionMainLinesAddNewLine />
-					{/* <SectionMainLinesChangePostition /> */}
+					<SectionMainLinesChangePostition selectLineWeekDay={selectLineWeekDay} />
 				</section>
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLinesss">
-					<SectionMainLinesRoutesWeekDays selectLine={selectLine}/>
+					<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
 
 					<section>
-						<SectionMainLinesRoutesWeekends selectLine={selectLine}/>
-						<SectionMainLinesHoliday selectLine={selectLine} />
+						<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
+						<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays}/>
 					</section>
 				</section>
 			</div>
