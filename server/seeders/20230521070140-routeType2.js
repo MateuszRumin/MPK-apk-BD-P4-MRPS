@@ -1,5 +1,5 @@
 'use strict';
-const { Stops,Lines } = require('../models');
+const { routeTypes } = require('../models');
 const {Op}= require('sequelize')
 
 
@@ -10,15 +10,15 @@ module.exports = {
 
   async up (queryInterface, Sequelize) {
   
-   
+    
 
     const data = {
-      num_line:28,
+      name:'Soboty',
         
     }
    
         
-    const use = await Lines.findOne({ where: data  });
+    const use = await routeTypes.findOne({ where:  data });
 
     if (!use){
       const defaultValues = {
@@ -26,12 +26,12 @@ module.exports = {
         updatedAt: new Date()
       }
 
-    return queryInterface.bulkInsert('Lines', [{...data,...defaultValues}]);
+    return queryInterface.bulkInsert('routeTypes', [{...data,...defaultValues}]);
   }
 
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Lines', null, {});
+    return queryInterface.bulkDelete('routeTypes', null, {});
   }
 };

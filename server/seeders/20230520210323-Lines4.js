@@ -10,22 +10,15 @@ module.exports = {
 
   async up (queryInterface, Sequelize) {
   
-    const takeId1 = await Stops.findOne({ where:{ name: "Kościuszki Urząd Miasta" } });
-    const takeId2 = await Stops.findOne({ where:{ name: "Piękna Park" } });
+   
 
     const data = {
-      num_line:'29',
-      id_stop_from:takeId1.id_stop,
-      id_stop_to:takeId2.id_stop,    
+      num_line:29,
+      
     }
    
         
-    const use = await Lines.findOne({ where: {
-      [Op.or]:[
-        { id_stop_from:takeId1.id_stop, id_stop_to:takeId2.id_stop},
-        { id_stop_from:takeId2.id_stop, id_stop_to:takeId1.id_stop}
-      ]
-    } });
+    const use = await Lines.findOne({ where: data  });
 
     if (!use){
       const defaultValues = {

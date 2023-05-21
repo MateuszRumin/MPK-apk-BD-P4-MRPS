@@ -43,5 +43,8 @@ router.post('/times/all',timesController.all)//wypisz wszystkie
 const linesController = require('../controllers/data/select/lines')
 router.post('/lines/all',linesController.all)//wypisz wszystkie
 
+const routesController = require('../controllers/data/select/routes')
+router.post('/routes/all',linesController.all)//wypisz wszystkie
+
 
 module.exports = router

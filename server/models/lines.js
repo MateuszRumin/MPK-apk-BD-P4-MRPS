@@ -10,14 +10,6 @@ module.exports = (sequelize,DataTypes) => {
        num_line:{
             type:DataTypes.INTEGER,
             allowNull:false
-        },
-        id_stop_from:{
-            type:DataTypes.INTEGER,
-            allowNull:true
-        },
-        id_stop_to:{
-            type:DataTypes.INTEGER,
-            allowNull:true
         }
         
     })
@@ -25,20 +17,6 @@ module.exports = (sequelize,DataTypes) => {
 
    
     Lines.associate = (models) => {
-		Lines.belongsTo(models.Stops,{
-            foreignKey:'id_stop_from',
-			secureKey:'id_stop_from',
-			onDelete:'set null',
-			onUpdate:'cascade',
-            as:'stopFrom'
-        }),
-        Lines.belongsTo(models.Stops,{
-            foreignKey:'id_stop_to',
-			secureKey:'id_stop_to',
-			onDelete:'set null',
-			onUpdate:'cascade',
-            as:'stopTo'
-        }),
         Lines.hasMany(models.Routes,{
             foreignKey:'id_line',
 			secureKey:'id_line',

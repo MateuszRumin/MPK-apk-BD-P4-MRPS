@@ -1,5 +1,5 @@
 'use strict';
-const { Stops,Lines } = require('../models');
+const { Lines } = require('../models');
 const {Op}= require('sequelize')
 
 
@@ -10,22 +10,14 @@ module.exports = {
 
   async up (queryInterface, Sequelize) {
   
-    const takeId1 = await Stops.findOne({ where:{ name: "Mickiewicza-Sąd" } });
-    const takeId2 = await Stops.findOne({ where:{ name: "Chopina Hala Sportowa" } });
+   
 
     const data = {
-      num_line:'26',
-      id_stop_from:takeId1.id_stop,
-      id_stop_to:takeId2.id_stop,    
+      num_line:'26',     
     }
    
         
-    const use = await Lines.findOne({ where: {
-      [Op.or]:[
-        { id_stop_from:takeId1.id_stop, id_stop_to:takeId2.id_stop},
-        { id_stop_from:takeId2.id_stop, id_stop_to:takeId1.id_stop}
-      ]
-    } });
+    const use = await Lines.findOne({ where: data  });
 
     if (!use){
       const defaultValues = {
