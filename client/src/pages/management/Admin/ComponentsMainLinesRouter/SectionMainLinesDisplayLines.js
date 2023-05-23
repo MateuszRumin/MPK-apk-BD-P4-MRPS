@@ -1,67 +1,43 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Modal from 'react-modal'
 
-class SectionMainLinesDisplayLines extends Component {
-	state = {
-		usersData: [],
-	}
+const SectionMainLinesDisplayLines = ({ onChange }) => {
+	const [usersData, setUsersData] = useState([])
 
-	componentDidMount() {
+	useEffect(() => {
 		axios
 			.post('http://localhost:3001/select/lines/all')
 			.then(response => {
 				const usersData = response.data
-				this.setState({ usersData })
+				setUsersData(usersData)
 				console.log('Pobranie ulic z bazy')
 				console.log(usersData)
 			})
 			.catch(error => {
 				console.log(error)
 			})
+	}, [])
+
+	const selectLines = line => {
+		onChange(line)
 	}
 
-	handleRowClick(user) {
-		// console.log(user.emp_no)
-		//return <SectionUsersEditionUsers myObject={user} />
-		// this.props.onChange(user);
-		this.onSubmit(user)
-	}
-	// Wysyła zapytanie do serwera odnoscnie konkretnej lini i w innym komponencie wyświetli dane
-	onSubmit = data => {
-		axios.post('http://localhost:3001/auth/login/', data).then(response => {
-			console.log(response.data)
-		})
-	}
-	selectLines(line) {
-		// console.log(user)
-		//return <SectionUsersEditionUsers myObject={user} />
-		console.log(line)
-		
-		this.props.onChange(line)
-	}
-	deleteLine(data) {
-		console.log(data.id_street)
-
-		const confirmDelete = window.prompt(
-			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
-		)
-
-		if (confirmDelete === 'TAK') {
-			// Wywołanie metody do usunięcia linii
-			console.log(`Usuwam linię o id tutaj konkrtetna`)
-			axios.post('http://localhost:3001/test', data).then(response => {
-				console.log(response.data)
+	const deleteLine = (user, event) => {
+		event.preventDefault() // Zapobiegamy domyślnej akcji (wyświetlanie kontekstowego menu przeglądarki)
+		const answer = window.confirm('Na pewno chcesz usunąć linie ?')
+		if (answer) {
+			console.log(`Usuwam linię o id tutaj konkretna`)
+			axios.post('http://localhost:3001/test', user).then(response => {
+				console.log(response.user)
 			})
 		} else {
 			console.log('Anulowano usuwanie linii.')
 		}
 	}
 
-	changeRename(data) {
-		// console.log(data)
-
-		const confirmDelete = window.prompt(`Podaj nową nazwę ulicy ? `)
-
+	const changeRename = data => {
+		const confirmDelete = window.prompt(`Podaj nową nazwę lini ${data.num_line}: `)
 		if (confirmDelete && !/\d/.test(confirmDelete)) {
 			console.log(`Zmieniono nazwę`)
 			data.rename = confirmDelete
@@ -73,56 +49,27 @@ class SectionMainLinesDisplayLines extends Component {
 		}
 	}
 
-	render() {
-		const { usersData } = this.state
-		return (
-			<section className="sectionLinesDisplayStreets">
-				<div className="headerSectionDisplayStreets">
-					<p>Linie</p>
+	return (
+		<section className="sectionLinesDisplayStreets">
+			<section className="sectionLinesDisplayStreets section-line urban">
+				{usersData.map(user => (
+					<div
+						title="L - Wybierz | P - Usuń | Dbclick - Zmień nazwe"
+						key={user.id_line}
+						className="testtt"
+						onClick={() => selectLines(user)}
+						onDoubleClick={() => changeRename(user)}
+						onContextMenu={event => deleteLine(user, event)}>
+						<div className="square-line normal-line">{user.num_line}</div>
+					</div>
+				))}
+
+				<div>
+					<div id="portal"></div>
 				</div>
-				<section className="contentDisplayStreets">
-					<div className="tbl-header">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-							<thead>
-								<tr>
-									<th>Id</th>
-									<th>Nr Lini</th>
-									
-									<th className="thirdTd"></th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-					<div className="tbl-content">
-						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-							<tbody className="DispStreets ">
-								{usersData.map(user => (
-									<tr key={user.id_line}>
-										<td>
-											{user.id_line}
-											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
-												KLIKNIJ
-											</span>
-											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
-												ZMIEŃ
-											</span>
-										</td>
-										<td>{user.num_line}</td>
-										
-			
-										<td className="thirdTd">
-											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
-												X
-											</button>
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
-				</section>
 			</section>
-		)
-	}
+		</section>
+	)
 }
+
 export default SectionMainLinesDisplayLines

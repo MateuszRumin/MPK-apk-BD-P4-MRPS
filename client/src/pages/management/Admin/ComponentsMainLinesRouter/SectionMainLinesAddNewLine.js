@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import './css/SectionMainLinesAddNewLine.css'
 import * as Yup from 'yup'
 
 class SectionMainLinesAddNewLine extends Component {
@@ -9,7 +10,7 @@ class SectionMainLinesAddNewLine extends Component {
 
 		this.state = {
 			initialValues: {
-				num_line: '',			
+				num_line: '',
 			},
 		}
 	}
@@ -19,7 +20,6 @@ class SectionMainLinesAddNewLine extends Component {
 
 		const validationSchema = Yup.object().shape({
 			num_line: Yup.string().required('Pole wymagane'),
-			
 		})
 
 		const onSubmit = data => {
@@ -29,23 +29,20 @@ class SectionMainLinesAddNewLine extends Component {
 		}
 
 		return (
-			<section className="sectionConnectAddNewCon">
+			<section className="addlineNew">
 				<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 					<Form>
-						<div className="headerAddNewCon">
-							<span>
-								Dodaj linie:
-								<ErrorMessage className="errorMessage" component="span" name="id_role" />
-							</span>
-						</div>
+						<span>
+							<ErrorMessage className="errorMessage" component="span" name="id_role" />
+						</span>
 
-						<section className="formContentAddNewCon">
-							<label htmlFor="od"></label>
-							Numer lini: <br />
+						<section className="">
+							<label htmlFor="od">Dodaj linie:</label>
+
 							<Field type="text" id="od" name="num_line" />
-							<br />
-							<ErrorMessage className="errorMessage" component="span" name="num_line" />					
-							<button className="buttonFormSubmitChangeAddNewCon">Zatwierdź</button>
+
+							<ErrorMessage className="errorMessage" component="span" name="num_line" />
+							<button>Zatwierdź</button>
 						</section>
 					</Form>
 				</Formik>

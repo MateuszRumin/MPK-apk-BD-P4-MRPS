@@ -50,21 +50,27 @@ export const MainLinesRoutes = () => {
 				</header>
 			</section>
 
-			<div className="containerLines">
+			<div className="containerMainPanel">
 				{/* LEWA SEKCJA */}
-				<section className="leftSectionLines">
+				<section className="mainlinesleftsection">
+					{/* Wyswietla linie */}
 					<SectionMainLinesDisplayLines onChange={selectLines} />
+					{/* Dodaj linie */}
 					<SectionMainLinesAddNewLine />
-					<SectionMainLinesChangePostition selectLineWeekDay={selectLineWeekDay} />
+					{/* W kolejnosci przystanki */}
+					{/* <SectionMainLinesChangePostition selectLineWeekDay={selectLineWeekDay} /> */}
 				</section>
 
 				{/* PRAWA SEKCJA */}
 				<section className="rightSectionLinesss">
+					{/* Dni powszednie */}
 					<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
 
 					<section>
+						{/* Soboty */}
 						<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
-						<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays}/>
+						{/* Niedziele i swieta */}
+						<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} />
 					</section>
 				</section>
 			</div>

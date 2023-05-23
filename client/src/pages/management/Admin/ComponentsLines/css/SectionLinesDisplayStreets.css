@@ -1,6 +1,8 @@
-.sectionLinesDisplayStreets {
+.sectionLinesDisplayStreetsT {
 	color: black;
 	/* border: red 2px solid; */
+	display: flex;
+	flex-direction: column;
 }
 .headerSectionDisplayStreets {
 	font-size: 1.3em;

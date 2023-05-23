@@ -1,4 +1,13 @@
+
 .containerMainPanel {
 	position: relative;
 	top: 90px;
+	/* border: solid red 2px; */
+	height: calc(100vh - 90px);
+	display: flex;
+	background-color: #fff;
+}
+.mainlinesleftsection{
+	width: 30%;
+	border: solid red 2px;
 }

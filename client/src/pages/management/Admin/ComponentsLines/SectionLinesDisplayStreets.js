@@ -77,7 +77,7 @@ class SectionLinesDisplayStreets extends Component {
 	render() {
 		const { usersData } = this.state
 		return (
-			<section className="sectionLinesDisplayStreets">
+			<section className="sectionLinesDisplayStreetsT">
 				<div className="headerSectionDisplayStreets">
 					<p>LISTA ULIC</p>
 				</div>
