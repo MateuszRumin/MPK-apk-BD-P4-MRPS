@@ -37,30 +37,28 @@ class SectionMainLinesAddNewLine extends Component {
 				<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 					<Form>
 						<section className="">
-							<label htmlFor="od">
-								<p>
-									<b>Dodaj linie:</b>
-								</p>
-							</label>
+							<p>
+								<b>Dodaj linie:</b>
+							</p>
 
 							<p>
 								Linia:
 								<ErrorMessage className="errorMessage" component="span" name="num_line" />
 							</p>
 
-							<Field type="text" id="od" name="num_line" placeholder="numer lini" />
+							<Field type="text" name="num_line" placeholder="numer lini" />
 							<p>
 								Od:
 								<ErrorMessage className="errorMessage" component="span" name="stop_from" />
 							</p>
-							<Field type="text" id="od" name="stop_from" placeholder="przystanek od" />
+							<Field type="text" name="stop_from" placeholder="przystanek od" />
 
 							<br />
 							<p>
 								Do:
 								<ErrorMessage className="errorMessage" component="span" name="stop_to" />
 							</p>
-							<Field type="text" id="od" name="stop_to" placeholder="przystanek do" />
+							<Field type="text" name="stop_to" placeholder="przystanek do" />
 
 							<br />
 							<br />

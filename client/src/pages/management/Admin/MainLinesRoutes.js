@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import React, { useState } from 'react'
-
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import SectionMainLinesDisplayLines from './ComponentsMainLinesRouter/SectionMainLinesDisplayLines'
 import SectionMainLinesRoutesWeekDays from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekDays'
 import SectionMainLinesRoutesWeekends from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekends'
@@ -65,18 +66,20 @@ export const MainLinesRoutes = () => {
 				{/* PRAWA SEKCJA */}
 				<section className="rightSe">
 					{/* Dni powszednie */}
-					<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
-
 					{/* Soboty */}
-					<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
 					{/* Niedziele i swieta */}
-					<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} />
+					ReactDOM.render(
+					<React.StrictMode>
+						<DndProvider backend={HTML5Backend}>
+							<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
+							<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} />
+							<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
+						</DndProvider>
+					</React.StrictMode>
+					, document.getElementById('root'), );
 				</section>
-				<section className='addtolinestops'>
-
-
+				<section className="addtolinestops">
 					<SectionMainLinesAddStopToLine />
-
 				</section>
 			</div>
 		</div>
