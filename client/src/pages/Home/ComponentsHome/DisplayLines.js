@@ -20,11 +20,12 @@ const DisplayLines = () => {
 
 	const selectLines = user => {
 		// Logika obsługi zdarzenia kliknięcia na linii
+
 	}
 
 	return (
 		<section className="sectionLinesDisplayStreets section-line urban">
-			
+		
 					{usersData.map(user => (
 						<div key={user.id_line} className='testtt'>
 								<div className="square-line normal-line">{user.num_line}</div>								

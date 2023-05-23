@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal'
+import './css/SectionMainLinesDisplayLines.css'
 
 const SectionMainLinesDisplayLines = ({ onChange }) => {
 	const [usersData, setUsersData] = useState([])
+	const [selectedLine, setSelectedLine] = useState(null)
 
 	useEffect(() => {
 		axios
@@ -21,6 +23,13 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 
 	const selectLines = line => {
 		onChange(line)
+		setSelectedLine(line.id_line)
+
+		if (selectedLine === line.id_line) {
+			setSelectedLine(null) // Jeśli aktualnie wybrana linia jest ta sama, co kliknięta, usuń zaznaczenie
+		} else {
+			setSelectedLine(line.id_line) // W przeciwnym razie ustaw aktualnie klikniętą linię jako wybraną
+		}
 	}
 
 	const deleteLine = (user, event) => {
@@ -60,7 +69,9 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 						onClick={() => selectLines(user)}
 						onDoubleClick={() => changeRename(user)}
 						onContextMenu={event => deleteLine(user, event)}>
-						<div className="square-line normal-line">{user.num_line}</div>
+						<div className={`square-line normal-line ${selectedLine === user.id_line ? 'selectedLine' : ''}`}>
+							{user.num_line}
+						</div>
 					</div>
 				))}
 

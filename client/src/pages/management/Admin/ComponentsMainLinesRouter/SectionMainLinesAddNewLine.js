@@ -11,6 +11,8 @@ class SectionMainLinesAddNewLine extends Component {
 		this.state = {
 			initialValues: {
 				num_line: '',
+				stop_from: '',
+				stop_to: '',
 			},
 		}
 	}
@@ -20,10 +22,12 @@ class SectionMainLinesAddNewLine extends Component {
 
 		const validationSchema = Yup.object().shape({
 			num_line: Yup.string().required('Pole wymagane'),
+			stop_from: Yup.string().required('Pole wymagane'),
+			stop_to: Yup.string().required('Pole wymagane'),
 		})
 
 		const onSubmit = data => {
-			axios.post('http://localhost:3001/insert/line', data).then(response => {
+			axios.post('http://localhost:3001/test', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -32,17 +36,36 @@ class SectionMainLinesAddNewLine extends Component {
 			<section className="addlineNew">
 				<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 					<Form>
-						<span>
-							<ErrorMessage className="errorMessage" component="span" name="id_role" />
-						</span>
-
 						<section className="">
-							<label htmlFor="od">Dodaj linie:</label>
+							<label htmlFor="od">
+								<p>
+									<b>Dodaj linie:</b>
+								</p>
+							</label>
 
-							<Field type="text" id="od" name="num_line" />
+							<p>
+								Linia:
+								<ErrorMessage className="errorMessage" component="span" name="num_line" />
+							</p>
 
-							<ErrorMessage className="errorMessage" component="span" name="num_line" />
-							<button>Zatwierdź</button>
+							<Field type="text" id="od" name="num_line" placeholder="numer lini" />
+							<p>
+								Od:
+								<ErrorMessage className="errorMessage" component="span" name="stop_from" />
+							</p>
+							<Field type="text" id="od" name="stop_from" placeholder="przystanek od" />
+
+							<br />
+							<p>
+								Do:
+								<ErrorMessage className="errorMessage" component="span" name="stop_to" />
+							</p>
+							<Field type="text" id="od" name="stop_to" placeholder="przystanek do" />
+
+							<br />
+							<br />
+
+							<button type="submit">Zatwierdź</button>
 						</section>
 					</Form>
 				</Formik>

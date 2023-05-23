@@ -7,7 +7,8 @@ import SectionMainLinesRoutesWeekends from './ComponentsMainLinesRouter/SectionM
 import SectionMainLinesHoliday from './ComponentsMainLinesRouter/SectionMainLinesHoliday'
 import SectionMainLinesAddNewLine from './ComponentsMainLinesRouter/SectionMainLinesAddNewLine'
 import SectionMainLinesChangePostition from './ComponentsMainLinesRouter/SectionMainLinesChangePostition'
-import '../Admin/ComponentsLines/css/Lines.css'
+import SectionMainLinesAddStopToLine from './ComponentsMainLinesRouter/SectionMainLinesAddStopToLine'
+import '../Admin/ComponentsMainLinesRouter/css/MainLinesRoutes.css'
 
 export const MainLinesRoutes = () => {
 	let [selectLine, setSelectLine] = useState([])
@@ -62,16 +63,20 @@ export const MainLinesRoutes = () => {
 				</section>
 
 				{/* PRAWA SEKCJA */}
-				<section className="rightSectionLinesss">
+				<section className="rightSe">
 					{/* Dni powszednie */}
 					<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
 
-					<section>
-						{/* Soboty */}
-						<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
-						{/* Niedziele i swieta */}
-						<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} />
-					</section>
+					{/* Soboty */}
+					<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
+					{/* Niedziele i swieta */}
+					<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} />
+				</section>
+				<section className='addtolinestops'>
+
+
+					<SectionMainLinesAddStopToLine />
+
 				</section>
 			</div>
 		</div>
