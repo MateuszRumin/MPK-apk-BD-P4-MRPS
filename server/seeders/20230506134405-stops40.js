@@ -13,7 +13,7 @@ module.exports = {
 
 
     const data = {
-      name:' Łąkowa Urząd Miasta',
+      name:'Łąkowa Urząd Miasta',
       id_street:takeId.id_street
     }    
 

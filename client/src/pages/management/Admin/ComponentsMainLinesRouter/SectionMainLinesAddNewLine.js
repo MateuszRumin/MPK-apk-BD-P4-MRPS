@@ -10,9 +10,7 @@ class SectionMainLinesAddNewLine extends Component {
 
 		this.state = {
 			initialValues: {
-				num_line: '',
-				stop_from: '',
-				stop_to: '',
+				num_line: '',		
 			},
 		}
 	}
@@ -22,12 +20,11 @@ class SectionMainLinesAddNewLine extends Component {
 
 		const validationSchema = Yup.object().shape({
 			num_line: Yup.string().required('Pole wymagane'),
-			stop_from: Yup.string().required('Pole wymagane'),
-			stop_to: Yup.string().required('Pole wymagane'),
+			
 		})
 
 		const onSubmit = data => {
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/insert/lines', data).then(response => {
 				console.log(response.data)
 			})
 		}
@@ -47,21 +44,10 @@ class SectionMainLinesAddNewLine extends Component {
 							</p>
 
 							<Field type="text" name="num_line" placeholder="numer lini" />
-							<p>
-								Od:
-								<ErrorMessage className="errorMessage" component="span" name="stop_from" />
-							</p>
-							<Field type="text" name="stop_from" placeholder="przystanek od" />
-
-							<br />
-							<p>
-								Do:
-								<ErrorMessage className="errorMessage" component="span" name="stop_to" />
-							</p>
-							<Field type="text" name="stop_to" placeholder="przystanek do" />
-
+							
 							<br />
 							<br />
+							
 
 							<button type="submit">Zatwierdź</button>
 						</section>

@@ -25,8 +25,7 @@ module.exports = {
         { num_line:'35' },
         { num_line:'36' },
         { num_line:'37' },
-        { num_line:'38' },
-        { num_line:'39' }        
+               
     ]
    
 

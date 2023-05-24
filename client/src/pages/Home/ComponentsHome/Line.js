@@ -57,7 +57,7 @@ const Line = () => {
 										<td>{user.order}</td>
 										<td>{user.stop.name}</td>
 										<td>{user.line.num_line}</td>
-										<td>{user.type.name}</td>
+										
 									</tr>
 								))}
 							</tbody>

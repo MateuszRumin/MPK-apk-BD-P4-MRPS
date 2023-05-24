@@ -95,7 +95,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
         <td>{weekDay.stop.name}</td>
         <td>{weekDay.order}</td>
         <td>{weekDay.line.num_line}</td>
-        <td>{weekDay.type.name}</td>
+        
       </tr>
     );
   };

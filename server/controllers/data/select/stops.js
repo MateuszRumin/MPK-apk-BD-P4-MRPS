@@ -1,4 +1,4 @@
-const { Stops,Times,Streets } = require('../../../models')
+const { Stops,Times,Streets,Routes } = require('../../../models')
 const { Op } = require('sequelize');
 
 
@@ -164,7 +164,35 @@ exports.allWithStreet = async (req, res) => {
 
 exports.notUsed = async (req, res) => {
 
-    const data = req.body.id_stop
+    const used = req.body.id_line
+    const data = Routes.findAll({where:{id_line:used},attributes:['id_stop']})
+    console.log(data)
+if (!data){
+    try{
+ 
+
+        const stops = await Stops.findAll({     
+            include: [
+            {            
+                model:Streets,
+                required:true,
+                left:true,
+                attributes:['name'],           
+            }],
+            attributes:['id_stop','name'],
+                        
+        })
+         res.json(stops)
+    
+        } catch(err) {
+            console.log(err);
+    
+            res.json('Not working')
+        }
+
+}
+else{
+
     try{
  
 
@@ -193,7 +221,7 @@ exports.notUsed = async (req, res) => {
  
          res.json('Not working')
      }
- 
+    }
      
  
      

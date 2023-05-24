@@ -37,16 +37,14 @@ const usrempController = require('../controllers/data/select/usr_emp')
 router.post('/usremp/all',usrempController.all)//wypisz wszystkie
 router.post('/usremp/empnouser',usrempController.withNoAccounts)
 
-const timesController = require('../controllers/data/select/times')
-router.post('/times/all',timesController.all)//wypisz wszystkie
+// const timesController = require('../controllers/data/select/times')
+// router.post('/times/all',timesController.all)//wypisz wszystkie
 
 const linesController = require('../controllers/data/select/lines')
 router.post('/lines/all',linesController.all)//wypisz wszystkie
 
 const routesController = require('../controllers/data/select/routes')
 router.post('/routes/pnpt',routesController.pnpt)//wypisz wszystkie
-router.post('/routes/sb',routesController.sb)//wypisz wszystkie
-router.post('/routes/nd',routesController.nd)//wypisz wszystkie
 
 
 module.exports = router

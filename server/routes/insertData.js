@@ -16,8 +16,8 @@ router.post('/street/withstops', streetController.addwithstops)//wypisz wszystki
 const stopController = require('../controllers/data/insert/stops')
 router.post('/stop', stopController.add)//wypisz wszystkie
 
-const timesController = require('../controllers/data/insert/times')
-router.post('/times', timesController.add)//wypisz wszystkie
+// const timesController = require('../controllers/data/insert/times')
+// router.post('/times', timesController.add)//wypisz wszystkie
 
 const linesController = require('../controllers/data/insert/lines')
 router.post('/lines', linesController.add)//wypisz wszystkie
