@@ -56,7 +56,7 @@
 	color: rgb(98, 188, 230);
 }
 .errorMessage {
-	color: red;
+	color: rgb(255, 0, 0);
 }
 
 .spanDeleteAccount {

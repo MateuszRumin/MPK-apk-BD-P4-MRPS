@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import DisplayLines from './DisplayLines'
+import { WhenToArrive } from './WhenToArrive'
 import '../css/HomeContent.css'
+import { SearchStops } from './SearchStops'
 class HomeContent extends Component {
 	render() {
 		return (
@@ -16,37 +18,14 @@ class HomeContent extends Component {
 						</section>
 
 						<section className="bus-table sub-section-right">
-							<p>Wpisz nazwę przystanku, aby pojawiła się tablica z godzinami odjazdów autobusów.</p>
 
-							<section className="search-table-bus">
-								<input type="text" className="bus-stop-input" name='nameStopBus' placeholder="Podaj nazwe przystanku" />
-								<a href="#">
-									<button type="submit" className="btn-arrow stop-bus">
-										<i className="fa-solid fa-arrow-right arrow"></i>
-									</button>
-								</a>
-							</section>
+
+							<SearchStops />
+							
 						</section>
 
 						<section className="search-line sub-section-right">
-							<p>JAK DOJADĘ ?</p>
-
-							<section className="section-how-road">
-								<p>
-									Wpisz przystanek początkowy i końcowy, aby wyszukać odpowiednie linie zawierające podane przystanki.
-								</p>
-
-								<input type="text" name='stopFrom' className="bus-stop-input" placeholder="Przystanek początkowy" />
-								<input type="text"  name='stopTo' className="bus-stop-input" placeholder="Przystanek końcowy" />
-								<input type="date" name='dateHoliday' className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
-								<input type="time" name='nameStop' className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
-
-								<a href="#">
-									<button type="submit" className="btn-arrow how-road">
-										ZATWIERDŹ
-									</button>
-								</a>
-							</section>
+						<WhenToArrive />
 						</section>
 
 						<section className="messages sub-section-right">

@@ -30,7 +30,7 @@
 	font-size: 20px;
 }
 .errorMessageChangeTime {
-	color: red;
+	color: rgb(255, 0, 0);
 }
 .contentSectionChangeTime {
 	background-color: #e8e8e8;
