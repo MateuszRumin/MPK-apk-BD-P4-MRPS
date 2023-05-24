@@ -18,8 +18,8 @@ const Login = () => {
 		password: '',
 	}
 	const validationSchema = Yup.object().shape({
-		username: Yup.string().min(4,"Login zbyt krótki").required('Podaj nazwę użytkownika!'),
-		password: Yup.string().min(5,"Nie przyjmuje tak krotkich hasel").required('Podaj hasło!'),
+		username: Yup.string().min(4, 'Login zbyt krótki').required('Podaj nazwę użytkownika!'),
+		password: Yup.string().min(5, 'Nie przyjmuje tak krotkich hasel').required('Podaj hasło!'),
 	})
 
 	const onSubmit = data => {
@@ -44,9 +44,9 @@ const Login = () => {
 							<span className="icon">
 								<i className="fa-solid fa-user"></i>
 							</span>
-							<Field type="text" id="login" name="username" />
+							<Field id="login" name="username" />
 
-							<label for="login">Login:</label>
+							<label htmlFor="login">Login:</label>
 						</div>
 						<ErrorMessage name="username" component="span" />
 						<div className="input-box">
@@ -54,11 +54,11 @@ const Login = () => {
 								<i className="fa-solid fa-key"></i>
 							</span>
 							<Field id="password" type="password" name="password" />
-							<label for="password">Hasło:</label>
+							<label htmlFor="password">Hasło:</label>
 						</div>
 						<ErrorMessage name="password" component="span" />
 						<div className="remember-forgot">
-							<label for="remember-me">
+							<label htmlFor="remember-me">
 								<input id="remember-me" type="checkbox" />
 								Zapamiętaj mnie
 							</label>

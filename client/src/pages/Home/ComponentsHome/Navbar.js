@@ -12,10 +12,13 @@ export const Navbar = () => {
 		<div>
 			<header>
 				<p className="logo">
-					<i className="fa-solid fa-bus"></i>
+					<NavLink className="logoNavLink" to="/">
+						<i className="fa-solid fa-bus decorationNone"></i>
+					</NavLink>
 				</p>
 				<nav className="navigation">
 					<NavLink to="/">Home</NavLink>
+
 					<NavLink to="/info">Info</NavLink>
 					<NavLink to="/kontakt">Kontakt</NavLink>
 

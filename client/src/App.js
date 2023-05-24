@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { Home } from './pages/Home/ComponentsHome/Home'
 import { Info } from './pages/Home/ComponentsHome/Info'
 import { Kontakt } from './pages/Home/ComponentsHome/Kontakt'
-
+import Line from './pages/Home/ComponentsHome/Line'
 import { MainPanel } from './pages/management/Admin/MainPanel'
 import { Users } from './pages/management/Admin/Users'
 import { Lines } from './pages/management/Admin/Lines'
@@ -31,6 +31,7 @@ function App() {
 					<Route path="/admin/users/" element={<Users />} />
 					<Route path="/admin/connections/" element={<Connections />} />
 					<Route path="/admin/mainlines/" element={<MainLinesRoutes />} />
+					<Route path="/line/:id_line" element={<Line />} />
 
 					<Route path="/admin/logout" element={<Logout />} />
 

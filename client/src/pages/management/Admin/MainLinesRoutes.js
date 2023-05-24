@@ -72,8 +72,8 @@ export const MainLinesRoutes = () => {
 					<React.StrictMode>
 						<DndProvider backend={HTML5Backend}>
 							<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
-							<SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} />
-							<SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} />
+							{/* <SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} /> */}
+							{/* <SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} /> */}
 						</DndProvider>
 					</React.StrictMode>
 					, document.getElementById('root'), );

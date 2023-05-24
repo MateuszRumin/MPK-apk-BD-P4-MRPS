@@ -19,8 +19,19 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
     if (objStops === 0) {
       console.log('brak danych');
     } else {
+  
+      let objStopss = {
+        
+        id_line: objStops.id_line
+
+      }
+      console.log('chuj');
+      console.log(objStopss);
+      console.log('chuj');
+      
+
       axios
-        .post('http://localhost:3001/select/routes/pnpt', objStops)
+        .post('http://localhost:3001/select/routes/pnpt', objStopss)
         .then(response => {
           const weekDays = response.data;
           setWeekDays(weekDays);
@@ -102,6 +113,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 
   return (
     <section className="sectionLinesNewConTo">
+      
       <section className="contentNewConTo">
         <div className="tbl-header">
           <table className="tableNewConToo" cellPadding="0" cellSpacing="0" border="0">

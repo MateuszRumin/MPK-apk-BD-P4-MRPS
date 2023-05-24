@@ -19,7 +19,7 @@ class HomeContent extends Component {
 							<p>Wpisz nazwę przystanku, aby pojawiła się tablica z godzinami odjazdów autobusów.</p>
 
 							<section className="search-table-bus">
-								<input type="text" className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
+								<input type="text" className="bus-stop-input" name='nameStopBus' placeholder="Podaj nazwe przystanku" />
 								<a href="#">
 									<button type="submit" className="btn-arrow stop-bus">
 										<i className="fa-solid fa-arrow-right arrow"></i>
@@ -36,10 +36,10 @@ class HomeContent extends Component {
 									Wpisz przystanek początkowy i końcowy, aby wyszukać odpowiednie linie zawierające podane przystanki.
 								</p>
 
-								<input type="text" className="bus-stop-input" placeholder="Przystanek początkowy" />
-								<input type="text" className="bus-stop-input" placeholder="Przystanek końcowy" />
-								<input type="date" className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
-								<input type="time" className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
+								<input type="text" name='stopFrom' className="bus-stop-input" placeholder="Przystanek początkowy" />
+								<input type="text"  name='stopTo' className="bus-stop-input" placeholder="Przystanek końcowy" />
+								<input type="date" name='dateHoliday' className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
+								<input type="time" name='nameStop' className="bus-stop-input" placeholder="Podaj nazwe przystanku" />
 
 								<a href="#">
 									<button type="submit" className="btn-arrow how-road">

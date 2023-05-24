@@ -79,3 +79,7 @@ header {
 nav a:hover {
 	color: gold;
 }
+.logoNavLink{
+	color: white;
+	text-decoration: none;
+}
