@@ -25,7 +25,7 @@ router.post('/stops/all',stopsController.all)//wypisz wszystkie
 router.post('/stops/onStreet',stopsController.onStreet)
 router.post('/stops/allWitchStreet',stopsController.allWithStreet)
 router.post('/stops/notConnected',stopsController.notConnected)
-
+router.post('/stops/notUsed',stopsController.notUsed)
 
 //roles
 const rolesController = require('../controllers/data/select/roles')

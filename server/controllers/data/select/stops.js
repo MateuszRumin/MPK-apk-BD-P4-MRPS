@@ -161,3 +161,40 @@ exports.allWithStreet = async (req, res) => {
 
 	
 }
+
+exports.notUsed = async (req, res) => {
+
+    const data = req.body.id_stop
+    try{
+ 
+
+     const stops = await Stops.findAll({     
+         include: [
+         {            
+             model:Streets,
+             required:true,
+             left:true,
+             attributes:['name'],           
+         }],
+         attributes:['id_stop','name'],
+         where:{
+            id_stop:{
+                [Op.notIn]:data.map(dat=>dat)
+            }
+         }  
+     })
+ 
+
+
+      res.json(stops)
+ 
+     } catch(err) {
+         console.log(err);
+ 
+         res.json('Not working')
+     }
+ 
+     
+ 
+     
+ }
