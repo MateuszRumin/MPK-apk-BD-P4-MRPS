@@ -15,25 +15,50 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        id_type:{
-            type:DataTypes.INTEGER,
-            allowNull:false
-        },
         order:{
             type:DataTypes.INTEGER,
             allowNull:false
-        }
+        },
+        mon_fri:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+            defaultValue:false
+        },
+        saturday:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+            defaultValue:false
+        },
+        sunday:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+            defaultValue:false
+
+        },
+        zmon_fri:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+            defaultValue:false
+        },
+        zsaturday:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+            defaultValue:false
+        },
+        zsunday:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+            defaultValue:false
+
+        },
+        
 
     })
 
+
+
+
     Routes.associate = (models) => {
-		Routes.belongsTo(models.routeTypes,{
-            foreignKey:'id_type',
-			secureKey:'id_type',
-			onDelete:'cascade',
-			onUpdate:'cascade',
-            as:'type'
-        }),
         Routes.belongsTo(models.Lines,{
             foreignKey:'id_line',
 			secureKey:'id_line',

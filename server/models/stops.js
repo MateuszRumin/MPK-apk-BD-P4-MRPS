@@ -25,17 +25,17 @@ module.exports = (sequelize,DataTypes) => {
                 onUpdate:'cascade',
                 
             }),
-            Stops.hasMany(models.Times,{
-                foreignKey:'id_stop_one',
-                secureKey:'id_stop_one',
+            Stops.hasMany(models.StopTimes,{
+                foreignKey:'id_stop_a',
+                secureKey:'id_stop_a',
                 onDelete:'cascade',
                 onUpdate:'cascade',
                 as:'stopOne'
                 
             }),
-            Stops.hasMany(models.Times,{
-                foreignKey:'id_stop_two',
-                secureKey:'id_stop_two',
+            Stops.hasMany(models.StopTimes,{
+                foreignKey:'id_stop_b',
+                secureKey:'id_stop_b',
                 onDelete:'cascade',
                 onUpdate:'cascade',
                 as:'stopTwo'
@@ -47,6 +47,22 @@ module.exports = (sequelize,DataTypes) => {
                 onDelete:'cascade',
                 onUpdate:'cascade',
                 as:'stop'
+            }),
+            Stops.hasMany(models.RouteTimes,{
+                foreignKey:'id_stop_a',
+                secureKey:'id_stop_a',
+                onDelete:'cascade',
+                onUpdate:'cascade',
+                as:'stopA'
+                
+            }),
+            Stops.hasMany(models.RouteTimes,{
+                foreignKey:'id_stop_b',
+                secureKey:'id_stop_b',
+                onDelete:'cascade',
+                onUpdate:'cascade',
+                as:'stopB'
+                
             })
             
         }
