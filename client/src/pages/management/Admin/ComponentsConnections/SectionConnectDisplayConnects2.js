@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal'
-
+import './css/SectionConnectDisplayConnects.css'
 
 class SectionConnectDisplayConnects2 extends Component {
 	state = {
@@ -26,7 +26,20 @@ class SectionConnectDisplayConnects2 extends Component {
 			})
 	}
 
-	
+	openModal = data => {
+		this.setState({ isOpen: true, confirmDelete: data.name })
+		const setData = data
+		this.setState({ setData })
+		console.log(setData)
+	}
+
+	closeModal = () => {
+		this.setState({ isOpen: false })
+	}
+
+	handleInputChange = event => {
+		this.setState({ confirmDelete: event.target.value })
+	}
 
 	handleConfirm = () => {
 		const { confirmDelete, setData } = this.state
@@ -47,7 +60,23 @@ class SectionConnectDisplayConnects2 extends Component {
 			// this.closeModal()
 		}
 	}
+deleteLine(data) {
+		console.log(data.id_street)
 
+		const confirmDelete = window.prompt(
+			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
+		)
+
+		if (confirmDelete === 'TAK') {
+			// Wywołanie metody do usunięcia linii
+			console.log(`Usuwam linię o id tutaj konkrtetna`)
+			axios.post('http://localhost:3001/test', data).then(response => {
+				console.log(response.data)
+			})
+		} else {
+			console.log('Anulowano usuwanie linii.')
+		}
+	}
 
 	render() {
 		const { usersData, isOpen, confirmDelete, serverResponse } = this.state
@@ -62,11 +91,13 @@ class SectionConnectDisplayConnects2 extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
-								
-									<th>Nazwa Przystanku</th>
-									
-									
-									
+									<th>Id</th>
+									<th>Route_od</th>
+									<th>Route_do</th>
+									<th>Pn</th>
+									<th>Sb</th>
+									<th>Nd</th>
+									<th className="thirdTd"></th>
 								</tr>
 							</thead>
 						</table>
@@ -77,7 +108,7 @@ class SectionConnectDisplayConnects2 extends Component {
 								{usersData.map(user => (
 									<tr key={user.id_street}>
 										<td>
-										{user.name}
+											{user.id_street}{' '}
 											{/* <span className="spanKlikLine" onClick={() => this.selectLines(user)}>
 												KLIKNIJ
 											</span>
@@ -86,17 +117,51 @@ class SectionConnectDisplayConnects2 extends Component {
 											</span> */}
 										</td>
 
-										
-										
-										
+										<td>{user.name}</td>
+										<td>{user.name}</td>
+										<td className='onFocusCursor' onClick={() => this.openModal(user)}>
+											<b>{user.name}</b>
+										</td>
+										<td className='onFocusCursor' onClick={() => this.openModal(user)}>
+											<b>{user.name}</b>
+										</td>
+										<td className='onFocusCursor' onClick={() => this.openModal(user)}>
+											<b>{user.name}</b>
+										</td>
 
-										
+										<td className="thirdTd">
+											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
+												X
+											</button>
+										</td>
 									</tr>
 								))}
 							</tbody>
 						</table>
 					</div>
+					<div>
 					
+
+						<Modal
+							isOpen={isOpen}
+							className="custom-modal"
+							overlayClassName="custom-overlay"
+							onRequestClose={this.closeModal}>
+							<h2>Podaj nowy czas:</h2>
+							<input type="text" placeholder="hh:mm" value={confirmDelete} onChange={this.handleInputChange} />
+
+							<span className="closeMod" onClick={this.closeModal}>
+								X
+							</span>
+							<button onClick={this.handleConfirm}>Potwierdź</button>
+
+							{serverResponse && (
+								<div>
+									<p>{serverResponse}</p>
+								</div>
+							)}
+						</Modal>
+					</div>
 				</section>
 			</section>
 		)

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import SectionConnectChangeTime from './ComponentsConnections/SectionConnectChangeTime'
 import './ComponentsConnections/css/Connections.css'
 import SectionConnectDisplayConnects from './ComponentsConnections/SectionConnectDisplayConnects'
+import SectionConnectDisplayConnects2 from './ComponentsConnections/SectionConnectDisplayConnects2'
 import SectionConnectSetNewConFrom from './ComponentsConnections/SectionConnectSetNewConFrom'
 import SectionConnectSetNewConTo from './ComponentsConnections/SectionConnectSetNewConTo'
 import SectionConnectAddNewCon from './ComponentsConnections/SectionConnectAddNewCon'
@@ -58,20 +59,21 @@ export const Connections = () => {
 			</section>
 
 			<div className="containerLines">
-				{/* LEWA SEKCJA */}
+			
 				<section className="leftSectionLines">
-					{/* <SectionConnectDisplayConnects /> */}
+					
 					<SectionConnectDisplayConnects selectConnect={selectConnect} />
-					<SectionConnectChangeTime selectCon={selectCon} />
+					<SectionConnectDisplayConnects2 selectConnect={selectConnect} />
+					{/* <SectionConnectChangeTime selectCon={selectCon} /> */}
 				</section>
 
-				{/* PRAWA SEKCJA */}
+			
 				<section className="rightSectionLines">
 					<section className='rightSectionNewCon'>
-						<SectionConnectSetNewConFrom setStop={setStop} />
-						<SectionConnectSetNewConTo selectStop={selectStop} freeStopCon={FunfreeStopCon}  />
+						{/* <SectionConnectSetNewConFrom setStop={setStop} /> */}
+						{/* <SectionConnectSetNewConTo selectStop={selectStop} freeStopCon={FunfreeStopCon}  /> */}
 					</section>
-					<SectionConnectAddNewCon selectStop={selectStop} freeSelectStop={freeSelectStop} />
+					{/* <SectionConnectAddNewCon selectStop={selectStop} freeSelectStop={freeSelectStop} /> */}
 				</section>
 			</div>
 		</div>

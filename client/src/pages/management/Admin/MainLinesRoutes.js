@@ -79,7 +79,7 @@ export const MainLinesRoutes = () => {
 					, document.getElementById('root'), );
 				</section>
 				<section className="addtolinestops">
-					<SectionMainLinesAddStopToLine />
+					{/* <SectionMainLinesAddStopToLine /> */}
 				</section>
 			</div>
 		</div>
