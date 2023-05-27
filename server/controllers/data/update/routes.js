@@ -17,7 +17,7 @@ try{
 
 
         Routes.update(
-            upd.order, // Updated values
+            {order:upd.order}, // Updated values
             { where: { id_route: upd.id_route } } // Condition to match the records to be updated
           )
             .then((affectedRows) => {

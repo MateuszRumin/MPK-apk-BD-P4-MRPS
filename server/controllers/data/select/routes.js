@@ -23,7 +23,8 @@ exports.pnpt = async (req, res) => {
         
         
         where:{id_line:req.body.id_line},
-        attributes:['id_route','order']
+        attributes:['id_route','order'],
+        order:[['order','ASC']]
     
     }) 
     .catch ( err => {

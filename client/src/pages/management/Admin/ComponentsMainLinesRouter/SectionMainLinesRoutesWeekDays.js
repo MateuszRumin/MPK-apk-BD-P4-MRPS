@@ -117,13 +117,19 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 			})
 	
 	}
-
+	
 	const moveRow = (dragIndex, hoverIndex) => {
 		const draggedRow = weekDays[dragIndex]
 		const updatedWeekDays = [...weekDays]	 	
 		updatedWeekDays.splice(dragIndex, 1)
-		updatedWeekDays.splice(hoverIndex, 0, draggedRow)	
+		updatedWeekDays.splice(hoverIndex, 0, draggedRow)
+		updatedWeekDays.forEach(( row,index) => {
+			row.order = index+1
+		})
+		
+
 		setWeekDays(updatedWeekDays)
+
 
 		// handleButtonClick(); // Wysyłanie danych do serwera po zmianie kolejności
 	}
@@ -151,6 +157,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 				
 				moveRow(dragIndex, hoverIndex)
 				item.index = hoverIndex
+				
 			},
 		})
 		Modal.setAppElement('#root')
@@ -166,7 +173,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 	const handleButtonClick = () => {
 
 		axios
-			.post('http://localhost:3001/test', weekDays)
+			.post('http://localhost:3001/update/routes/order', weekDays)
 			.then(response => {
 				console.log('Zmieniona kolejność została wysłana na serwer')
 			})
