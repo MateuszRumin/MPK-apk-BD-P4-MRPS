@@ -7,13 +7,13 @@ exports.add = async (req, res) => {
    const data = req.body
 
 
-Routes.findOne(
+const biggestOrder = await Routes.findOne(
 {
     where: {
-        id_line:data.id_line,
-        id_type:data.id_type
+        id_line:data.line.id_line        
     },
-    order:[['order','DESC']]
+    order:[['order','DESC']],
+    attributes:['order']
 })
 .catch (err => {
     console.log('err')
@@ -21,13 +21,14 @@ Routes.findOne(
 })
 
 
-
-
-
-const order = { order:add.order+1}
+const dataAdd = {
+    id_line:data.line.id_line,
+    id_stop:data.stop.id_stop,
+    order:biggestOrder.order+1 
+}
  
    try {
-   await Routes.create(...data,...order)
+   await Routes.create(dataAdd)
 
    res.json("Added")
    

@@ -72,7 +72,6 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 		[selectLine],
 		[weekDays]
 	)
-
 	const openModal = () => {
 		setIsOpen(true)
 		// setConfirmDelete(data.name);
@@ -85,30 +84,20 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 
 	const handleConfirm = (selectStop) => {
 		// const { confirmDelete, setData } = this.state
-
-
       // Wybrana linie wcześniej do której dodaję przystnek
       console.log(objStops);
 // Wybrany przystanek który dodaje do odpowiedniej lini
       console.log(selectStop);
 
-      // selectLine = line
-      
+      // selectLine = line   
       
      let obj = {
       line: objStops,
       stop: selectStop,
 
      }
-
-    
-
-
-
       // setData.select_stop = selectStop
-
-
-			axios.post('http://localhost:3001/test', obj).then(response => {
+			axios.post('http://localhost:3001/insert/routes', obj).then(response => {
 				console.log(response.data)
 
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
