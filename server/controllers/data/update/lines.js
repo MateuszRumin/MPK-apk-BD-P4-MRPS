@@ -7,7 +7,7 @@ const { Lines } = require('../../../models')
     
 
 exports.update = async (req, res) => {
-
+  console.log("odebrano")
     const data = {
         num_line:req.body.num_line
     }

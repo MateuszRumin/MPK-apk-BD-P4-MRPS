@@ -18,6 +18,8 @@ router.post('/street', streetController.delete)
 const routesController = require('../controllers/data/delete/routes')
 router.post('/routes', routesController.delete)
 
+const linesController = require('../controllers/data/delete/lines')
+router.post('/line', linesController.delete)
 
 
 module.exports = router

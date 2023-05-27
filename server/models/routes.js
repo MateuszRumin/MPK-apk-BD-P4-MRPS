@@ -35,22 +35,15 @@ module.exports = (sequelize,DataTypes) => {
             defaultValue:false
 
         },
-        zmon_fri:{
+        active:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
             defaultValue:false
         },
-        zsaturday:{
-            type:DataTypes.BOOLEAN,
-            allowNull:false,
-            defaultValue:false
-        },
-        zsunday:{
-            type:DataTypes.BOOLEAN,
-            allowNull:false,
-            defaultValue:false
-
-        },
+        id_changes:{     
+            type:DataTypes.INTEGER,
+            allowNull:true,      
+        }
         
 
     })
@@ -73,7 +66,13 @@ module.exports = (sequelize,DataTypes) => {
 			onUpdate:'cascade',
             as:'stop'
         })
-        
+        Routes.belongsTo(models.Changes,{
+            foreignKey:'id_changes',
+			secureKey:'id_changes',
+			onDelete:'cascade',
+			onUpdate:'cascade',
+            as:'change'
+        })
                
         
 	}

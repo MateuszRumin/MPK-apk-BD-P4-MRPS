@@ -47,7 +47,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 	useEffect(
 		() => {
 			axios
-				.post('http://localhost:3001/select/lines/all')
+				.post('http://localhost:3001/select/stops/all')
 				.then(response => {
 					const usersData = response.data
 					setUsersData(usersData)
@@ -67,6 +67,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 			if (selectLine.id_line) {
 				onObjectChange(selectLine)
 			}
+
 		},
 		[selectLine],
 		[weekDays]
@@ -134,6 +135,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 			collect: monitor => ({
 				isDragging: monitor.isDragging(),
 			}),
+			
 		})
 
 		const [, drop] = useDrop({
@@ -145,7 +147,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 				if (dragIndex === hoverIndex) {
 					return
 				}
-
+				
 				moveRow(dragIndex, hoverIndex)
 				item.index = hoverIndex
 			},
@@ -153,8 +155,8 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 		Modal.setAppElement('#root')
 		return (
 			<tr ref={node => drag(drop(node))}>
-				<td>{weekDay.stop.name}</td>
 				<td>{weekDay.order}</td>
+				<td>{weekDay.stop.name}</td>
 				<td>{weekDay.line.num_line}</td>
 			</tr>
 		)
@@ -178,10 +180,9 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 					<table className="tableNewConToo" cellPadding="0" cellSpacing="0" border="0">
 						<thead>
 							<tr>
-								<th>Pzrystanek</th>
 								<th>Kolejność</th>
-								<th>Linia</th>
-								<th>Wariant</th>
+								<th>Pzrystanek</th>
+								<th>Linia</th>							
 							</tr>
 						</thead>
 					</table>
@@ -217,9 +218,9 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
 									{usersData.map(user => (
-										<tr key={user.id_line}>
+										<tr key={user.id_stop}>
 											<td>
-												{user.num_line}
+												{user.name}
 												<span className="spanKlikLine" onClick={() => handleConfirm(user)}>
 													KLIKNIJ
 												</span>

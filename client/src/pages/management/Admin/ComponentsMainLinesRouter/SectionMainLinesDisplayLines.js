@@ -37,7 +37,7 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 		const answer = window.confirm('Na pewno chcesz usunąć linie ?')
 		if (answer) {
 			console.log(`Usuwam linię o id tutaj konkretna`)
-			axios.post('http://localhost:3001/test', user).then(response => {
+			axios.post('http://localhost:3001/delete/line', user).then(response => {
 				console.log(response.user)
 			})
 		} else {
@@ -50,7 +50,7 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 		if (confirmDelete && !/\d/.test(confirmDelete)) {
 			console.log(`Zmieniono nazwę`)
 			data.rename = confirmDelete
-			axios.post('http://localhost:3001/update/street', data).then(response => {
+			axios.post('http://localhost:3001/update/lines', data).then(response => {
 				console.log(response.data)
 			})
 		} else {
