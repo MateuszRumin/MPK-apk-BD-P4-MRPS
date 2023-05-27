@@ -7,11 +7,14 @@ import SectionConnectDisplayConnects2 from './ComponentsConnections/SectionConne
 import SectionConnectSetNewConFrom from './ComponentsConnections/SectionConnectSetNewConFrom'
 import SectionConnectSetNewConTo from './ComponentsConnections/SectionConnectSetNewConTo'
 import SectionConnectAddNewCon from './ComponentsConnections/SectionConnectAddNewCon'
-
+import SectionConnectDisplayCon from './ComponentsConnections/SectionConnectDisplayCon'
 export const Connections = () => {
 	let [selectCon, setSelectLine] = useState([])
 	let [selectStop, setSelectStop] = useState([])
 	let [freeSelectStop, setfreeSelectStop] = useState([])
+
+	let [selectLine2, setSelectLine2] = useState([])
+	let [selectLineWeekDay, setSelectLineWeekDay] = useState([])
 
 	function selectConnect(c) {
 		// console.log(line);
@@ -35,7 +38,15 @@ export const Connections = () => {
 		// console.log(a);
 	}
 
+	
 
+	function selectLines(line) {
+		// console.log(line);
+
+		selectLine2 = line
+		setSelectLine2(selectLine2)
+		console.log(selectLine2)
+	}
 
 
 
@@ -62,14 +73,16 @@ export const Connections = () => {
 			
 				<section className="leftSectionLines">
 					
-					<SectionConnectDisplayConnects selectConnect={selectConnect} />
-					<SectionConnectDisplayConnects2 selectConnect={selectConnect} />
+					<SectionConnectDisplayConnects selectLine2={selectLine2} selectConnect={selectConnect} />
+					<SectionConnectDisplayConnects2 selectLine2={selectLine2} selectConnect={selectConnect} />
+					
 					{/* <SectionConnectChangeTime selectCon={selectCon} /> */}
 				</section>
 
 			
 				<section className="rightSectionLines">
 					<section className='rightSectionNewCon'>
+						<SectionConnectDisplayCon onChange={selectLines} />
 						{/* <SectionConnectSetNewConFrom setStop={setStop} /> */}
 						{/* <SectionConnectSetNewConTo selectStop={selectStop} freeStopCon={FunfreeStopCon}  /> */}
 					</section>
