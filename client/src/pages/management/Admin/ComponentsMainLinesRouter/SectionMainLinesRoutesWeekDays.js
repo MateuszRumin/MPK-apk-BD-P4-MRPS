@@ -120,15 +120,16 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 
 	const moveRow = (dragIndex, hoverIndex) => {
 		const draggedRow = weekDays[dragIndex]
-		const updatedWeekDays = [...weekDays]
+		const updatedWeekDays = [...weekDays]	 	
 		updatedWeekDays.splice(dragIndex, 1)
-		updatedWeekDays.splice(hoverIndex, 0, draggedRow)
+		updatedWeekDays.splice(hoverIndex, 0, draggedRow)	
 		setWeekDays(updatedWeekDays)
 
 		// handleButtonClick(); // Wysyłanie danych do serwera po zmianie kolejności
 	}
 
 	const Row = ({ weekDay, index }) => {
+		
 		const [{ isDragging }, drag] = useDrag({
 			type: ItemTypes.ROW,
 			item: { index },
@@ -155,7 +156,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 		Modal.setAppElement('#root')
 		return (
 			<tr ref={node => drag(drop(node))}>
-				<td>{weekDay.order}</td>
+				<td>{weekDay.order}</td>				
 				<td>{weekDay.stop.name}</td>
 				<td>{weekDay.line.num_line}</td>
 			</tr>
@@ -163,6 +164,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 	}
 
 	const handleButtonClick = () => {
+
 		axios
 			.post('http://localhost:3001/test', weekDays)
 			.then(response => {
