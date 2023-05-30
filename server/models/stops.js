@@ -47,24 +47,7 @@ module.exports = (sequelize,DataTypes) => {
                 onDelete:'cascade',
                 onUpdate:'cascade',
                 as:'stop'
-            }),
-            Stops.hasMany(models.RouteTimes,{
-                foreignKey:'id_stop_a',
-                secureKey:'id_stop_a',
-                onDelete:'cascade',
-                onUpdate:'cascade',
-                as:'stopA'
-                
-            }),
-            Stops.hasMany(models.RouteTimes,{
-                foreignKey:'id_stop_b',
-                secureKey:'id_stop_b',
-                onDelete:'cascade',
-                onUpdate:'cascade',
-                as:'stopB'
-                
-            })
-            
+            })            
         }
 
     return Stops

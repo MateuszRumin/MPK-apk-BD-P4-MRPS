@@ -7,15 +7,11 @@ module.exports = (sequelize,DataTypes) => {
             primaryKey:true,
             autoIncrement:true
         },
-       id_route:{
+        id_route_a:{
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        id_stop_a:{
-            type:DataTypes.INTEGER,
-            allowNull:false
-        },
-        id_stop_b:{
+        id_route_b:{
             type:DataTypes.INTEGER,
             allowNull:false
         },
@@ -40,17 +36,17 @@ module.exports = (sequelize,DataTypes) => {
     })
 
     RouteTimes.associate = (models) => {
-        RouteTimes.belongsTo(models.Stops,{
-            foreignKey:'id_stop_a',
-            secureKey:'id_stop_a',
+        RouteTimes.belongsTo(models.Routes,{
+            foreignKey:'id_route_a',
+            secureKey:'id_route_a',
             onDelete:'cascade',
             onUpdate:'cascade',
             as:'stopOne'
             
         }),
-        RouteTimes.belongsTo(models.Stops,{
-            foreignKey:'id_stop_b',
-            secureKey:'id_stop_b',
+        RouteTimes.belongsTo(models.Routes,{
+            foreignKey:'id_route_b',
+            secureKey:'id_route_b',
             onDelete:'cascade',
             onUpdate:'cascade',
             as:'stopTwo'
