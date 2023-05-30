@@ -2,10 +2,15 @@ import { useParams } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import { Navbar } from './Navbar'
 import axios from 'axios'
-
+import DisplayWeekDayHome from './DisplayWeekDayHome'
+import DisplayHolidayHome from './DisplayHolidayHome'
+import DisplayWeekendsHome from './DisplayWeekendsHome'
+import '../css/Line.css'
+let displayLine = ''
 const Line = () => {
 	const params = useParams()
 	const [usersData, setUsersData] = useState([])
+	let [selectLine2, setSelectLine2] = useState([])
 
 	useEffect(() => {
 		const selectLine = params.id_line
@@ -19,8 +24,7 @@ const Line = () => {
 			.then(response => {
 				const usersData = response.data
 				setUsersData(usersData)
-				console.log('Pobranie ulic z bazy')
-				console.log(usersData)
+				console.log(`Pobranie przystanków dla lini ${displayLine}`)
 			})
 			.catch(error => {
 				console.log(error)
@@ -29,35 +33,32 @@ const Line = () => {
 
 	const selectLines = line => {
 		console.log(line)
-		// props.selectConnect(line);
+		selectLine2 = line
+		setSelectLine2(selectLine2)
 	}
 
 	return (
-		<div>
+		<div className="structureSection">
 			<Navbar />
-			<section className="sectionConnectDisplayConnects containerLines">
-				<section className="contentDisplayConnects">
-					<div className="tbl-header">
+			<section className="sectionHomeLine containerDisplayLins">
+				<section className="contentDisLines">
+					<p>Linia: {displayLine}</p>
+					<div className="tbl-headerrr">
 						<table className="tableDisplayConnects" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
-									<th>Kolejno</th>
 									<th>Przystanek</th>
-									<th>Numer lini</th>
-									<th>Wariant</th>
 								</tr>
 							</thead>
 						</table>
 					</div>
-					<div className="tbl-content">
-						<table className="tableDisplayConnects" cellPadding="0" cellSpacing="0" border="0">
-							<tbody className="DispConnects">
+					<div className="tbl-contenttt">
+						<table className="tableDisplayConnectsts" cellPadding="0" cellSpacing="0" border="0">
+							<tbody className="DispConnecccts">
 								{usersData.map(user => (
-									<tr key={user.id_route}>
-										<td>{user.order}</td>
+									<tr key={user.id_route} onClick={() => selectLines(user)}>
 										<td>{user.stop.name}</td>
-										<td>{user.line.num_line}</td>
-										
+										<td className="noDisplayy">{(displayLine = user.line.num_line)}</td>
 									</tr>
 								))}
 							</tbody>
@@ -68,6 +69,12 @@ const Line = () => {
 					{/* <h1>Strona linii {JSON.stringify(params)}</h1> */}
 					{/* Tutaj wyświetlaj zawartość strony */}
 				</div>
+			</section>
+
+			<section className="rightSectionLine">
+				<DisplayWeekDayHome selectLine2={selectLine2} />
+				<DisplayWeekendsHome selectLine2={selectLine2} />
+				<DisplayHolidayHome selectLine2={selectLine2} />
 			</section>
 		</div>
 	)
