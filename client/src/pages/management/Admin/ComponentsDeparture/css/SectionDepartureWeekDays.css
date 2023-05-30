@@ -1,0 +1,14 @@
+.switchClass {
+
+margin: 0px 20px;
+cursor: pointer;
+transition: color .3s;
+
+}
+.switchClass:hover{
+    color: royalblue;
+}
+.selectSwitch{
+    color:royalblue;
+    font-weight: bold;
+}

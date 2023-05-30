@@ -80,6 +80,7 @@ export const Users = props => {
 					<nav className="navigationUsers">
 						<NavLink to="/admin">Main panel</NavLink>
 						<NavLink to="/admin/connections">Połączenia</NavLink>
+						<NavLink to="/admin/departure">Odjazy</NavLink>
 						<NavLink to="/admin/lines">Ulice</NavLink>
 						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
