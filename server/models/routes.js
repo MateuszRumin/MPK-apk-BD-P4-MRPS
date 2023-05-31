@@ -19,7 +19,7 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        mon_fri:{
+        week:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
             defaultValue:false
@@ -35,7 +35,7 @@ module.exports = (sequelize,DataTypes) => {
             defaultValue:false
 
         },
-        active:{
+        not_active:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
             defaultValue:false

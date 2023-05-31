@@ -51,7 +51,10 @@ module.exports = {
           const data = { 
             id_line:line.id_line,
             id_stop:stop.id_stop,
-            order:dat.order 
+            order:dat.order,
+            week:true,
+            saturday:true,
+            sunday:true,
           }
             
           const use = await Routes.findOne({ where: data });

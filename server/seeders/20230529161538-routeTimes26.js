@@ -91,10 +91,19 @@ for (let datalines of linesAll ){
             updatedAt: new Date()
             }
             const addData = {
-              mon_fri:'00:05:00',
-              saturday:'00:05:00',
-              sunday:'00:05:00'
+            
+            week_mor:'00:05:00',
+            week_mid:'00:06:00',
+            week_eve:'00:04:00',
+            saturday_mor:'00:04:00',
+            saturday_mid:'00:06:00',
+            saturday_eve:'00:03:00',
+            sunday_mor:'00:04:00',
+            sunday_min:'00:05:00',
+            sunday_eve:'00:03:00'
             }
+            
+
             const direct1={
               direction:true
             }
@@ -140,6 +149,6 @@ for (let datalines of linesAll ){
 
   },
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Routes', null, {});
+    return queryInterface.bulkDelete('RouteTimes', null, {});
   }
 }

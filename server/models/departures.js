@@ -18,13 +18,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
 			allowNull: false,
         },
-        id_stop:{
-            type: DataTypes.INTEGER,
+		day:{
+			type: DataTypes.STRING,
 			allowNull: false,
-        },
+		},
 		time: {
 			type: DataTypes.TIME,
-			allowNull: false,
+			allowNull: true,
 		}
 	
 	})

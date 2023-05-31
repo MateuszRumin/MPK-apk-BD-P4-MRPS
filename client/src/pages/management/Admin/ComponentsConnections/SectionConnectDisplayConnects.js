@@ -23,7 +23,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 			console.log(objStopss)
 
 			axios
-				.post('http://localhost:3001/select/routes/pnpt', objStopss)
+				.post('http://localhost:3001/select/routeTimes/forLinesdirTrue', objStopss)
 				.then(response => {
 					const weekDays = response.data
 					setWeekDays(weekDays)
@@ -79,22 +79,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 		}
 	}
 
-	const deleteLine = data => {
-		console.log(data.id_street)
-		const confirmDelete = window.prompt(
-			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
-		)
-		if (confirmDelete === 'TAK') {
-			// Wywołanie metody do usunięcia linii
-			console.log(`Usuwam linię o id tutaj konkrtetna`)
-			axios.post('http://localhost:3001/test', data).then(response => {
-				console.log(response.data)
-			})
-		} else {
-			console.log('Anulowano usuwanie linii.')
-		}
-	}
-
+	
 	Modal.setAppElement('#root')
 
 	return (
@@ -110,9 +95,15 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 								<th>Id</th>
 								<th>Route_od</th>
 								<th>Route_do</th>
-								<th>Pn</th>
-								<th>Sb</th>
-								<th>Nd</th>
+								<th>Pn_pt 08:00-11:00</th>
+								<th>Pn_pt 11:00-14:00</th>
+								<th>Pn_pt od 14:00</th>
+								<th>Sb 08:00-11:00</th>
+								<th>Sb 11:00-14:00</th>
+								<th>Sb od 14:00</th>
+								<th>Nd 08:00-11:00</th>
+								<th>Nd 11:00-14:00</th>
+								<th>Nd od 14:00</th>
 								<th className="thirdTd"></th>
 							</tr>
 						</thead>
@@ -122,26 +113,33 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 						<tbody className="DispStreets ">
 							{weekDays.map(user => (
-								<tr key={user.id_route}>
-									<td>
-										{user.stop.name}
+								<tr key={user.id_routeTime}>
+									
+									<td>{user.id_routeTime}</td>
+									<td>{user.stopOne.stop.name}</td>
+									<td>{user.stopTwo.stop.name}</td>
+									<td>{user.week_mor}</td>
+									<td>{user.week_mid}</td>
+									<td>{user.week_eve}</td>
+									<td>{user.saturday_mor}</td>
+									<td>{user.saturday_mid}</td>
+									<td>{user.saturday_eve}</td>
+									<td>{user.sunday_mor}</td>
+									<td>{user.sunday_min}</td>
+									<td>{user.sunday_eve}</td>
+
+
 										{/* <span className="spanKlikLine" onClick={() => this.selectLines(user)}>
                         KLIKNIJ
                       </span>
                       <span className="spanKlikLine" onClick={() => this.changeRename(user)}>
                         ZMIEŃ NAZWE
                       </span> */}
-									</td>
+									
 
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
-										<b>zmien czas</b>
-									</td>
+									
 
-									<td className="thirdTd">
-										<button className="buttonlistDisplayStret" onClick={() => deleteLine(user)}>
-											X
-										</button>
-									</td>
+									
 								</tr>
 							))}
 						</tbody>

@@ -15,15 +15,43 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.INTEGER,
             allowNull:false
         },
-        mon_fri:{
+    
+        week_mor:{
             type:DataTypes.TIME,
-            allowNull:true,    
+            allowNull:true,
+            
         },
-        saturday:{
+        week_mid:{
+            type:DataTypes.TIME,
+            allowNull:true,
+            
+        },
+        week_eve:{
+            type:DataTypes.TIME,
+            allowNull:true,
+            
+        },
+        saturday_mor:{
             type:DataTypes.TIME,
             allowNull:true,     
         },
-        sunday:{
+        saturday_mid:{
+            type:DataTypes.TIME,
+            allowNull:true,     
+        },
+        saturday_eve:{
+            type:DataTypes.TIME,
+            allowNull:true,     
+        },
+        sunday_mor:{
+            type:DataTypes.TIME,
+            allowNull:true,           
+        },
+        sunday_min:{
+            type:DataTypes.TIME,
+            allowNull:true,           
+        },
+        sunday_eve:{
             type:DataTypes.TIME,
             allowNull:true,           
         },
