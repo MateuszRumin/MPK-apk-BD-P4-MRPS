@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
 import './css/SectionLinesDisplayStops.css'
+
 let zmienna = ''
 let iloscwierszy
-class SectionLinesDisplayStops extends Component {
-	state = {
-		usersData: [],
-	}
 
-	getStreetsData = idstret => {
-		// const data = { street_id: 3} // zamiast 123, wstaw wartość wybraną przez użytkownika
-		// const id_street = { id_street: data.street_id }
+const SectionLinesDisplayStops = props => {
+	const [usersData, setUsersData] = useState([])
+	const [update, setUpdate] = useState('False')
+	const [serviceErr, setServiceEerr] = useState(false)
+
+	const getStreetsData = idstret => {
 		const id_street = {
 			id_street: idstret,
 		}
@@ -22,7 +22,7 @@ class SectionLinesDisplayStops extends Component {
 			.post('http://localhost:3001/select/stops/onStreet', id_street)
 			.then(response => {
 				const usersData = response.data
-				this.setState({ usersData })
+				setUsersData(usersData)
 				console.log('Pobranie ulic z bazy')
 				console.log(usersData)
 			})
@@ -31,41 +31,29 @@ class SectionLinesDisplayStops extends Component {
 			})
 	}
 
-	test = () => {
-		console.log('klinieto')
-		this.getStreetsData(zmienna)
+	useEffect(() => {
+		if (props) {
+			// zmienna = props.selectLine.id_street
+
+			console.log(zmienna)
+			getStreetsData(zmienna)
+		}
+	}, [props])
+
+	const handleRowClick = user => {
+		onSubmit(user)
 	}
 
-	handleRowClick(user) {
-		// console.log(user.emp_no)
-		//return <SectionUsersEditionUsers myObject={user} />
-		// this.props.onChange(user);
-		this.onSubmit(user)
-	}
-	// Wysyła zapytanie do serwera odnoscnie konkretnej lini i w innym komponencie wyświetli dane
-	onSubmit = data => {
+	const onSubmit = data => {
 		axios.post('http://localhost:3001/auth/login/', data).then(response => {
 			console.log(response.data)
 		})
 	}
 
-	addNewStops = data => {
-		console.log('test')
-
-		// axios.post('http://localhost:3001/auth/login/', data).then(response => {
-		// 	console.log(response.data)
-		// })
-	}
-
-	deleteLine(data) {
-		console.log(data.id_street)
-
-		const confirmDelete = window.prompt(
-			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
-		)
-
-		if (confirmDelete === 'TAK') {
-			// Wywołanie metody do usunięcia linii
+	const deleteLine = (data, event) => {
+		event.preventDefault() // Zapobiegamy domyślnej akcji (wyświetlanie kontekstowego menu przeglądarki)
+		const answer = window.confirm('Na pewno chcesz usunąć przystanek ?')
+		if (answer) {
 			console.log(`Usuwam przystanek o id tutaj konkrtetna`)
 			axios.post('http://localhost:3001/test', data).then(response => {
 				console.log(response.data)
@@ -73,12 +61,11 @@ class SectionLinesDisplayStops extends Component {
 		} else {
 			console.log('Anulowano usuwanie linii.')
 		}
+
+		console.log(data.id_street)
 	}
 
-	changeRename(data) {
-		// console.log(data)
-
-		// console.log(data);
+	const changeRename = data => {
 		const confirmDelete = window.prompt(`Podaj nową nazwę przystanku? `)
 
 		if (confirmDelete && !/\d/.test(confirmDelete)) {
@@ -92,135 +79,98 @@ class SectionLinesDisplayStops extends Component {
 		}
 	}
 
-	selectStops(line, event, index) {
-		// console.log(user)
-		//return <SectionUsersEditionUsers myObject={user} />
-
-		// console.log(`ilosc wierszy to ${iloscwierszy}`);
-		console.log(line)
-		line.order = index + 1
-		line.rows = iloscwierszy
-
-		console.log(`Kliknięty element o indeksie: ${index}`)
-		this.props.selectStops(line)
+	const initialValues = {
+		name: '',
 	}
-	render() {
-		const initialValues = {
-			name: '',
-		}
-		const validationSchema = Yup.object().shape({
-			name: Yup.string().required('Nie może być pusty'),
-		})
 
-		const onSubmit = data => {
+	const validationSchema = Yup.object().shape({
+		name: Yup.string().required('Nie może być pusty'),
+	})
+
+	const onSubmitForm = data => {
+		if (zmienna == '') {
+			console.log('pustka')
+			setServiceEerr(true)
+		} else {
 			data.id_street = zmienna
-			data.id_usr_emp = this.props.idAccountRole
+			data.id_usr_emp = props.idAccountRole
 			axios.post('http://localhost:3001/insert/stop', data).then(response => {
 				console.log(response.data)
+				if (response.data == 'Added') {
+					setUpdate('true')
+				}
 			})
 		}
-
-		const { usersData } = this.state
-
-		// function selectSendLine(data) {
-		// 	// Tuaj jest cały obiekt z wybranej ulicy
-
-		// 	const id_street = {
-		// 		id_street: data.street_id,
-		// 	}
-		iloscwierszy = usersData.length
-		// 	// TUTAJ WYSYŁA ZAPYTANIE O TO JAKIE PRZYSTANKI MAJĄ BYĆ WYŚWIETLONE
-		// 	axios.post('http://localhost:3001/select/stops/onStreet', id_street).then(response => {
-		// 		// const usersData = response.data
-
-		// 		const usersData = response.data
-
-		// 		console.log(usersData);
-		// 		this.setState( usersData )
-
-		// 		// tutaj bedzie dalszy ciąg
-		// 	})
-		// }
-
-		return (
-			<section className="sectionLinesDisplayStops">
-				{/* {this.props.selectLine.street_id && this.getStreetsData (this.props.selectLine)} */}
-
-				<div className="headerSectionDisplayStops">
-					<p>Lista Przystanków </p>
-					<div className="noDisplay">
-						{this.props.selectLine.id_street ? (zmienna = this.props.selectLine.id_street) : console.log('nie ma')}
-					</div>
-				</div>
-				<section className="contentDisplayStops">
-					<div className="tbl-header">
-						<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
-							<thead>
-								<tr>
-									<th>Id</th>
-									<th>Nazwa</th>
-									<th className="thirdTd"></th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-					<div className="tbl-content">
-						<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
-							<tbody className="DisplayStops">
-								{usersData.map((user, index) => (
-									<tr key={user.stop_id}>
-										<td>
-											{user.stop_id}
-											<span className="spanKlikLine" onClick={event => this.selectStops(user, event, index)}>
-												KLIKNIJ
-											</span>
-											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
-												ZMIEŃ NAZWE
-											</span>
-										</td>
-										<td>{user.name}</td>
-
-										<td className="thirdTd">
-											<button className="buttonlistDisplayStops" onClick={() => this.deleteLine(user)}>
-												X
-											</button>
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-						<button className="buttonNewToCon" onClick={this.test}>
-							Pobierz przystanki
-						</button>
-						{/* Wybarłeś ulicę {zmienna} */}
-					</div>
-
-					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-						<Form>
-							<div className="headerAddStopss">
-								<span>
-									{/* Jest to przesyłane z AccountRole */}
-									Dodaj przystanek:
-									<ErrorMessage className="errorMessage" component="span" name="id_role" />
-								</span>
-								<span></span>
-							</div>
-
-							<section className="formContentDataAddStopss">
-								<label htmlFor="imie">
-									Nazwa: <ErrorMessage className="errorMessage" component="span" name="username" />
-								</label>
-								<Field className="inputFormDataAddStopss" type="text" id="imie" name="name" />
-
-								<br />
-
-								<button className="buttonFormSubmitChangeAddStopss">Dodaj</button>
-							</section>
-						</Form>
-					</Formik>
-				</section>
-			</section>
-		)
 	}
+
+	return (
+		<section className="sectionLinesDisplayStops">
+			<div className="headerSectionDisplayStops">
+				<p>Lista Przystanków </p>
+				<div className="noDisplay">
+					{props.selectLine.id_street ? (zmienna = props.selectLine.id_street) : console.log('nie ma')}
+				</div>
+			</div>
+			<section className="contentDisplayStops">
+				<div className="tbl-header">
+					<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
+						<thead>
+							<tr>
+								{/* <th>Id</th> */}
+								<th>Nazwa</th>
+								{update}
+								<th className="thirdTd"></th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div className="tbl-content">
+					<table className="tableDisplayStops" cellPadding="0" cellSpacing="0" border="0">
+						<tbody className="DisplayStops">
+							{usersData.map((user, index) => (
+								<tr key={user.id_stop}>
+									{/* <td>
+                    {user.id_stop}
+                   
+                  
+                  </td> */}
+									<td className="spanKlikLine" onClick={() => changeRename(user)}>
+										{user.name}
+									</td>
+
+									<td className="thirdTd">
+										<button className="buttonlistDisplayStops" onClick={event => deleteLine(user, event)}>
+											X
+										</button>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+
+				<Formik initialValues={initialValues} onSubmit={onSubmitForm} validationSchema={validationSchema}>
+					<Form>
+						<div className="headerAddStopss">
+							<span>Dodaj przystanek:</span>
+							<br />
+							{serviceErr && <span style={{ color: 'red' }}>Nie wybrano lini</span>}
+							<span></span>
+						</div>
+
+						<section className="formContentDataAddStopss">
+							<label htmlFor="imie">Nazwa:</label>
+							<Field className="inputFormDataAddStopss" type="text" id="imie" name="name" />
+
+							<br />
+
+							<button className="buttonFormSubmitChangeAddStopss">Dodaj</button>
+						</section>
+					</Form>
+				</Formik>
+			</section>
+		</section>
+	)
 }
+
 export default SectionLinesDisplayStops

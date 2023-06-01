@@ -125,7 +125,7 @@ class SectionUsersAccountRole extends Component {
 								<label htmlFor="nazwisko">
 									Email: <ErrorMessage className="errorMessage" component="span" name="email" />
 								</label>
-								<Field className="inputFormDataAccount" type="text" id="nazwisko" name="email" />
+								<Field className="inputFormDataAccount" type="email" id="nazwisko" name="email" />
 
 								<br />
 								<button className="buttonFormSubmitChangeAccount">Zmień</button>

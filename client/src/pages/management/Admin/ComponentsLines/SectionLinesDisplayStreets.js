@@ -40,22 +40,20 @@ class SectionLinesDisplayStreets extends Component {
 		
 		this.props.onChange(line)
 	}
-	deleteLine(data) {
-		console.log(data.id_street)
+	deleteLine(data, event) {
 
-		const confirmDelete = window.prompt(
-			`Czy na pewno chcesz usunąć linię ${data.name} ? \nWpisz "TAK", aby potwierdzić.`
-		)
-
-		if (confirmDelete === 'TAK') {
-			// Wywołanie metody do usunięcia linii
-			console.log(`Usuwam linię o id tutaj konkrtetna`)
+		event.preventDefault() // Zapobiegamy domyślnej akcji (wyświetlanie kontekstowego menu przeglądarki)
+		const answer = window.confirm(`Na pewno chcesz usunąć linie ${data.name} ?`)
+		if (answer) {
+		
 			axios.post('http://localhost:3001/test', data).then(response => {
 				console.log(response.data)
 			})
 		} else {
 			console.log('Anulowano usuwanie linii.')
 		}
+
+		console.log(data.id_street)
 	}
 
 	changeRename(data) {
@@ -86,7 +84,8 @@ class SectionLinesDisplayStreets extends Component {
 						<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 							<thead>
 								<tr>
-									<th>Id</th>
+									{/* <th>Id</th> */}
+									<th>Akcja</th>
 									<th>Nazwa</th>
 									<th className="thirdTd"></th>
 								</tr>
@@ -99,19 +98,18 @@ class SectionLinesDisplayStreets extends Component {
 								{usersData.map(user => (
 									<tr key={user.id_street}>
 										<td>
-											{user.id_street}{' '}
+											{/* {user.id_street}{' '} */}
 											<span className="spanKlikLine" onClick={() => this.selectLines(user)}>
-												KLIKNIJ
+												Wybierz
 											</span>
-											<span className="spanKlikLine" onClick={() => this.changeRename(user)}>
-												ZMIEŃ NAZWE
-											</span>
+										
 										</td>
-										<td>{user.name}</td>
+										<td className="spanKlikLine" onClick={() => this.changeRename(user)}>{user.name}</td>
 
 										<td className="thirdTd">
-											<button className="buttonlistDisplayStret" onClick={() => this.deleteLine(user)}>
+											<button className="buttonlistDisplayStret" onClick={event => this.deleteLine(user, event)}>
 												X
+												
 											</button>
 										</td>
 									</tr>

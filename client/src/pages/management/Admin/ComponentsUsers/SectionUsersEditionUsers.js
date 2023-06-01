@@ -7,6 +7,7 @@ import pl from 'yup-locale-pl'
 // import { redirect } from 'react-router-dom'
 import './css/SectionUsersEditionUsers.css'
 Yup.setLocale(pl)
+let selectUser
 
 export class SectionUsersEditionUsers extends React.Component {
 	state = {
@@ -23,29 +24,96 @@ export class SectionUsersEditionUsers extends React.Component {
 				pesel: '',
 				tel_num: '',
 			},
+			serviceErr: {
+				error: false,
+				responseSer: false,
+			},
 		}
 	}
+	handleChange = event => {
+		const { value } = event.target
+		this.setState({ phoneNumber: value })
+	}
 
+	handleKeyUp = event => {
+		const { value } = event.target
+
+		if (value.length === 3 || value.length === 7) {
+			// Dodajmy myślnik po wpisaniu trzeciej i siódmej cyfry
+			this.setState({ phoneNumber: value + '-' })
+		}
+	}
 	render() {
-		const { initialValues } = this.state
+		const { initialValues, error, responseSer } = this.state
 
 		const validationSchema = Yup.object().shape({
-			first_name: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
-			second_name: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
-			addres: Yup.string().min(3, 'Za krotki').max(20).required('Nie może być pusty'),
+			first_name: Yup.string()
+				.matches(/^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]*$/, 'Tylko litery, musi zaczynać się od dużej litery')
+				.min(3, 'Za krótki')
+				.max(20, 'Za długi')
+				.required('Nie może być pusty'),
+
+			second_name: Yup.string()
+				.matches(/^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]*$/, 'Tylko litery, musi zaczynać się od dużej litery')
+				.min(3, 'Za krótki')
+				.max(20, 'Za długi')
+				.required('Nie może być pusty'),
+
+			addres: Yup.string().min(3, 'Za krotki').max(30).required('Nie może być pusty'),
 			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
+
+			// pesel: Yup.string()
+			// 	.required('Nie może być pusty')
+			// 	.test('valid-pesel', 'Nieprawidłowy numer PESEL', value => {
+			// 		if (!value) return true // Jeśli wartość jest pusta, walidacja przechodzi (inną walidację pokryje już required())
+
+			// 		const peselRegex = /^[0-9]{11}$/
+			// 		if (!peselRegex.test(value)) return false // Jeśli numer PESEL nie ma 11 cyfr, walidacja nie przechodzi
+
+			// 		// Sprawdzenie poprawności cyfry kontrolnej
+			// 		const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
+			// 		const digits = value.split('').map(Number)
+			// 		const controlSum = digits.slice(0, 10).reduce((sum, digit, index) => sum + digit * weights[index], 0)
+			// 		const controlDigit = (10 - (controlSum % 10)) % 10
+
+			// 		return controlDigit === digits[10] // Walidacja przechodzi, jeśli cyfra kontrolna jest poprawna
+			// 	})
+			// 	.typeError('To musi być numer'),
+
 			tel_num: Yup.string()
 				.max(20)
 				.required('To pole jest wymagane')
 				.matches(/^[0-9-]+$/, 'Można wprowadzać tylko cyfry i znak "-"'),
+
+			// tel_num: Yup.string()
+			// 	.max(20)
+			// 	.required('To pole jest wymagane')
+			// 	.matches(/^\d{3}-\d{3}-\d{3}$/, 'Format "111-222-333"'),
 		})
 
 		const onSubmit = data => {
-			let emp_no = document.getElementById('userid').innerText
-			data.emp_no = emp_no
-			axios.post('http://localhost:3001/update/employee', data).then(response => {
-				console.log(response.data)
-			})
+			if (
+				selectUser.first_name === data.first_name &&
+				selectUser.second_name === data.second_name &&
+				selectUser.addres === data.addres &&
+				selectUser.pesel === data.pesel &&
+				selectUser.tel_num === data.tel_num
+			) {
+				this.setState({ error: true })
+			} else {
+				this.setState({ error: false })
+
+				console.log(data)
+
+				let emp_no = document.getElementById('userid').innerText
+				data.emp_no = emp_no
+				axios.post('http://localhost:3001/update/employee', data).then(response => {
+					console.log(response.data)
+					if (response.data === 'employees') {
+						this.setState({ responseSer: true })
+					}
+				})
+			}
 		}
 		function onObjectChange(props) {
 			initialValues.first_name = props.first_name
@@ -53,6 +121,8 @@ export class SectionUsersEditionUsers extends React.Component {
 			initialValues.addres = props.addres
 			initialValues.pesel = props.pesel
 			initialValues.tel_num = props.tel_num
+
+			selectUser = props
 		}
 
 		return (
@@ -121,8 +191,11 @@ export class SectionUsersEditionUsers extends React.Component {
 								</label>
 								<Field className="inputFormDataUsers" type="phone" id="tel" name="tel_num" placeholder="Zmień dane" />
 								{/* <div onClick={this.handleChangeValues}>dd</div> */}
-
 								<br />
+								{error && <span style={{ color: 'red' }}>Te same dane</span>}
+								{responseSer && <span style={{ color: 'green' }}>Zmieniono dane</span>}
+								<br />
+
 								<button className="buttonFormSubmitChangeUsers">Zatwierdż</button>
 							</section>
 						</Form>
