@@ -12,7 +12,6 @@ export const MainPanel = () => {
 
 					<nav className="navigation">
 						<NavLink to="/admin/lines">Ulice</NavLink>
-
 						<NavLink to="/admin/users">Uzytkownicy</NavLink>
 						<NavLink to="/admin/departure">Odjazy</NavLink>
 						<NavLink to="/admin/connections">Połączenia</NavLink>

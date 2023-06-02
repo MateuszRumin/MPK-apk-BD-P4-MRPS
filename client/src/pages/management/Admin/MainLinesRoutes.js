@@ -4,11 +4,8 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import SectionMainLinesDisplayLines from './ComponentsMainLinesRouter/SectionMainLinesDisplayLines'
 import SectionMainLinesRoutesWeekDays from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekDays'
-import SectionMainLinesRoutesWeekends from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekends'
-import SectionMainLinesHoliday from './ComponentsMainLinesRouter/SectionMainLinesHoliday'
 import SectionMainLinesAddNewLine from './ComponentsMainLinesRouter/SectionMainLinesAddNewLine'
-import SectionMainLinesChangePostition from './ComponentsMainLinesRouter/SectionMainLinesChangePostition'
-import SectionMainLinesAddStopToLine from './ComponentsMainLinesRouter/SectionMainLinesAddStopToLine'
+
 import '../Admin/ComponentsMainLinesRouter/css/MainLinesRoutes.css'
 
 export const MainLinesRoutes = () => {
@@ -73,8 +70,7 @@ export const MainLinesRoutes = () => {
 					<React.StrictMode>
 						<DndProvider backend={HTML5Backend}>
 							<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
-							{/* <SectionMainLinesHoliday selectLine={selectLine} onChangee={selectLineWeekDays} /> */}
-							{/* <SectionMainLinesRoutesWeekends selectLine={selectLine} onChangee={selectLineWeekDays} /> */}
+						
 						</DndProvider>
 					</React.StrictMode>
 					, document.getElementById('root'), );
