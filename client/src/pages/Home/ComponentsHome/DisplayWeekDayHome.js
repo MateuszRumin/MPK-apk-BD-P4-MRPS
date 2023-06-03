@@ -17,7 +17,7 @@ const DisplayWeekDayHome = ({ selectLine2 }) => {
 			// console.log(objStops)
 
 			axios
-				.post('http://localhost:3001/test', objStops)
+				.post('http://localhost:3001/select/departure/onstop', objStops)
 				.then(response => {
 					const weekDays = response.data
 					// setWeekDays(weekDays)
@@ -61,8 +61,8 @@ const DisplayWeekDayHome = ({ selectLine2 }) => {
 					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 						<tbody className="DispStreets ">
 							{weekDays.map(user => (
-								<tr key={user.id_route}>
-									<td>{user.stop.name}</td>
+								<tr key={user.num_passage}>
+									<td>{user.time}</td>
 								</tr>
 							))}
 						</tbody>

@@ -125,7 +125,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 									<td>{user.saturday_mid}</td>
 									<td>{user.saturday_eve}</td>
 									<td>{user.sunday_mor}</td>
-									<td>{user.sunday_min}</td>
+									<td>{user.sunday_mid}</td>
 									<td>{user.sunday_eve}</td>
 
 

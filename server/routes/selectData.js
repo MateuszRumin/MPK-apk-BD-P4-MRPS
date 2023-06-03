@@ -52,6 +52,9 @@ router.post('/routeTimes/forLinesdirFalse',routeTimesController.forLinesdirFalse
 
 
 
+const departureController = require('../controllers/data/select/departures')
+router.post('/departure/onstop',departureController.onstop)//wypisz wszystkie
+
 
 
 

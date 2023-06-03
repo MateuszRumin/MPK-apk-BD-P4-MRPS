@@ -29,6 +29,17 @@ module.exports = (sequelize, DataTypes) => {
 	
 	})
 
+	Departures.associate = (models) => {
+		Departures.belongsTo(models.Routes,{
+            foreignKey:'id_route',
+            secureKey:'id_route',
+            onDelete:'cascade',
+            onUpdate:'cascade',
+            as:'dep'
+            
+        })
+        
+    }
 	
 	
 

@@ -58,7 +58,7 @@ exports.forLinesdirTrue = async (req, res) => {
 		"saturday_mid",
 		"saturday_eve",
 		"sunday_mor" ,
-		"sunday_min",
+		"sunday_mid",
 		"sunday_eve",
         "direction"]  
        
@@ -127,7 +127,7 @@ exports.forLinesdirFalse = async (req, res) => {
 		"saturday_mid",
 		"saturday_eve",
 		"sunday_mor" ,
-		"sunday_min",
+		"sunday_mid",
 		"sunday_eve",
         "direction"]  
        

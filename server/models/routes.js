@@ -89,6 +89,14 @@ module.exports = (sequelize,DataTypes) => {
             as:'stopB'
             
         })
+        Routes.hasMany(models.Departures,{
+            foreignKey:'id_route',
+            secureKey:'id_route',
+            onDelete:'cascade',
+            onUpdate:'cascade',
+            as:'dep'
+            
+        })
                
         
 	}
