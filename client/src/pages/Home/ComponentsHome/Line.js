@@ -18,7 +18,7 @@ const Line = () => {
 		const seLine = {
 			id_line: selectLine,
 		}
-
+		
 		axios
 			.post('http://localhost:3001/select/routes/pnpt', seLine)
 			.then(response => {
@@ -34,6 +34,7 @@ const Line = () => {
 	const selectLines = line => {
 		console.log(line)
 		selectLine2 = line
+		console.log(selectLine2);
 		setSelectLine2(selectLine2)
 	}
 

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal'
+import "../css/DisplayWeekendsHome.css"
 let objStops = 0
-
+let direction = false
 const DisplayWeekendsHome = ({ selectLine2 }) => {
 
 	const [weekDays, setWeekDays] = useState([])
+
 
 	const getStopsFreeForLine = () => {
 	
@@ -14,13 +16,24 @@ const DisplayWeekendsHome = ({ selectLine2 }) => {
 		} else {
 			
 
-			// console.log(objStops)
+			console.log(objStops)
+
+			let sendObj = {
+				day: 'holiday',
+				id_line: objStops.id_line,
+				id_stop: objStops.id_stop,
+				id_route: objStops.id_route,
+				direction: direction,
+			}
+
+
 
 			axios
-				.post('http://localhost:3001/select/departure/onstop', objStops)
+				// .post('http://localhost:3001/select/departure/onstop', objStops)
+				.post('http://localhost:3001/test', sendObj)
 				.then(response => {
 					const weekDays = response.data
-					 setWeekDays(weekDays)
+					// setWeekDays(weekDays)
 					console.log('Pobrano')
 					console.log(weekDays)
 				})
@@ -40,6 +53,22 @@ const DisplayWeekendsHome = ({ selectLine2 }) => {
 			onObjectChange(selectLine2)
 		}
 	}, [selectLine2])
+	
+	const switchDirection = () => {
+		console.log(direction);
+
+
+		if(direction == false){
+
+			direction = true
+		}else if(direction == true){
+
+			direction = false
+
+		}
+		getStopsFreeForLine()
+	
+	}
 
 	return (
 		<section className="sectionLinesDisplayStreetsT">
@@ -47,11 +76,12 @@ const DisplayWeekendsHome = ({ selectLine2 }) => {
 				<span className="switchClass">Soboty</span>
 			</div>
 			<section className="contentDisplayStreets">
-				<div className="tbl-header">
+				<div className="tbl-header posr">
+							<i onClick={() => switchDirection()} className="ti ti-refresh iconRefreshWeekends"></i>
 					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 						<thead>
 							<tr>
-							<th>Godziny</th>
+								<th>Godziny</th>
 								<th>Minuty</th>
 							</tr>
 						</thead>
@@ -62,9 +92,8 @@ const DisplayWeekendsHome = ({ selectLine2 }) => {
 						<tbody className="DispStreets ">
 							{weekDays.map(user => (
 								<tr key={user.num_passage}>
-								<td>{user.time}</td>
-							</tr>
-								
+									<td>{user.time}</td>
+								</tr>
 							))}
 						</tbody>
 					</table>
