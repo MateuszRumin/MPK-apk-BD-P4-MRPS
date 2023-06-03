@@ -65,7 +65,7 @@ module.exports = {
     for (let line of linesAll) {
       let lineObj = await Lines.findOne({ where: line, attributes: ['id_line'] });
   
-      let routesAllWeek = await Routes.findAll({ where: { id_line: lineObj.id_line, week: true } });
+      let routesAllWeek = await Routes.findAll({ where: { id_line: lineObj.id_line, saturday: true } });
   
       
       
@@ -79,7 +79,7 @@ module.exports = {
           let values = {
             num_passage: num.num_passage,
             id_route: route.id_route,
-            day: 'week',
+            day: 'saturday',
             direction: true,
           };
           
@@ -106,16 +106,16 @@ module.exports = {
             datatime = await RouteTimes.findOne({ where: timeIds });
 
             if (timeToSeconds('03:00:00') < oldTime && oldTime < timeToSeconds('11:00:00')) {
-              timeToAdd = timeToSeconds(datatime.week_mor)
+              timeToAdd = timeToSeconds(datatime.saturday_mor)
               addedTime = (oldTime+timeToAdd) % (24*3600)
               
             } else if (timeToSeconds('11:00:00') < oldTime && oldTime < timeToSeconds('19:00:00')) {
-              timeToAdd =timeToSeconds(datatime.week_mid)
+              timeToAdd =timeToSeconds(datatime.saturday_mid)
               addedTime = (oldTime+timeToAdd) % (24*3600)
               
               
             } else {
-              timeToAdd = timeToSeconds(datatime.week_eve)
+              timeToAdd = timeToSeconds(datatime.saturday_eve)
               addedTime = (oldTime+timeToAdd) % (24*3600)
             }
   

@@ -41,18 +41,18 @@ module.exports = {
       { num_line: "37" },
     ];
     const info = [
-      { num_passage: '1', time: '08:00:00' },
-      { num_passage: '2', time: '09:00:00' },
-      { num_passage: '3', time: '10:10:00' },
-      { num_passage: '4', time: '11:20:00' },
-      { num_passage: '5', time: '12:00:00' },
-      { num_passage: '6', time: '15:15:00' },
-      { num_passage: '7', time: '17:30:00' },
-      { num_passage: '8', time: '19:00:00' },
-      { num_passage: '9', time: '22:11:00' },
+      { num_passage: '1', },
+      { num_passage: '2', },
+      { num_passage: '3', },
+      { num_passage: '4', },
+      { num_passage: '5', },
+      { num_passage: '6', },
+      { num_passage: '7', },
+      { num_passage: '8', },
+      { num_passage: '9', },
     ];
-   
- 
+    
+    
     let timeIds
     let before = null;
     let time
@@ -65,7 +65,14 @@ module.exports = {
     for (let line of linesAll) {
       let lineObj = await Lines.findOne({ where: line, attributes: ['id_line'] });
   
-      let routesAllWeek = await Routes.findAll({ where: { id_line: lineObj.id_line, week: true } });
+      let routesAllWeek = await Routes.findAll({ 
+        where: 
+        { 
+          id_line: lineObj.id_line, 
+          saturday: true },
+        order:[['order','DESC']] 
+        
+        });
   
       
       
@@ -79,8 +86,8 @@ module.exports = {
           let values = {
             num_passage: num.num_passage,
             id_route: route.id_route,
-            day: 'week',
-            direction: true,
+            day: 'saturday',
+            direction: false,
           };
           
           
@@ -98,24 +105,24 @@ module.exports = {
             
 
             timeIds = {
-              id_route_a: before,
-              id_route_b: route.id_route,
-              direction:true
+              id_route_b: before,
+              id_route_a: route.id_route,
+              direction:false
             };
             
             datatime = await RouteTimes.findOne({ where: timeIds });
 
             if (timeToSeconds('03:00:00') < oldTime && oldTime < timeToSeconds('11:00:00')) {
-              timeToAdd = timeToSeconds(datatime.week_mor)
+              timeToAdd = timeToSeconds(datatime.saturday_mor)
               addedTime = (oldTime+timeToAdd) % (24*3600)
               
             } else if (timeToSeconds('11:00:00') < oldTime && oldTime < timeToSeconds('19:00:00')) {
-              timeToAdd =timeToSeconds(datatime.week_mid)
+              timeToAdd =timeToSeconds(datatime.saturday_mid)
               addedTime = (oldTime+timeToAdd) % (24*3600)
               
               
             } else {
-              timeToAdd = timeToSeconds(datatime.week_eve)
+              timeToAdd = timeToSeconds(datatime.saturday_eve)
               addedTime = (oldTime+timeToAdd) % (24*3600)
             }
   
@@ -133,8 +140,17 @@ module.exports = {
          
 
           if (before === null) {
-           
-             time = { time: num.time };
+           let toSetTime= await Departures.findOne({ where: 
+            {
+            num_passage: num.num_passage,
+            id_route: route.id_route,
+            day: 'saturday',
+            direction: true,
+          },
+          attributes:['time']
+         });
+
+             time = { time:secondsToTime(timeToSeconds(toSetTime.time)+timeToSeconds('00:11:10')) };
             let check = await Departures.findOne({ where: values });
            
             if (!check) {

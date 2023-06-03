@@ -46,7 +46,7 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.TIME,
             allowNull:true,           
         },
-        sunday_min:{
+        sunday_mid:{
             type:DataTypes.TIME,
             allowNull:true,           
         },

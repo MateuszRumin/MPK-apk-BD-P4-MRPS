@@ -98,8 +98,8 @@ for (let datalines of linesAll ){
             saturday_mor:'00:04:00',
             saturday_mid:'00:06:00',
             saturday_eve:'00:03:00',
-            sunday_mor:'00:04:00',
-            sunday_min:'00:05:00',
+            sunday_mor:'00:03:00',
+            sunday_mid:'00:07:00',
             sunday_eve:'00:03:00'
             }
             
