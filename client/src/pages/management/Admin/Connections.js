@@ -72,7 +72,7 @@ export const Connections = () => {
 
 			<div className="containerLines">
 			
-				<section className="leftSectionLines">
+				<section className="leftSectionLinesCon">
 					
 					<SectionConnectDisplayConnects selectLine2={selectLine2} selectConnect={selectConnect} />
 					<SectionConnectDisplayConnects2 selectLine2={selectLine2} selectConnect={selectConnect} />
@@ -81,7 +81,7 @@ export const Connections = () => {
 				</section>
 
 			
-				<section className="rightSectionLines">
+				<section className="rightSectionLinesCon">
 					<section className='rightSectionNewCon'>
 						<SectionConnectDisplayCon onChange={selectLines} />
 						{/* <SectionConnectSetNewConFrom setStop={setStop} /> */}

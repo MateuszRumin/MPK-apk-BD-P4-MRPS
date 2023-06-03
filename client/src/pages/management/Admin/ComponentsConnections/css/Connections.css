@@ -50,6 +50,17 @@ body {
 	width: 60%;
 	/* border: solid red 2px; */
 }
+
+.leftSectionLinesCon {
+	width: 60%;
+	/* border: solid rgb(255, 162, 0) 2px; */
+}
+.rightSectionLinesCon {
+	width: 40%;
+	/* border: solid red 2px; */
+}
+
+
 .rightSectionNewCon {
 	display: flex;
 }

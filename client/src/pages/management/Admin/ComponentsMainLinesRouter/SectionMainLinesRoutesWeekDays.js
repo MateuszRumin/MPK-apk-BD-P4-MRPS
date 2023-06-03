@@ -19,6 +19,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 	const [confirmDelete, setConfirmDelete] = useState('')
 	let [setData, setSetData] = useState([])
 	const [serverResponse, setServerResponse] = useState('')
+	const [validationErr, setValidationErr] = useState('')
 
 	const getStopsFreeForLine = () => {
 		if (objStops === 0) {
@@ -53,6 +54,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 					setUsersData(usersData)
 					console.log('Pobranie ulic z bazy')
 					console.log(usersData)
+					setValidationErr('')
 				})
 				.catch(error => {
 					console.log(error)
@@ -67,7 +69,6 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 			if (selectLine.id_line) {
 				onObjectChange(selectLine)
 			}
-
 		},
 		[selectLine],
 		[weekDays]
@@ -82,56 +83,52 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 		setIsOpen(false)
 	}
 
-	const handleConfirm = (selectStop) => {
+	const handleConfirm = selectStop => {
 		// const { confirmDelete, setData } = this.state
-      // Wybrana linie wcześniej do której dodaję przystnek
-      console.log(objStops);
-// Wybrany przystanek który dodaje do odpowiedniej lini
-      console.log(selectStop);
+		// Wybrana linie wcześniej do której dodaję przystnek
+		console.log(objStops)
+		// Wybrany przystanek który dodaje do odpowiedniej lini
+		console.log(selectStop)
 
-      // selectLine = line   
-      
-     let obj = {
-      line: objStops,
-      stop: selectStop,
+		// selectLine = line
 
-     }
-      // setData.select_stop = selectStop
+		let obj = {
+			line: objStops,
+			stop: selectStop,
+		}
+		console.log(obj);
+
+		
+			// setData.select_stop = selectStop
 			axios.post('http://localhost:3001/insert/routes', obj).then(response => {
 				console.log(response.data)
 
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
-
-				
 			})
-	
+		
 	}
-	
+
 	const moveRow = (dragIndex, hoverIndex) => {
 		const draggedRow = weekDays[dragIndex]
-		const updatedWeekDays = [...weekDays]	 	
+		const updatedWeekDays = [...weekDays]
 		updatedWeekDays.splice(dragIndex, 1)
 		updatedWeekDays.splice(hoverIndex, 0, draggedRow)
-		updatedWeekDays.forEach(( row,index) => {
-			row.order = index+1
+		updatedWeekDays.forEach((row, index) => {
+			row.order = index + 1
 		})
-		
 
 		setWeekDays(updatedWeekDays)
-
 
 		// handleButtonClick(); // Wysyłanie danych do serwera po zmianie kolejności
 	}
 
 	const Row = ({ weekDay, index }) => {
-		
 		const [{ isDragging }, drag] = useDrag({
 			type: ItemTypes.ROW,
 			item: { index },
 			collect: monitor => ({
 				isDragging: monitor.isDragging(),
 			}),
-			
 		})
 
 		const [, drop] = useDrop({
@@ -143,16 +140,15 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 				if (dragIndex === hoverIndex) {
 					return
 				}
-				
+
 				moveRow(dragIndex, hoverIndex)
 				item.index = hoverIndex
-				
 			},
 		})
 		Modal.setAppElement('#root')
 		return (
 			<tr ref={node => drag(drop(node))}>
-				<td>{weekDay.order}</td>				
+				<td>{weekDay.order}</td>
 				<td>{weekDay.stop.name}</td>
 				<td>{weekDay.line.num_line}</td>
 			</tr>
@@ -160,17 +156,22 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 	}
 
 	const handleButtonClick = () => {
-
-		axios
-			.post('http://localhost:3001/update/routes/order', weekDays)
-			.then(response => {
-				console.log('Zmieniona kolejność została wysłana na serwer')
-			})
-			.catch(error => {
-				console.log(error)
-			})
+		console.log(weekDays)
+		if (weekDays == '') {
+			console.log('Wybierz linie')
+			setValidationErr('Wybierz linie')
+		} else {
+			axios
+				.post('http://localhost:3001/update/routes/order', weekDays)
+				.then(response => {
+					console.log('Zmieniona kolejność została wysłana na serwer')
+				})
+				.catch(error => {
+					console.log(error)
+				})
+		}
 	}
-
+	Modal.setAppElement('#root')
 	return (
 		<section className="sectionLinesNewConTo">
 			<section className="contentNewConTo">
@@ -180,7 +181,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 							<tr>
 								<th>Kolejność</th>
 								<th>Pzrystanek</th>
-								<th>Linia</th>							
+								<th>Linia</th>
 							</tr>
 						</thead>
 					</table>
@@ -194,8 +195,13 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 						</tbody>
 					</table>
 				</div>
-				<button onClick={handleButtonClick}>Zapisz zmiany</button>
+				<button onClick={handleButtonClick}>Zatwierdż kolejność</button>
 				<button onClick={() => openModal()}>Dodaj przystanek</button>
+				{validationErr && (
+					<div className="errorMessage">
+						<p>{validationErr}</p>
+					</div>
+				)}
 			</section>
 
 			<div>
@@ -220,7 +226,7 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 											<td>
 												{user.name}
 												<span className="spanKlikLine" onClick={() => handleConfirm(user)}>
-													KLIKNIJ
+													Dodaj
 												</span>
 
 												{/* <span className="spanKlikLine" onClick={() => this.changeRename(user)}>
@@ -233,12 +239,12 @@ const SectionMainLinesRoutesWeekDays = ({ selectLine }) => {
 							</table>
 						</div>
 					</section>
-					
+
 					{serverResponse && (
-								<div className='errorMessage'>
-									<p>{serverResponse}</p>
-								</div>
-							)}
+						<div className="errorMessage">
+							<p>{serverResponse}</p>
+						</div>
+					)}
 				</Modal>
 			</div>
 		</section>
