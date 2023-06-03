@@ -19,6 +19,9 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 			.catch(error => {
 				console.log(error)
 			})
+
+
+			
 	}, [])
 
 	const selectLines = line => {
@@ -57,7 +60,29 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 			console.log('nie zmieniono.')
 		}
 	}
+	let holdTimer;
 
+	const handleMouseDown = () => {
+	  holdTimer = setTimeout(() => {
+		// Kod do wykonania po przytrzymaniu
+		console.log(selectedLine);
+
+		if(selectedLine){
+
+			console.log('istnieje');
+		}else{
+
+			console.log('nie istnieje');
+		}
+
+	
+	  }, 1000); // Czas trwania przytrzymania w milisekundach (tutaj: 1000ms = 1s)
+	};
+	
+	const handleMouseUp = () => {
+	  clearTimeout(holdTimer);
+	};
+	
 	return (
 		<section className="sectionLinesDisplayStreets">
 			<section className="sectionLinesDisplayStreets section-line urban">
@@ -65,10 +90,13 @@ const SectionMainLinesDisplayLines = ({ onChange }) => {
 					<div
 						title="L - Wybierz | P - Usuń | Dbclick - Zmień nazwe"
 						key={user.id_line}
+						onMouseDown={handleMouseDown}
+						onMouseUp={handleMouseUp}
 						className="testtt"
 						onClick={() => selectLines(user)}
 						onDoubleClick={() => changeRename(user)}
 						onContextMenu={event => deleteLine(user, event)}>
+					
 						<div className={`square-line normal-line ${selectedLine === user.id_line ? 'selectedLine' : ''}`}>
 							{user.num_line}
 						</div>

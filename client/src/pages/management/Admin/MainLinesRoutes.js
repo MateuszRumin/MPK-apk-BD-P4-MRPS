@@ -5,7 +5,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import SectionMainLinesDisplayLines from './ComponentsMainLinesRouter/SectionMainLinesDisplayLines'
 import SectionMainLinesRoutesWeekDays from './ComponentsMainLinesRouter/SectionMainLinesRoutesWeekDays'
 import SectionMainLinesAddNewLine from './ComponentsMainLinesRouter/SectionMainLinesAddNewLine'
-
+import SectionMainLinesAddAlias from './ComponentsMainLinesRouter/SectionMainLinesAddAlias'
+import SectionMainLinesTimeChange from './ComponentsMainLinesRouter/SectionMainLinesTimeChange'
 import '../Admin/ComponentsMainLinesRouter/css/MainLinesRoutes.css'
 
 export const MainLinesRoutes = () => {
@@ -17,7 +18,7 @@ export const MainLinesRoutes = () => {
 
 		selectLine = line
 		setSelectLine(selectLine)
-		// console.log(selectLine)
+		console.log(selectLine)
 	}
 
 	function selectLineWeekDays(s) {
@@ -57,6 +58,7 @@ export const MainLinesRoutes = () => {
 					<SectionMainLinesDisplayLines onChange={selectLines} />
 					{/* Dodaj linie */}
 					<SectionMainLinesAddNewLine />
+					<SectionMainLinesAddAlias selectLine={selectLine}/>
 					{/* W kolejnosci przystanki */}
 					{/* <SectionMainLinesChangePostition selectLineWeekDay={selectLineWeekDay} /> */}
 				</section>
@@ -66,14 +68,15 @@ export const MainLinesRoutes = () => {
 					{/* Dni powszednie */}
 					{/* Soboty */}
 					{/* Niedziele i swieta */}
-					ReactDOM.render(
+				
 					<React.StrictMode>
 						<DndProvider backend={HTML5Backend}>
 							<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
+							<SectionMainLinesTimeChange selectLine={selectLine} onChangee={selectLineWeekDays}/>
 						
 						</DndProvider>
 					</React.StrictMode>
-					, document.getElementById('root'), );
+					
 				</section>
 				<section className="addtolinestops">
 					{/* <SectionMainLinesAddStopToLine /> */}

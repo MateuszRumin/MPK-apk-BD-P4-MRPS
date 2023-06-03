@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './css/SectionMainLinesRoutesWeekDays.css'
+import './css/SectionMainLinesTimeChange.css'
 import Modal from 'react-modal'
 import { useDrag, useDrop } from 'react-dnd'
 
@@ -196,7 +196,7 @@ const SectionMainLinesTimeChange = ({ selectLine }) => {
 	return (
 		<section className="sectionLinesNewConTo">
 			<section className="contentNewConTo">
-            <span> Aktualnie kursuje:</span>
+            <span> Tymczasowa zmiana:</span>
 				<div className="tbl-header">
 					<table className="tableNewConToo" cellPadding="0" cellSpacing="0" border="0">
 						<thead>

@@ -49,7 +49,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 
 	const openModal = data => {
 		setIsOpen(true)
-		setConfirmDelete(data.stop.name)
+		// setConfirmDelete(data.stop.name)
 		setSetData(data)
 		console.log(setData)
 	}
@@ -63,7 +63,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 	}
 
 	const handleConfirm = () => {
-		const validFormat = /^\d{2}:\d{2}$/.test(confirmDelete)
+		const validFormat = /^\d{2}:\d{2}:\d{2}$/.test(confirmDelete)
 		if (confirmDelete && validFormat) {
 			console.log(`Zmieniono nazwę`)
 			setData.rename = confirmDelete
@@ -73,13 +73,12 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 			})
 		} else {
 			console.log('nie zmieniono.')
-			const res = 'Nie przesłano złe dane faza testów napisz np: 18:36'
+			const res = 'Nie przesłano złe dane faza testów napisz np: 18:36:00'
 			setServerResponse(res) // Zapisz odpowiedź serwera w stanie
 			// closeModal();
 		}
 	}
 
-	
 	Modal.setAppElement('#root')
 
 	return (
@@ -114,32 +113,45 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 						<tbody className="DispStreets ">
 							{weekDays.map(user => (
 								<tr key={user.id_routeTime}>
-									
 									<td>{user.id_routeTime}</td>
+
 									<td>{user.stopOne.stop.name}</td>
 									<td>{user.stopTwo.stop.name}</td>
-									<td>{user.week_mor}</td>
-									<td>{user.week_mid}</td>
-									<td>{user.week_eve}</td>
-									<td>{user.saturday_mor}</td>
-									<td>{user.saturday_mid}</td>
-									<td>{user.saturday_eve}</td>
-									<td>{user.sunday_mor}</td>
-									<td>{user.sunday_mid}</td>
-									<td>{user.sunday_eve}</td>
 
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.week_mor}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.week_mid}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.week_eve}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.saturday_mor}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.saturday_mid}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.saturday_eve}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.sunday_mor}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.sunday_mid}
+									</td>
+									<td className="onFocusCursor" onClick={() => openModal(user)}>
+										{user.sunday_eve}
+									</td>
 
-										{/* <span className="spanKlikLine" onClick={() => this.selectLines(user)}>
+									{/* <span className="spanKlikLine" onClick={() => this.selectLines(user)}>
                         KLIKNIJ
                       </span>
                       <span className="spanKlikLine" onClick={() => this.changeRename(user)}>
                         ZMIEŃ NAZWE
                       </span> */}
-									
-
-									
-
-									
 								</tr>
 							))}
 						</tbody>
@@ -148,7 +160,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 				<div>
 					<Modal isOpen={isOpen} className="custom-modal" overlayClassName="custom-overlay" onRequestClose={closeModal}>
 						<h2>Podaj nowy czas:</h2>
-						<input type="text" placeholder="hh:mm" value={confirmDelete} onChange={handleInputChange} />
+						<input type="text" placeholder="hh:mm:ss" value={confirmDelete} onChange={handleInputChange} />
 						<span className="closeMod" onClick={closeModal}>
 							X
 						</span>

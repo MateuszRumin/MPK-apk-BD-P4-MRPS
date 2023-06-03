@@ -83,6 +83,7 @@ const DisplayWeekDayHome = ({ selectLine2 }) => {
 							<tr>
 								<th>Godziny</th>
 								<th>Minuty</th>
+							
 							</tr>
 						</thead>
 					</table>
@@ -92,7 +93,9 @@ const DisplayWeekDayHome = ({ selectLine2 }) => {
 						<tbody className="DispStreets ">
 							{weekDays.map(user => (
 								<tr key={user.num_passage}>
-									<td>{user.time}</td>
+									<td>{user.time.substring(0,2)}</td>
+									<td>{user.time.substring(3,5)}</td>
+								
 								</tr>
 							))}
 						</tbody>
