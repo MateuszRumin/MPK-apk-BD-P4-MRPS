@@ -6,7 +6,7 @@ const { Departures,Routes,Stops } = require('../../../models')
 exports.onstop = async (req, res) => {
    
 
-   console.log('jestem');
+   
    
         try {
             const data = req.body;
@@ -24,8 +24,7 @@ exports.onstop = async (req, res) => {
                         attributes: ['name'],
                         where: {
                             not_active: false,
-                            id_line: data.id_line,
-                            id_stop: data.id_stop
+                            id_route:data.id_route
                         },
                         attributes: [],
                         as:'dep'

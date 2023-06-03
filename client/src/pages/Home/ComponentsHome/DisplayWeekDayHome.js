@@ -30,10 +30,10 @@ const DisplayWeekDayHome = ({ selectLine2 }) => {
 
 			axios
 				// .post('http://localhost:3001/select/departure/onstop', objStops)
-				.post('http://localhost:3001/test', sendObj)
+				.post('http://localhost:3001/select/departure/onstop', sendObj)
 				.then(response => {
 					const weekDays = response.data
-					// setWeekDays(weekDays)
+					setWeekDays(weekDays)
 					console.log('Pobrano')
 					console.log(weekDays)
 				})

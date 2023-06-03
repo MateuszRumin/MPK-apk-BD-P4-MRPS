@@ -19,7 +19,7 @@ const DisplayWeekendsHome = ({ selectLine2 }) => {
 			console.log(objStops)
 
 			let sendObj = {
-				day: 'holiday',
+				day: 'saturday',
 				id_line: objStops.id_line,
 				id_stop: objStops.id_stop,
 				id_route: objStops.id_route,
@@ -30,10 +30,10 @@ const DisplayWeekendsHome = ({ selectLine2 }) => {
 
 			axios
 				// .post('http://localhost:3001/select/departure/onstop', objStops)
-				.post('http://localhost:3001/test', sendObj)
+				.post('http://localhost:3001/select/departure/onstop', sendObj)
 				.then(response => {
 					const weekDays = response.data
-					// setWeekDays(weekDays)
+					setWeekDays(weekDays)
 					console.log('Pobrano')
 					console.log(weekDays)
 				})
