@@ -49,7 +49,7 @@ class SectionMainLinesAddNewLine extends Component {
 							<br />
 							
 
-							<button type="submit">Zatwierdź</button>
+							<button type="submit" className='buttonTypeSubmitAddAlias'>Zatwierdź</button>
 						</section>
 					</Form>
 				</Formik>

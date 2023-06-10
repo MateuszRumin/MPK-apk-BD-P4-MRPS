@@ -1,0 +1,8 @@
+.contentTable{
+height: 20vh !important;
+}
+.komunikat{
+    position: fixed !important;
+    bottom: 20px;
+    width: 600px;
+}

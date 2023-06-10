@@ -14,7 +14,6 @@ export const Lines = () => {
 	function selectLines(line) {
 		// console.log(line);
 
-		
 		selectLine = line
 		setSelectLine(selectLine)
 		// console.log(selectLine)
@@ -23,10 +22,6 @@ export const Lines = () => {
 	function selectStops(stops) {
 		selectStop = stops
 		setSelectStop(selectStop)
-		
-		
-		
-	
 	}
 
 	return (
@@ -39,10 +34,11 @@ export const Lines = () => {
 
 					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>
-						<NavLink to="/admin/users">Uzytkownicy</NavLink>
-						<NavLink to="/admin/departure">Odjazy</NavLink>
 						<NavLink to="/admin/connections">Połączenia</NavLink>
+						<NavLink to="/admin/departure">Odjazy</NavLink>
+						<NavLink to="/admin/lines">Ulice</NavLink>
 						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
+						<NavLink to="/admin/users">Użytkownicy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
 					</nav>
 				</header>
@@ -52,7 +48,6 @@ export const Lines = () => {
 				{/* LEWA SEKCJA */}
 				<section className="leftSectionLines">
 					<SectionLinesDisplayStreets onChange={selectLines} />
-					
 				</section>
 
 				{/* PRAWA SEKCJA */}

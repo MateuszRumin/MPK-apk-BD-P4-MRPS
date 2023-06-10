@@ -1,0 +1,33 @@
+.modalWindow{
+    height: 30px;
+    opacity: 1;
+}
+.modalWindow2{
+
+    background-color: #fff;
+    opacity: 1;
+}
+.iconPosition{
+    position: relative;
+   left: 25px;
+   top: 10px;
+}
+
+.buttonTypeSubmitAddAlias {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+ .buttonTypeSubmitAddAlias:hover {
+    background-color: #ccc;
+  }
+  
+.buttonTypeSubmitAddAlias:active {
+    background-color: #999;
+  }
+  
