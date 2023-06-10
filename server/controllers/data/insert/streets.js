@@ -4,14 +4,14 @@ const { Streets,Stops } = require('../../../models')
 
 //wypisz wszystkie
 exports.addwithstops = async (req, res) => {
-    
+    try  {
     const data= req.body
     
     
     const dataStops = data.przystanki
 
    
-    try  {
+  
         const addedStreet = await Streets.create({name:data.linia})
         
         if (dataStops)

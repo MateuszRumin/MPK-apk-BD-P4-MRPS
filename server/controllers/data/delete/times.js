@@ -7,17 +7,17 @@ const { Times } = require('../../../models')
 
 exports.delete = async (req, res) => {
     
+    try{
     const idTimes = req.body.id_time
 
-    try{
     await Times.destroy({where: {id_time:idTimes}})
 
-    } catch (err){
-
-        console.log(err)
-    }
-
+    
 	res.json("In progrees")
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 }
 
 

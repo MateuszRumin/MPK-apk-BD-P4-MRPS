@@ -97,6 +97,7 @@ module.exports = (sequelize,DataTypes) => {
             as:'dep'
             
         })
+       
                
         
 	}

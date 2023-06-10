@@ -6,6 +6,8 @@ const { RouteTimes,Routes,Stops} = require('../../../models')
 
 exports.forLinesdirTrue = async (req, res) => {
 
+        try{
+    
     const reqData = req.body
 
     const routeTimes = await RouteTimes.findAll({
@@ -63,16 +65,21 @@ exports.forLinesdirTrue = async (req, res) => {
         "direction"]  
        
     })
-    .catch ( err => {
-        console.log(err)
-        res.json('err')
-    })
+   
     
     res.json(routeTimes)
+
+
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
         
 }
 
 exports.forLinesdirFalse = async (req, res) => {
+
+    try{
 
     const reqData = req.body
 
@@ -132,12 +139,14 @@ exports.forLinesdirFalse = async (req, res) => {
         "direction"]  
        
     })
-    .catch ( err => {
-        console.log(err)
-        res.json('err')
-    })
+   
     
     res.json(routeTimes)
+
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
         
 }
 

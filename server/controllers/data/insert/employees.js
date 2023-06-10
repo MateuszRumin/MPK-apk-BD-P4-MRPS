@@ -4,6 +4,7 @@ const { Employees,Usr_emp } = require('../../../models')
 
 //wypisz wszystkie
 exports.add = async (req, res) => {
+    try {
     const data = req.body;
     const employee ={
         first_name:data.first_name,
@@ -13,7 +14,7 @@ exports.add = async (req, res) => {
 		tel_num:data.tel_num
     }
 
-    try {
+   
         const idUser = await Employees.create(employee)
         
         const connectRole={

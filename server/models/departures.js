@@ -25,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
 		time: {
 			type: DataTypes.TIME,
 			allowNull: true,
+		},
+		alias:
+		{
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+			default: false,
 		}
 	
 	})
@@ -37,6 +43,13 @@ module.exports = (sequelize, DataTypes) => {
             onUpdate:'cascade',
             as:'dep'
             
+        }),
+		Departures.hasMany(models.Als_cons,{
+            foreignKey:'id_departures',
+			secureKey:'id_departures',
+			onDelete:'cascade',
+			onUpdate:'cascade',
+            as:'dept'
         })
         
     }

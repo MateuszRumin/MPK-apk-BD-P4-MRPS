@@ -8,6 +8,7 @@ const { Users } = require('../../../models')
 
 exports.update = async (req, res) => {
 
+  try{
     const data = req.body
 
       const dataUser = {
@@ -26,9 +27,7 @@ exports.update = async (req, res) => {
         .then((affectedRows) => {
           console.log(`${affectedRows} rekordów zmodyfikowanych`);
         })
-        .catch((error) => {
-          console.error('Error', error);
-        });
+        
 
        res.json(`Zmodyfikowano`)
 
@@ -36,7 +35,10 @@ exports.update = async (req, res) => {
         res.json('taka nazwa i hasło już istnieje lub nie wprowadziłeś zmian')
     }
 
-
+  } catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 
 
     }

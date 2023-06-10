@@ -6,18 +6,19 @@ const { Lines } = require('../../../models')
 
 
 exports.delete = async (req, res) => {
-    
+    try{
     const idLine = req.body.id_line
 
-    try{
+    
     await Lines.destroy({where: {id_line:idLine}})
 
-    } catch (err){
-
-        console.log(err)
-    }
 
 	res.json("In progrees")
+
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 }
 
 

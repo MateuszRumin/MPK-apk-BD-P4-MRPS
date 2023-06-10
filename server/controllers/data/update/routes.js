@@ -7,11 +7,11 @@ const { Routes } = require('../../../models')
     
 
 exports.updateOrder = async (req, res) => {
-
+  try{
     const data = req.body
 
       
-try{
+
    
     data.map(upd => {
 
@@ -34,8 +34,8 @@ try{
 
     })
     res.json('Updated')
-}
-catch (err){
-    res.json('Cannot Upddated')
+  } catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
 }
 }

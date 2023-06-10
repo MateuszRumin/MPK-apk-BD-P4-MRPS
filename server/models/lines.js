@@ -23,6 +23,13 @@ module.exports = (sequelize,DataTypes) => {
 			onDelete:'cascade',
 			onUpdate:'cascade',
             as:'line'
+        }),
+        Lines.hasMany(models.Als_cons,{
+            foreignKey:'id_line',
+			secureKey:'id_line',
+			onDelete:'cascade',
+			onUpdate:'cascade',
+            as:'lines'
         })
 			
                

@@ -2,7 +2,9 @@ const { Routes,Stops,routeTypes,Lines } = require('../../../models')
 
 
 exports.pnpt = async (req, res) => {
-    
+   
+    try{
+
     const data = await  Routes.findAll({
         include: [
             {            
@@ -27,13 +29,15 @@ exports.pnpt = async (req, res) => {
         order:[['order','ASC']]
     
     }) 
-    .catch ( err => {
-        console.log(err)
-    })
     
 
-
 	res.json(data)
+
+
+ } catch (err) {
+        console.error(err);
+        res.status(500).json('Wystąpił błąd serwera');
+    }
 }
 
 

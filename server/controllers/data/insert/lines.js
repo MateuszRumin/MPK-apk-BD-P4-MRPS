@@ -3,12 +3,12 @@ const { Lines } = require('../../../models')
 
 //wypisz wszystkie
 exports.add = async (req, res) => {
-    
+   try {
    const data = req.body
 
-  console.log(data)
+ 
 
-   try {
+
    await Lines.create(data)
 
    res.json("Added")

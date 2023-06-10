@@ -6,6 +6,7 @@ const { Times,Stops} = require('../../../models')
 
 exports.all = async (req, res) => {
 
+    try{
     const times = await Times.findAll({
         include: [
         {
@@ -27,9 +28,12 @@ exports.all = async (req, res) => {
         }
     ],
         attributes:['id_time','Time_one_two','Time_two_one']
-    }).catch(err => {
-        console.log(err);
     })
     
 	res.json(times)
+
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 }

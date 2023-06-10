@@ -10,6 +10,9 @@ exports.all = async (req, res) => {
 }
 
 exports.allAndRole = async (req, res) => {
+    
+    try{
+    
     const employees = await Employees.findAll({
         include: [
         {
@@ -33,9 +36,12 @@ exports.allAndRole = async (req, res) => {
             
         }],
         attributes:['emp_no','first_name','second_name','addres','pesel','tel_num']
-    }).catch(err => {
-        console.log(err);
     })
     
 	res.json(employees)
+
+ } catch (err) {
+        console.error(err);
+        res.status(500).json('Wystąpił błąd serwera');
+    }
 }

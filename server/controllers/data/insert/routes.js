@@ -3,8 +3,10 @@ const { Routes } = require('../../../models')
 
 //wypisz wszystkie
 exports.add = async (req, res) => {
-    
-   const data = req.body
+  try{  
+ 
+    const data = req.body
+
 
 
 const biggestOrder = await Routes.findOne(
@@ -15,10 +17,7 @@ const biggestOrder = await Routes.findOne(
     order:[['order','DESC']],
     attributes:['order']
 })
-.catch (err => {
-    console.log('err')
-    res.json('Nie ma takiej lini lub typu')
-})
+
 
 
 const dataAdd = {
@@ -26,14 +25,18 @@ const dataAdd = {
     id_stop:data.stop.id_stop,
     order:biggestOrder.order+1 
 }
- 
-   try {
+
+  
    await Routes.create(dataAdd)
 
    res.json("Added")
    
-   }catch {
-    res.json("Cannot add to Order")
-   }
+
+
+   
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 
 }

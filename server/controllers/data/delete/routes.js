@@ -7,17 +7,18 @@ const { Routes } = require('../../../models')
 
 exports.delete = async (req, res) => {
     
+    try{
     const idRoute = req.body.id_route
 
-    try{
     await Routes.destroy({where: {id_user:idRoute}})
 
-    } catch (err){
-
-        console.log(err)
-    }
+   
 
 	res.json("In progrees")
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 }
 
 

@@ -3,17 +3,25 @@ const { Op } = require('sequelize');
 
 
 exports.all = async (req, res) => {
+
+    try{
     const stops = await Stops.findAll() 
 
 	res.json(stops)
+
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 }
 
 
 exports.onStreet = async (req, res) => {
+    try{
     
     const idStreet = req.body.id_street
 
-    try{
+   
         const resData = await Stops.findAll({where: {id_street:idStreet}})
         res.json(resData)
         
@@ -27,11 +35,11 @@ exports.onStreet = async (req, res) => {
 
 
 exports.notConnected = async (req, res) => {
-
+    try{
     const data = req.body
   
 
-try{
+
     const times = await Times.findAll({
        
         include: [
@@ -118,17 +126,10 @@ try{
 
 
 
-    }catch(err) {
-
-
-        res.json("Brak wyników")
-    }
-
-
-
-
-
-
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 
 
 	
@@ -163,12 +164,17 @@ exports.allWithStreet = async (req, res) => {
 }
 
 exports.notUsed = async (req, res) => {
+    
+    try{
 
     const used = req.body.id_line
     const data = Routes.findAll({where:{id_line:used},attributes:['id_stop']})
     console.log(data)
+
+
+
 if (!data){
-    try{
+   
  
 
         const stops = await Stops.findAll({     
@@ -184,16 +190,12 @@ if (!data){
         })
          res.json(stops)
     
-        } catch(err) {
-            console.log(err);
-    
-            res.json('Not working')
-        }
+       
 
 }
 else{
 
-    try{
+    
  
 
      const stops = await Stops.findAll({     
@@ -216,13 +218,12 @@ else{
 
       res.json(stops)
  
-     } catch(err) {
-         console.log(err);
- 
-         res.json('Not working')
-     }
+    
     }
-     
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
  
      
  }

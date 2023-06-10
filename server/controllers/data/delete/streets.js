@@ -7,17 +7,18 @@ const { Streets } = require('../../../models')
 
 exports.delete = async (req, res) => {
     
+    try{
     const idStreet = req.body.id_user
 
-    try{
     await Streets.destroy({where: {id_user:idStreet}})
 
-    } catch (err){
-
-        console.log(err)
-    }
+   
 
 	res.json("In progrees")
+} catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 }
 
 
