@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Home } from './pages/Home/ComponentsHome/Home'
 import { Info } from './pages/Home/ComponentsHome/Info'
@@ -13,9 +13,26 @@ import { Connections } from './pages/management/Admin/Connections'
 import { MainLinesRoutes } from './pages/management/Admin/MainLinesRoutes'
 import { Departure } from './pages/management/Admin/Departure'
 function App() {
+	const [isLoggedIn, setLoggedIn] = useState(false)
+	
+	
 	useEffect(() => {
+		let sessionData = sessionStorage.getItem('login')
 		//tutaj bedzie cos do sesji
-	}, [])
+		
+		if(sessionData === 'true'){
+			
+
+			setLoggedIn(sessionData)
+			
+		}
+		
+	},)
+	
+	
+
+	
+	
 	return (
 		<div className="App">
 			<Router>
@@ -26,13 +43,22 @@ function App() {
 					<Route path="/kontakt" element={<Kontakt />} />
 
 					{/* Admin */}
-					<Route path="/admin/" element={<MainPanel />} />
 
-					<Route path="/admin/lines/" element={<Lines />} />
-					<Route path="/admin/users/" element={<Users />} />
-					<Route path="/admin/departure/" element={<Departure />} />
-					<Route path="/admin/connections/" element={<Connections />} />
-					<Route path="/admin/mainlines/" element={<MainLinesRoutes />} />
+			  {/* Admin */}
+			  {isLoggedIn && <Route path="/admin/*" element={<MainPanel />} />}
+				{!isLoggedIn && <Route path="/*" element={<Home />} />}
+
+
+
+		 
+
+					{/* <Route path="/admin/" element={<MainPanel />} /> */}
+
+					{isLoggedIn && <Route path="/admin/lines/" element={<Lines />} />}
+					{isLoggedIn && <Route path="/admin/users/" element={<Users />} />}
+					{isLoggedIn && <Route path="/admin/departure/" element={<Departure />} />}
+					{isLoggedIn && <Route path="/admin/connections/" element={<Connections />} />}
+					{isLoggedIn && <Route path="/admin/mainlines/" element={<MainLinesRoutes />} />}
 					<Route path="/line/:id_line" element={<Line />} />
 
 					<Route path="/admin/logout" element={<Logout />} />
