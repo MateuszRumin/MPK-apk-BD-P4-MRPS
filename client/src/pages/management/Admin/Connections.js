@@ -24,21 +24,16 @@ export const Connections = () => {
 		// console.log(selectLine)
 	}
 
-	function setStop(selectS){
+	function setStop(selectS) {
 		selectStop = selectS
 		setSelectStop(selectStop)
-
-
 	}
 
-	function FunfreeStopCon(a){
-
+	function FunfreeStopCon(a) {
 		freeSelectStop = a
 		setfreeSelectStop(freeSelectStop)
 		// console.log(a);
 	}
-
-	
 
 	function selectLines(line) {
 		// console.log(line);
@@ -47,8 +42,6 @@ export const Connections = () => {
 		setSelectLine2(selectLine2)
 		console.log(selectLine2)
 	}
-
-
 
 	return (
 		<div>
@@ -60,29 +53,26 @@ export const Connections = () => {
 
 					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>
-						<NavLink to="/admin/users">Uzytkownicy</NavLink>
+						<NavLink to="/admin/connections">Połączenia</NavLink>
 						<NavLink to="/admin/departure">Odjazy</NavLink>
 						<NavLink to="/admin/lines">Ulice</NavLink>
 						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
+						<NavLink to="/admin/users">Użytkownicy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
-						
 					</nav>
 				</header>
 			</section>
 
 			<div className="containerLines">
-			
 				<section className="leftSectionLinesCon">
-					
 					<SectionConnectDisplayConnects selectLine2={selectLine2} selectConnect={selectConnect} />
 					<SectionConnectDisplayConnects2 selectLine2={selectLine2} selectConnect={selectConnect} />
-					
+
 					{/* <SectionConnectChangeTime selectCon={selectCon} /> */}
 				</section>
 
-			
 				<section className="rightSectionLinesCon">
-					<section className='rightSectionNewCon'>
+					<section className="rightSectionNewCon">
 						<SectionConnectDisplayCon onChange={selectLines} />
 						{/* <SectionConnectSetNewConFrom setStop={setStop} /> */}
 						{/* <SectionConnectSetNewConTo selectStop={selectStop} freeStopCon={FunfreeStopCon}  /> */}

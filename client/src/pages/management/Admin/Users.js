@@ -83,6 +83,7 @@ export const Users = props => {
 						<NavLink to="/admin/departure">Odjazy</NavLink>
 						<NavLink to="/admin/lines">Ulice</NavLink>
 						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
+						<NavLink to="/admin/users">Użytkownicy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
 						{/* to jest jakby link w przeglądarce to="/info" */}
 					</nav>

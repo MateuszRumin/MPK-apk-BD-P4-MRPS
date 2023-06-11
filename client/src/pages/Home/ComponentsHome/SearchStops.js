@@ -1,20 +1,29 @@
 import { Navbar } from './Navbar'
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-export const SearchStops = () => {
+export const SearchStops = ({ onChange }) => {
+	const [selectedLine, setSelectedLine] = useState(null)
 	const initialValues = {
 		name_stop: '',
 	}
 	const validationSchema = Yup.object().shape({
-		name_stop: Yup.string().required('Nie może być pusty'),
+		name_stop: Yup.string()
+	
+		.matches(/^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż.\s]+$/, 'Tylko litery i spacje są dozwolone')
+		.trim()
+		.required('Nie może być pusty')
+		.max(30, 'Za długi ciąg')
+		.min(3, 'Podaj pełną nazwę'),
 	})
 
 	const onSubmit = data => {
-		axios.post('http://localhost:3001/insert/stop', data).then(response => {
-			console.log(response.data)
-		})
+		// axios.post('http://localhost:3001/insert/stop', data).then(response => {
+		// 	console.log(response.data)
+		// 	selectLines(response.data)
+		// })
+		onChange(data)
 	}
 
 	return (

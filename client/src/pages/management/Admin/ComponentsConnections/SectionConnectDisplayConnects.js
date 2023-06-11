@@ -3,7 +3,7 @@ import axios from 'axios'
 import Modal from 'react-modal'
 import './css/SectionConnectDisplayConnects.css'
 let objStops = 0
-
+let selectTimeG
 const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 	const [usersData, setUsersData] = useState([])
 	const [isOpen, setIsOpen] = useState(false)
@@ -47,11 +47,16 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 		}
 	}, [selectLine2])
 
-	const openModal = data => {
+	const openModal = (data, selectTime) => {
+		// console.log(data)
+		// console.log(selectTime)
+		selectTimeG = selectTime
 		setIsOpen(true)
 		// setConfirmDelete(data.stop.name)
+
 		setSetData(data)
-		console.log(setData)
+		// console.log(setData)
+		console.log(selectTimeG)
 	}
 
 	const closeModal = () => {
@@ -66,7 +71,9 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 		const validFormat = /^\d{2}:\d{2}:\d{2}$/.test(confirmDelete)
 		if (confirmDelete && validFormat) {
 			console.log(`Zmieniono nazwę`)
-			setData.rename = confirmDelete
+
+			setData[selectTimeG] = confirmDelete
+
 			axios.post('http://localhost:3001/test', setData).then(response => {
 				console.log(response.data)
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
@@ -118,31 +125,32 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 									<td>{user.stopOne.stop.name}</td>
 									<td>{user.stopTwo.stop.name}</td>
 
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, { name: 'week_mor' })}>
 										{user.week_mor}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'week_mid')}>
 										{user.week_mid}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'week_eve')}>
 										{user.week_eve}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+
+									<td className="onFocusCursor" onClick={() => openModal(user, 'saturday_mor')}>
 										{user.saturday_mor}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'saturday_mid')}>
 										{user.saturday_mid}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'saturday_eve')}>
 										{user.saturday_eve}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'sunday_mor')}>
 										{user.sunday_mor}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'sunday_mid')}>
 										{user.sunday_mid}
 									</td>
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
+									<td className="onFocusCursor" onClick={() => openModal(user, 'sunday_eve')}>
 										{user.sunday_eve}
 									</td>
 

@@ -43,9 +43,11 @@ export const MainLinesRoutes = () => {
 
 					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>
-						<NavLink to="/admin/departure">Odjazy</NavLink>
-						<NavLink to="/admin/users">Uzytkownicy</NavLink>
 						<NavLink to="/admin/connections">Połączenia</NavLink>
+						<NavLink to="/admin/departure">Odjazy</NavLink>
+						<NavLink to="/admin/lines">Ulice</NavLink>
+						<NavLink to="/admin/mainlines">Linie i trasy</NavLink>
+						<NavLink to="/admin/users">Użytkownicy</NavLink>
 						<NavLink to="/admin/logout">Wyloguj</NavLink>
 					</nav>
 				</header>
@@ -58,7 +60,8 @@ export const MainLinesRoutes = () => {
 					<SectionMainLinesDisplayLines onChange={selectLines} />
 					{/* Dodaj linie */}
 					<SectionMainLinesAddNewLine />
-					<SectionMainLinesAddAlias selectLine={selectLine}/>
+
+					<SectionMainLinesAddAlias selectLine={selectLine} />
 					{/* W kolejnosci przystanki */}
 					{/* <SectionMainLinesChangePostition selectLineWeekDay={selectLineWeekDay} /> */}
 				</section>
@@ -68,19 +71,15 @@ export const MainLinesRoutes = () => {
 					{/* Dni powszednie */}
 					{/* Soboty */}
 					{/* Niedziele i swieta */}
-				
+
 					<React.StrictMode>
 						<DndProvider backend={HTML5Backend}>
 							<SectionMainLinesRoutesWeekDays selectLine={selectLine} onChangee={selectLineWeekDays} />
-							<SectionMainLinesTimeChange selectLine={selectLine} onChangee={selectLineWeekDays}/>
-						
+							<SectionMainLinesTimeChange selectLine={selectLine} onChangee={selectLineWeekDays} />
 						</DndProvider>
 					</React.StrictMode>
-					
 				</section>
-				<section className="addtolinestops">
-					{/* <SectionMainLinesAddStopToLine /> */}
-				</section>
+				<section className="addtolinestops">{/* <SectionMainLinesAddStopToLine /> */}</section>
 			</div>
 		</div>
 	)
