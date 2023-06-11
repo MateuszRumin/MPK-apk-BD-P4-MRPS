@@ -42,6 +42,7 @@ router.post('/usremp/empnouser',usrempController.withNoAccounts)
 
 const linesController = require('../controllers/data/select/lines')
 router.post('/lines/all',linesController.all)//wypisz wszystkie
+router.post('/lines/allMain',linesController.allMain)//wypisz wszystkie
 
 const routesController = require('../controllers/data/select/routes')
 router.post('/routes/pnpt',routesController.pnpt)//wypisz wszystkie
@@ -55,6 +56,9 @@ router.post('/routeTimes/forLinesdirFalse',routeTimesController.forLinesdirFalse
 const departureController = require('../controllers/data/select/departures')
 router.post('/departure/onstop',departureController.onstop)//wypisz wszystkie
 
+
+const aliasesController = require('../controllers/data/select/aliases')
+router.post('/aliases/all',aliasesController.all)//wypisz wszystkie
 
 
 

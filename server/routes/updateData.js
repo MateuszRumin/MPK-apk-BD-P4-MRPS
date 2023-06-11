@@ -28,4 +28,11 @@ router.post('/lines',linesController.update)
 const routesController = require('../controllers/data/update/routes')
 router.post('/routes/order',routesController.updateOrder)
 
+
+const aliasesController = require('../controllers/data/update/aliases')
+router.post('/aliases',aliasesController.update)
+
+
+
+
 module.exports = router

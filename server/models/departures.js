@@ -25,13 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 		time: {
 			type: DataTypes.TIME,
 			allowNull: true,
-		},
-		alias:
-		{
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-			default: false,
 		}
+	
 	
 	})
 

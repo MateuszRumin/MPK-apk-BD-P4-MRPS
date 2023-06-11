@@ -21,5 +21,7 @@ router.post('/routes', routesController.delete)
 const linesController = require('../controllers/data/delete/lines')
 router.post('/line', linesController.delete)
 
+const aliasesController = require('../controllers/data/delete/aliases')
+router.post('/aliases', aliasesController.delete)
 
 module.exports = router

@@ -118,6 +118,7 @@ module.exports = {
               timeToAdd = timeToSeconds(datatime.week_eve)
               addedTime = (oldTime+timeToAdd) % (24*3600)
             }
+            
   
             let check = await Departures.findOne({ where: values });
             time = {

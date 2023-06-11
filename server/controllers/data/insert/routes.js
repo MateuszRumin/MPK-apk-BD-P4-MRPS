@@ -1,6 +1,12 @@
 const { Routes } = require('../../../models')
 
 
+
+
+
+
+
+
 //wypisz wszystkie
 exports.add = async (req, res) => {
   try{  
@@ -19,7 +25,18 @@ const biggestOrder = await Routes.findOne(
 })
 
 
+if(!biggestOrder){
+    const dataAdd = {
+        id_line:data.line.id_line,
+        id_stop:data.stop.id_stop,
+        order:1 
+    }
+    
+      
+       await Routes.create(dataAdd)
 
+
+}else{
 const dataAdd = {
     id_line:data.line.id_line,
     id_stop:data.stop.id_stop,
@@ -28,6 +45,10 @@ const dataAdd = {
 
   
    await Routes.create(dataAdd)
+}
+
+
+
 
    res.json("Added")
    

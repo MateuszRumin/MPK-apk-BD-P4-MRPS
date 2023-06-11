@@ -29,9 +29,22 @@ const deleteRoute = require('./routes/deleteData')
 app.use('/delete', deleteRoute)
 
 app.use('/test', async (req, res) => {
-    const data = req.body;
+   
+	try{
+	 const data = req.body;
+	
+
+
+
     console.log(data);
-	res.json('Data test complited')
+	res.json('tested')
+	}
+	catch (err){
+		res.status(500)
+	}
+
+
+
 })
 
 //połączenie
