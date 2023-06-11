@@ -1,39 +1,46 @@
 
 const { Users,Employees,Usr_emp } = require('../../../models')
-
+const bcrypt = require("bcrypt")
 
 //wypisz wszystkie
 exports.add = async (req, res) => {
-    const data = req.bady
+    const { username,password,email} = req.bady
 
-    const dataUser = {
-        username:data.username,
-        password:data.password,
-        email:data.email
-      }
-      
-      
-      if (!(await Users.findOne({ where: {username:data.username}})) || !(await Users.findOne({ where: {email:data.email}})))    
+  bcrypt.hash(password,10).then(async (hash) =>{
+    const dataAdd = {
+      username:username,
+      password:hash,
+      email:email
+    }
+
+    if (!(await Users.findOne({ where: {username:dataAdd.username}})) || !(await Users.findOne({ where: {email:dataAdd.email}})))    
       {
-
-       const dataAdded = await Users.create(dataUser)
-
-       Usr_emp.update(
-        {id_user:dataAdded.id_user},
-        {where: {id_usr_emp:req.id_usr_emp}}
-       )
+        const id = await Users.create(dataAdd)
 
 
-     
-       res.json(`Added`)
+
+        const user = await Usr_emp.update({
+          id_user:id
+        },
+        {
+          where:{emp_no:req.body.emp_no}
+        }  
+        )
+       
+
+      
+
+        res.json(`Added`)
 
     }else{
         res.json('taka nazwa i email już istnieje lub nie wprowadziłeś zmian')
     }
 
+  
+  res.json('succes')
+  })
 
 
 
 
-	res.json("In progrees, waiting for passport authentication")
-}
+    }
