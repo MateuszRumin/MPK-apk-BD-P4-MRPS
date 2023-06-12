@@ -6,15 +6,30 @@ import * as Yup from 'yup'
 import pl from 'yup-locale-pl'
 Yup.setLocale(pl)
 class SectionUsersAddUsers extends Component {
-	render() {
-		const initialValues = {
-			first_name: '',
+
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			initialValues: {
+				first_name: '',
 			second_name: '',
 			addres: '',
 			pesel: '',
 			tel_num: '',
 			id_role: '',
+			},
+			serviceErr: {
+				error: false,
+				responseSer: false,
+				content: '',
+			},
 		}
+	}
+
+	render() {
+		const { initialValues } = this.state
+		const { content, error, responseSer } = this.state
 		const validationSchema = Yup.object().shape({
 			first_name: Yup.string()
 				.matches(/^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]*$/, 'Tylko litery, musi zaczynać się od dużej litery')
@@ -64,6 +79,15 @@ class SectionUsersAddUsers extends Component {
 		const onSubmit = data => {
 			axios.post('http://localhost:3001/insert/employee', data).then(response => {
 				console.log(response.data)
+				if(response.data == 'Addedd'){
+				this.setState({ content: response.data })
+				this.setState({responseSer: true })
+				}else {
+					this.setState({ content: response.data })
+					this.setState({error: true })
+				}
+
+
 			})
 		}
 		const switchSection = () => {
@@ -126,6 +150,8 @@ class SectionUsersAddUsers extends Component {
 							</section>
 						</Form>
 					</Formik>
+					{error && <span style={{ color: 'red' }}>{content}</span>}
+								{responseSer && <span style={{ color: 'green' }}>{content}</span>}
 				</section>
 			</section>
 		)

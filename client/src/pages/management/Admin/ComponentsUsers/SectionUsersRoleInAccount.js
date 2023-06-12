@@ -7,7 +7,20 @@ import pl from 'yup-locale-pl'
 Yup.setLocale(pl)
 
 class SectionUsersRoleInAccount extends Component {
+
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			
+			serviceErr: {
+				error: false,
+				responseSer: false,
+			},
+		}
+	}
 	render() {
+		const { error, responseSer } = this.state
 		const initialValues = {
 			id_role: '',
 		}
@@ -19,6 +32,9 @@ class SectionUsersRoleInAccount extends Component {
 			data.id_usr_emp = this.props.idAccountRole
 			axios.post('http://localhost:3001/update/usremp', data).then(response => {
 				console.log(response.data)
+				if (response.data === 'employees') {
+					this.setState({ responseSer: true })
+				}
 			})
 		}
 
@@ -50,6 +66,8 @@ class SectionUsersRoleInAccount extends Component {
 							</section>
 						</Form>
 					</Formik>
+					{error && <span style={{ color: 'red' }}>Te same dane</span>}
+								{responseSer && <span style={{ color: 'green' }}>Zmieniono dane</span>}
 				</section>
 			</section>
 		)

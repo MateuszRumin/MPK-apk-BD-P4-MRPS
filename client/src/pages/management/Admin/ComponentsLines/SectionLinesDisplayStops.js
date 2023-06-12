@@ -10,8 +10,9 @@ let iloscwierszy
 
 const SectionLinesDisplayStops = props => {
 	const [usersData, setUsersData] = useState([])
-	const [update, setUpdate] = useState('False')
+	const [update, setUpdate] = useState(false)
 	const [serviceErr, setServiceEerr] = useState(false)
+
 
 	const getStreetsData = idstret => {
 		const id_street = {
@@ -97,7 +98,7 @@ const SectionLinesDisplayStops = props => {
 			axios.post('http://localhost:3001/insert/stop', data).then(response => {
 				console.log(response.data)
 				if (response.data == 'Added') {
-					setUpdate('true')
+					setUpdate(true)
 				}
 			})
 		}
@@ -155,6 +156,7 @@ const SectionLinesDisplayStops = props => {
 							<span>Dodaj przystanek:</span>
 							<br />
 							{serviceErr && <span style={{ color: 'red' }}>Nie wybrano lini</span>}
+							{update && <span style={{ color: 'green' }}>Dodano przystanek</span>}
 							<span></span>
 						</div>
 

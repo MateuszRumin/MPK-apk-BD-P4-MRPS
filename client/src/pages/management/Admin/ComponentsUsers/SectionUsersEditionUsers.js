@@ -113,6 +113,7 @@ export class SectionUsersEditionUsers extends React.Component {
 						this.setState({ responseSer: true })
 					}
 				})
+			
 			}
 		}
 		function onObjectChange(props) {

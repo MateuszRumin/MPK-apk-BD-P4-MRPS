@@ -17,6 +17,11 @@ class SectionUsersAccountRole extends Component {
 				email: '',
 				idAccount: '',
 			},
+			serviceErr: {
+				error: false,
+				responseSer: false,
+				content: '',
+			},
 		}
 	}
 
@@ -30,6 +35,7 @@ class SectionUsersAccountRole extends Component {
 
 	render() {
 		const { initialValues } = this.state
+		const { content, error, responseSer } = this.state
 		// const { test } = this.state
 
 		const validationSchema = Yup.object().shape({
@@ -41,6 +47,12 @@ class SectionUsersAccountRole extends Component {
 			data.id_user = this.props.idAccountUser
 			axios.post('http://localhost:3001/update/user', data).then(response => {
 				console.log(response.data)
+			
+					this.setState({ content: response.data })
+					this.setState({error: true })
+					
+				
+
 			})
 		}
 
@@ -137,6 +149,8 @@ class SectionUsersAccountRole extends Component {
 							</section>
 						</Form>
 					</Formik>
+					{error && <span style={{ color: 'red' }}>{content}</span>}
+								{responseSer && <span style={{ color: 'green' }}>{content}</span>}
 				</section>
 
 				<SectionUsersRoleInAccount rolesUsers={this.props.rolesUsers.name} idAccountRole={this.props.idAccountRole} />
