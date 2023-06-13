@@ -12,8 +12,6 @@ router.post('/user', userController.delete)
 const streetController = require('../controllers/data/delete/streets')
 router.post('/street', streetController.delete)
 
-// const timesController = require('../controllers/data/delete/times')
-// router.post('/times', timesController.delete)
 
 const routesController = require('../controllers/data/delete/routes')
 router.post('/routes', routesController.delete)
@@ -23,5 +21,15 @@ router.post('/line', linesController.delete)
 
 const aliasesController = require('../controllers/data/delete/aliases')
 router.post('/aliases', aliasesController.delete)
+
+const empController = require('../controllers/data/delete/employee')
+router.post('/empl', empController.delete)
+
+
+const stopController = require('../controllers/data/delete/stops')
+router.post('/stop', stopController.delete)
+
+
+
 
 module.exports = router

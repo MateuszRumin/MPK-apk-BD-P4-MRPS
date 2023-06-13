@@ -8,7 +8,7 @@ const { Users,Usr_emp } = require('../../../models')
 
 exports.update = async (req, res) => {
 
-  // try{
+  try{
 
     const data = req.body
     
@@ -82,10 +82,10 @@ exports.update = async (req, res) => {
 
    
 
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json('Wystąpił błąd serwera');
-// }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json('Wystąpił błąd serwera');
+}
 
 
     }

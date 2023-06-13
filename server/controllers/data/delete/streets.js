@@ -8,9 +8,9 @@ const { Streets } = require('../../../models')
 exports.delete = async (req, res) => {
     
     try{
-    const idStreet = req.body.id_user
+    const idStreet = req.body.id_street
 
-    await Streets.destroy({where: {id_user:idStreet}})
+    await Streets.destroy({where: {id_street:idStreet}})
 
    
 

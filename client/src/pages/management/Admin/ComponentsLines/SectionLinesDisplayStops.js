@@ -56,7 +56,7 @@ const SectionLinesDisplayStops = props => {
 		const answer = window.confirm('Na pewno chcesz usunąć przystanek ?')
 		if (answer) {
 			console.log(`Usuwam przystanek o id tutaj konkrtetna`)
-			axios.post('http://localhost:3001/test', data).then(response => {
+			axios.post('http://localhost:3001/delete/stop', data).then(response => {
 				console.log(response.data)
 			})
 		} else {

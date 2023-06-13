@@ -27,7 +27,7 @@ class SectionUsersAccountRole extends Component {
 
 	usun = data => {
 		data = this.state.initialValues
-		axios.post('http://localhost:3001/test', data).then(response => {
+		axios.post('http://localhost:3001/delete/empl', data).then(response => {
 			console.log(response.data)
 		})
 		console.log('kliknieto')

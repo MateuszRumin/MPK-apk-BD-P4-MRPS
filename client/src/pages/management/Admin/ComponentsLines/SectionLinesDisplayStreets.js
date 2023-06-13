@@ -39,7 +39,7 @@ const SectionLinesDisplayStreets = ({ onChange }) => {
     event.preventDefault();
     const answer = window.confirm(`Na pewno chcesz usunąć linie ${data.name} ?`);
     if (answer) {
-      axios.post('http://localhost:3001/test', data).then(response => {
+      axios.post('http://localhost:3001/delete/street', data).then(response => {
         console.log(response.data);
       });
     } else {
