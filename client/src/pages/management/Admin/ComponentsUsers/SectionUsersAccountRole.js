@@ -143,7 +143,7 @@ class SectionUsersAccountRole extends Component {
 								<button className="buttonFormSubmitChangeAccount">Zmień</button>
 								<span className="spanDeleteAccount" onClick={this.usun}>
 									{/* onClick={this.deleteAccounts(this.props.idAccountUser.id_user)}> */}
-									Usuń
+									Usuń użytkownika
 								</span>
 								{/* {this.props.idUsers} */}
 							</section>

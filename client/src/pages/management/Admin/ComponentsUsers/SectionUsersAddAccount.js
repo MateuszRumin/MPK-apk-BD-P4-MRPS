@@ -41,7 +41,7 @@ class SectionUsersAddAccount extends Component {
 				<div className="headerSectionAddAccount">
 					<p>Dodaj nowe:</p>
 				</div>
-				<section className="formChangeDataAddAccount">
+				{/* <section className="formChangeDataAddAccount">
 					<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 						<Form>
 							<div className="headerAddAccount">
@@ -77,7 +77,7 @@ class SectionUsersAddAccount extends Component {
 							</section>
 						</Form>
 					</Formik>
-				</section>
+				</section> */}
 			</section>
 		)
 	}
