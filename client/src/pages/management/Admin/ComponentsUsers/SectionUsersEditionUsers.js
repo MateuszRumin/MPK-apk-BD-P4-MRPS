@@ -60,35 +60,19 @@ export class SectionUsersEditionUsers extends React.Component {
 				.required('Nie może być pusty'),
 
 			addres: Yup.string().min(3, 'Za krotki').max(30).required('Nie może być pusty'),
-			pesel: Yup.number().typeError('To musi być numer').required('Nie może być pusty'),
 
-			// pesel: Yup.string()
-			// 	.required('Nie może być pusty')
-			// 	.test('valid-pesel', 'Nieprawidłowy numer PESEL', value => {
-			// 		if (!value) return true // Jeśli wartość jest pusta, walidacja przechodzi (inną walidację pokryje już required())
+			pesel: Yup.string()
+				.length(11, 'PESEL musi składać się z 11 cyfr')
+				.matches(/^\d+$/, 'PESEL może zawierać tylko cyfry')
+				.typeError('To musi być numer')
+				.required('Nie może być pusty'),
 
-			// 		const peselRegex = /^[0-9]{11}$/
-			// 		if (!peselRegex.test(value)) return false // Jeśli numer PESEL nie ma 11 cyfr, walidacja nie przechodzi
-
-			// 		// Sprawdzenie poprawności cyfry kontrolnej
-			// 		const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
-			// 		const digits = value.split('').map(Number)
-			// 		const controlSum = digits.slice(0, 10).reduce((sum, digit, index) => sum + digit * weights[index], 0)
-			// 		const controlDigit = (10 - (controlSum % 10)) % 10
-
-			// 		return controlDigit === digits[10] // Walidacja przechodzi, jeśli cyfra kontrolna jest poprawna
-			// 	})
-			// 	.typeError('To musi być numer'),
+			
 
 			tel_num: Yup.string()
 				.max(20)
 				.required('To pole jest wymagane')
 				.matches(/^[0-9-]+$/, 'Można wprowadzać tylko cyfry i znak "-"'),
-
-			// tel_num: Yup.string()
-			// 	.max(20)
-			// 	.required('To pole jest wymagane')
-			// 	.matches(/^\d{3}-\d{3}-\d{3}$/, 'Format "111-222-333"'),
 		})
 
 		const onSubmit = data => {
@@ -113,7 +97,6 @@ export class SectionUsersEditionUsers extends React.Component {
 						this.setState({ responseSer: true })
 					}
 				})
-			
 			}
 		}
 		function onObjectChange(props) {
