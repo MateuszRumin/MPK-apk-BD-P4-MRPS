@@ -15,7 +15,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 	const getStopsFreeForLine = () => {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/aliases/toadd')
 			.then(response => {
 				const useData = response.data
 				setUsersData(useData)
@@ -30,7 +30,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 	const getStopsFreeForLine2 = () => {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/aliases/added')
 			.then(response => {
 				const useData = response.data
 				setUsersData(useData)
@@ -44,7 +44,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 	const getStopsFreeForLine3 = () => {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/aliases/all')
 			.then(response => {
 				const useData = response.data
 				setUsersData(useData)
@@ -192,9 +192,12 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 						<div className="tbl-content">
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
-									{usersData.map(user => (
-										<tr key={user.id_street}>
+								{usersData.map(user => (
+										<tr key={user.id_alias}>
 											<td>
+												{user.short}
+											
+											
 												{user.name}
 												<span className="spanKlikLine" onClick={() => handleConfirm(user)}>
 													Dodaj
@@ -228,9 +231,10 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 						<div className="tbl-content">
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
-									{usersData.map(user => (
-										<tr key={user.id_street}>
+								{usersData.map(user => (
+										<tr key={user.id_alias}>
 											<td>
+												{user.short}											
 												{user.name}
 												<span className="spanKlikLine" onClick={() => handleConfirm2(user)}>
 													Usuń
@@ -265,13 +269,19 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
 									{usersData.map(user => (
-										<tr key={user.id_street}>
+										<tr key={user.id_alias}>
 											<td>
+												{user.short}
+											
+											
 												{user.name}
+												
+												
 												<span className="spanKlikLine" onClick={() => handleConfirm3(user)}>
 													Usuń
 												</span>
 											</td>
+											
 										</tr>
 									))}
 								</tbody>

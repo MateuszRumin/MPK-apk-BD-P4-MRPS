@@ -39,10 +39,6 @@ module.exports = (sequelize,DataTypes) => {
             type:DataTypes.BOOLEAN,
             allowNull:false,
             defaultValue:false
-        },
-        id_changes:{     
-            type:DataTypes.INTEGER,
-            allowNull:true,      
         }
         
 
@@ -65,14 +61,7 @@ module.exports = (sequelize,DataTypes) => {
 			onDelete:'cascade',
 			onUpdate:'cascade',
             as:'stop'
-        }),
-        Routes.belongsTo(models.Changes,{
-            foreignKey:'id_changes',
-			secureKey:'id_changes',
-			onDelete:'cascade',
-			onUpdate:'cascade',
-            as:'change'
-        }),
+        }),       
         Routes.hasMany(models.RouteTimes,{
             foreignKey:'id_route_a',
             secureKey:'id_route_a',

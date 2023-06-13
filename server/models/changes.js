@@ -14,23 +14,16 @@ module.exports = (sequelize,DataTypes) => {
         date_to:{
             type:DataTypes.DATE,
             allowNull:false
+        },
+        id_line:{
+            type:DataTypes.DATE,
+            allowNull:false
         }
                    
         
     })
 
-   Changes.associate = (models) => {
-        Changes.hasMany(models.Routes,{
-            foreignKey:'id_changes',
-			secureKey:'id_changes',
-			onDelete:'cascade',
-			onUpdate:'cascade',
-            as:'change'
-        })
-               
-        
-	}
-
+ 
     
 
     
