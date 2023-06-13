@@ -1,0 +1,29 @@
+.newsicon{
+
+    color: red;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    font-size: 50px !important;
+}
+.newsicon:hover{
+
+    color: forestgreen !important;
+}
+
+.modalnews{
+    height: 200px !important;
+}
+
+.newsicon2{
+
+    color: rgb(121, 105, 105);
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+    font-size: 50px !important;
+}
+.newsicon2:hover{
+
+    color: rgb(218, 130, 23) !important;
+}

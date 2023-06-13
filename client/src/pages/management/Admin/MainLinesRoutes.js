@@ -8,6 +8,7 @@ import SectionMainLinesAddNewLine from './ComponentsMainLinesRouter/SectionMainL
 import SectionMainLinesAddAlias from './ComponentsMainLinesRouter/SectionMainLinesAddAlias'
 import SectionMainLinesTimeChange from './ComponentsMainLinesRouter/SectionMainLinesTimeChange'
 import '../Admin/ComponentsMainLinesRouter/css/MainLinesRoutes.css'
+import News from './News'
 
 export const MainLinesRoutes = () => {
 	let [selectLine, setSelectLine] = useState([])
@@ -81,6 +82,7 @@ export const MainLinesRoutes = () => {
 				</section>
 				<section className="addtolinestops">{/* <SectionMainLinesAddStopToLine /> */}</section>
 			</div>
+				<News />
 		</div>
 	)
 }

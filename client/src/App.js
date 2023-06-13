@@ -67,6 +67,7 @@ function App() {
 					<Route path="/*" element={<h1>Nie ma takiej strony</h1>} />
 				</Routes>
 			</Router>
+			
 		</div>
 	)
 }

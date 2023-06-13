@@ -5,6 +5,7 @@ import SectionDepartureDisplayLine from './ComponentsDeparture/SectionDepartureD
 import SectionDepartureWeekend from './ComponentsDeparture/SectionDepartureWeekend'
 import SectionDepartureWeekDays from './ComponentsDeparture/SectionDepartureWeekDays'
 import SectionDepartureHoliday from './ComponentsDeparture/SectionDepartureHoliday'
+import News from './News'
 export const Departure = () => {
 	let [selectCon, setSelectLine] = useState([])
 	let [selectStop, setSelectStop] = useState([])
@@ -126,6 +127,7 @@ export const Departure = () => {
 					)}
 				</section>
 			</div>
+			<News />
 		</div>
 	)
 }
