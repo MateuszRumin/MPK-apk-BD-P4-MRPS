@@ -29,7 +29,10 @@ router.post('/empl', empController.delete)
 const stopController = require('../controllers/data/delete/stops')
 router.post('/stop', stopController.delete)
 
+const alsController = require('../controllers/data/delete/als_cons')
+router.post('/alsc', alsController.delete)
 
-
+const aliasController = require('../controllers/data/delete/aliases')
+router.post('/alias', aliasController.delete)
 
 module.exports = router

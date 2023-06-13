@@ -24,7 +24,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 			.post('http://localhost:3001/select/aliases/toadd', obj)
 			.then(response => {
 				const useData = response.data
-				//  setUsersData(useData)
+				 setUsersData(useData)
 
 				console.log(useData)
 			})
@@ -42,7 +42,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 			.post('http://localhost:3001/select/aliases/added', obj)
 			.then(response => {
 				const useData = response.data
-				// setUsersData2(useData)
+				setUsersData2(useData)
 				console.log('Pobranie ulic z bazy')
 			})
 			.catch(error => {
@@ -114,7 +114,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		console.log(selectStop)
 
-		axios.post('http://localhost:3001/test').then(response => {
+		axios.post('http://localhost:3001/insert/alsc').then(response => {
 			console.log(response.data)
 
 			setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
@@ -126,7 +126,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		console.log(selectStop)
 
-		axios.post('http://localhost:3001/test').then(response => {
+		axios.post('http://localhost:3001/delete/alsc').then(response => {
 			console.log(response.data)
 			console.log(selectStop)
 			console.log(objStops)
@@ -140,7 +140,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		console.log(selectStop)
 
-		axios.post('http://localhost:3001/test').then(response => {
+		axios.post('http://localhost:3001/delete/alias').then(response => {
 			console.log(response.data)
 			console.log(selectStop)
 			console.log(objStops)

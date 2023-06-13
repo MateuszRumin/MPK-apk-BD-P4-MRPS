@@ -6,7 +6,7 @@ exports.add = async (req, res) => {
     try {
 
         const data = req.body
-
+        
 
 
         if(data.id_line){

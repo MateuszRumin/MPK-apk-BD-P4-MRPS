@@ -25,63 +25,62 @@ exports.all = async (req, res) => {
 }
 
 
-exports.added = async (req, res) => {
-    console.log('jestem');
+exports.toAdd = async (req, res) => {
+   
     try{
     
       const data = req.body
-
+      console.log(data.id_line)
         if (data.id_line){
 
-            const ret = await Aliases.findAll({
+            const notIn = await Als_cons.findAll({
+                where:{id_line:data.id_line}})
                
-                    include: [
-                        {
-                            model: Als_cons,
-                            required: true,
-                            left: true,
-                            attributes: [],
-                            where: {
-                                id_line: {
-                                    [Op.not]: data.id_line
-                                }
-                            },
-                            attributes: [],
-                            
-                        }
-                    ]
-                
-                   
-            }) 
+
+                console.log(notIn)
 
 
+           if(notIn.length==0){
+
+            const ret = await Aliases.findAll()
 
             res.json(ret)
+
+           
+
+           }else {
+
+            
+            const ret = await Aliases.findAll({
+                where: {
+                    id_alias:notIn.id_alias
+                } }) 
+               
+               
+              res.json(ret)
+            
+            }
+
+           
+          
+           
         }
         else if (data.id_departure){
+            const notIn = await Als_cons.findAll({where:{id_departures:data.id_departures},attributes:['id_alias']})
+            if(notIn.length==0){
+                const ret = await Aliases.findAll()
+                res.json(ret)
+               }else{
+    
+                const ret = await Aliases.findAll({
+                    where: {
+                        id_alias:notIn.id_alias
+                    } }) 
+                res.json(ret)
+                }
 
-            const ret = await Aliases.findAll({
-               
-                include: [
-                    {
-                        model: Als_cons,
-                        required: true,
-                        left: true,
-                        attributes: [],
-                        where: {
-                            id_line: {
-                                [Op.not]: data.id_departure
-                            }
-                        },
-                        attributes: [],
-                        
-                    }
-                ]
-            
-               
-        }) 
-        console.log(ret);
-            res.json(ret)
+
+           
         }
         else{
             res.json("none")
@@ -98,7 +97,7 @@ exports.added = async (req, res) => {
 }
 
 
-exports.toAdd = async (req, res) => {
+exports.added = async (req, res) => {
 
     try{
     
@@ -118,7 +117,7 @@ exports.toAdd = async (req, res) => {
                                 id_line:data.id_line
                             },
                             attributes: [],
-                            
+                            as:'change'
                         }
                     ]
                 
@@ -143,7 +142,7 @@ exports.toAdd = async (req, res) => {
                             id_departure:data.id_departure
                         },
                         attributes: [],
-                        
+                        as:'change' 
                     }
                 ]
             

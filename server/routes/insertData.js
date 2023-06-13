@@ -26,6 +26,8 @@ router.post('/routes', routesController.add)//wypisz wszystkie
 const aliasesController = require('../controllers/data/insert/aliases')
 router.post('/aliases', aliasesController.add)//wypisz wszystkieroutes
 
+const alsController = require('../controllers/data/insert/als_cons')
+router.post('/alsc', alsController.add)//wypisz wszystkieroutes
 
 
 
