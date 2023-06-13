@@ -50,6 +50,8 @@ export const Users = props => {
 		idAccountUser = valueUsers.Usr_emp
 		// nazwa oraz email powiązany z użytkownikiem
 		userEmailAccount = valueUsers.Usr_emp.User
+		userEmailAccount.emp_no = valueUsers.emp_no;
+		console.log(valueUsers);
 
 		// alert(userEmailAccount.username);
 
