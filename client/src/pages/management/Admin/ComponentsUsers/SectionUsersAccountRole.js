@@ -39,20 +39,17 @@ class SectionUsersAccountRole extends Component {
 		// const { test } = this.state
 
 		const validationSchema = Yup.object().shape({
-			username: Yup.string().min(5,'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
-			email: Yup.string().min(3,'Za krotki').max(50).required('Nie może być pusty'),
+			username: Yup.string().min(5, 'Za krotki').max(20, 'Za dlugi').required('Nie może być pusty'),
+			email: Yup.string().min(3, 'Za krotki').max(50).required('Nie może być pusty'),
 		})
 
 		const onSubmit = data => {
 			data.id_user = this.props.idAccountUser
 			axios.post('http://localhost:3001/update/user', data).then(response => {
 				console.log(response.data)
-			
-					this.setState({ content: response.data })
-					this.setState({error: true })
-					
-				
 
+				this.setState({ content: response.data })
+				this.setState({ error: true })
 			})
 		}
 
@@ -72,9 +69,12 @@ class SectionUsersAccountRole extends Component {
 		function onObjectChange(props) {
 			initialValues.username = props.username
 			initialValues.email = props.email
+			initialValues.emp_no = props.emp_no
+
 			// initialValues.idAccount = props.id_user
 
 			// console.log(props.id_user);
+			console.log(props.emp_no);
 		}
 
 		function deleteAccounts(props) {
@@ -99,7 +99,9 @@ class SectionUsersAccountRole extends Component {
 			<section className="sectionUsersAccountRole">
 				{this.props.userEmailAccount.username && onObjectChange(this.props.userEmailAccount)}
 				{this.props.userEmailAccount.email && onObjectChange(this.props.userEmailAccount)}
+				{this.props.userEmailAccount.emp_no && onObjectChange(this.props.userEmailAccount)}
 
+				
 				{this.props.idAccountUser.id_user && deleteAccounts(this.props.idAccountUser)}
 
 				<div className="headerSectionAccountRole">
@@ -150,7 +152,7 @@ class SectionUsersAccountRole extends Component {
 						</Form>
 					</Formik>
 					{error && <span style={{ color: 'red' }}>{content}</span>}
-								{responseSer && <span style={{ color: 'green' }}>{content}</span>}
+					{responseSer && <span style={{ color: 'green' }}>{content}</span>}
 				</section>
 
 				<SectionUsersRoleInAccount rolesUsers={this.props.rolesUsers.name} idAccountRole={this.props.idAccountRole} />
