@@ -8,63 +8,69 @@ const { Users,Usr_emp } = require('../../../models')
 
 exports.update = async (req, res) => {
 
-  try{
+  // try{
 
     const data = req.body
-
+    
  
       const dataUser = {
         username:data.username,
         email:data.email
       }
+      const paswd = await bcr.hash("qwertyuuiop",10)
+      const defaultPass = {
+        password:paswd
+      }
 
 
-      
-
-      const idEmployee = data.emp_no
 
       const usrEmp  = await Usr_emp.findOne({
         where:{
-          emp_no:idEmployee
+          id_usr_emp:data.id_user.id_usr_emp
         }
       })
-      const defaultPass = {
-        password:bcrypt.hash("qwertyuuiop",10)
-      }
-
+      
+      
+    
       const check = await Users.findOne({where:dataUser})
+      
+      
       if(!check){
 
       
 
       if (usrEmp.id_user === null){
 
-        const toAdd = await Users.create(...dataUser,...defaultPass)
+        const toAdd = await Users.create({...dataUser,...defaultPass})
         const toUpdate = {
           id_user:toAdd.id_user
         }
 
-        await Usr_emp.update({
-          toUpdate
-        },
+
+        await Usr_emp.update(
+          toUpdate ,
         {where:{
-          id_usr_emp:usrEmp.id_usr_emp
+          id_usr_emp:data.id_user.id_usr_emp
         }})
 
+       
+        res.json(`Dodano`)
 
 
       }else{
        
-
-    
-
         Users.update(
           dataUser, // Updated values
           { where: { id_user: usrEmp.id_user} } // Condition to match the records to be updated
         )
-          
-        res.json(`Zmodyfikowano`)
+        console.log(`Zmodyfikowano`); 
+      res.json(`Zmodyfikowano`)
+
       }
+     
+
+
+
 
 
     }else{
@@ -72,14 +78,14 @@ exports.update = async (req, res) => {
 
     }
 
-       res.json(`Zmodyfikowano`)
+      
 
    
 
-  } catch (err) {
-    console.error(err);
-    res.status(500).json('Wystąpił błąd serwera');
-}
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json('Wystąpił błąd serwera');
+// }
 
 
     }

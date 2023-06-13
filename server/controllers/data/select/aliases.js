@@ -77,7 +77,7 @@ exports.added = async (req, res) => {
             
                
         }) 
-
+            res.json(ret)
         }
         else{
             res.json("none")
