@@ -7,6 +7,7 @@ import '../Admin/ComponentsUsers/css/Users.css'
 import SectionUsersAccountRole from './ComponentsUsers/SectionUsersAccountRole'
 import SectionUsersAddUsers from './ComponentsUsers/SectionUsersAddUsers'
 import SectionUsersAddAccount from './ComponentsUsers/SectionUsersAddAccount'
+import News from './News'
 import React, { useState } from 'react'
 
 export const Users = props => {
@@ -124,6 +125,8 @@ export const Users = props => {
 					{/* <SectionUsersAddUsers /> */}
 					{/* <SectionUsersAddAccount /> */}
 				</section>
+
+				<News />
 			</div>
 		</div>
 	)

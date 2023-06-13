@@ -4,7 +4,7 @@ import SectionLinesDisplayStops from './ComponentsLines/SectionLinesDisplayStops
 import SectionLinesDisplayStreets from './ComponentsLines/SectionLinesDisplayStreets'
 import SectionLinesModStreets from './ComponentsLines/SectionLinesModStreets'
 import SectionLinesModStops from './ComponentsLines/SectionLinesModStops'
-
+import News from './News'
 import '../Admin/ComponentsLines/css/Lines.css'
 
 export const Lines = () => {
@@ -57,6 +57,7 @@ export const Lines = () => {
 					{/* <SectionLinesModStops  selectStop={selectStop}/> */}
 				</section>
 			</div>
+			<News />
 		</div>
 	)
 }

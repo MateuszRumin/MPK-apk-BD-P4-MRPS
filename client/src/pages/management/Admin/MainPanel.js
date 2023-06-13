@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import './ComponentsMainPanel/css/MainPanel.css'
-
+import News from './News'
 export const MainPanel = () => {
 	return (
 		<div className="containerMainPanel">
@@ -51,6 +51,7 @@ export const MainPanel = () => {
 					</NavLink>
 				</nav>
 			</section>
+			<News />
 		</div>
 	)
 }

@@ -8,6 +8,7 @@ import SectionConnectSetNewConFrom from './ComponentsConnections/SectionConnectS
 import SectionConnectSetNewConTo from './ComponentsConnections/SectionConnectSetNewConTo'
 import SectionConnectAddNewCon from './ComponentsConnections/SectionConnectAddNewCon'
 import SectionConnectDisplayCon from './ComponentsConnections/SectionConnectDisplayCon'
+import News from './News'
 export const Connections = () => {
 	let [selectCon, setSelectLine] = useState([])
 	let [selectStop, setSelectStop] = useState([])
@@ -80,6 +81,7 @@ export const Connections = () => {
 					{/* <SectionConnectAddNewCon selectStop={selectStop} freeSelectStop={freeSelectStop} /> */}
 				</section>
 			</div>
+			<News />
 		</div>
 	)
 }
