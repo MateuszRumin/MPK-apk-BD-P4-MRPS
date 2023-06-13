@@ -3,7 +3,7 @@ const app = express()
 const { PORT } = require('./config/port')
 const cors = require('cors')
 const dotenv = require('dotenv')
-
+const bcrypt = require("bcrypt")
 //inicjacja dotenv
 dotenv.config({path: './.env'})
 //parse dla wartsci json
@@ -31,13 +31,14 @@ app.use('/delete', deleteRoute)
 app.use('/test', async (req, res) => {
    
 	try{
+	
 	 const data = req.body;
 	
+		const adm = await bcrypt.hash("qwertyuiop",10)
 
-
-
+		console.log(adm)
     console.log(data);
-	res.json('tested')
+	res.json(adm)
 	}
 	catch (err){
 		res.status(500)

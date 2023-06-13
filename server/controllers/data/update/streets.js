@@ -15,7 +15,7 @@ try{
       }
 
     
-    Streets.update(
+   await Streets.update(
         dataStreet, // Updated values
         { where: { id_street: data.id_street } } // Condition to match the records to be updated
       )

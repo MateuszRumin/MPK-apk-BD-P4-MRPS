@@ -14,7 +14,7 @@ try{
       }
 
     
-    Stops.update(
+   await Stops.update(
         dataStop, // Updated values
         { where: { id_stop: data.id_stop } } // Condition to match the records to be updated
       )

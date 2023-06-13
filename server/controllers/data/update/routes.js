@@ -13,7 +13,7 @@ exports.updateOrder = async (req, res) => {
       
 
    
-    data.map(upd => {
+     data.map(upd => {
 
 
         Routes.update(

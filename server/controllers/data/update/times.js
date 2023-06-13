@@ -20,7 +20,7 @@ exports.update = async (req, res) => {
  
 
 
-     Times.update(
+    await Times.update(
         dataUser, // Updated values
         { where: { id_time: data.id_time} } // Condition to match the records to be updated
       )
