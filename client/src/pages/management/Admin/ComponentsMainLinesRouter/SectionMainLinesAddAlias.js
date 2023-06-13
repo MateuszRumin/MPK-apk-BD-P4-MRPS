@@ -10,16 +10,22 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 	const [isOpen2, setIsOpen2] = useState(false)
 	const [isOpen3, setIsOpen3] = useState(false)
 	const [usersData, setUsersData] = useState([])
+	const [usersData2, setUsersData2] = useState([])
+	const [usersData3, setUsersData3] = useState([])
 	const [serverResponse, setServerResponse] = useState('')
 	const [validationErr, setValidationErr] = useState('')
 
 	const getStopsFreeForLine = () => {
+		let obj = {
+			id_line: selectLine.id_line,
+		}
+		console.log(obj)
 		axios
-			.post('http://localhost:3001/select/aliases/toadd')
+			.post('http://localhost:3001/select/aliases/toadd', obj)
 			.then(response => {
 				const useData = response.data
-				setUsersData(useData)
-				console.log('Pobranie ulic z bazy')
+				//  setUsersData(useData)
+
 				console.log(useData)
 			})
 			.catch(error => {
@@ -27,15 +33,17 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 			})
 	}
 
-
 	const getStopsFreeForLine2 = () => {
+		let obj = {
+			id_line: selectLine.id_line,
+		}
+		console.log(obj)
 		axios
-			.post('http://localhost:3001/select/aliases/added')
+			.post('http://localhost:3001/select/aliases/added', obj)
 			.then(response => {
 				const useData = response.data
-				setUsersData(useData)
+				// setUsersData2(useData)
 				console.log('Pobranie ulic z bazy')
-				console.log(useData)
 			})
 			.catch(error => {
 				console.log(error)
@@ -43,12 +51,17 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 	}
 
 	const getStopsFreeForLine3 = () => {
+		let obj = {
+			id_line: selectLine.id_line,
+		}
+		console.log(obj)
+
 		axios
-			.post('http://localhost:3001/select/aliases/all')
+			.post('http://localhost:3001/select/aliases/all', obj)
 			.then(response => {
 				const useData = response.data
-				setUsersData(useData)
-				console.log('Pobranie ulic z bazy')
+				setUsersData3(useData)
+
 				console.log(useData)
 			})
 			.catch(error => {
@@ -83,7 +96,6 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 		setIsOpen3(false)
 	}
 
-
 	const openModal = () => {
 		setIsOpen(true)
 		getStopsFreeForLine()
@@ -96,7 +108,6 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 		setIsOpen3(true)
 		getStopsFreeForLine3()
 	}
-
 
 	const handleConfirm = selectStop => {
 		console.log(objStops)
@@ -117,8 +128,8 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		axios.post('http://localhost:3001/test').then(response => {
 			console.log(response.data)
-			console.log(selectStop);
-			console.log(objStops);
+			console.log(selectStop)
+			console.log(objStops)
 
 			setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
 		})
@@ -131,8 +142,8 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		axios.post('http://localhost:3001/test').then(response => {
 			console.log(response.data)
-			console.log(selectStop);
-			console.log(objStops);
+			console.log(selectStop)
+			console.log(objStops)
 
 			setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
 		})
@@ -192,12 +203,11 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 						<div className="tbl-content">
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
-								{usersData.map(user => (
+									{usersData.map(user => (
 										<tr key={user.id_alias}>
 											<td>
 												{user.short}
-											
-											
+
 												{user.name}
 												<span className="spanKlikLine" onClick={() => handleConfirm(user)}>
 													Dodaj
@@ -218,7 +228,6 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 				</Modal>
 			</div>
 
-
 			<div>
 				<Modal isOpen={isOpen2} className="custom-modal modalWindow" overlayClassName="custom-overlay">
 					<h3>Aktualne aliasy</h3>
@@ -231,10 +240,10 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 						<div className="tbl-content">
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
-								{usersData.map(user => (
+									{usersData2.map(user => (
 										<tr key={user.id_alias}>
 											<td>
-												{user.short}											
+												{user.short}
 												{user.name}
 												<span className="spanKlikLine" onClick={() => handleConfirm2(user)}>
 													Usuń
@@ -255,7 +264,6 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 				</Modal>
 			</div>
 
-
 			<div>
 				<Modal isOpen={isOpen3} className="custom-modal modalWindow" overlayClassName="custom-overlay">
 					<h3>Wszystkie aliasy</h3>
@@ -268,20 +276,17 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 						<div className="tbl-content">
 							<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 								<tbody className="DispStreets ">
-									{usersData.map(user => (
+									{usersData3.map(user => (
 										<tr key={user.id_alias}>
 											<td>
 												{user.short}
-											
-											
+
 												{user.name}
-												
-												
+
 												<span className="spanKlikLine" onClick={() => handleConfirm3(user)}>
 													Usuń
 												</span>
 											</td>
-											
 										</tr>
 									))}
 								</tbody>

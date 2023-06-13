@@ -24,6 +24,7 @@ class SectionMainLinesAddNewLine extends Component {
 		})
 
 		const onSubmit = data => {
+			console.log(data);
 			axios.post('http://localhost:3001/insert/lines', data).then(response => {
 				console.log(response.data)
 			})
