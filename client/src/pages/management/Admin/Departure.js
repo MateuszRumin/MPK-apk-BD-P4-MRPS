@@ -77,9 +77,9 @@ export const Departure = () => {
 		<div>
 			<section>
 				<header className="navbarLines">
-					<p className="logoLines">
+					<NavLink className="logo" to="/admin">
 						<i className="fa-solid fa-bus"></i>
-					</p>
+					</NavLink>
 
 					<nav className="navigationLines">
 						<NavLink to="/admin">Main panel</NavLink>

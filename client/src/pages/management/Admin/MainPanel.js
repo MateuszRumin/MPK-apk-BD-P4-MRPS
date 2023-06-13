@@ -7,7 +7,9 @@ export const MainPanel = () => {
 			<section>
 				<header>
 					<p className="logo">
-						<i className="fa-solid fa-bus"></i>
+						<NavLink className="logoNavLink" to="/admin">
+							<i className="fa-solid fa-bus"></i>
+						</NavLink>
 					</p>
 
 					<nav className="navigation">
@@ -22,11 +24,10 @@ export const MainPanel = () => {
 				</header>
 			</section>
 
-			<section className='mainsectionAdmin'>
+			<section className="mainsectionAdmin">
 				{/* Tutaj moża wżuciż komponenty */}
 				{/* <AddWorker /> */}
 				{/* <AddLine /> */}
-		
 
 				<nav className="">
 					<NavLink to="/admin/lines">
@@ -48,11 +49,6 @@ export const MainPanel = () => {
 					<NavLink to="/admin/mainlines">
 						<div className="square-line normal-line displayblocknow">Linie i trasy</div>
 					</NavLink>
-
-				
-
-			
-
 				</nav>
 			</section>
 		</div>

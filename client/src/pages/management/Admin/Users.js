@@ -73,9 +73,9 @@ export const Users = props => {
 		<div>
 			<section>
 				<header className="navbarUsers">
-					<p className="logoUsers">
-						<i className="fa-solid fa-bus"></i>
-					</p>
+				<NavLink className="logo" to="/admin">
+							<i className="fa-solid fa-bus"></i>
+				</NavLink>
 
 					<nav className="navigationUsers">
 						<NavLink to="/admin">Main panel</NavLink>
