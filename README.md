@@ -8,7 +8,7 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
 1. Jeśli na komputerze jest zainstalowany serwer MSQL8.0 usuchom go i zaloguj się jako użytkownik root.
 2. Po zalogowaniu stwórz pustą baze danych pod nazwą "mpkdb" (create database mpkdb;).
    
-3. Jeśli bazy nie ma na komputerze skopiować plik pustej bazy z dostarocznego nośnika danych w lokalizacji dysku C://.
+3. Jeśli bazy nie ma na komputerze skopiować plik pustej bazy z dostarocznego nośnika danych (baza) do lokalizacji dysku C://.
    
 4. Otworzyć wiersz poleceń i wpisać "C://baza/bin/mysqld"
    
@@ -17,14 +17,14 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
 6. Uruchomić 2xwiersz polecenia w folderze projektu
    
 7. W pierwszym wierszu poleceń wpisywać kolejno:
-   "npm i"-(tylko jeśli pobrane z github)
    "cd server",
+   "npm i"-(tylko jeśli pobrane z github)
    "npm run resetdb",
    "npm start"
    
-8. W pierwszym wierszu poleceń wpisywać kolejno:
-   "npm i"-(tylko jeśli pobrane z github)
+9. W pierwszym wierszu poleceń wpisywać kolejno:
    "cd client"
+   "npm i"-(tylko jeśli pobrane z github)
    "npm start"
 
 
