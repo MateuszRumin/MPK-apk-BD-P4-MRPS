@@ -17,7 +17,7 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
 
    *jeśli pobrano repozytorium z github
    W folsedrze MPK-apk-BD-P4-MRPS/server stworzyć plik .env
-   i wypełnić danymi:
+   i wypełnić danymi:</br>
    DB_USER=root </br>
    DB_PASSWORD=</br>
    DB_DATABASE=mpkdb</br>
@@ -27,16 +27,16 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
    
 7. Uruchomić 2xwiersz polecenia w folderze projektu
    
-8. W pierwszym wierszu poleceń wpisywać kolejno:
-   "cd server",
-   "npm i"-(tylko jeśli pobrane z github)
-   "npm run resetdb",
+8. W pierwszym wierszu poleceń wpisywać kolejno:</br>
+   "cd server",</br>
+   "npm i"-(tylko jeśli pobrane z github),</br>
+   "npm run resetdb",</br>
    "npm start"
    
-9. W pierwszym wierszu poleceń wpisywać kolejno:
-   "cd client"
-   "npm i"-(tylko jeśli pobrane z github)
-   "npm start"
+9. W pierwszym wierszu poleceń wpisywać kolejno:</br>
+   "cd client"</br>
+   "npm i"-(tylko jeśli pobrane z github)</br>
+   "npm start"</br>
 
 
 
