@@ -12,6 +12,7 @@ router.post('/employees/allAndRole',employeesController.allAndRole)
 //users
 const userController = require('../controllers/data/select/users')
 router.post('/users/all',userController.all)//wypisz wszystkie
+router.post('/users/check',userController.check)//wypisz wszystkie
 
 
 //streets
@@ -60,10 +61,11 @@ router.post('/departure/onstop',departureController.onstop)//wypisz wszystkie
 const aliasesController = require('../controllers/data/select/aliases')
 router.post('/aliases/all',aliasesController.all)//wypisz wszystkie
 router.post('/aliases/added',aliasesController.added)//wypisz wszystkie
-router.post('/aliases/toadd',aliasesController.toAdd)//wypisz wszystkie
 
 
-const als_consController = require('../controllers/data/select/als_const')
+const infoController = require('../controllers/data/select/info')
+router.post('/info', infoController.all)//wypisz wszystkie
+
 
 
 

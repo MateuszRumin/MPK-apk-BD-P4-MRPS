@@ -74,7 +74,7 @@ const SectionConnectDisplayConnects = ({ selectLine2 }) => {
 
 			setData[selectTimeG] = confirmDelete
 
-			axios.post('http://localhost:3001/test', setData).then(response => {
+			axios.post('http://localhost:3001/update/rt', setData).then(response => {
 				console.log(response.data)
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
 			})

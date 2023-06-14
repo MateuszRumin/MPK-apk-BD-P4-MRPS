@@ -6,8 +6,7 @@ const { Usr_emp, Users, Employees } = require('../models');
 module.exports = {
   async up (queryInterface, Sequelize) {
   const userData = {
-    username:'Admin',
-    password:'$2a$08$5CYUq/FAEum01ZrQF5KQNe09/6ptIhTVETKX8m34OwqVAypBDjY5y',
+    username:'Admini',    
     email:'admin.admin@localhost',
   }
   const emplyData ={

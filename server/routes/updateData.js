@@ -33,6 +33,10 @@ const aliasesController = require('../controllers/data/update/aliases')
 router.post('/aliases',aliasesController.update)
 
 
+const rtController = require('../controllers/data/update/routeTimes')
+router.post('/rt',  rtController.update)
+
+
 
 
 module.exports = router

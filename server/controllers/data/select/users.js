@@ -15,28 +15,30 @@ exports.all = async (req, res) => {
 
 
 
-exports.all = async (req, res) => {
-    try{
-    const {username,password} = req.body
+exports.check = async (req, res) => {
+    try {
+        console.log(req.body);
+        const data = req.body;
+        const username = data.username;
+        const password = data.password;
 
         const user = await Users.findOne({
-            where:{username:username}
-        })
-    
-        if (!user) res.json({error:"Wrong Data"})
+            where: { username: username }
+        });
 
-        bcrypt.compare(password,user.password).then( (match) => {
-            if(!match) res.json({error:"Wrong Data"})
+        if (!user) {
+            return res.json({ error: "Wrong Data" });
+        }
 
-
-            res.json("OK")
-        })
-
-
-
-
+        await bcrypt.compare(password, user.password).then((match) => {
+            if (!match) {
+                return res.json({ error: "Wrong Data" });
+            }
+            console.log("ok")
+            res.json("ok");
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json('Wystąpił błąd serwera');
     }
-}
+};

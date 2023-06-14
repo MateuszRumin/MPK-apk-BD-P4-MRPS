@@ -17,8 +17,7 @@ const db = require('./models')
 
 
 //routes i użycie sciezki
-const userRoute = require('./routes/auth')
-app.use('/auth', userRoute)
+
 const insertRoute = require('./routes/insertData')
 app.use('/insert', insertRoute)
 const selectRoute = require('./routes/selectData')

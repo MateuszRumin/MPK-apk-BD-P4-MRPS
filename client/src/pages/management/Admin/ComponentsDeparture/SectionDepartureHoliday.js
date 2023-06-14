@@ -121,12 +121,8 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Route_od</th>
-								<th>Route_do</th>
-								<th>Pn</th>
-								<th>Sb</th>
-								<th>Nd</th>
+								<th>1</th>
+								
 								<th className="thirdTd"></th>
 							</tr>
 						</thead>
@@ -136,7 +132,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 						<tbody className="DispStreets ">
 							{weekDays.map(user => (
-								<tr key={user.id_route}>
+								<tr key={user.id_departure}>
 									<td>
 										{user.stop.name}
 										{/* <span className="spanKlikLine" onClick={() => this.selectLines(user)}>

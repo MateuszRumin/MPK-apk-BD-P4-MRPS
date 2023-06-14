@@ -32,11 +32,11 @@ const Login = () => {
   
 	const onSubmit = data => {
 	  axios
-		.post('http://localhost:3001/auth/login', data)
+		.post('http://localhost:3001/select/users/check', data)
 		.then(response => {
 		  console.log(response.data);
   
-		  response.data = 'ok'
+		  
 
 		  if (response.data === 'ok') {
 			// Pobieranie username i roli z odpowiedzi serwera

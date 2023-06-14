@@ -5,8 +5,8 @@ const { Users } = require('../models')
 module.exports = {
 	async up(queryInterface, Sequelize) {
 		const data = {
-			username: 'Admin',
-			password: '$2a$08$5CYUq/FAEum01ZrQF5KQNe09/6ptIhTVETKX8m34OwqVAypBDjY5y',
+			username: 'Admini',
+			password: '$2b$10$nJ.a0FjmsRFHvGsEW6z./OiyoSESc5Xst0IaR58/jEpi1dA1R8dNa',
 			email: 'admin.admin@localhost',
 		}
 
