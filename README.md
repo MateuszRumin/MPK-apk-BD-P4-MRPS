@@ -22,7 +22,7 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
    DB_PASSWORD=</br>
    DB_DATABASE=mpkdb</br>
    DB_HOST=localhost</br>
-   JWT_SECRET=autobus</br>
+   
 
    
 7. Uruchomić 2xwiersz polecenia w folderze projektu
