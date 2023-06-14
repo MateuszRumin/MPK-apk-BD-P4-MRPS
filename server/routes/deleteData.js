@@ -40,3 +40,4 @@ const infoController = require('../controllers/data/delete/info')
 router.post('/info', infoController.delete)//wypisz wszystkie
 
 module.exports = router
+

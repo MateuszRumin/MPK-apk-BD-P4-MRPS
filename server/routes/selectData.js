@@ -61,6 +61,7 @@ router.post('/departure/onstop',departureController.onstop)//wypisz wszystkie
 const aliasesController = require('../controllers/data/select/aliases')
 router.post('/aliases/all',aliasesController.all)//wypisz wszystkie
 router.post('/aliases/added',aliasesController.added)//wypisz wszystkie
+router.post('/aliases/toadd',aliasesController.toAdd)//wypisz wszystkie
 
 
 const infoController = require('../controllers/data/select/info')

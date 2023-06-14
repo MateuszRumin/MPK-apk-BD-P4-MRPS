@@ -30,7 +30,7 @@ exports.toAdd = async (req, res) => {
     try{
     
       const data = req.body
-      console.log(data.id_line)
+      console.log(data)
         if (data.id_line){
 
             const notIn = await Als_cons.findAll({
@@ -125,7 +125,7 @@ exports.added = async (req, res) => {
             }) 
 
 
-
+           
             res.json(ret)
         }
         else if (data.id_departure){
