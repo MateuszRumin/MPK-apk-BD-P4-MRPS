@@ -18,11 +18,11 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
    *jeśli pobrano repozytorium z github
    W folsedrze MPK-apk-BD-P4-MRPS/server stworzyć plik .env
    i wypełnić danymi:
-   DB_USER=root
-   DB_PASSWORD=
-   DB_DATABASE=mpkdb
-   DB_HOST=localhost
-   JWT_SECRET=autobus
+   DB_USER=root </br>
+   DB_PASSWORD=</br>
+   DB_DATABASE=mpkdb</br>
+   DB_HOST=localhost</br>
+   JWT_SECRET=autobus</br>
 
    
 7. Uruchomić 2xwiersz polecenia w folderze projektu
