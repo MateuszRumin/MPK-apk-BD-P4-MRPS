@@ -5,6 +5,7 @@ prezentacja panelu zarządzania:
 https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=sharing
 
 # Sposób uruchomienia
+
 1. Jeśli na komputerze jest zainstalowany serwer MSQL8.0 usuchom go i zaloguj się jako użytkownik root.
 2. Po zalogowaniu stwórz pustą baze danych pod nazwą "mpkdb" (create database mpkdb;).
    
@@ -13,10 +14,20 @@ https://drive.google.com/file/d/1SfhkYvd7QHeT1RBfc8vYMLINcuLeF0JD/view?usp=shari
 4. Otworzyć wiersz poleceń i wpisać "C://baza/bin/mysqld"
    
 5. Otworzyć plik projektu "MPK-apk-BD-P4-MRPS" w programie Visual Studio Code
+
+   *jeśli pobrano repozytorium z github
+   W folsedrze MPK-apk-BD-P4-MRPS/server stworzyć plik .env
+   i wypełnić danymi:
+   DB_USER=root
+   DB_PASSWORD=
+   DB_DATABASE=mpkdb
+   DB_HOST=localhost
+   JWT_SECRET=autobus
+
    
-6. Uruchomić 2xwiersz polecenia w folderze projektu
+7. Uruchomić 2xwiersz polecenia w folderze projektu
    
-7. W pierwszym wierszu poleceń wpisywać kolejno:
+8. W pierwszym wierszu poleceń wpisywać kolejno:
    "cd server",
    "npm i"-(tylko jeśli pobrane z github)
    "npm run resetdb",
