@@ -119,13 +119,16 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Route_od</th>
-								<th>Route_do</th>
-								<th>Pn</th>
-								<th>Sb</th>
-								<th>Nd</th>
-								<th className="thirdTd"></th>
+							{weekDays.map(user => 
+( 							<span key={user.id_route}>
+							<th>
+							{user.stop.name}
+							</th>
+		
+							</span>
+
+						))}
+
 							</tr>
 						</thead>
 					</table>
