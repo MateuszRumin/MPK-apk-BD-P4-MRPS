@@ -127,9 +127,9 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 					<table className="table widthh" cellPadding="0" cellSpacing="0" border="0">
 						<thead>
 							<tr>
-								{weekDays.map(user => (
-									<th className="etsttttt" key={user.id_route}>
-										{user.stop.name}
+								{weekDays.map(order => (
+									<th className="etsttttt" key={order.order}>
+										{order.stop.name}
 									</th>
 								))}
 							</tr>
@@ -137,9 +137,9 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 						<tbody className="DispStreets tableDisplayStreets widthh">
 							
 								<tr>
-								{weekDays.map(user => (
-									<th className="etsttttt" key={user.id_route}>
-										{user.stop.name}
+								{weekDays.map(order => (
+									<th className="etsttttt" key={order.order}>
+										{order.stop.name}
 									</th>
 								))}
 							</tr>
