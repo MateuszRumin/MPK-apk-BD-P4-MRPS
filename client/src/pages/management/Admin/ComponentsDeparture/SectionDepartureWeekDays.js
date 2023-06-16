@@ -3,8 +3,9 @@ import axios from 'axios'
 import Modal from 'react-modal'
 
 import './css/SectionDepartureWeekDays.css'
+let index = 0
 let objStops = 0
-
+let dpd = []
 const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 	const [usersData, setUsersData] = useState([])
 	const [isOpen, setIsOpen] = useState(false)
@@ -12,6 +13,43 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 	const [setData, setSetData] = useState([])
 	const [serverResponse, setServerResponse] = useState('')
 	const [weekDays, setWeekDays] = useState([])
+	const [dest, setDest] = useState([])
+	
+let direction = true
+
+
+const DispDept = ( object ) => {
+
+			
+			let sendObj = {
+				day: 'week',
+				id_line: object.id_line,
+				id_stop:object.id_stop,
+				id_route: object.id_route,
+				direction: direction,
+			}
+
+			axios
+				// .post('http://localhost:3001/select/departure/onstop', objStops)
+				.post('http://localhost:3001/select/departure/onstop', sendObj)
+				.then(response => {
+					//  setDest[0](response.data)
+
+					dpd[index]=response.data
+					console.log(response.data);	
+					console.log(index);
+					index++			
+				})
+				.catch(error => {
+					console.log(error)
+				})
+
+		
+	}
+
+
+
+
 
 	const getStopsFreeForLine = () => {
 		if (objStops === 0) {
@@ -31,8 +69,16 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 					console.log('Pobranie ulic z bazy')
 					console.log(weekDays)
 
+					
+				
+					weekDays.forEach((object) =>{
+						console.log("jestem")
+						DispDept(object)
+						
+						
 
 
+					})
 
 
 
@@ -45,6 +91,8 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 		}
 	}
 
+
+	
 	useEffect(() => {
 		function onObjectChange(props) {
 			console.log(props)
@@ -54,6 +102,9 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 		if (selectLine2.id_line) {
 			onObjectChange(selectLine2)
 		}
+
+
+
 	}, [selectLine2])
 
 	const openModal = data => {
@@ -135,15 +186,21 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 							</tr>
 						</thead>
 						<tbody className="DispStreets tableDisplayStreets widthh">
-							
+						{weekDays.map(order => (
+								<th className="etsttttt" key={order.order}>
+					{dpd.map(test => (	
+						<span>
+						{test.map(dest => (
 								<tr>
-								{weekDays.map(order => (
-									<th className="etsttttt" key={order.order}>
-										{order.stop.name}
-									</th>
-								))}
-							</tr>
-							
+								
+										{dest.time}
+									
+								</tr>
+							))}
+					</span>
+							))}
+							</th>
+						))}
 						</tbody>
 					</table>
 				</div>
