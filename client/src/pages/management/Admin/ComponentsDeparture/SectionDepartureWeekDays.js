@@ -121,7 +121,7 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 						<thead>
 							<tr>
 								{weekDays.map(user => (
-									<th key={user.id_route}>{user.stop.name}</th>
+									<th className='etsttttt' key={user.id_route}>{user.stop.name}</th>
 
 								))}
 							</tr>

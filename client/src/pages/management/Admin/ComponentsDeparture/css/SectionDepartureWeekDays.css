@@ -7,6 +7,9 @@ overflow-y: auto;
 
 
 }
+.etsttttt{
+    font-size: 12px !important;
+}
 .switchClass:hover{
     color: royalblue;
     
@@ -16,6 +19,9 @@ overflow-y: auto;
     font-weight: bold;
     overflow-y: auto;
     
+}
+.widthh td{
+    padding-left: 0;
 }
 
 .table-container {
