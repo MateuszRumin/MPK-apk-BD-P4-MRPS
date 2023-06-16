@@ -117,29 +117,32 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 			<section className="contentDisplayStreets ">
 				<div className="table-container ">
 					<table className="table widthh" cellPadding="0" cellSpacing="0" border="0">
-						
 						<thead>
 							<tr>
 								{weekDays.map(user => (
-									<th className='etsttttt' key={user.id_route}>{user.stop.name}</th>
-
+									<th className="etsttttt" key={user.id_route}>
+										{user.stop.name}
+									</th>
 								))}
 							</tr>
 						</thead>
 						<tbody className="DispStreets tableDisplayStreets widthh">
-						<tr>
-								{weekDays.map(user => (
-									<td className='etsttttt' key={user.id_route}>{user.stop.name}</td>
-
-								))}
-							</tr>
-							</tbody>
-
-
-
+							{weekDays.map(user => (
+								<tr key={user.id_route}>
+									{/* <td className="etsttttt">{user.stop.name}</td> */}
+									<td className="etsttttt">1</td>
+									<td className="etsttttt">2</td>
+									<td className="etsttttt">3</td>
+									<td className="etsttttt">4</td>
+									<td className="etsttttt">5</td>
+									<td className="etsttttt">6</td>
+									<td className="etsttttt">7</td>
+									<td className="etsttttt">8</td>
+									<td className="etsttttt">9</td>
+								</tr>
+							))}
+						</tbody>
 					</table>
-
-					
 				</div>
 				<div>
 					<Modal isOpen={isOpen} className="custom-modal" overlayClassName="custom-overlay" onRequestClose={closeModal}>

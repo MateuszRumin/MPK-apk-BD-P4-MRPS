@@ -1,49 +1,41 @@
 .switchClass {
-
-margin: 0px 20px;
-cursor: pointer;
-transition: color .3s;
-overflow-y: auto;
-
-
+	margin: 0px 20px;
+	cursor: pointer;
+	transition: color 0.3s;
+	overflow-y: auto;
 }
-.etsttttt{
-    font-size: 12px !important;
+.etsttttt {
+	font-size: 12px !important;
 }
-.switchClass:hover{
-    color: royalblue;
-    
+.switchClass:hover {
+	color: royalblue;
 }
-.selectSwitch{
-    color:royalblue;
-    font-weight: bold;
-    overflow-y: auto;
-    
+.selectSwitch {
+	color: royalblue;
+	font-weight: bold;
+	overflow-y: auto;
 }
-.widthh td{
-    padding-left: 0;
+.widthh td {
+	
+    padding: 20px;
+	text-align: center;
 }
 
 .table-container {
-    overflow-x: auto;
-    overflow-y: auto;
-    height: 400px !important;
-    
+	overflow-x: auto;
+	overflow-y: auto;
+	height: 400px !important;
 }
 
 .table {
-      overflow-y: auto;
-    white-space: nowrap;
-   
-    text-align: left;
-    
-  }
+	overflow-y: auto;
+	white-space: nowrap;
 
-  .table th {
- 
+	text-align: left;
+}
 
-    text-overflow: ellipsis;
-    
-  }
+.table th {
+	padding: 10px;
 
- 
+	text-overflow: ellipsis;
+}
