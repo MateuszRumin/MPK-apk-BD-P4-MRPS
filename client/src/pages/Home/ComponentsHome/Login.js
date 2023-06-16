@@ -29,6 +29,8 @@ const Login = () => {
 	const [username, setUsername] = useState('');
 	const [role, setRole] = useState('');
 	const [login, setLogin] = useState(false);
+	const [responErr, setResponerr] = useState(false);
+
   
 	const onSubmit = data => {
 	  axios
@@ -57,6 +59,7 @@ const Login = () => {
 		  } else {
 			console.log('Błąd odpowiedzi z serwera.');
 			sessionStorage.setItem('login', false);
+			setResponerr(true)
 		  }
 		})
 		.catch(error => {
@@ -110,7 +113,8 @@ const Login = () => {
 						<div className="remember-forgot">
 							<label htmlFor="remember-me">
 								<input id="remember-me" type="checkbox" />
-								Zapamiętaj mnie
+								Zapamiętaj mnie <br/>
+								{responErr && <span style={{ color:'red' }}>Nie prawidłowe dane</span>}
 							</label>
 						</div>
 

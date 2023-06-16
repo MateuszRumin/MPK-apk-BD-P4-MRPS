@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import "../css/Messages.css"
+import '../css/Messages.css'
 const Messages = () => {
 	const [usersData, setUsersData] = useState([])
 
@@ -19,15 +19,14 @@ const Messages = () => {
 	}, [])
 
 	return (
-        <section className="messages sub-section-right komunikat">
+		<section className="messages sub-section-right komunikat">
 			<p>KOMUNIKATY:</p>
-
 
 			<div>
 				<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 					<thead>
 						<tr>
-							<th>Data</th>
+							<th>Tytul</th>
 							<th>Opis</th>
 						</tr>
 					</thead>
@@ -36,10 +35,17 @@ const Messages = () => {
 			<div className="tbl-content contentTable">
 				<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
 					<tbody className="DispStreets ">
-						{usersData.map(user => (
+						{/* {usersData.map(user => (
 							<tr key={user.id_street}>
 								<td>{user.id_street}</td>
 								<td>{user.name}</td>
+							</tr>
+						))} */}
+
+						{usersData.map(user => (
+							<tr key={user.id_info}>
+								<td>{user.title}</td>
+								<td>{user.text}</td>
 							</tr>
 						))}
 					</tbody>
