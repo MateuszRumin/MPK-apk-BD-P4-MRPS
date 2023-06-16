@@ -3,12 +3,41 @@
 margin: 0px 20px;
 cursor: pointer;
 transition: color .3s;
+overflow-y: auto;
+
 
 }
 .switchClass:hover{
     color: royalblue;
+    
 }
 .selectSwitch{
     color:royalblue;
     font-weight: bold;
+    overflow-y: auto;
+    
 }
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 400px !important;
+    
+}
+
+.table {
+      overflow-y: auto;
+    white-space: nowrap;
+   
+    text-align: left;
+    
+  }
+
+  .table th {
+ 
+
+    text-overflow: ellipsis;
+    
+  }
+
+ 

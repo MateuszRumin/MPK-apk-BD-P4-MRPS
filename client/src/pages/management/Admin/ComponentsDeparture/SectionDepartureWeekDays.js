@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal'
+
 import './css/SectionDepartureWeekDays.css'
 let objStops = 0
 
@@ -113,55 +114,51 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 					Niedziele i świeta
 				</span>
 			</div>
-			<section className="contentDisplayStreets">
-				<div className="tbl-header">
-                    Robocze:
-					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
+			<section className="contentDisplayStreets ">
+				<div className="table-container ">
+					<table className="table widthh" cellPadding="0" cellSpacing="0" border="0">
+						
 						<thead>
 							<tr>
-							{weekDays.map(user => 
-( 							<span key={user.id_route}>
-							<th>
-							{user.stop.name}
-							</th>
-		
-							</span>
+								{weekDays.map(user => (
+									<th key={user.id_route}>{user.stop.name}</th>
 
-						))}
-
+								))}
 							</tr>
 						</thead>
-					</table>
-				</div>
-				<div className="tbl-content">
-                    
-					<table className="tableDisplayStreets" cellPadding="0" cellSpacing="0" border="0">
-						<tbody className="DispStreets ">
-							{weekDays.map(user => (
-								<tr key={user.id_route}>
-									<td>
-										{user.stop.name}
-										{/* <span className="spanKlikLine" onClick={() => this.selectLines(user)}>
-                        KLIKNIJ
-                      </span>
-                      <span className="spanKlikLine" onClick={() => this.changeRename(user)}>
-                        ZMIEŃ NAZWE
-                      </span> */}
-									</td>
+						<tbody className="DispStreets tableDisplayStreets widthh">
+								{weekDays.map(user => (
+									<tr key={user.id_route}>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+										<td>{user.stop.name}</td>
+								
+										
 
-									<td className="onFocusCursor" onClick={() => openModal(user)}>
-										<b>zmien czas</b>
-									</td>
+										{/* <td className="onFocusCursor" onClick={() => openModal(user)}>
+											<b>zmien czas</b>
+										</td> */}
 
-									<td className="thirdTd">
-										<button className="buttonlistDisplayStret" onClick={() => deleteLine(user)}>
-											X
-										</button>
-									</td>
-								</tr>
-							))}
-						</tbody>
+										{/* <td className="thirdTd">
+											<button className="buttonlistDisplayStret" onClick={() => deleteLine(user)}>
+												X
+											</button>
+										</td> */}
+									</tr>
+								))}
+							</tbody>
+
+
+
 					</table>
+
+					
 				</div>
 				<div>
 					<Modal isOpen={isOpen} className="custom-modal" overlayClassName="custom-overlay" onRequestClose={closeModal}>
