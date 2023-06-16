@@ -11,6 +11,7 @@
 	color: royalblue;
 	font-weight: bold;
 	overflow-y: auto;
+	
 }
 
 
@@ -19,12 +20,14 @@
 	border-bottom: 2px solid black;
 	/* border-left:2px solid rgba(80, 69, 69, 0.249); */
 	padding: 10px;
+	
 }
 
 .table-container {
 	overflow-x: auto;
 	overflow-y: auto;
 	height: 500px !important;
+	position: relative;
 }
 .table {
 	overflow-y: auto;
@@ -69,4 +72,19 @@
 .selectToOpen:hover{
 	color: white;
 	cursor: pointer;
+}
+
+.usuntime{
+
+	font-size: 29px;
+	position: absolute;
+	left:0;
+	line-height: 20px;
+	
+	
+}
+.positionincon{
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }

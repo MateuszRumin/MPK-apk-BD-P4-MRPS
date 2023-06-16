@@ -24,7 +24,7 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 			.post('http://localhost:3001/select/aliases/toadd', obj)
 			.then(response => {
 				const useData = response.data
-				 setUsersData(useData)
+				setUsersData(useData)
 
 				console.log(useData)
 			})
@@ -114,7 +114,12 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		console.log(selectStop)
 
-		axios.post('http://localhost:3001/insert/alsc').then(response => {
+		let objdata = {
+			id_alias: selectStop.id_alias,
+			id_line: selectLine.id_line,
+		}
+		console.log(objdata)
+		axios.post('http://localhost:3001/insert/alsc', objdata).then(response => {
 			console.log(response.data)
 
 			setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
@@ -140,7 +145,11 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 		console.log(selectStop)
 
-		axios.post('http://localhost:3001/delete/alias').then(response => {
+		let objdata = {
+			id_alias: selectStop.id_alias,
+		}
+		console.log(objdata)
+		axios.post('http://localhost:3001/delete/alias', objdata).then(response => {
 			console.log(response.data)
 			console.log(selectStop)
 			console.log(objStops)
