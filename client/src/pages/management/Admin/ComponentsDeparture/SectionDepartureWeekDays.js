@@ -30,6 +30,14 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 					setWeekDays(weekDays)
 					console.log('Pobranie ulic z bazy')
 					console.log(weekDays)
+
+
+
+
+
+
+
+
 				})
 				.catch(error => {
 					console.log(error)
@@ -128,18 +136,13 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 						</thead>
 						<tbody className="DispStreets tableDisplayStreets widthh">
 							{weekDays.map(user => (
-								<tr key={user.id_route}>
-									{/* <td className="etsttttt">{user.stop.name}</td> */}
-									<td className="etsttttt">1</td>
-									<td className="etsttttt">2</td>
-									<td className="etsttttt">3</td>
-									<td className="etsttttt">4</td>
-									<td className="etsttttt">5</td>
-									<td className="etsttttt">6</td>
-									<td className="etsttttt">7</td>
-									<td className="etsttttt">8</td>
-									<td className="etsttttt">9</td>
-								</tr>
+								<tr>
+								{weekDays.map(user => (
+									<th className="etsttttt" key={user.id_route}>
+										{user.stop.name}
+									</th>
+								))}
+							</tr>
 							))}
 						</tbody>
 					</table>
