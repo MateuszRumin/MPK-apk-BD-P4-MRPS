@@ -127,31 +127,12 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 							</tr>
 						</thead>
 						<tbody className="DispStreets tableDisplayStreets widthh">
+						<tr>
 								{weekDays.map(user => (
-									<tr key={user.id_route}>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-										<td>{user.stop.name}</td>
-								
-										
+									<td className='etsttttt' key={user.id_route}>{user.stop.name}</td>
 
-										{/* <td className="onFocusCursor" onClick={() => openModal(user)}>
-											<b>zmien czas</b>
-										</td> */}
-
-										{/* <td className="thirdTd">
-											<button className="buttonlistDisplayStret" onClick={() => deleteLine(user)}>
-												X
-											</button>
-										</td> */}
-									</tr>
 								))}
+							</tr>
 							</tbody>
 
 
