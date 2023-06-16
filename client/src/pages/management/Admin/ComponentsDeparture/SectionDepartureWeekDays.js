@@ -186,21 +186,21 @@ const DispDept = ( object ) => {
 							</tr>
 						</thead>
 						<tbody className="DispStreets tableDisplayStreets widthh">
-						{weekDays.map(order => (
-								<th className="etsttttt" key={order.order}>
-					{dpd.map(test => (	
-						<span>
-						{test.map(dest => (
-								<tr>
+						
 								
-										{dest.time}
-									
-								</tr>
+					{dpd.map(test => (	
+						
+								<th className="etsttttt" >
+						{test.map(dest => (
+							<tr>
+								{dest.time}
+										</tr>
+										
+										))}
+										</th>
+					
 							))}
-					</span>
-							))}
-							</th>
-						))}
+						
 						</tbody>
 					</table>
 				</div>
