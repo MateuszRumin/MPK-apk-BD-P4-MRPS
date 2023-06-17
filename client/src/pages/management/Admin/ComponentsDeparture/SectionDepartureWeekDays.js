@@ -194,11 +194,11 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 			console.log(user)
 			let objdata = {	
 				num_passage: user.num_passage,
-				id_line: objStops.id_line,
+				day:'week'
 			}
 			console.log(objdata);
 
-			axios.post('http://localhost:3001/delete/test', objdata).then(response => {
+			axios.post('http://localhost:3001/delete/dept', objdata).then(response => {
 				console.log(response.data)
 			})
 		} else {

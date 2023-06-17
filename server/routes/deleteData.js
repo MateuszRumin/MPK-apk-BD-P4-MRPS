@@ -39,5 +39,9 @@ router.post('/alias', aliasController.delete)
 const infoController = require('../controllers/data/delete/info')
 router.post('/info', infoController.delete)//wypisz wszystkie
 
+const deptController = require('../controllers/data/delete/departures')
+router.post('/dept', deptController.delete)//wypisz wszystkie
+
+
 module.exports = router
 

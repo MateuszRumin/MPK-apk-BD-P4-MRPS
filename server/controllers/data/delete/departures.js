@@ -10,14 +10,9 @@ exports.delete = async (req, res) => {
       const data = req.body
 
 
-    const dept = await Departures.findOne({
-        where:{
-            id_departures:data.id_departures
-        },
-        attributes:['num_passage']
-    }) 
+    
   
-    await Departures.destroy({where:{num_passage:dept.num_passage}})
+    await Departures.destroy({where:{num_passage:data.num_passage,day:data.day}})
 
 
 } catch (err) {
