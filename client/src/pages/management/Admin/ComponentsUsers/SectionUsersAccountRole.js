@@ -31,6 +31,8 @@ class SectionUsersAccountRole extends Component {
 			console.log(response.data)
 		})
 		console.log('kliknieto')
+		this.setState({ responseSer: true })
+		
 	}
 
 	render() {
@@ -152,7 +154,7 @@ class SectionUsersAccountRole extends Component {
 						</Form>
 					</Formik>
 					{error && <span style={{ color: 'red' }}>{content}</span>}
-					{responseSer && <span style={{ color: 'green' }}>{content}</span>}
+					{responseSer && <span style={{ color: 'green' }}>Usunieto</span>}
 				</section>
 
 				<SectionUsersRoleInAccount rolesUsers={this.props.rolesUsers.name} idAccountRole={this.props.idAccountRole} />

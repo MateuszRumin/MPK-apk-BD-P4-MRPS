@@ -15,6 +15,7 @@ exports.delete = async (req, res) => {
 
         if(data.id_line){
             
+            
             await Als_cons.destroy({where: {id_als_con:data_als_con}})
           
 
