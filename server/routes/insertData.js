@@ -32,5 +32,7 @@ router.post('/alsc', alsController.add)//wypisz wszystkieroutes
 const infoController = require('../controllers/data/insert/info')
 router.post('/info', infoController.add)//wypisz wszystkie
 
+const departureController = require('../controllers/data/insert/departures')
+router.post('/departure/week', departureController.addWeek)//wypisz wszystkie
 
 module.exports = router

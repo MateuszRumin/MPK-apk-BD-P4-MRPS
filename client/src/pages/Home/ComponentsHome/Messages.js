@@ -6,7 +6,7 @@ const Messages = () => {
 
 	useEffect(() => {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/info')
 			.then(response => {
 				const usersData = response.data
 				setUsersData(usersData)

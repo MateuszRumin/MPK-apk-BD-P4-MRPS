@@ -33,11 +33,11 @@ app.use('/test', async (req, res) => {
 	
 	 const data = req.body;
 	
-		const adm = await bcrypt.hash("qwertyuiop",10)
+		
 
-		console.log(adm)
+		
     console.log(data);
-	res.json(adm)
+	res.json("test")
 	}
 	catch (err){
 		res.status(500)

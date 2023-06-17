@@ -168,14 +168,13 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 		const validFormat = /^\d{2}:\d{2}:\d{2}$/.test(confirmDelete2)
 		if (confirmDelete2 && validFormat) {
 			let objdata = {
-				new_tile: confirmDelete2,
-				num_passage: selectTimeData.num_passage,
+				time: confirmDelete2,
 				id_line: objStops.id_line,
 			}
 
 			console.log(objdata)
 
-			axios.post('http://localhost:3001/test', objdata).then(response => {
+			axios.post('http://localhost:3001/insert/departure/week', objdata).then(response => {
 				console.log(response.data)
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
 			})
@@ -193,8 +192,7 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 		const answer = window.confirm('Na pewno chcesz usunąć ?')
 		if (answer) {
 			console.log(user)
-			let objdata = {
-				
+			let objdata = {	
 				num_passage: user.num_passage,
 				id_line: objStops.id_line,
 			}

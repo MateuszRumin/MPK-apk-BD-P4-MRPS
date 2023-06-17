@@ -16,7 +16,7 @@ const News = () => {
 	// Pobieranie ogłoszeń aktualnych
 	const getStopsFreeForLine2 = () => {
 		axios
-			.post('http://localhost:3001/select/streets/all')
+			.post('http://localhost:3001/select/info')
 			.then(response => {
 				const useData = response.data
 				setUsersData(useData)
@@ -30,12 +30,15 @@ const News = () => {
 
 	// Usuwanie ogłoszenia
 	const handleConfirm2 = selectStop => {
+		const toDelete={
+			id_info:selectStop.id_info
+		}
 		console.log(objStops)
-console.log('test');
+		console.log('test');
 		console.log(selectStop)
 		console.log('koniec testu');
 
-		axios.post('http://localhost:3001/test' ).then(response => {
+		axios.post('http://localhost:3001/delete/info',toDelete ).then(response => {
 			console.log(response.data)
 
 			setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
@@ -69,8 +72,9 @@ console.log('test');
 
 	// Dodawanie nowego ogłoszenia
 	const onSubmit = data => {
+
 		console.log(data)
-		axios.post('http://localhost:3001/test', data).then(response => {
+		axios.post('http://localhost:3001/insert/info', data).then(response => {
 			console.log(response.data)
 		})
 	}
@@ -133,7 +137,7 @@ console.log('test');
 									{usersData.map(user => (
 										<tr key={user.id_info}>
 											<td>
-												{user.title}
+												<b>{user.title}</b>
 												{user.text}
 
 												<span className="spanKlikLine" onClick={() => handleConfirm2(user)}>

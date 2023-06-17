@@ -1,9 +1,10 @@
-require('../../functions/time')
+
 const { Departures, Routes,RouteTimes } = require('../../../models')
+require('../../functions/time')
 
 async function addweek (passage,dat,time,before){
                 try {
-
+                    
                     let values = {
                         num_passage: passage.num_passage,
                         id_route: dat.id_route,
@@ -54,14 +55,14 @@ async function addweek (passage,dat,time,before){
                         }
    
                     }             
-                    before = await queryInterface.bulkInsert('Departures', [{ ...tim, ...values, ...defaultValues }]);
+                    before = await Departures.create('Departures', [{ ...tim, ...values }]);
 
 
 
                 return before
                 }
                 catch (err){
-                    console.log(err)
+                    console.log("bląd")
                 }
 }
 
@@ -153,37 +154,37 @@ exports.addWeek = async (req, res) => {
     
     
     const route = await Routes.findOne({where:{id_line:data.id_line}})    
-    
-    const hsckPass = await Departures.findOne({where:{id_route:route.id_line},order:['num_passage','DESC']})
-     let passage   
-        if(hsckPass){
-             passage ={
-                num_passage:hsckPass.num_passage+1
-            }
-        }else{
-             passage ={
-                num_passage:1
-            }
-            
+    const hsckPass = await Departures.findOne({where:{id_route:route.id_line},order:[['num_passage','DESC']]})
+    let passage   
+    if(hsckPass){
+        passage ={
+            num_passage:hsckPass.num_passage+1
         }
-
-        const time=data.time
-     
-
-         
-        let mapRoute = await Routes.findAll({where:{id_line:data.id_line,week:true},order:['order','ASC']})
-        let before = null
-     
-        for (let dat of mapRoute){     
+    }else{
+        passage ={
+            num_passage:1
+        }
+        
+    }
+    
+    const time=data.time
+    
+    
+    
+    let mapRoute = await Routes.findAll({where:{id_line:data.id_line,week:true},order:[['order','ASC']]})
+    let before = null
+    
+    for (let dat of mapRoute){     
+            console.log(dat);
            before =  addweek(passage,dat,time,before)
         }
    
        let first = true
-         mapRoute = await Routes.findAll({where:{id_line:data.id_line,week:true},order:['order','DESC']})
+         mapRoute = await Routes.findAll({where:{id_line:data.id_line,week:true},order:[['order','DESC']]})
 
-         for (let dat of mapRoute){     
-            first =  addweekBack(passage,dat,time,before,first)
-        }
+        //  for (let dat of mapRoute){     
+        //     first =  addweekBack(passage,dat,time,before,first)
+        // }
 
        
 
@@ -191,7 +192,7 @@ exports.addWeek = async (req, res) => {
     }
     catch (err) {
         res.json("Problemy z kodem")
-        console.log(err)
+        
     }
 
 
