@@ -23,3 +23,6 @@ function timeToSeconds(time) {
   
     return `${hoursString}:${minutesString}:${secondsString}`;
   }
+
+
+  module.exports = { timeToSeconds, secondsToTime };
