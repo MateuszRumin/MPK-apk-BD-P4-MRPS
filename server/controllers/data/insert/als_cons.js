@@ -13,8 +13,9 @@ exports.add = async (req, res) => {
             
             const dataAdd = {
                 id_line:data.id_line,
-                id_alias:id_alias
+                id_alias:data.id_alias,
             }
+            console.log(dataAdd);
 
            await Als_cons.create(dataAdd)
 
