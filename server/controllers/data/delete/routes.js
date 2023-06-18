@@ -9,8 +9,8 @@ exports.delete = async (req, res) => {
     
     try{
     const idRoute = req.body.id_route
-
-    await Routes.destroy({where: {id_user:idRoute}})
+        console.log(req.body)
+    await Routes.destroy({where: {id_route:idRoute}})
 
    
 

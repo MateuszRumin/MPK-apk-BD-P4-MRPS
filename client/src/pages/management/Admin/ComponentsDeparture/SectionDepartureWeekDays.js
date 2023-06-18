@@ -170,6 +170,7 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 			let objdata = {
 				time: confirmDelete2,
 				id_line: objStops.id_line,
+				day:'week'
 			}
 
 			console.log(objdata)

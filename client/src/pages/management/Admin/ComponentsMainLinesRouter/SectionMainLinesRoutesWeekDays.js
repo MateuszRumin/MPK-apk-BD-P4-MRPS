@@ -88,7 +88,7 @@ const SectionMainLinesTimeChange = ({ selectLine }) => {
 		const answer = window.confirm('Na pewno chcesz ten przystanek ?')
 		if (answer) {
 			console.log(`Usuwam linię o id tutaj konkretna`)
-			axios.post('http://localhost:3001/test', user).then(response => {
+			axios.post('http://localhost:3001/delete/routes', user).then(response => {
 				console.log(response.user)
 			})
 		} else {
