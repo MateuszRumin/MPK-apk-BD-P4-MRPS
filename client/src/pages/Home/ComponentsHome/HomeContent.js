@@ -24,7 +24,7 @@ const HomeContent = () => {
 					<DisplayLines />
 					<Messages />
 				</section>
-				<section className="section-right">
+				{/* <section className="section-right">
 					<section className="search-header">
 						<p>WYSZUKIWANIE POŁĄCZEŃ</p>
 					</section>
@@ -37,8 +37,8 @@ const HomeContent = () => {
 						<DisplaySearchStop selectLine2={selectLine2}/>
 					</section>
 
-					{/* <Messages /> */}
-				</section>
+					
+				</section> */}
 			</main>
 		</div>
 	)

@@ -91,7 +91,7 @@ const SectionConnectDisplayConnects2 = ({ selectLine2 }) => {
 	return (
 		<section className="sectionLinesDisplayStreetsT">
 			<div className="headerSectionDisplayStreets">
-				<p>CZAS PRZEJAZDU - A DO B</p>
+				<p>CZAS PRZEJAZDU - B DO A</p>
 			</div>
 			<section className="contentDisplayStreets">
 				<div className="tbl-header">
