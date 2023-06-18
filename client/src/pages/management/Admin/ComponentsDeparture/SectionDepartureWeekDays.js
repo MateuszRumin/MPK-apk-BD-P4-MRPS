@@ -145,6 +145,7 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 		const validFormat = /^\d{2}:\d{2}:\d{2}$/.test(confirmDelete)
 		if (confirmDelete && validFormat) {
 			let objdata = {
+				day:"week",
 				time: confirmDelete,
 				num_passage: selectTimeData.num_passage,
 				id_line: objStops.id_line,

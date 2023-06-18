@@ -494,7 +494,7 @@ exports.addWeek = async (req, res) => {
 
          for (let dat of mapRoute){     
             bef = await  addweekBack(passage,dat,before,first)
-            console.log(first);
+           
             before=bef
             first = 'nie'
         }
@@ -524,7 +524,7 @@ exports.addWeek = async (req, res) => {
 
          for (let dat of mapRoute){     
             bef = await  addsbBack(passage,dat,before,first)
-            console.log(first);
+            
             before=bef
             first = 'nie'
         }
@@ -549,7 +549,7 @@ exports.addWeek = async (req, res) => {
 
          for (let dat of mapRoute){     
             bef = await  addndBack(passage,dat,before,first)
-            console.log(first);
+           
             before=bef
             first = 'nie'
         }

@@ -45,7 +45,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 
 	const DispDept = object => {
 		let sendObj = {
-			day: 'week',
+			day: 'sunday',
 			id_line: object.id_line,
 			id_stop: object.id_stop,
 			id_route: object.id_route,
@@ -78,7 +78,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 			console.log(objStopss)
 
 			axios
-				.post('http://localhost:3001/select/routes/', objStopss)
+				.post('http://localhost:3001/select/routes/pnpt', objStopss)
 				.then(response => {
 					weekDayss = response.data
 
@@ -131,6 +131,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 		const validFormat = /^\d{2}:\d{2}:\d{2}$/.test(confirmDelete)
 		if (confirmDelete && validFormat) {
 			let objdata = {
+				day:'sunday',
 				new_tile: confirmDelete,
 				num_passage: selectTimeData.num_passage,
 				id_line: objStops.id_line,
@@ -138,7 +139,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 
 			console.log(objdata)
 
-			axios.post('http://localhost:3001/test', objdata).then(response => {
+			axios.post('http://localhost:3001/update/departures/forpass', objdata).then(response => {
 				console.log(response.data)
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
 			})
@@ -156,6 +157,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 			let objdata = {
 				time: confirmDelete2,
 				id_line: objStops.id_line,
+				day:'sunday'
 			}
 
 			console.log(objdata)
@@ -180,11 +182,11 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 			console.log(user)
 			let objdata = {
 				num_passage: user.num_passage,
-				id_line: objStops.id_line,
+				day:'sunday'
 			}
 			console.log(objdata)
 
-			axios.post('http://localhost:3001/delete/test', objdata).then(response => {
+			axios.post('http://localhost:3001/delete/dept', objdata).then(response => {
 				console.log(response.data)
 			})
 		} else {
