@@ -4,7 +4,7 @@ Projekt Aplikacji Webowej dla Miejskiego Przedsiębiorstwa Komunikacyjnego reali
 
 # Sposób uruchomienia
 
-1. Jeśli na komputerze jest zainstalowany serwer MSQL8.0 usuchom go i zaloguj się jako użytkownik root.
+1. Jeśli na komputerze jest zainstalowany serwer MSQL usuchom go i zaloguj się jako użytkownik root.
 2. Po zalogowaniu stwórz pustą baze danych pod nazwą "mpkdb" (create database mpkdb;).
    
 3. Jeśli bazy nie ma na komputerze skopiować plik pustej bazy z dostarocznego nośnika danych (baza) do lokalizacji dysku C://.
