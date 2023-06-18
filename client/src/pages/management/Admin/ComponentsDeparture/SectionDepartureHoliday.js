@@ -78,7 +78,7 @@ const SectionDepartureHoliday = ({ selectLine2, onChange }) => {
 			console.log(objStopss)
 
 			axios
-				.post('http://localhost:3001/select/routes/pnpt', objStopss)
+				.post('http://localhost:3001/select/routes/', objStopss)
 				.then(response => {
 					weekDayss = response.data
 
