@@ -128,10 +128,13 @@ const SectionMainLinesAddAlias = ({ selectLine }) => {
 
 	const handleConfirm2 = selectStop => {
 		console.log(objStops)
-
+		let objdata = {
+			id_alias: selectStop.id_alias,
+			id_line: selectLine.id_line,
+		}
 		console.log(selectStop)
 
-		axios.post('http://localhost:3001/delete/alsc').then(response => {
+		axios.post('http://localhost:3001/delete/alsc',objdata).then(response => {
 			console.log(response.data)
 			console.log(selectStop)
 			console.log(objStops)

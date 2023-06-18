@@ -145,14 +145,14 @@ const SectionDepartureWeekDays = ({ selectLine2, onChange }) => {
 		const validFormat = /^\d{2}:\d{2}:\d{2}$/.test(confirmDelete)
 		if (confirmDelete && validFormat) {
 			let objdata = {
-				new_tile: confirmDelete,
+				time: confirmDelete,
 				num_passage: selectTimeData.num_passage,
 				id_line: objStops.id_line,
 			}
 
 			console.log(objdata)
 
-			axios.post('http://localhost:3001/test', objdata).then(response => {
+			axios.post('http://localhost:3001/update/departures/forpass', objdata).then(response => {
 				console.log(response.data)
 				setServerResponse(response.data) // Zapisz odpowiedź serwera w stanie
 			})

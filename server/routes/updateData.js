@@ -36,6 +36,8 @@ router.post('/aliases',aliasesController.update)
 const rtController = require('../controllers/data/update/routeTimes')
 router.post('/rt',  rtController.update)
 
+const dptController = require('../controllers/data/update/departures')
+router.post('/departures/forpass',  dptController.udpdate)
 
 
 

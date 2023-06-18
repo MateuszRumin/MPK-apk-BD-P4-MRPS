@@ -8,18 +8,19 @@ exports.delete = async (req, res) => {
     try{
 
    
-    
         const data = req.body
-
+        console.log(data);
+    
 
 
         if(data.id_line){
             
             
-            await Als_cons.destroy({where: {id_als_con:data_als_con}})
-          
-
+            await Als_cons.destroy({where: {id_alias:data.id_alias,id_line:data.id_line}})
+            res.json('Delated');
         }
+
+        
 
         if (data.id_departures){
            
